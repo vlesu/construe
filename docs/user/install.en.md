@@ -4,6 +4,11 @@
 
 How to install the alpha version (0.1.0-alpha) on Windows, Linux and macOS. How to use the program — [user guide](guide.en.md).
 
+**Where to download.** The packages of the latest version are on the
+[latest release](https://github.com/vlesu/construe/releases/latest) page (the “Assets” section: the installer and the
+zip for Windows, the AppImage for Linux, the DMG for macOS); all versions are on the
+[tags](https://github.com/vlesu/construe/tags) page.
+
 ## 1. Requirements
 
 Windows 10 or 11, 64-bit (Linux — [§5](#5-linux-appimage), macOS — [§6](#6-macos-dmg)). Nothing else needs to be installed: everything the program needs is included in the

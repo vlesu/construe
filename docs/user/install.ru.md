@@ -4,6 +4,10 @@
 
 Как установить альфа-версию (0.1.0-alpha) под Windows, Linux и macOS. Как пользоваться программой — [руководство пользователя](guide.ru.md).
 
+**Где скачать.** Дистрибутивы последней версии — на странице
+[последнего выпуска](https://github.com/vlesu/construe/releases/latest) (раздел «Assets»: установщик и архив для
+Windows, AppImage для Linux, DMG для macOS); все версии — на странице [меток](https://github.com/vlesu/construe/tags).
+
 ## 1. Что нужно
 
 Windows 10 или 11, 64-разрядная (Linux — [§5](#5-linux-appimage), macOS — [§6](#6-macos-dmg)). Ничего другого ставить не нужно: всё, что нужно программе, входит в установщик.
