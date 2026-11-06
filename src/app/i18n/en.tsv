@@ -1,0 +1,2170 @@
+# Перевод текстов интерфейса (S8-I18N-001, spec/app-ux.md §9.5): ключ<TAB>перевод<TAB>русский текст, с которого
+# переведено. Изменился русский текст — обновить перевод и третью колонку. После правки — tools/gen_messages.py.
+error.UNKNOWN	Error {code}.	Ошибка {code}.
+error.DOC_SYNTAX	Could not read “{file}”: the file is damaged or is not a JSON document ({detail}).	Не удалось прочитать «{file}»: файл повреждён или не является документом JSON ({detail}).
+error.DOC_FORMAT	“{file}” is not a construe document.	«{file}» не является документом construe.
+error.DOC_NEWER_VERSION	“{file}” was created by a newer version of the program (format version {actual}, supported {expected}). Update the program.	«{file}» создан более новой версией программы (версия формата {actual}, поддерживается {expected}). Обновите программу.
+error.DOC_SCHEMA	“{file}” contains invalid data ({path}).	«{file}» содержит некорректные данные ({path}).
+error.DOC_DUPLICATE_ID	“{file}” is damaged: identifier {id} is repeated ({path}).	«{file}» повреждён: идентификатор {id} повторяется ({path}).
+error.DOC_ID_COUNTER	“{file}” is damaged: identifier {id} does not match the counter ({path}).	«{file}» повреждён: идентификатор {id} не согласован со счётчиком ({path}).
+error.DOC_DANGLING_REF	“{file}” is damaged: reference {id} to a missing or later object ({path}).	«{file}» повреждён: ссылка {id} на несуществующий или более поздний объект ({path}).
+error.DOC_BAD_REF_KIND	Reference {id} points to an object of the wrong kind or from another sketch ({path}).	Ссылка {id} указывает на объект не того вида или из другого эскиза ({path}).
+error.DOC_SHARED_POINT	“{file}” is damaged: point {id} belongs to several curves — {entities} ({path}).	«{file}» повреждён: точка {id} принадлежит нескольким кривым — {entities} ({path}).
+error.DOC_DUPLICATE_NAME	Variable “{name}” already exists.	Переменная «{name}» уже существует.
+error.DOC_BAD_ROLLBACK	“{file}” is damaged: invalid rollback marker position ({path}).	«{file}» повреждён: неверное положение маркера отката ({path}).
+error.EXPR_SYNTAX	Expression error (position {position}).	Ошибка в выражении (позиция {position}).
+error.EXPR_UNKNOWN_NAME	Invalid variable name: {name}.	Неверное имя переменной: {name}.
+ui.expr.similar	Did you mean: {names}.	Возможно, имелось в виду: {names}.
+error.EXPR_RESERVED_NAME	The name “{name}” is reserved (function, unit or constant). Choose another one.	Имя «{name}» зарезервировано (функция, единица или константа). Выберите другое.
+error.EXPR_DIMENSION	Unit mismatch: expected {expected}, got {actual}.	Несовпадение единиц: нужна {expected}, получена {actual}.
+error.EXPR_DOMAIN	Value outside the domain of “{name}” or not a finite number (position {position}).	Значение вне области определения «{name}» или не является конечным числом (позиция {position}).
+error.EXPR_DIV_ZERO	Division by zero (position {position}).	Деление на ноль (позиция {position}).
+error.EXPR_CYCLE	Circular dependency of variables: {names}.	Циклическая зависимость переменных: {names}.
+error.EXPR_DEPENDS_ON_ERROR	Depends on variable “{name}”, which has an error.	Зависит от переменной «{name}», в которой ошибка.
+error.EXPR_TYPE	Value of the wrong type: expected {expected}, got {actual} (position {position}).	Значение не того типа: нужно {expected}, получено {actual} (позиция {position}).
+error.EXPR_NOT_IN_LIST	The value of variable “{name}” is not in its list.	Значение переменной «{name}» не из её перечня.
+error.SKETCH_BAD_REFS	Constraint {constraint} is applied to unsuitable elements.	Ограничение {constraint} задано для неподходящих элементов.
+error.SKETCH_PROJECTION_LOST	The projection is not linked to the model: the body edge or vertex it refers to was not found (the model did not rebuild?). Fix the model or delete the projection.	Проекция не связана с моделью: ребро или вершина тела, на которые она ссылается, не найдены (модель не перестроилась?). Исправьте модель или удалите проекцию.
+error.SKETCH_VALUE_RANGE	{object}: invalid value {actual}.	{object}: недопустимое значение {actual}.
+error.SKETCH_CONFLICT	Constraints contradict each other: {ids}. Delete one of them (suggested: {suggested}) or undo the last action.	Ограничения противоречат друг другу: {ids}. Удалите одно из них (предложено: {suggested}) или отмените последнее действие.
+error.SKETCH_REDUNDANT	Redundant constraints: {ids}. They can be deleted without changing the geometry.	Избыточные ограничения: {ids}. Их можно удалить без изменения геометрии.
+error.SKETCH_NOT_CONVERGED	The sketch does not solve with the current values; the geometry is left in the last solved state. Not satisfied: {ids}. Check the last changed dimensions.	Эскиз не решается при текущих значениях; геометрия оставлена в последнем решённом состоянии. Не выполнены: {ids}. Проверьте последние изменённые размеры.
+error.SKETCH_PROJECTION_EXCLUDED	Projections {entities} cross other curves and are not used in contours.	Проекции {entities} пересекают другие кривые и не участвуют в контурах.
+error.SKETCH_PROFILE_CROSSING	Curves {entities} intersect — closed regions are not built. Trim the curves at the intersection point.	Кривые {entities} пересекаются — замкнутые области не построены. Обрежьте кривые в точке пересечения.
+error.SKETCH_PROFILE_OVERLAP	Curves {entities} overlap each other.	Кривые {entities} накладываются друг на друга.
+error.SKETCH_OPEN_CURVES	Open curves {entities} are not part of the profile.	Незамкнутые кривые {entities} не входят в профиль.
+error.SKETCH_NO_REGIONS	Sketch “{sketch}” has no closed regions.	В эскизе «{sketch}» нет замкнутых областей.
+error.REGEN_INPUT_ERROR	Object {object} referenced by the feature is unavailable: it is deleted, suppressed, or the sketch has no plane. Select it again.	Объект {object}, на который ссылается фича, недоступен: он удалён, подавлен или у эскиза не определена плоскость. Выберите его заново.
+error.REGEN_PROFILE_MISSING	The selected region no longer exists in the sketch. Select the profile again.	Выбранной области больше нет в эскизе. Выберите профиль заново.
+error.REGEN_REF_LOST	Elements referenced by the feature were not found ({ids}): the geometry changed or was deleted. Select them again.	Не найдены элементы, на которые ссылается фича ({ids}): геометрия изменилась или удалена. Выберите их заново.
+error.REGEN_REF_AMBIGUOUS	References became ambiguous after the model changed ({ids}). Select the elements again.	Ссылки стали неоднозначными после изменения модели ({ids}). Выберите элементы заново.
+error.REGEN_FACE_NOT_PLANAR	The sketch face ({name}) is not planar.	Грань для эскиза ({name}) не плоская.
+error.ASM_REF_NOT_FOUND	The inserted object was deleted.	Вставленный объект удалён.
+error.ASM_CYCLE	The assembly is inserted into itself.	Сборка вставлена сама в себя.
+error.API_ASSEMBLY_CYCLE	An assembly cannot be inserted into itself.	Нельзя вставить сборку саму в себя.
+error.API_CONTEXT_CYCLE	A reference to this part would create a cycle: the parts would depend on each other.	Ссылка на эту деталь создала бы цикл: детали зависели бы друг от друга.
+error.API_CONTEXT_IN_USE	The part is already designed in the context of another assembly.	Деталь уже спроектирована в контексте другой сборки.
+error.API_NO_CONTEXT	The part has no references in the assembly context.	У детали нет ссылок в контексте сборки.
+error.REGEN_CONTEXT_CYCLE	References to other parts form a cycle: {ids}.	Ссылки на другие детали образуют цикл: {ids}.
+error.ASM_VARIANT_NOT_FOUND	Instance: no variant table {table} or variant “{row}”.	Экземпляр: нет таблицы вариантов {table} или варианта «{row}».
+error.ASM_VARIABLE_NOT_FOUND	Instance: formula for a missing variable {id}.	Экземпляр: формула для несуществующей переменной {id}.
+error.ASM_MATE_REF_LOST	Mate: object “{ref}” not found (did the part change?).	Сопряжение: объект «{ref}» не найден (изменилась деталь?).
+error.ASM_TARGET_NOT_FOUND	Instance “{ref}” of the assembly feature not found (deleted, suppressed or failed).	Экземпляр «{ref}» фичи сборки не найден (удалён, подавлен или с ошибкой).
+error.ASM_PATTERN_SOURCE	Instance pattern: source instance {id} not found, suppressed or failed.	Массив экземпляров: исходный экземпляр {id} не найден, подавлен или с ошибкой.
+error.ASM_PATTERN_BAD_REF	Instance pattern: “{ref}” does not define a direction, axis or part pattern.	Массив экземпляров: «{ref}» не задаёт направление, ось или массив детали.
+error.ASM_PATTERN_BAD_VALUE	Instance pattern: invalid value “{name}”.	Массив экземпляров: недопустимое значение «{name}».
+error.ASM_MATE_BAD_REF	Mate: object “{ref}” is not suitable for this type.	Сопряжение: объект «{ref}» не подходит для этого типа.
+error.ASM_MATE_CONFLICT	Mates contradict each other — remove one of them ({suggested} is suggested).	Сопряжения противоречат друг другу — уберите одно из них (предлагается {suggested}).
+error.ASM_MATE_REDUNDANT	The mate is redundant — the assembly is already defined by others.	Сопряжение избыточно — сборка уже определена другими.
+error.WELD_EDGE_LOST	Weld: edge “{ref}” not found (did the part change?).	Шов: ребро «{ref}» не найдено (изменилась деталь?).
+error.WELD_BAD_VALUE	Weld: invalid value “{name}”.	Шов: недопустимое значение «{name}».
+error.WELD_FACE_LOST	Weld: face “{ref}” not found (did the part change?).	Шов: грань «{ref}» не найдена (изменилась деталь?).
+error.WELD_LINE_NOT_FOUND	Weld: the selected faces of the parts do not touch — the weld line was not found.	Шов: выбранные грани деталей не касаются — линия шва не найдена.
+error.ASM_FILE_NOT_FOUND	File “{path}” not found.	Файл «{path}» не найден.
+error.ASM_FILE_INVALID	File “{path}” cannot be read as a document ({detail}).	Файл «{path}» не читается как документ ({detail}).
+error.LIB_DESCRIPTION_NOT_FOUND	Folder “{dir}” has no description of library item “{file}”.	В папке «{dir}» нет описания элемента библиотеки «{file}».
+error.LIB_DESCRIPTION_SYNTAX	“{file}” in folder “{dir}” is not JSON: line {line}, position {column}.	«{file}» в папке «{dir}» не является JSON: строка {line}, позиция {column}.
+error.LIB_NEWER_VERSION	“{file}” in folder “{dir}” was created by a newer version of the program ({field}). Update the program.	«{file}» в папке «{dir}» создан более новой версией программы ({field}). Обновите программу.
+error.LIB_DESCRIPTION_SCHEMA	“{file}” in folder “{dir}”: error in field “{field}” ({detail}).	«{file}» в папке «{dir}»: ошибка в поле «{field}» ({detail}).
+error.LIB_EMPTY_DESIGNATION	“{file}” in folder “{dir}”: empty designation rule.	«{file}» в папке «{dir}»: пустое правило обозначения.
+error.LIB_BAD_PATH	“{file}” in folder “{dir}”: invalid path in field “{field}” — a path inside the item folder is required.	«{file}» в папке «{dir}»: недопустимый путь в поле «{field}» — нужен путь внутри папки элемента.
+error.LIB_TEMPLATE_NOT_FOUND	Folder “{dir}” has no template “{file}”.	В папке «{dir}» нет шаблона «{file}».
+error.LIB_TEMPLATE_INVALID	Template “{file}” in folder “{dir}” cannot be read as a document ({detail}).	Шаблон «{file}» в папке «{dir}» не читается как документ ({detail}).
+error.LIB_TEMPLATE_ELEMENT	Template “{file}” in folder “{dir}”: the item part was not found.	Шаблон «{file}» в папке «{dir}»: не найдена деталь элемента.
+error.LIB_TEMPLATE_LINKS	Template “{file}” in folder “{dir}” refers to other files — a template must be self-contained.	Шаблон «{file}» в папке «{dir}» ссылается на другие файлы — шаблон должен быть самодостаточным.
+error.LIB_ICON_NOT_FOUND	Folder “{dir}” has no icon “{file}”.	В папке «{dir}» нет значка «{file}».
+error.LIB_SIZES_NOT_FOUND	Folder “{dir}” has no size table “{file}” (.csv or .json).	В папке «{dir}» нет таблицы типоразмеров «{file}» (.csv или .json).
+error.LIB_SIZES_TEXT	Table “{file}” in folder “{dir}”: line {line}, field {column} — {reason}.	Таблица «{file}» в папке «{dir}»: строка {line}, поле {column} — {reason}.
+error.LIB_DUPLICATE_SIZE	Table “{file}” in folder “{dir}”, line {line}: size “{name}” is repeated.	Таблица «{file}» в папке «{dir}», строка {line}: типоразмер «{name}» повторяется.
+error.LIB_UNKNOWN_VARIABLE	Table “{file}” in folder “{dir}”, field {column}: the template has no variable “{name}”.	Таблица «{file}» в папке «{dir}», поле {column}: в шаблоне нет переменной «{name}».
+error.LIB_TABLE_CONFLICT	Table “{file}” in folder “{dir}”, field {column}: variable “{name}” is already in the template variant table.	Таблица «{file}» в папке «{dir}», поле {column}: переменная «{name}» уже в таблице вариантов шаблона.
+error.LIB_KEY_VARIABLE	“{file}” in folder “{dir}”: key variable “{name}” is not a column of the size table.	«{file}» в папке «{dir}»: ключевая переменная «{name}» не столбец таблицы типоразмеров.
+error.LIB_DUPLICATE_KEY	Table “{file}” in folder “{dir}”, line {line}: the combination of key parameters of size “{name}” is repeated.	Таблица «{file}» в папке «{dir}», строка {line}: сочетание ключевых параметров типоразмера «{name}» повторяется.
+error.LIB_DESIGNATION_VARIABLE	“{file}” in folder “{dir}”: the designation rule refers to an unknown variable “{name}”.	«{file}» в папке «{dir}»: правило обозначения ссылается на неизвестную переменную «{name}».
+error.LIB_DEFAULT_SIZE	“{file}” in folder “{dir}”: the default size “{name}” is not in the table.	«{file}» в папке «{dir}»: типоразмера по умолчанию «{name}» нет в таблице.
+error.LIB_FOLDER_NOT_FOUND	Library folder “{dir}” not found.	Папка библиотеки «{dir}» не найдена.
+error.LIB_FOLDER_EXISTS	Folder “{dir}” already exists — choose another name.	Папка «{dir}» уже существует — выберите другое название.
+error.API_SEAT_JOURNAL	Shaft journal — pick a cylindrical face in the view.	Шейка вала — укажите в виде цилиндрическую грань.
+error.API_SEAT_SHOULDER	Shoulder — a planar face perpendicular to the journal axis is required.	Заплечик — нужна плоская грань, перпендикулярная оси шейки.
+error.API_SEAT_NO_SHOULDER	No step found on the journal — pick the shoulder end face in the view.	У шейки не найден уступ — укажите в виде торец заплечика.
+error.API_SEAT_SHOULDER_AMBIGUOUS	The journal has two steps — pick the end face the part rests against in the view.	У шейки два уступа — укажите в виде торец, в который упирается деталь.
+error.API_SEAT_PART	Item “{name}” has no bore and base end face for fitting on a shaft.	У элемента «{name}» нет отверстия и базового торца для посадки на вал.
+error.API_SEAT_DIAMETER	Bore Ø{bore} does not fit journal Ø{journal} — choose a size with d = {journal} mm.	Отверстие Ø{bore} не подходит к шейке Ø{journal} — выберите типоразмер с d = {journal} мм.
+error.SOL_DESCRIPTION_NOT_FOUND	Folder “{dir}” has no description of solution “{file}”.	В папке «{dir}» нет описания решения «{file}».
+error.SOL_DESCRIPTION_SYNTAX	“{file}” in folder “{dir}” is not JSON: line {line}, position {column}.	«{file}» в папке «{dir}» не является JSON: строка {line}, позиция {column}.
+error.SOL_NEWER_VERSION	“{file}” in folder “{dir}” was created by a newer version of the program ({field}). Update the program.	«{file}» в папке «{dir}» создан более новой версией программы ({field}). Обновите программу.
+error.SOL_DESCRIPTION_SCHEMA	Solution description “{file}” in folder “{dir}”: error in field “{field}” ({detail}).	Описание решения «{file}» в папке «{dir}»: ошибка в поле «{field}» ({detail}).
+error.SOL_DUPLICATE_ID	Solution description “{file}” in folder “{dir}”: identifier “{name}” is repeated ({field}).	Описание решения «{file}» в папке «{dir}»: идентификатор «{name}» повторяется ({field}).
+error.SOL_BAD_PATH	Solution description “{file}” in folder “{dir}”: invalid path in field “{field}” — a path inside the solution folder is required.	Описание решения «{file}» в папке «{dir}»: недопустимый путь в поле «{field}» — нужен путь внутри папки решения.
+error.SOL_UNKNOWN_INPUT	Solution description “{file}” in folder “{dir}”: field “{field}” refers to an undeclared input “{name}” or an input of the wrong kind.	Описание решения «{file}» в папке «{dir}»: поле «{field}» ссылается на необъявленный вход «{name}» или на вход не того вида.
+error.SOL_UNKNOWN_TABLE	Solution description “{file}” in folder “{dir}”: field “{field}” refers to an undeclared table “{name}”.	Описание решения «{file}» в папке «{dir}»: поле «{field}» ссылается на необъявленную таблицу «{name}».
+error.SOL_UNKNOWN_CHOICE	Solution description “{file}” in folder “{dir}”: condition “{field}” — unknown choice “{name}” or a value not among its options.	Описание решения «{file}» в папке «{dir}»: условие «{field}» — неизвестный выбор «{name}» или значение не из его вариантов.
+error.SOL_UNKNOWN_RULE	Solution description “{file}” in folder “{dir}”: “{name}” in field “{field}” is not a row lookup rule.	Описание решения «{file}» в папке «{dir}»: «{name}» в поле «{field}» — не правило выбора строки.
+error.SOL_EXPR_SYNTAX	Solution description “{file}” in folder “{dir}”: expression error in field “{field}” (position {position}).	Описание решения «{file}» в папке «{dir}»: ошибка в выражении поля «{field}» (позиция {position}).
+error.SOL_TABLE_NOT_FOUND	Solution folder “{dir}” has no table “{file}” (.csv).	В папке решения «{dir}» нет таблицы «{file}» (.csv).
+error.SOL_TABLE_TEXT	Table “{file}” in folder “{dir}”: line {line}, field {column} — {reason}.	Таблица «{file}» в папке «{dir}»: строка {line}, поле {column} — {reason}.
+error.SOL_BAD_DEFAULT	Solution description “{file}” in folder “{dir}”: the default value of choice “{name}” is not among its options.	Описание решения «{file}» в папке «{dir}»: значение по умолчанию выбора «{name}» не из его вариантов.
+error.SOL_NOT_FOUND	Solution copy “{id}” is not in the document.	Копии решения «{id}» нет в документе.
+error.SOL_INPUT_MISSING	Connection place not specified: “{name}”.	Не указано место соединения: «{name}».
+error.SOL_INPUT_GEOMETRY	Place “{name}”: face of the wrong kind.	Место «{name}»: грань не того вида.
+error.SOL_FRAME	Axis “{name}” is not perpendicular to the connection face.	Ось «{name}» не перпендикулярна грани соединения.
+error.SOL_PACK_EMPTY	The connection axis does not enter the parts from the specified face.	Ось соединения не входит в детали от указанной грани.
+error.SOL_PACK_END	Face “{name}” is not parallel to the head face or does not lie behind it.	Грань «{name}» не параллельна грани под головку или лежит не за ней.
+error.SOL_AXIS_NO_HOLE	There is no cylindrical hole on this axis — pick its face, circular edge, axis or a sketch point at its center.	На этой оси нет цилиндрического отверстия — укажите его грань, круговое ребро, ось или точку эскиза в его центре.
+error.SOL_NO_POINTS	The connection points sketch has no points.	В эскизе точек соединения нет точек.
+error.SOL_CHOICE_VALUE	Invalid value “{name}” — choose from the list.	Недопустимое значение «{name}» — выберите из списка.
+error.SOL_LIBRARY_NOT_FOUND	No library parts for table “{name}”: the item is not in the library folders or in the document.	Нет деталей библиотеки для таблицы «{name}»: элемента нет в папках библиотеки или в документе.
+error.SOL_UNKNOWN_COLUMN	Rule “{rule}”: the table has no column “{name}”.	Правило «{rule}»: в таблице нет столбца «{name}».
+error.SOL_RULE	Rule “{rule}”: expression error ({cause}).	Правило «{rule}»: ошибка выражения ({cause}).
+error.SOL_RULE_DIM	Rule “{rule}”: the dimensions of the values in the condition do not match.	Правило «{rule}»: размерности значений в условии не совпадают.
+error.SOL_NO_ROW	Rule “{rule}”: table “{table}” has no suitable row — change the part sizes or the choice.	Правило «{rule}»: в таблице «{table}» нет подходящей строки — измените размеры деталей или выбор.
+error.SOL_BAD_TOOL	Solution, output “{output}”: invalid cut dimensions.	Решение, выход «{output}»: неверные размеры выреза.
+error.SOL_RECORD_FRAME	Recording a solution: a “Planar face” input and at least one “Cylindrical face” or “Point on face” input are required (a point — after its face).	Запись решения: нужен вход «Плоская грань» и хотя бы один вход «Цилиндрическая грань» или «Точка на грани» (точка — после своей грани).
+error.SOL_TOOL_TEXT	Output “{output}”: profile, line {line} — two expressions separated by “;” are required (revolve — at least three lines, block — three lines x, y, z).	Выход «{output}»: профиль, строка {line} — нужны два выражения через «;» (вращение — не меньше трёх строк, брусок — три строки x, y, z).
+error.SOL_BAD_OUTPUT	Solution, output “{output}”: the part is not from the library table or its row is not selected.	Решение, выход «{output}»: деталь не из таблицы библиотеки или её строка не выбрана.
+error.DRAWING_VIEW_MODEL_NOT_FOUND	The view model was not found (object deleted?).	Модель вида не найдена (объект удалён?).
+error.DRAWING_VIEW_MODEL_INVALID	The view model is not a part, body or assembly.	Модель вида — не деталь, не тело и не сборка.
+error.DRAWING_VIEW_NOT_SHEET_METAL	Flat pattern: the view model is not a sheet metal part.	Развёртка: модель вида — не листовая деталь.
+error.DRAWING_CUT_VIEW_KIND	Cut plan: it holds parts only — projected views, sections and detail views are not placed.	План реза: на нём только детали — проекционные виды, разрезы и выносные элементы не ставятся.
+error.DRAWING_CUT_NOT_SHEET_METAL	Cut plan: only a sheet metal part can be added.	План реза: можно добавить только листовую деталь.
+error.DRAWING_CUT_THICKNESS	Cut plan: the parts of this sheet are {sheet} mm thick, this part is {thickness} mm — add it to another sheet.	План реза: на этом листе детали толщиной {sheet} мм, а у этой детали {thickness} мм — добавьте её на другой лист.
+error.DRAWING_VIEW_PARENT_NOT_FOUND	Parent view not found.	Вид-родитель не найден.
+error.DRAWING_VIEW_CYCLE	Views refer to each other in a circle.	Виды ссылаются друг на друга по кругу.
+error.DRAWING_SECTION_LINE_DEGENERATE	The section line is degenerate — its ends coincide.	Линия разреза вырождена — её концы совпадают.
+error.DRAWING_SECTION_BIND_LOST	The section line binding is lost (did the model change?) — the section uses the previous line.	Привязка линии разреза потеряна (изменилась модель?) — разрез по прежней линии.
+error.KERNEL_SECTION_FAILED	Could not build the section: the kernel did not cut the model.	Не удалось построить разрез: ядро не рассекло модель.
+error.DRAWING_DIM_VIEW_NOT_FOUND	The dimension view was not found.	Вид размера не найден.
+error.DRAWING_DIM_REF_LOST	Dimension: model element not found (did the model change?).	Размер: элемент модели не найден (изменилась модель?).
+error.DRAWING_DIM_REF_AMBIGUOUS	Dimension: the model element is ambiguous — place the dimension again.	Размер: элемент модели определяется неоднозначно — поставьте размер заново.
+error.DRAWING_DIM_BAD_REFS	The selected elements are not suitable for this dimension.	Выбранные элементы не подходят для этого размера.
+error.DRAWING_MARK_VIEW_NOT_FOUND	The annotation view was not found.	Вид обозначения не найден.
+error.DRAWING_MARK_SOURCE_LOST	Annotation: model object not found (removed from the model?).	Обозначение: объект модели не найден (удалён из модели?).
+error.KERNEL_HLR_FAILED	Could not build the view: the kernel failed to remove hidden lines.	Не удалось построить вид: ядро не справилось с удалением невидимых линий.
+error.KERNEL_HLR_APPROXIMATE	The view is approximate: exact hidden line removal failed.	Вид построен приближённо: точное удаление невидимых линий не удалось.
+error.SPEC_ASSEMBLY_NOT_FOUND	The bill of materials assembly was not found (deleted?).	Сборка спецификации не найдена (удалена?).
+error.SPEC_NOT_ASSEMBLY	The bill of materials object is not an assembly.	Объект спецификации — не сборка.
+error.SPEC_ITEM_NOT_FOUND	The object of instance “{instance}” was not found — the row is not in the bill of materials.	Объект экземпляра «{instance}» не найден — строки нет в спецификации.
+error.API_NOT_SPECIFICATION	The active object is not a bill of materials.	Активный объект — не спецификация.
+ui.spec.badPosition	Item number — an integer from 1	Позиция — целое число от 1
+error.API_INSTANCE_FIXED	The instance is fixed — unfix it in the tree.	Экземпляр закреплён — освободите его в дереве.
+error.SKETCH_TEXT_FONT	Text font “{font}” not found or not supported — the text is not used in profiles.	Шрифт надписи «{font}» не найден или не поддерживается — надпись не участвует в профилях.
+error.SKETCH_TEXT_MISSING_GLYPH	The font has no character “{char}” — it is skipped.	В шрифте нет символа «{char}» — он пропущен.
+error.SKETCH_TEXT_CROSSING	The text crosses other sketch lines and is not used in profiles.	Надпись пересекает другие линии эскиза и не участвует в профилях.
+error.SKETCH_ELLIPSE_CROSSING	The ellipse crosses or touches other sketch lines and is not used in profiles.	Эллипс пересекает другие линии эскиза или касается их и не участвует в профилях.
+error.SECTION_REF_NOT_FOUND	The section plane or sketch was not found.	Плоскость или эскиз разреза не найдены.
+error.SECTION_BAD_REF	Section: the selected face is not planar or the object is of the wrong type.	Разрез: выбранная грань не плоская или объект не того типа.
+error.SECTION_BAD_SKETCH	The sketch of a stepped section must be a single open chain of lines without self-intersections.	Эскиз ломаного разреза должен быть одной незамкнутой цепочкой отрезков без самопересечений.
+error.SECTION_FAILED	Could not build the section ({details}).	Не удалось построить разрез ({details}).
+error.REGEN_BAD_VALUE	Invalid value “{name}”: {actual}.	Недопустимое значение «{name}»: {actual}.
+error.REGEN_NO_TARGET	No bodies to cut: add material first.	Нет тел для выреза: сначала добавьте материал.
+error.REGEN_THROUGH_ALL_NO_BODIES	“Through all” has nothing to go through: the model has no bodies.	«Через всё» не через что выдавливать: в модели нет тел.
+error.REGEN_UP_TO_NO_BODIES	“Up to next” has nothing to reach: the model has no bodies.	«До следующей» не до чего выдавливать: в модели нет тел.
+error.REGEN_UP_TO_BEHIND	The “Up to” end object is not in front of the sketch: choose an object in the extrude direction or flip the direction.	Объект окончания «До» не впереди эскиза: выберите объект по направлению выдавливания или обратите направление.
+error.REGEN_UP_TO_NOT_REACHED	Part of the profile misses the “Up to” end object: choose another object or end type.	Часть профиля проходит мимо объекта окончания «До»: выберите другой объект или тип окончания.
+error.REGEN_NO_EFFECT	The operation did not change the model: the tool does not touch the bodies or is entirely inside them.	Операция не изменила модель: инструмент не касается тел или целиком внутри них.
+error.REGEN_WALL_NOT_KEPT	Could not repeat the finish on the inner shell edges ({ids}): the wall under it is thinner than specified.	Не удалось повторить отделку на внутренних рёбрах оболочки ({ids}): стенка под ней тоньше заданной.
+error.REGEN_KERNEL_FAILURE	Internal build failure ({detail}). Try changing the parameters.	Внутренний сбой построения ({detail}). Попробуйте изменить параметры.
+error.SHEET_NO_PARAMS	First set the sheet parameters: the “Sheet metal part” button.	Сначала задайте параметры листа: кнопка «Листовая деталь».
+error.SHEET_PARAMS_DUPLICATE	Sheet parameters are already set earlier in the history — edit them there.	Параметры листа уже заданы выше в истории — правьте их там.
+error.SHEET_NO_WALL	First build the base wall of the sheet.	Сначала постройте базовую стенку листа.
+error.REGEN_GEAR_DIAMETER	The tip diameter {expected} does not fit on face Ø{actual}: change the module, number of teeth or profile shift.	Диаметр вершин зубьев {expected} не помещается на грани Ø{actual}: измените модуль, число зубьев или смещение.
+error.REGEN_GEAR_DIAMETER_TRIMMED	Face Ø{actual} is turned down to the tip diameter {expected}.	Грань Ø{actual} проточена до диаметра вершин зубьев {expected}.
+error.GEAR_BAD_VALUE	Invalid gear rim parameter “{name}”.	Недопустимый параметр зубчатого венца «{name}».
+error.GEAR_POINTED	The teeth are pointed: the tooth thickness at the tip is zero. Reduce the profile shift or increase the number of teeth.	Зубья заострены: толщина зуба на вершине равна нулю. Уменьшите смещение или увеличьте число зубьев.
+error.GEAR_PROFILE_FAILED	Could not build the tooth profile ({detail}): change the number of teeth or the profile shift.	Не удалось построить профиль зуба ({detail}): измените число зубьев или смещение.
+error.GEAR_FILLET	The tooth space of the internal rim is too narrow for the fillet curve: increase the number of teeth or the profile shift.	Впадина внутреннего венца слишком узкая для переходной кривой: увеличьте число зубьев или смещение.
+error.GEAR_SECTOR_EMPTY	Not a single tooth fits in the sector: increase the sector angle.	В секторе не помещается ни одного зуба: увеличьте угол сектора.
+error.GEAR_UNDERCUT	Root undercut: {teeth} teeth is fewer than the limit {expected} without profile shift. Increase the profile shift or the number of teeth.	Подрезание ножки зуба: {teeth} зубьев меньше предельного числа {expected} без смещения. Увеличьте смещение или число зубьев.
+error.GEAR_THIN_TIP	Thin tooth tip: {actual} mm — less than 0.2 module.	Тонкая вершина зуба: {actual} мм — меньше 0,2 модуля.
+error.GEAR_TIP_BELOW_BASE	The tips of the internal rim are below the base circle: at the tip the tooth is continued radially.	Вершины внутреннего венца ниже основной окружности: у вершины зуб продолжен радиально.
+error.GEAR_FILLET_REDUCED	Narrow tooth space: the fillet radius is reduced to {actual} mm.	Впадина узкая: радиус переходной кривой уменьшен до {actual} мм.
+error.SHEET_WALL_EXISTS	The base wall already exists: a sheet metal part has one base wall.	Базовая стенка уже есть: в листовой детали одна базовая стенка.
+error.SHEET_PROFILE_INVALID	The base wall profile is not suitable ({detail}): a closed contour or a single open chain of lines is required, arcs tangent to them.	Профиль базовой стенки не годится ({detail}): нужен замкнутый контур или одна открытая цепочка отрезков, дуги — по касательной к ним.
+error.SHEET_EDGE_INVALID	A flange is built only on a straight edge between a sheet side and a wall end.	Отгиб строится только на прямом ребре между стороной листа и торцом стенки.
+error.SHEET_FLANGE_TOO_SHORT	The flange is too narrow: the offsets and gaps leave no width on the edge.	Отгиб слишком узкий: смещения и зазоры не оставляют ширины на ребре.
+error.SHEET_POSITION_ANGLE	At 180° the “material inside/outside” position is undefined — choose “bend line on edge”.	При угле 180° положение «материал внутрь/наружу» не определено — выберите «линия гиба по ребру».
+error.SHEET_BEND_LINE	The bend sketch must contain a single line — the bend line.	В эскизе гиба должен быть один отрезок — линия гиба.
+error.SHEET_BEND_NO_WALL	The bend line must lie on a planar wall of the sheet.	Линия гиба должна лежать на плоской стенке листа.
+error.SHEET_BEND_NOT_RECT	The wall does not cross the bend strip as a rectangle: draw the line across the wall between parallel edges.	Стенка пересекает полосу гиба не прямоугольником: проведите линию поперёк стенки между параллельными кромками.
+error.SHEET_BEND_CROSSES	The bend zone crosses another bend of this wall.	Зона гиба пересекает другой гиб этой стенки.
+error.SHEET_CUT_NO_WALL	There is no sheet wall parallel to the sketch under the cut or hole.	Под вырезом или отверстием нет стенки листа, параллельной эскизу.
+error.SHEET_HOLE_KIND	Sheet metal parts allow only simple holes (the “{actual}” type is not supported).	В листовой детали — только простые отверстия (вид «{actual}» не поддерживается).
+error.SHEET_BODY_MODIFIED	The sheet body was changed by a feature that is not a sheet metal feature: sheet features after it are not built.	Тело листа изменено фичей, не относящейся к листу: фичи листа после неё не строятся.
+error.SHEET_FLAT_OVERLAP	Parts of the flat pattern overlap ({feature}) — the part cannot be cut from a single sheet.	Части развёртки перекрываются ({feature}) — деталь не вырезать из одного листа.
+error.SHEET_BEND_DEGENERATE	Degenerate bend ({feature}): the bend zone length is almost zero — check the radius and the K-factor.	Вырожденный гиб ({feature}): длина зоны гиба почти нулевая — проверьте радиус и коэффициент K.
+error.KERNEL_INVALID_ARGUMENT	Invalid build input ({name}): coordinates are out of range, not numbers or degenerate.	Недопустимые входные данные построения ({name}): координаты вне допустимого диапазона, не являются числами или вырождены.
+error.KERNEL_INVALID_DIMENSION	Invalid value “{name}”: {actual} (limit {expected}).	Недопустимое значение «{name}»: {actual} (граница {expected}).
+error.KERNEL_PROFILE_NOT_PLANAR	Profile element {object} does not lie in the sketch plane (deviation {actual} mm).	Элемент профиля {object} не лежит в плоскости эскиза (отклонение {actual} мм).
+error.KERNEL_PROFILE_INVALID_LOOP	Invalid profile contour: {entities}.	Неверный контур профиля: {entities}.
+error.KERNEL_PROFILE_DEGENERATE_SEGMENT	Profile element too short or degenerate: {object}.	Слишком короткий или вырожденный элемент профиля: {object}.
+error.KERNEL_PROFILE_OPEN	The profile contour is not closed between {entities} (gap {actual} mm).	Контур профиля не замкнут между {entities} (зазор {actual} мм).
+error.KERNEL_PROFILE_SELF_INTERSECTING	The profile contour intersects itself: {entities}.	Контур профиля пересекает сам себя: {entities}.
+error.KERNEL_PROFILE_LOOPS_INTERSECT	Profile contours intersect or touch: {entities}.	Контуры профиля пересекаются или касаются: {entities}.
+error.KERNEL_PROFILE_HOLE_OUTSIDE	The inner profile contour ({entities}) lies outside the outer one.	Внутренний контур профиля ({entities}) лежит вне внешнего.
+error.KERNEL_PROFILE_NESTED_HOLE	The inner profile contour ({entities}) lies inside another inner contour.	Внутренний контур профиля ({entities}) лежит внутри другого внутреннего контура.
+error.KERNEL_AXIS_NOT_IN_PLANE	The revolve axis does not lie in the sketch plane (distance {distance} mm).	Ось вращения не лежит в плоскости эскиза (расстояние {distance} мм).
+error.KERNEL_PROFILE_CROSSES_AXIS	The profile crosses the revolve axis ({object}): it must lie on one side of the axis.	Профиль пересекает ось вращения ({object}): он должен лежать по одну сторону оси.
+error.KERNEL_PROFILE_TOUCHES_AXIS	Arc {object} touches the revolve axis — such a body is not supported.	Дуга {object} касается оси вращения — такое тело не поддерживается.
+error.KERNEL_BOOLEAN_FAILED	Could not unite, cut or intersect the bodies. Try changing the dimensions slightly.	Не удалось объединить, вырезать или пересечь тела. Попробуйте немного изменить размеры.
+error.KERNEL_EDGE_NOT_FILLETABLE	The selected edges cannot be processed (edge between tangent faces): {ids}.	Выбранные рёбра нельзя обработать (ребро между касательными гранями): {ids}.
+error.KERNEL_FILLET_FAILED	The fillet was not built: the radius is probably too large for the adjacent faces ({ids}).	Скругление не построено: вероятно, радиус слишком велик для соседних граней ({ids}).
+error.KERNEL_CHAMFER_FAILED	The chamfer was not built: the distance is probably too large for the adjacent faces ({ids}).	Фаска не построена: вероятно, расстояние слишком велико для соседних граней ({ids}).
+error.KERNEL_OPERATION_FAILED	The geometric kernel did not build the body. Try changing the parameters.	Геометрическое ядро не построило тело. Попробуйте изменить параметры.
+error.KERNEL_RESULT_INVALID	The operation produced an invalid body; the result was discarded. Try changing the parameters.	Операция дала некорректное тело, результат отброшен. Попробуйте изменить параметры.
+error.KERNEL_NOT_SUPPORTED	This case is not supported yet ({name}).	Этот случай пока не поддерживается ({name}).
+error.IMPORT_MESH_FORMAT	The file is not an STL or 3MF mesh or is damaged ({detail}).	Файл не является сеткой STL или 3MF либо повреждён ({detail}).
+error.IMPORT_MESH_NOT_CLOSED	Mesh “{file}” is not closed (open edges: {open}, non-manifold: {nonManifold}) — a body cannot be built from it.	Сетка «{file}» не замкнута (открытых рёбер: {open}, неоднозначных: {nonManifold}) — тело из неё не построить.
+error.FCSTD_NOT_FCSTD	The file is not a FreeCAD document (.FCStd) or is damaged ({detail}).	Файл не является документом FreeCAD (.FCStd) или повреждён ({detail}).
+error.FCSTD_BAD_XML	The FreeCAD document is damaged: error in Document.xml, line {line} ({detail}).	Документ FreeCAD повреждён: ошибка в Document.xml, строка {line} ({detail}).
+error.FCSTD_UNSUPPORTED_VERSION	The file was saved by FreeCAD {version}; FreeCAD 1.x files are supported — open and save it in FreeCAD 1.0 or newer.	Файл сохранён FreeCAD {version}; поддерживаются файлы FreeCAD 1.x — откройте и сохраните его в FreeCAD 1.0 или новее.
+error.FCSTD_BAD_OBJECT	The FreeCAD document is damaged: object “{name}” ({detail}).	Документ FreeCAD повреждён: объект «{name}» ({detail}).
+error.FCSTD_NO_OBJECTS	The FreeCAD document has no bodies to import.	В документе FreeCAD нет тел для импорта.
+error.FCSTD_NOTHING_TO_EXPORT	The document has no parts or bodies to export to FreeCAD.	В документе нет деталей и тел для экспорта во FreeCAD.
+error.KERNEL_IMPORT_FAILED	Could not read the geometry from the file ({detail}).	Не удалось прочитать геометрию из файла ({detail}).
+error.KERNEL_BOOLEAN_FUZZY_RETRY	The operation was performed with an increased tolerance; check the result.	Операция выполнена с увеличенным допуском; проверьте результат.
+error.KERNEL_TOLERANCE_GROWTH	Surface intersection edges are approximate (accuracy {actual} µm): this happens when surfaces almost touch or one of them is a spline. The part shape and dimensions are correct; on STEP export other programs may report inaccurate edges. If this is a problem, change the element so that the surfaces do not touch almost tangentially.	Рёбра пересечения поверхностей построены приближённо (точность {actual} мкм): так бывает, когда поверхности почти касаются или одна из них — сплайн. Форма и размеры детали верны; при экспорте STEP другие программы могут сообщить о неточных рёбрах. Если это мешает — измените элемент так, чтобы поверхности не касались почти по касательной.
+error.KERNEL_TESSELLATION_PARTIAL	Some faces could not be displayed ({actual}).	Часть граней не удалось отобразить ({actual}).
+error.KERNEL_HELIX_FAILED	Could not build the helical sweep of the profile.	Не удалось построить винтовую развёртку профиля.
+error.SHEET_NOT_IN_FLAT	The extrude changed the sheet body but is not in the flat pattern: for a cut — a sketch parallel to the wall and a cut through the full thickness; for added material — a sketch on the wall end through the full sheet thickness.	Выдавливание изменило тело листа, но не вошло в развёртку: для выреза — эскиз параллельно стенке и вырез через всю толщину; для добавления материала — эскиз на торце стенки на всю толщину листа.
+error.SHEET_GEAR_PLANE	The gear rim is not in the flat pattern: face “{object}” is not an edge of a planar sheet wall. In a sheet metal part the rim is built on a wall edge, with the rim plane parallel to the wall.	Зубчатый венец не входит в развёртку: грань «{object}» — не кромка плоской стенки листа. В листовой детали венец строится на кромке стенки, плоскость венца — параллельно стенке.
+error.SHEET_GEAR_THICKNESS	The gear rim on wall “{object}” does not cover the full sheet thickness (width {actual} mm, thickness {expected} mm): turn on “Full length” — the teeth are cut through the whole sheet.	Зубчатый венец на стенке «{object}» не на всю толщину листа (ширина {actual} мм, толщина {expected} мм): включите «На всю длину» — зубья режутся через весь лист.
+error.SHEET_TAB_OVERLAP	The tab with extensions overlaps “{object}” in the flat pattern (overlap {actual} mm²): reduce the extensions.	Язычок с вылетами накладывается в развёртке на «{object}» (наложение {actual} мм²): уменьшите вылеты.
+error.SHEET_EDGE_NOT_THROUGH	In a sheet metal part, fillets and chamfers are only for edges through the sheet thickness (corners of the wall contour and cuts): the selected edge lies on a sheet face or on a bend.	В листовой детали скругление и фаска — только для рёбер через толщину листа (углы контура стенки и вырезов): выбранное ребро лежит на лицевой грани листа или на гибе.
+error.SHEET_PATTERN_SOURCE	Pattern and mirror in a sheet metal part copy cuts, holes, tabs and flanges; “{object}” cannot be copied this way (bend on line, base wall, corner fillet, added rim).	Массив и зеркало в листовой детали копируют вырезы, отверстия, язычки и отгибы; «{object}» так скопировать нельзя (гиб по линии, базовая стенка, скругление угла, наращённый венец).
+error.SHEET_PATTERN_NO_WALL	Copy “{object}” (instance {name}) did not land on a sheet wall: check the pattern spacing and direction or the mirror plane.	Копия «{object}» (экземпляр {name}) не легла на стенку листа: проверьте шаг и направление массива или плоскость зеркала.
+error.SHEET_RECOGNIZE	The shape is not suitable for a sheet metal part: {detail}. The place, if found, is highlighted in the view.	Форма не годится для листовой детали: {detail}. Место, если найдено, выделено в виде.
+error.REGEN_GEAR_ROOT_DIAMETER	Added rim: the teeth grow from the face, but face Ø{actual} goes beyond the root circle {expected}. Choose the number of teeth so that the root diameter matches the face.	Наращиваемый венец: зубья растут от грани, а грань Ø{actual} заходит за окружность впадин {expected}. Подберите число зубьев так, чтобы диаметр впадин совпал с гранью.
+error.KERNEL_SWEEP_FAILED	Could not sweep the profile along the path: check that the profile does not intersect itself at bends and corners of the path.	Не удалось протянуть профиль по траектории: проверьте, что профиль не пересекает сам себя на изгибах и углах траектории.
+error.REGEN_SWEEP_PATH	The path is not suitable for a sweep ({detail}): a single chain of lines and arcs passing through the profile plane is required.	Траектория не годится для протягивания ({detail}): нужна одна цепочка отрезков и дуг, проходящая через плоскость профиля.
+error.REGEN_SWEEP_PATH_CURVE	{kind} is not supported in a sweep path ({entities}): the path is a chain of lines and arcs.	{kind} не поддерживается в траектории протягивания ({entities}): траектория — цепочка отрезков и дуг.
+error.NAMING_REF_SPLIT	The selected element split into parts; all parts are used.	Выбранный элемент разделился на части; использованы все части.
+error.NAMING_REF_MERGED	The selected face merged with an adjacent one; the reference moved to the merged face.	Выбранная грань слилась с соседней; ссылка перенесена на объединённую грань.
+error.NAMING_REF_ORDINAL	The reference was restored by ordinal number and may point to the wrong element. Check it and select again if necessary.	Ссылка восстановлена по порядковому номеру и может указывать не на тот элемент. Проверьте и при необходимости выберите заново.
+error.NAMING_ORPHAN_FACE	Some faces have no build history; references to them may not survive edits.	У части граней нет истории построения; ссылки на них могут не сохраниться при правках.
+error.NAMING_GEOMETRIC_TIE	Indistinguishable elements are ordered arbitrarily; references to them may be unstable.	Неразличимые элементы упорядочены произвольно; ссылки на них могут быть неустойчивы.
+error.API_NOT_FOUND	Object {id} not found (possibly deleted).	Объект {id} не найден (возможно, удалён).
+error.API_NOT_SKETCH	“{feature}” is not a sketch.	«{feature}» не является эскизом.
+error.API_NO_SKETCH_CONTEXT	The command is available only in sketch mode.	Команда доступна только в режиме эскиза.
+error.API_OWNED_FEATURE	The feature belongs to connection “{name}” — edit the connection.	Фича принадлежит соединению «{name}» — правьте соединение.
+error.API_ORDER_VIOLATION	“{feature}” cannot refer to elements that are (or will be) below it in the history.	«{feature}» не может ссылаться на элементы, которые расположены (или окажутся) ниже неё в истории.
+error.API_INVALID_DEFINITION	Internal error: invalid feature definition ({detail}).	Внутренняя ошибка: неверное определение фичи ({detail}).
+error.API_INVALID_ITEMS	Internal error: invalid sketch command data ({detail}).	Внутренняя ошибка: неверные данные команды эскиза ({detail}).
+error.API_INVALID_NAME	Invalid name “{name}”.	Недопустимое имя «{name}».
+error.API_INVALID_ARGUMENT	Invalid value “{name}”: {actual}.	Недопустимое значение «{name}»: {actual}.
+error.API_DRAG_ACTIVE	The command is unavailable while dragging.	Команда недоступна во время перетаскивания.
+error.API_INSTANCE_ORDER	Not here: mate “{name}” must stay below the same part — a mated part is not placed above its base.	Сюда нельзя: сопряжение «{name}» должно остаться под той же деталью — привязанная деталь не ставится выше своей базы.
+error.API_NO_DRAG	Internal error: dragging has not started.	Внутренняя ошибка: перетаскивание не начато.
+error.API_TABLE_TEXT	Could not parse the table: line {line}, field {column} — {reason}.	Не удалось разобрать таблицу: строка {line}, поле {column} — {reason}.
+error.API_NO_PATH	The document has no file yet — choose where to save it.	У документа ещё нет файла — выберите, куда сохранить.
+error.API_GROUP_OPEN	The action is unavailable until the current operation is finished.	Действие недоступно, пока не завершена текущая операция.
+error.API_CANCELLED	The operation was cancelled; the document is unchanged.	Операция прервана, документ не изменён.
+error.API_STALE	The document changed during the operation — repeat it.	Документ изменился во время операции — повторите её.
+error.API_LAST_ELEMENT	The only part of the document cannot be deleted.	Единственную деталь документа удалить нельзя.
+error.API_SKETCH_OPEN	Exit the sketch first.	Сначала выйдите из эскиза.
+error.API_NO_GROUP	Internal error: ending an action group that was not started.	Внутренняя ошибка: завершение группы действий без её начала.
+error.API_STATE_UNAVAILABLE	The model state is not computed yet or is unavailable.	Состояние модели ещё не вычислено или недоступно.
+error.API_NOT_PART	The command is available only for a part.	Команда доступна только для детали.
+error.API_NOT_BODY	The command is available only for an imported body.	Команда доступна только для импортированного тела.
+error.PMI_FIELD_SYNTAX	Invalid tolerance field designation “{name}” (example: H7, h6, js9).	Неверное обозначение поля допуска «{name}» (пример: H7, h6, js9).
+error.PMI_SIZE_RANGE	Size {actual} mm is outside the tolerance tables (up to 500 mm).	Размер {actual} мм вне таблиц допусков (до 500 мм).
+error.PMI_FIELD_UNDEFINED	Tolerance field {name} is not defined by the standard for size {actual} mm.	Поле допуска {name} не установлено стандартом для размера {actual} мм.
+error.PMI_REF_LOST	The annotation face or dimension was not found (possibly deleted).	Грань или размер обозначения не найдены (возможно, удалены).
+error.PMI_REF_AMBIGUOUS	The annotation face is ambiguous ({actual} candidates) — select it again.	Грань обозначения определяется неоднозначно ({actual} кандидатов) — выберите её заново.
+error.PMI_NOT_CYLINDER	A size tolerance can be set only on a cylindrical face (hole or shaft).	Допуск размера можно задать только цилиндрической грани (отверстию или валу).
+error.PMI_DIMENSION_KIND	Such a tolerance cannot be assigned to dimension {id}.	К размеру {id} нельзя назначить такой допуск.
+error.PMI_DATUM_UNDEFINED	Datum “{name}” is not defined on the part.	База «{name}» не обозначена на детали.
+error.PMI_DATUM_DUPLICATE	Datum “{name}” is defined twice.	База «{name}» обозначена повторно.
+error.IO_READ	Could not open “{file}” ({detail}).	Не удалось открыть «{file}» ({detail}).
+error.IO_WRITE	Could not write “{file}” ({detail}).	Не удалось записать «{file}» ({detail}).
+error.EXPORT_INVALID_OPTIONS	Invalid export parameter “{name}”: {actual}.	Недопустимый параметр экспорта «{name}»: {actual}.
+error.EXPORT_NO_BODIES	Nothing to export: the part has no bodies.	Нечего экспортировать: в детали нет тел.
+error.EXPORT_TESSELLATION	Could not build the mesh of body {body}.	Не удалось построить сетку тела {body}.
+error.EXPORT_NO_SHEET	Nothing to export: no sheet metal parts with a flat pattern.	Нечего экспортировать: нет листовых деталей с развёрткой.
+error.EXPORT_FLAT_OPEN	Flat pattern contour “{name}” is not closed: gap {gap} mm at point ({x}; {y}).	Контур развёртки «{name}» не замкнут: разрыв {gap} мм в точке ({x}; {y}).
+error.PRINT_INVALID_CLEARANCE	Invalid printer clearance: {actual} mm (allowed from 0 to 1 mm).	Недопустимый зазор принтера: {actual} мм (допустимо от 0 до 1 мм).
+error.PRINT_THREAD_FIELD	Unknown thread tolerance field “{name}”.	Неизвестное поле допуска резьбы «{name}».
+error.PRINT_FIT_FAILED	Could not rebuild the surface with tolerance {id} for printing ({detail}).	Не удалось перестроить для печати поверхность с допуском {id} ({detail}).
+error.PRINT_THREAD_FAILED	Could not build the thread turns of {feature} for printing ({detail}).	Не удалось построить витки резьбы {feature} для печати ({detail}).
+error.PRINT_FIT_SKIPPED	Tolerance {id} was not applied when preparing for printing ({detail}).	Допуск {id} не применён при подготовке к печати ({detail}).
+error.UNDO_EMPTY	Nothing to undo.	Нечего отменять.
+error.REDO_EMPTY	Nothing to redo.	Нечего повторять.
+ui.sketch.conflict.title	Constraint conflict in sketch “{sketch}”	Конфликт ограничений в эскизе «{sketch}»
+ui.sketch.redundant.title	Redundant constraints in sketch “{sketch}”	Избыточные ограничения в эскизе «{sketch}»
+ui.sketch.suggested	suggested	предложено
+ui.sketch.autoYielded	Auto relation removed: {what}	Снята авто-взаимосвязь: {what}
+ui.sketch.hintDismissed	Hint dismissed: the next click goes without this constraint	Подсказка снята: следующий щелчок — без этого ограничения
+ui.sketch.alignMidpoint	alignment with the line midpoint	выравнивание с серединой отрезка
+ui.sketch.undetermined	could not determine which constraint is extra	не удалось определить, какое ограничение лишнее
+ui.dimension.madeDriven	Dimension {dim} made reference: the sketch is already defined.	Размер {dim} сделан справочным: эскиз уже определён.
+ui.delete.done	Deleted: “{name}”.	Удалено: «{name}».
+ui.delete.dependents	Dependent features with errors: {count}.	Зависимых фич с ошибками: {count}.
+ui.status.alreadyProjected	This edge or vertex is already projected into the sketch.	Это ребро или вершина уже спроецированы в эскиз.
+ui.trim.removedConstraints	Trimming removed inapplicable constraints: {count}.	При обрезке удалены неприменимые ограничения: {count}.
+ui.variable.deletedReferenced	Variable “{name}” deleted; expressions referred to it: {count}.	Переменная «{name}» удалена; на неё ссылались выражения: {count}.
+ui.variable.props	Properties of variable “{name}”	Свойства переменной «{name}»
+ui.variable.propsNone	Variable properties — select a table row	Свойства переменной — выберите строку таблицы
+ui.about.text	construe {version} — Parametric CAD. OpenGL: {gl}.	construe {version} — Parametric CAD. OpenGL: {gl}.
+ui.about.title	About	О программе
+ui.about.license	License: {spdx}. Terms and full text — on the “License” tab and in the LICENSE file.	Лицензия: {spdx}. Условия и полный текст — на вкладке «Лицензия» и в файле LICENSE.
+ui.about.userFiles	Everything you create in the program (.construe documents, STEP, STL, 3MF, PDF, DXF, SVG, FCStd export and other files) belongs to you and is not covered by the program license.	Всё, что вы создаёте в программе (документы .construe, экспорт STEP, STL, 3MF, PDF, DXF, SVG, FCStd и другие файлы), принадлежит вам и не подпадает под лицензию программы.
+ui.about.tabLicense	License	Лицензия
+ui.about.tabComponents	Third-party components	Сторонние компоненты
+ui.about.colComponent	Component	Компонент
+ui.about.colVersion	Version	Версия
+ui.about.colLicense	License	Лицензия
+ui.about.close	Close	Закрыть
+ui.about.glHardware	hardware ({renderer})	аппаратный ({renderer})
+ui.about.glSoftware	software ({renderer})	программный ({renderer})
+ui.about.glSoftwareAuto	software ({renderer}) — the graphics card provides OpenGL {version}, 3.0 is required	программный ({renderer}) — видеокарта даёт OpenGL {version}, нужен 3.0
+ui.about.glUnknown	not initialized	не инициализирован
+ui.recovery.found	Unsaved work found ({file}) from {time}.	Найдена несохранённая работа ({file}) от {time}.
+ui.report.title	Report a problem	Сообщить о проблеме
+ui.report.crashTitle	The program terminated with an error	Программа завершилась с ошибкой
+ui.report.intro	Describe what happened and what you were doing before. The report goes to the construe developers; the reply will come to the e-mail you enter.	Опишите, что произошло и что вы делали перед этим. Отчёт уйдёт разработчикам construe; ответ придёт на указанный e-mail.
+ui.report.crashIntro	Last time the program terminated with an error. Send a report — the crash dump and log are already attached; describe what you were doing.	В прошлый раз программа завершилась с ошибкой. Отправьте отчёт — дамп падения и журнал уже приложены; опишите, что вы делали.
+ui.report.auto	Attached automatically: program log (construe.log), actions of the last 15 minutes (actions.log){dump}; version {version}; system {os}.	Прикладываются автоматически: журнал программы (construe.log), действия за последние 15 минут (actions.log){dump}; версия {version}; система {os}.
+ui.report.autoDump	, crash dump	, дамп падения
+ui.report.sending	Sending…	Отправка…
+ui.report.sent	Report sent (number {id}). Thank you!	Отчёт отправлен (номер {id}). Спасибо!
+ui.report.serverError	The server did not accept the report: {message}	Сервер не принял отчёт: {message}
+ui.report.offline	Could not send the report ({detail}). Save it to a zip file and send it manually.	Не удалось отправить отчёт ({detail}). Сохраните его в zip-файл и отправьте вручную.
+ui.report.tooLarge	The report is larger than 50 MB — remove some screenshots or save it to a zip file.	Отчёт больше 50 МБ — уберите часть снимков или сохраните его в zip-файл.
+ui.report.savedZip	Report saved: {path}	Отчёт сохранён: {path}
+ui.report.saveFailed	Could not save the report: {path}	Не удалось сохранить отчёт: {path}
+ui.report.err.missingField	required field "{field}" is empty.	не заполнено обязательное поле «{field}».
+ui.report.err.tooLong	field "{field}" is longer than {limit} characters.	поле «{field}» длиннее {limit} символов.
+ui.report.err.duplicateField	field "{field}" is sent more than once.	поле «{field}» передано несколько раз.
+ui.report.err.badField	field "{field}" must be text, not a file.	поле «{field}» должно быть текстом, а не файлом.
+ui.report.err.badFile	field "{field}" must contain files.	поле «{field}» должно содержать файлы.
+ui.report.err.tooManyFiles	too many files in "{field}" (at most {limit}).	слишком много файлов в «{field}» (не больше {limit}).
+ui.report.err.badContentType	the server expects a multipart/form-data request.	сервер ожидает запрос multipart/form-data.
+ui.report.err.lengthRequired	the request has no Content-Length header.	в запросе нет заголовка Content-Length.
+ui.report.err.badLength	invalid Content-Length header.	некорректный заголовок Content-Length.
+ui.report.err.tooLarge	the report is too large: the total size must not exceed {limit} MB.	отчёт слишком большой: общий размер не должен превышать {limit} МБ.
+ui.report.err.badMultipart	the server could not parse the request.	сервер не смог разобрать запрос.
+ui.report.err.badEmail	invalid e-mail address.	некорректный адрес электронной почты.
+ui.report.err.badKind	field "kind" must be crash or manual.	поле «kind» должно быть crash или manual.
+ui.report.err.badScreenshot	screenshot "{file}" must be PNG or JPEG.	снимок экрана «{file}» должен быть PNG или JPEG.
+ui.report.err.badAttachment	attachment type of "{file}" is not allowed (allowed: {allowed}).	недопустимый тип вложения «{file}» (разрешены: {allowed}).
+ui.report.err.rateLimited	too many reports: at most {limit} per hour from one address. Try again later.	слишком много отчётов: не больше {limit} в час с одного адреса. Повторите позже.
+ui.report.err.rateLimitedNoLimit	too many reports from your address. Try again later.	слишком много отчётов с вашего адреса. Повторите позже.
+ui.report.err.notFound	wrong report receiver address.	неверный адрес приёма отчётов.
+ui.report.err.internal	internal server error. Try again later.	внутренняя ошибка сервера. Повторите позже.
+ui.report.err.unavailable	the report service is temporarily unavailable. Try again later.	сервис приёма отчётов временно недоступен. Повторите позже.
+ui.report.err.captchaRequired	enter the characters from the picture.	введите знаки с картинки.
+ui.report.err.captchaWrong	the characters from the picture are entered incorrectly. Enter the characters from the new picture.	знаки с картинки введены неверно. Введите знаки с новой картинки.
+ui.report.err.captchaExpired	the picture is outdated. Enter the characters from the new picture.	картинка устарела. Введите знаки с новой картинки.
+ui.report.err.captchaUsed	the picture has already been used. Enter the characters from the new picture.	картинка уже использована. Введите знаки с новой картинки.
+ui.report.err.captchaRateLimited	too many picture requests: at most {limit} per hour from one address. Try again later.	слишком много запросов картинки: не больше {limit} в час с одного адреса. Повторите позже.
+ui.report.err.captchaRateLimitedNoLimit	too many picture requests from your address. Try again later.	слишком много запросов картинки с вашего адреса. Повторите позже.
+ui.report.captchaLoading	Loading the picture…	Загрузка картинки…
+ui.report.captchaFailed	Could not get the picture: {detail}	Не удалось получить картинку: {detail}
+ui.report.err.unknown	error "{code}" ({detail})	ошибка «{code}» ({detail})
+ui.report.err.unknownCode	error "{code}"	ошибка «{code}»
+ui.update.title	construe update	Обновление construe
+ui.update.versionBuild	{version} (build {build})	{version} (сборка {build})
+ui.update.available	A new version of construe {version} is out. Update?	Вышла новая версия construe {version}. Обновить?
+ui.update.current	Installed version {version}.	Установлена версия {version}.
+ui.update.latest	No updates: you have the latest version of construe {version}.	Обновлений нет: у вас последняя версия construe {version}.
+ui.update.checking	Checking for updates…	Проверка обновлений…
+ui.update.checkFailed	Could not check for updates: {detail}	Не удалось проверить обновления: {detail}
+ui.update.networkFailed	Could not check for updates: no connection to the update server ({detail}). Check your internet connection and press “Retry”.	Не удалось проверить обновления: нет связи с сервером обновлений ({detail}). Проверьте подключение к интернету и нажмите «Повторить».
+ui.update.badFormat	the server returned the version description in an unknown format	сервер вернул описание версии в неизвестном формате
+ui.update.downloading	Downloading the new version…	Загрузка новой версии…
+ui.update.cancelled	Download cancelled.	Загрузка отменена.
+ui.update.downloadFailed	Could not download the new version ({detail}). Installation is not started — try again later.	Не удалось загрузить новую версию ({detail}). Установка не запускается — повторите позже.
+ui.update.sizeMismatch	The downloaded file of the new version is damaged: the size does not match. Installation is not started — download it again.	Загруженный файл новой версии повреждён: размер не совпадает. Установка не запускается — повторите загрузку.
+ui.update.hashMismatch	The downloaded file of the new version is damaged: the SHA-256 checksum does not match. Installation is not started — download it again.	Загруженный файл новой версии повреждён: контрольная сумма SHA-256 не совпадает. Установка не запускается — повторите загрузку.
+ui.update.saveFailed	Could not save the new version: {path}	Не удалось сохранить новую версию: {path}
+ui.update.installCancelled	Installation postponed; the program was not closed. Press “Download and install” when you are ready.	Установка отложена, программа не закрыта. Нажмите «Скачать и установить», когда будете готовы.
+ui.update.launchFailed	Could not start the installer: {path}	Не удалось запустить установщик: {path}
+ui.update.windowsOnly	Automatic installation is available only on Windows. The installer is saved: {path}	Автоматическая установка есть только под Windows. Установщик сохранён: {path}
+ui.update.notPublished	Updates are not released for your system yet.	Для вашей системы обновления пока не выпускаются.
+ui.update.openFailed	Could not open the disk image: {path}	Не удалось открыть образ диска: {path}
+ui.update.appImageReplaced	The new version is installed. Restart the program to work in it.	Новая версия установлена. Перезапустите программу, чтобы работать в ней.
+ui.update.appImageSaved	Could not replace the program in place (no write permission to its folder). The new version is saved: {path} — replace the old file with it and run it.	Заменить программу на месте не удалось (нет прав на запись в её папку). Новая версия сохранена: {path} — замените ей прежний файл и запустите.
+ui.update.flatpakHint	The program is installed via Flatpak — update it in the system software center or with the command:	Программа установлена через Flatpak — обновите её в центре приложений системы или командой:
+ui.update.copied	The command is copied to the clipboard.	Команда скопирована в буфер обмена.
+ui.update.sourceHint	This build was compiled from source without a package — download the new version on the page {url}	Эта сборка собрана из исходников без пакета — скачайте новую версию на странице {url}
+ui.update.pageFailed	Could not open the page: {url}	Не удалось открыть страницу: {url}
+ui.update.zipSaved	The new version archive is saved: {path}. Close the program, unpack the archive into a new folder and move the construe-data folder from the old one into it — settings and recent files go with it.	Архив новой версии сохранён: {path}. Закройте программу, распакуйте архив в новую папку и перенесите в неё папку construe-data из прежней — с ней перейдут настройки и недавние файлы.
+ui.update.zipHint	The program runs without installation — download the new version archive on the page {url} and unpack it into a new folder.	Программа запущена без установки — скачайте архив новой версии на странице {url} и распакуйте его в новую папку.
+ui.recovery.newDocument	new document	новый документ
+ui.recent.empty	(none)	(нет)
+ui.fromFile.needPath	Save the document first: the path to another file is stored relative to its folder	Сначала сохраните документ: путь к другому файлу записывается относительно его папки
+ui.hotkeys.title	Hotkeys	Горячие клавиши
+ui.variable.renameEverywhere	The variable is used in formulas. Also rename all places where this variable is used?	Переменная используется в формулах. Переименовать также все места, где эта переменная используется?
+ui.variable.badName	The name must start with a Latin letter or “_” and contain only Latin letters, digits and “_”.	Имя должно начинаться с латинской буквы или «_» и содержать только латинские буквы, цифры и «_».
+ui.variant.fromTable	Value from variant table “{name}”.	Значение из таблицы вариантов «{name}».
+ui.variant.instanceDefault	Default ({name})	По умолчанию ({name})
+ui.variant.qualifier	Name in expressions: {name}	Имя в выражениях: {name}
+ui.tableText.empty	no variant rows	нет строк вариантов
+ui.tableText.quote	unclosed quote	не закрыта кавычка
+ui.tableText.columns	the header has no variables	в заголовке нет переменных
+ui.tableText.cellCount	the number of fields does not match the header	число полей не совпадает с заголовком
+ui.tableText.emptyName	empty name	пустое имя
+ui.tableText.duplicateName	the variant name is repeated	имя варианта повторяется
+ui.tableText.duplicateColumn	the variable is repeated in the header	переменная повторяется в заголовке
+ui.convert.toSheet	Part “{name}” converted to sheet metal.	Деталь «{name}» преобразована в листовую.
+ui.convert.toPart	Part “{name}” converted to regular.	Деталь «{name}» преобразована в обычную.
+ui.sheetRecognize.bodies	the part must have exactly one body	в детали должно быть ровно одно тело
+ui.sheetRecognize.surface	there is a face that is neither planar nor cylindrical	есть грань, не плоская и не цилиндрическая
+ui.sheetRecognize.thickness	the thickness is not constant (or does not match the sheet thickness)	толщина непостоянна (или не совпадает с заданной толщиной листа)
+ui.sheetRecognize.face	there is an inclined face (bevel) not perpendicular to the sheet	есть наклонная грань (скос), не перпендикулярная листу
+ui.sheetRecognize.bend	a bend is not cylindrical with radii r and r + T, or has a cut through the bend	гиб не цилиндрический с радиусами r и r + T или с вырезом через гиб
+ui.sheetRecognize.corner	walls meet at an angle without a bend	стенки сходятся под углом без гиба
+ui.sheetRecognize.closed	the bends form a closed loop — it cannot be unfolded	гибы образуют замкнутый контур — развернуть нельзя
+ui.sheetRecognize.contour	the wall contour is not closed or contains a spline	контур стенки не замкнут или содержит сплайн
+ui.sheetRecognize.shape	the recognized sheet does not repeat the part shape	распознанный лист не повторяет форму детали
+ui.sheetRecognize.overlap	the flat pattern overlaps itself	развёртка накладывается сама на себя
+ui.sweepPathKind.spline	A spline	Сплайн
+ui.sweepPathKind.ellipse	An ellipse	Эллипс
+ui.tableText.syntax	the file is not JSON	файл не является JSON
+ui.tableText.schema	the structure does not follow the table schema	структура не по схеме таблицы
+ui.library.saved	Item “{title}” saved to the library	Элемент «{title}» сохранён в библиотеку
+ui.library.updated	Updated from the library: {count} items.	Обновлено из библиотеки элементов: {count}.
+ui.library.missing	Not in the library: {packages}.	Нет в библиотеке: {packages}.
+ui.library.upToDate	Library items in the document have not changed	Элементы библиотеки в документе не изменились
+ui.library.noOpen	“{name}” is a library item: edit its package in the library folder and run “Update from library”	«{name}» — элемент библиотеки: правьте его пакет в папке библиотеки и выполните «Обновить из библиотеки»
+ui.library.shadowed	overridden by an item from “{dir}”	перекрыт элементом из «{dir}»
+ui.copy.done	“{name}” copied — “Paste” in the tree menu of another project	«{name}» скопирован — «Вставить» в меню дерева другого проекта
+ui.paste.empty	The clipboard has no object — first “Copy” in the object menu	В буфере обмена нет объекта — сначала «Копировать» в меню объекта
+ui.paste.linkNeedsPath	As links — only between saved projects: save both files	Ссылками — только между сохранёнными проектами: сохраните оба файла
+ui.paste.done	Pasted: “{name}”	Вставлено: «{name}»
+ui.localize.done	“{name}” copied into the project — the reference points to the copy	«{name}» скопирован в проект — ссылка ведёт на копию
+ui.replace.done	“{name}” replaced with “{target}”; mates and dimensions whose references were not found are marked as errors	«{name}» заменён на «{target}»; сопряжения и размеры, опоры которых не найдены, отмечены ошибкой
+ui.library.problems	Items not loaded: {count} (details — in the tooltip)	Не загружено элементов: {count} (подробности — в подсказке)
+ui.library.empty	The library has no items — add folders in the program settings (“Library” tab)	В библиотеке нет элементов — добавьте папки в настройках программы (вкладка «Библиотека»)
+ui.library.seatAuto	auto (journal step) — or click a planar end face	авто (уступ у шейки) — или щёлкните плоский торец
+ui.library.seatPick	Click a face or vertex of the kind the place needs: a cylindrical face for an axis, a planar face for a plane, a vertex for a point	Щёлкните грань или вершину того вида, который нужен месту: цилиндрическую грань — для оси, плоскую — для плоскости, вершину — для точки
+ui.library.isoNone	none	нет
+ui.slot.pick	Select: {place} ({type})	Выберите: {place} ({type})
+ui.slot.need	Required: {type}	Нужно: {type}
+ui.slot.full	“{place}” takes at most {max}	В «{place}» — не больше {max}
+ui.slot.required	required	обязательно
+ui.slot.type.face	face	грань
+ui.slot.type.face.plane	planar face	плоская грань
+ui.slot.type.face.cylinder	cylindrical face	цилиндрическая грань
+ui.slot.type.edge	edge	ребро
+ui.slot.type.edge.line	straight edge	прямое ребро
+ui.slot.type.edge.circle	circular edge	круговое ребро
+ui.slot.type.vertex	vertex	вершина
+ui.slot.type.point	point	точка
+ui.repair.title	Reference repair	Восстановление привязок
+ui.repair.toast	References lost in features: {count} — red in the tree	Потеряны привязки у фич: {count} — красным в дереве
+ui.repair.start	Repair	Восстановить
+ui.repair.step	“{feature}”: lost references — {count} (feature {index} of {total})	«{feature}»: потеряно привязок — {count} (фича {index} из {total})
+ui.repair.slot	{kind} {index} — shown in red	{kind} {index} — показано красным
+ui.repair.slotNoGhost	{kind} {index} — no geometry	{kind} {index} — геометрии нет
+ui.repair.kind.face	Face	Грань
+ui.repair.kind.edge	Edge	Ребро
+ui.repair.kind.vertex	Vertex	Вершина
+ui.repair.kind.unknown	Object	Объект
+ui.repair.apply	Apply	Применить
+ui.repair.skip	Skip	Пропустить
+ui.repair.cancel	Undo the whole deletion or edit	Отменить удаление или правку целиком
+ui.repair.menu	Repair references	Восстановить привязки
+ui.repair.done	References repaired	Привязки восстановлены
+ui.repair.left	References not repaired in features: {count} — they are marked red	Не восстановлены привязки у фич: {count} — они отмечены красным
+ui.repair.reverted	Undone: the document is as before the references broke	Отменено: документ — как до разрушения привязок
+ui.slot.type.axis	axis	ось
+ui.slot.type.plane	plane	плоскость
+ui.slot.type.any	object	объект
+ui.library.isoAnalog	{iso} (analog)	{iso} (аналог)
+ui.library.isoAnalogHint	An analog, not the same product: the connection dimensions match, a design parameter differs (for angular contact bearings — the nominal contact angle per GOST and per ISO)	Аналог, а не то же изделие: присоединительные размеры совпадают, конструктивный параметр различается (у радиально-упорных подшипников — номинальный угол контакта по ГОСТ и по ISO)
+ui.longOp.window	Operation in progress	Выполняется операция
+ui.longOp.abort	Abort	Прервать
+ui.longOp.aborting	Aborting…	Прерывание…
+ui.longOp.import	Importing “{file}”…	Импорт «{file}»…
+ui.longOp.reconstruct	Recognizing the design of “{name}”…	Распознавание конструкции «{name}»…
+ui.help.title	construe help	Справка construe
+ui.help.language	Help language:	Язык справки:
+ui.help.tabGuide	Guide	Руководство
+ui.help.tabCommands	Commands	Команды
+ui.solution.title	Connection wizard	Мастер соединений
+ui.solution.editTitle	Edit connection	Правка соединения
+ui.solution.inputs	Connection places — click a place, then pick in the 3D view:	Места соединения — щёлкните по месту, затем укажите в 3D-виде:
+ui.solution.optionalPlace	optional	необязательно
+ui.solution.pointsSketch	sketch points	точки эскиза
+ui.solution.count	Connections: {n}	Соединений: {n}
+ui.solution.countPoints	Connections: 1, bolts: {n}	Соединений: 1, болтов: {n}
+ui.solution.sameHoles	All identical holes of the part	Все такие же отверстия детали
+ui.solution.sameHolesTip	Add the axes of all holes of the part with the same diameter and direction as the last selected axis (hole pattern)	Добавить оси всех отверстий детали того же диаметра и направления, что последняя выбранная ось (массив отверстий)
+ui.solution.hint.solution	Choose a solution in the “Connection wizard” list	Выберите решение в списке «Мастер соединений»
+ui.solution.hint.face	Pick a planar face — “{title}”	Укажите плоскую грань — «{title}»
+ui.solution.hint.point	Pick a point on a planar face — “{title}”	Укажите точку на плоской грани — «{title}»
+ui.solution.hint.morePoints	Click face “{face}” again to add a bolt (“{title}”); or choose another place	Щёлкните по грани «{face}» ещё раз — добавить болт («{title}»); или выберите другое место
+ui.solution.hint.cylinder	Pick a cylindrical face — “{title}”	Укажите цилиндрическую грань — «{title}»
+ui.solution.hint.axes	Pick axes — “{title}”: a cylindrical hole face, circular edge, axis or sketch point; each click adds a connection	Укажите оси — «{title}»: цилиндрическая грань отверстия, круговое ребро, ось или точка эскиза; каждый щелчок — ещё одно соединение
+ui.solution.notSet	not specified	не указано
+ui.solution.axisPrefix	Axis {n}:	Ось {n}:
+ui.solution.optional	(optional)	(необязательно)
+ui.solution.point	point ({x}; {y}; {z})	точка ({x}; {y}; {z})
+ui.solution.needPlane	Pick a planar face	Укажите плоскую грань
+ui.solution.needCylinder	Pick a cylindrical face	Укажите цилиндрическую грань
+ui.solution.needPackEnd	Pick “{title}” — the fastener length is chosen by the part stack between the faces	Укажите «{title}» — длина крепежа подбирается по пакету между гранями
+ui.hole.placePoint	— place a point where the hole will be —	— поставьте точку там, где будет отверстие —
+ui.hole.infoClearance	Ø{d} mm — clearance for a {size} screw; for a thread choose the type «Tapped»	Ø{d} мм — проход под винт {size}; под резьбу — тип «Под резьбу»
+ui.hole.infoTapped	Ø{d} mm — tap drill for {thread}; the {thread} thread is shown conventionally	Ø{d} мм — сверло под резьбу {thread}; резьба {thread} показывается условно
+ui.solution.pointPrefix	Point {n}:	Точка {n}:
+ui.solution.empty	No solutions — add library folders in the program settings (“Library” tab)	Нет решений — добавьте папки библиотеки в настройках программы (вкладка «Библиотека»)
+ui.solution.thread	thread M{d}, length {length}	резьба M{d}, длина {length}
+ui.solution.cut	Where to cut:	Где резать:
+ui.solution.cutAssembly	In assembly	В сборке
+ui.solution.cutParts	In parts	В деталях
+ui.solution.owned	Belongs to connection “{name}” — edited through the connection	Принадлежит соединению «{name}» — правится через соединение
+ui.record.title	Record solution — pick the inputs on an example (open assembly)	Запись решения — укажите входы на примере (открытая сборка)
+ui.record.inputs	Inputs — select a row and pick a face in the 3D view:	Входы — выберите строку и укажите грань в 3D-виде:
+ui.record.tables	Tables:	Таблицы:
+ui.record.rules	Rules — formulas and row lookups:	Правила — формулы и выбор строк:
+ui.record.outputs	Outputs — cuts and parts:	Выходы — вырезы и детали:
+ui.record.names	Names for expressions: {names}	Имена для выражений: {names}
+ui.record.saved	Solution “{title}” saved to the library	Решение «{title}» сохранено в библиотеку
+ui.record.needInput	Add an input first	Сначала добавьте вход
+ui.record.needFace	First add a “Planar face” input — the point lies on a face	Сначала добавьте вход «Плоская грань» — точка лежит на грани
+ui.record.needRule	Specify the rule name and expression	Укажите имя и выражение правила
+ui.record.needOutput	Fill in the output fields	Заполните поля выхода
+ui.library.noUserFolder	The user library folder is not set — choose it in the program settings (“Library” tab).	Не задана пользовательская папка библиотеки — выберите её в настройках программы (вкладка «Библиотека»).
+ui.feature.newError	Error in “{feature}”: {message}	Ошибка в «{feature}»: {message}
+ui.file.unsaved.question	Save changes to “{file}”?	Сохранить изменения в «{file}»?
+ui.file.notSaved	The document is not saved.	Документ не сохранён.
+ui.export.running	Exporting…	Экспорт…
+ui.export.checkOk	The mesh is closed and oriented	Сетка замкнута и ориентирована
+ui.import.done	Imported: “{file}”	Импортировано: «{file}»
+ui.import.healed	Imported: “{file}”; shape healed (bodies: {count}, entity tolerance {before} → {after} mm)	Импортировано: «{file}»; форма вылечена (тел: {count}, допуск сущностей {before} → {after} мм)
+ui.import.tolerance	Imported: “{file}”; shape entity tolerance {tol} mm exceeds the healing tolerance ({heal} mm) — history recovery will give only the “Import” base body (healing tolerance — program settings, “Import” tab)	Импортировано: «{file}»; допуск сущностей формы {tol} мм больше допуска лечения ({heal} мм) — восстановление истории даст только тело-основу «Импорт» (допуск лечения — настройки программы, вкладка «Импорт»)
+ui.import.healFailed	Imported: “{file}”; the shape with entity tolerance {tol} mm could not be healed — history recovery will give only the “Import” base body	Импортировано: «{file}»; форму с допуском сущностей {tol} мм вылечить не удалось — восстановление истории даст только тело-основу «Импорт»
+ui.importMesh.done	Imported “{file}”: body of {faces} faces	Импортировано «{file}»: тело из {faces} граней
+ui.importMesh.polyhedral	“{file}”: surfaces not recognized — the body is imported as a mesh ({triangles} triangles), history recovery will give only the “Import” base body	«{file}»: поверхности не распознаны — тело импортировано как сетка ({triangles} треугольников), восстановление истории даст только тело-основу «Импорт»
+ui.fcstdExport.done	Exported to FreeCAD: “{file}”	Экспортировано во FreeCAD: «{file}»
+ui.fcstdReport.import	FreeCAD import report: “{file}”	Отчёт импорта из FreeCAD: «{file}»
+ui.fcstdReport.export	FreeCAD export report: “{file}”	Отчёт экспорта во FreeCAD: «{file}»
+ui.fcstdReport.transferred	Transferred ({count})	Перенесено ({count})
+ui.fcstdReport.approximate	Transferred approximately ({count})	Перенесено приближённо ({count})
+ui.fcstdReport.baseBody	As base body ({count})	Телом-основой ({count})
+ui.fcstdReport.skipped	Skipped ({count})	Пропущено ({count})
+ui.fcstdReport.object	Object	Объект
+ui.fcstdReport.reasons	What changed or why	Что изменилось или почему
+ui.fcstdReport.copy	Copy	Копировать
+ui.fcstdReport.close	Close	Закрыть
+ui.fcstdReport.reason.constraintSkipped	constraint “{detail}” without a match is skipped	ограничение «{detail}» без соответствия пропущено
+ui.fcstdReport.reason.constraintInactive	inactive constraint “{detail}” is skipped	неактивное ограничение «{detail}» пропущено
+ui.fcstdReport.reason.externalSkipped	external geometry {detail} is not transferred	внешняя геометрия {detail} не перенесена
+ui.fcstdReport.reason.geometrySkipped	geometry {detail} is not transferred	геометрия {detail} не перенесена
+ui.fcstdReport.reason.holeCirclesToPoints	hole circles became center points	окружности отверстий стали точками-центрами
+ui.fcstdReport.reason.expressionFixed	expression “{detail}” without a match — the value is written	выражение «{detail}» без соответствия — записано значение
+ui.fcstdReport.reason.dimensionNotMeasured	dimension “{detail}” is not measured	размер «{detail}» не измерен
+ui.fcstdReport.reason.mode	mode without a match: {detail}	режим без соответствия: {detail}
+ui.fcstdReport.reason.unsupportedType	object type without a match	тип объекта без соответствия
+ui.fcstdReport.reason.noProfile	no profile sketch	нет эскиза профиля
+ui.fcstdReport.reason.profileFaces	the profile is selected faces, not a sketch	профиль — выбранные грани, а не эскиз
+ui.fcstdReport.reason.profileNotSketch	the profile is not a sketch	профиль — не эскиз
+ui.fcstdReport.reason.profiles	some sketch regions are selected	выбрана часть областей эскиза
+ui.fcstdReport.reason.axis	axis without a match	ось без соответствия
+ui.fcstdReport.reason.noAxis	no axis	нет оси
+ui.fcstdReport.reason.revolveDirection	the revolve direction does not match	направление вращения не совпадает
+ui.fcstdReport.reason.edges	edges are not matched	рёбра не сопоставлены
+ui.fcstdReport.reason.faces	faces are not matched	грани не сопоставлены
+ui.fcstdReport.reason.noBase	no source body	нет исходного тела
+ui.fcstdReport.reason.neutralPlane	neutral plane without a match	нейтральная плоскость без соответствия
+ui.fcstdReport.reason.mirrorPlane	mirror plane without a match	плоскость отражения без соответствия
+ui.fcstdReport.reason.direction	pattern direction without a match	направление массива без соответствия
+ui.fcstdReport.reason.noOriginals	no source features	нет исходных фич
+ui.fcstdReport.reason.original	source feature “{detail}” is not transferred	исходная фича «{detail}» не перенесена
+ui.fcstdReport.reason.multiTransform	several transforms in one	несколько преобразований в одном
+ui.fcstdReport.reason.holeCenters	no hole centers	нет центров отверстий
+ui.fcstdReport.reason.threadSize	thread size without a match	размер резьбы без соответствия
+ui.fcstdReport.reason.sections	sections without a match	сечения без соответствия
+ui.fcstdReport.reason.spine	path without a match	траектория без соответствия
+ui.fcstdReport.reason.shapeMismatch	the body does not match the FreeCAD body	тело не совпало с телом FreeCAD
+ui.fcstdReport.reason.noShape	no shape	нет формы
+ui.fcstdReport.reason.datumNotMapped	reference plane without a match	справочная плоскость без соответствия
+ui.fcstdReport.reason.referenceOnly	reference object	справочный объект
+ui.fcstdReport.reason.baseFeature	base body “{detail}”	тело-основа «{detail}»
+ui.fcstdReport.reason.baseBody	base body before feature “{detail}”	тело-основа до фичи «{detail}»
+ui.fcstdReport.reason.cellNotConverted	cell {detail} without a match	ячейка {detail} без соответствия
+ui.fcstdReport.reason.sketch	sketch not read ({detail})	эскиз не прочитан ({detail})
+ui.fcstdReport.reason.fixAsLock	point fix — by dimensions from the origin	фиксация точки — размерами от начала координат
+ui.fcstdReport.reason.sketchPlacementFixed	the sketch is placed on the body's base plane with an offset, without binding to a face or plane	эскиз размещён на исходной плоскости тела со смещением, без привязки к грани или плоскости
+ui.fcstdReport.reason.groupsUnlinked	linked groups unlinked (patterns, primitives — as regular geometry)	связанные группы развязаны (массивы, примитивы — обычной геометрией)
+ui.fcstdReport.reason.translateAsDistances	pattern copies are held by X and Y dimensions	копии массива держатся размерами по X и Y
+ui.fcstdReport.reason.translateAxisFixed	the pattern direction along the line is fixed	направление массива вдоль отрезка зафиксировано
+ui.fcstdReport.reason.rotateAsAngles	circular pattern copies are held by helper lines with an angle	копии кругового массива держатся вспомогательными отрезками с углом
+ui.fcstdReport.reason.rotateArcSpanFixed	the span of arc copies is fixed	раствор копий дуг зафиксирован
+ui.fcstdReport.reason.textAsGeometry	the text — as letter outlines, blocked	надпись — контурами букв, заблокированными
+ui.fcstdReport.reason.textNoFont	the text font was not found — letter outlines are not written	шрифт надписи не найден — контуры букв не записаны
+ui.fcstdReport.reason.projectionFixed	projections — as blocked geometry	проекции — заблокированной геометрией
+ui.fcstdReport.reason.projectionSkipped	a projection without geometry is skipped	проекция без геометрии пропущена
+ui.fcstdReport.reason.diametralAsDistance	diametral dimension — as a distance to the axis	диаметральный размер — расстоянием до оси
+ui.fcstdReport.reason.subElementReferences	further in the history there are references to faces or edges — the base body ends here	дальше в истории есть ссылки на грани или рёбра — тело-основа заканчивается здесь
+ui.fcstdReport.reason.featureError	a feature with an error is not transferred	фича с ошибкой не перенесена
+ui.fcstdReport.reason.notSupported	objects of type “{detail}” are not transferred	объекты вида «{detail}» не переносятся
+ui.fcstdReport.reason.regenFailed	the part is not rebuilt	деталь не перестроена
+ui.fcstdReport.reason.variableType	a variable of type “{detail}” is not transferred	переменная типа «{detail}» не переносится
+ui.fcstdReport.reason.aliasRenamed	name in FreeCAD — “{detail}”	имя во FreeCAD — «{detail}»
+ui.fcstdReport.reason.listAsValue	list variable — as the selected value	переменная-список — выбранным значением
+ui.fcstdReport.reason.variantTable	the variant table is not transferred	таблица вариантов не переносится
+ui.fcstdReport.reason.cosmeticThread	cosmetic thread is not transferred	условная резьба не переносится
+ui.fcstdReport.reason.jointLocked	joint “{detail}” without a match — the position is fixed	сочленение «{detail}» без соответствия — положение закреплено
+ui.fcstdReport.reason.jointApproximate	joint “{detail}” transferred as concentric: one motion is free	сочленение «{detail}» перенесено соосностью: одно движение свободно
+ui.fcstdReport.reason.jointLimits	joint limits are not transferred	пределы сочленения не переносятся
+ui.fcstdReport.reason.jointRefs	joint references are not to components of this assembly	ссылки сочленения — не на компоненты этой сборки
+ui.fcstdReport.reason.linkTarget	a link to an object that is not transferred	ссылка на объект, который не перенесён
+ui.fcstdReport.reason.externalLink	a link to an object of another file is not transferred	ссылка на объект другого файла не переносится
+ui.fcstdReport.reason.instanceSuppressed	a suppressed instance is not transferred	подавленный экземпляр не переносится
+ui.fcstdReport.reason.externalRef	an instance of an object of another file is not transferred	экземпляр объекта другого файла не переносится
+ui.fcstdReport.reason.instanceTarget	the inserted object is not written	вставленный объект не записан
+ui.fcstdReport.reason.mateNotSupported	mate “{detail}” with such references is not transferred	сопряжение «{detail}» с такими ссылками не переносится
+ui.fcstdReport.reason.mateRefs	the mate reference is to assembly geometry or is not resolved	ссылка сопряжения — на геометрию сборки или не разрешена
+ui.reconstruct.full	History recovered: “{name}”	История восстановлена: «{name}»
+ui.reconstruct.partial	History partially recovered: “{name}”, the unrecognized part is in the “Import” base body	История восстановлена частично: «{name}», нераспознанное — в теле-основе «Импорт»
+ui.reconstruct.importOnly	Operations not recognized: “{name}” contains only the “Import” base body	Операции не распознаны: «{name}» содержит только тело-основу «Импорт»
+ui.reconstruct.kept	The design of “{name}” is not fully recognized — the imported body is kept	Конструкция «{name}» распознана не полностью — оставлено импортированное тело
+ui.reconstruct.matesLost	Mates not transferred: {count} — they are marked with an error in the assembly	Не перенесено сопряжений: {count} — они отмечены ошибкой в сборке
+ui.reconstruct.healed	Shape healed (entity tolerance {before} → {after} mm).	Форма вылечена (допуск сущностей {before} → {after} мм).
+ui.reconstruct.healFailed	The shape with entity tolerance {tol} mm cannot be healed (healing tolerance {heal} mm) — the result is incomplete.	Форму с допуском сущностей {tol} мм не вылечить (допуск лечения {heal} мм) — результат неполный.
+ui.reconstruct.limit	The body is too complex: recognition is limited by the face removal attempt limit — the unrecognized part is left in the “Import” base body.	Тело слишком сложное: распознавание ограничено пределом попыток снятия граней — нераспознанное оставлено в теле-основе «Импорт».
+ui.reconstruct.multi	History recovered by bodies: parts {count} (fully {full}, partially {partial}, base body only {importOnly}), instances {instances}, assembly — “{name}”	История восстановлена по телам: деталей {count} (полностью {full}, частично {partial}, только тело-основа {importOnly}), экземпляров {instances}, сборка — «{name}»
+ui.export.checkBad	⚠ {name}: open edges {open}, inconsistent {flipped}, non-manifold {nonManifold}, degenerate triangles {degenerate}	⚠ {name}: открытых рёбер {open}, несогласованных {flipped}, неманифолдных {nonManifold}, вырожденных треугольников {degenerate}
+ui.export.done	Exported: “{file}”.	Экспортировано: «{file}».
+ui.export.flatOk	{name}: cut contours {loops}, area {area} mm²	{name}: контуров реза {loops}, площадь {area} мм²
+ui.export.chordRange	The chord must be between {min} and {max}.	Хорда должна быть в пределах от {min} до {max}.
+ui.export.angleRange	The angle must be between {min} and 90°.	Угол должен быть в пределах от {min} до 90°.
+ui.export.print	For printing with tolerances (printer clearance {clearance} mm)	Для печати с допусками (зазор принтера {clearance} мм)
+ui.status.tooSmall	Element too small	Слишком маленький элемент
+ui.status.pickPlane	Select a plane or planar face	Выберите плоскость или плоскую грань
+ui.wait.profile	Specify the profile: a sketch in the tree or a region in the 3D view	Укажите профиль: эскиз в дереве или область в 3D-виде
+ui.wait.edges	Specify edges in the 3D view	Укажите рёбра в 3D-виде
+ui.wait.sweep	Specify the profile and path: a sketch in the tree, region or edge	Укажите профиль и траекторию: эскиз в дереве, область или ребро
+ui.wait.loft	Specify the sections: regions or sketches in the tree	Укажите сечения: области или эскизы в дереве
+ui.wait.shell	Specify the faces to remove	Укажите грани, которые убрать
+ui.wait.draft	Specify the neutral plane and the draft faces	Укажите нейтральную плоскость и грани уклона
+ui.wait.cylinder	Specify a cylindrical face	Укажите цилиндрическую грань
+ui.wait.feature	Specify objects for the panel fields — in the 3D view or in the tree	Укажите объекты для полей панели — в 3D-виде или в дереве
+ui.need.profileOrAxis	Required: sketch in the tree, region or axis	Нужно: эскиз в дереве, область или ось
+ui.wait.section	Specify the section plane or planar face	Укажите плоскость или плоскую грань сечения
+ui.wait.mate	Specify two mate objects: face, edge, axis or point	Укажите два объекта сопряжения: грань, ребро, ось или точку
+ui.wait.weld	Specify the weld edges or faces	Укажите рёбра или грани шва
+ui.wait.annotation	Specify a face — the annotation place	Укажите грань — место обозначения
+ui.wait.record	Specify in the 3D view an example face for the selected input	Укажите в 3D-виде грань-пример для выбранного входа
+ui.wait.instancePattern	Specify the source instance, then the pattern direction or axis	Укажите экземпляр-источник, затем направление или ось массива
+ui.wait.library	Choose an item in the library catalog	Выберите элемент в каталоге библиотеки
+ui.wait.faceColor	Click a face to set its color	Щёлкните по грани — задать её цвет
+ui.wait.sketch.draw	Click points in the sketch plane (Esc — exit the tool)	Щёлкните точки в плоскости эскиза (Esc — выход из инструмента)
+ui.wait.sketch.dimension	Specify sketch elements for the dimension	Укажите элементы эскиза для размера
+ui.wait.sketch.constraint	Specify sketch elements for the constraint	Укажите элементы эскиза для ограничения
+ui.wait.sketch.trim	Click the piece of curve to trim	Щёлкните по куску кривой, который отрезать
+ui.wait.sketch.project	Specify body edges or vertices to project into the sketch	Укажите рёбра или вершины тела для проекции в эскиз
+ui.wait.sketch.corner	Specify a corner: the common point of two lines	Укажите угол: общую точку двух отрезков
+ui.wait.sketch.construction	Click elements to make them construction	Щёлкните по элементам — сделать их вспомогательными
+ui.wait.sketch.selection	Select sketch elements for this command	Выделите элементы эскиза для этой команды
+ui.sel.yes	Yes	Да
+ui.sel.next	Other	Другой
+ui.sel.reset	Reset	Сброс
+ui.sel.counter	({k} of {n})	({k} из {n})
+ui.sel.pendingStatus	{label} — Enter: “Yes”, Tab: other option, Esc: reset	{label} — Enter: «Да», Tab: другой вариант, Esc: сброс
+ui.sel.okWait	Confirm the construction: “Yes”	Подтвердите построение: «Да»
+ui.sel.plane	Plane: {a}	Плоскость: {a}
+ui.sel.planePointOn	{a} (point {b} lies on the plane and is not used)	{a} (точка {b} лежит на плоскости и не использована)
+ui.sel.planeThroughPoint	Parallel to {a} through {b}	Параллельно {a} через {b}
+ui.sel.planeMid	Midplane between {a} and {b}	Средняя между {a} и {b}
+ui.sel.planeThreePoints	Through three points: {a}, {b}, {c}	Через три точки: {a}, {b}, {c}
+ui.sel.planeThroughObject	Parallel to {a} through {b}	Параллельно {a} через {b}
+ui.sel.planePerpThroughLine	Through {b} perpendicular to {a}	Через {b} перпендикулярно {a}
+ui.sel.planeLinePoint	Through {a} and {b}	Через {a} и {b}
+ui.sel.planeTwoLines	Through {a} and {b}	Через {a} и {b}
+ui.sel.planeTangentNear	Tangent to {b}, near {a}	Касательная к {b}, ближняя к {a}
+ui.sel.planeTangentFar	Tangent to {b}, far from {a}	Касательная к {b}, дальняя от {a}
+ui.sel.axis	{a}	{a}
+ui.sel.alongEdge	Along: {a}	Вдоль: {a}
+ui.sel.normal	Normal: {a}	Нормаль: {a}
+ui.sel.faceAxis	Axis: {a}	Ось: {a}
+ui.sel.revolveAxis	Revolve axis: {a}	Ось вращения: {a}
+ui.sel.dirTwoPoints	From {a} to {b}	От {a} к {b}
+ui.sel.axisTwoPoints	Through {a} and {b}	Через {a} и {b}
+ui.sel.axisPlanes	Intersection of {a} and {b}	Пересечение {a} и {b}
+ui.sel.point	{a}	{a}
+ui.sel.need.planeAfterPoint	Add a plane (parallel through a point) or two more points	Добавьте плоскость (параллельная через точку) или ещё две точки
+ui.sel.need.planeAfterLine	Add a point or plane	Добавьте точку или плоскость
+ui.sel.need.planeAfterCurve	Add a plane — it will be tangent	Добавьте плоскость — будет касательная
+ui.sel.need.thirdPoint	Add a third point	Добавьте третью точку
+ui.sel.need.secondPoint	Add a second point	Добавьте вторую точку
+ui.sel.need.axisAfterPlane	A plane does not define an axis — add a second plane	Плоскость не задаёт ось — добавьте вторую плоскость
+ui.sel.need.plane	Required: a plane or something to build it from (point, edge, face, sketch element)	Нужно: плоскость или то, из чего её построить (точка, ребро, грань, элемент эскиза)
+ui.sel.need.direction	Required: edge, axis, sketch line, plane or face, cylinder, revolve or two points	Нужно: ребро, ось, отрезок эскиза, плоскость или грань, цилиндр, вращение или две точки
+ui.sel.need.axis	Required: axis, straight edge, sketch line, cylindrical face, two points or two planes	Нужно: ось, прямое ребро, отрезок эскиза, цилиндрическая грань, две точки или две плоскости
+ui.sel.need.point	Required: point	Нужно: точка
+ui.status.needSketchOrBase	Required: sketch, region, plane or planar face	Нужно: эскиз, область, плоскость или плоская грань
+ui.status.placeView	Click on the sheet — the view place (Esc — cancel)	Щёлкните на листе — место вида (Esc — отмена)
+ui.status.pickParentView	Select the parent view on the sheet	Выберите вид-родитель на листе
+ui.status.sectionStart	Click the first point of the section line on the view (Esc — cancel)	Щёлкните первую точку линии разреза на виде (Esc — отмена)
+ui.status.sectionEnd	Click the second point of the section line	Щёлкните вторую точку линии разреза
+ui.status.placeSection	Click — the section place; the view looks toward it (Esc — cancel)	Щёлкните — место разреза; взгляд направлен к нему (Esc — отмена)
+ui.status.detailCenter	Click the center of the detail view on the view (Esc — cancel)	Щёлкните центр выносного элемента на виде (Esc — отмена)
+ui.status.detailRadius	Click — the detail view radius	Щёлкните — радиус выносного элемента
+ui.status.placeDetail	Click — the detail view place (Esc — cancel)	Щёлкните — место выносного элемента (Esc — отмена)
+ui.status.pickMarkFace	Click the line of a surface on a view — the place of the mark (Esc — cancel)	Щёлкните линию поверхности на виде — место обозначения (Esc — отмена)
+ui.status.pickDimension	Dimension: click an edge, circle or vertex of the view (Esc — exit)	Размер: щёлкните ребро, окружность или вершину вида (Esc — выход)
+ui.status.placeDimension	Click the dimension line place or the second object (Esc — reset)	Щёлкните место размерной линии или второй объект (Esc — сброс)
+ui.status.cannotDeleteEndpoint	An end point cannot be deleted separately — select the curve	Конечную точку нельзя удалить отдельно — выберите кривую
+ui.status.constraintExists	The constraint is already set	Ограничение уже задано
+ui.status.fixArc	An arc cannot be fixed as a whole — fix its points	Дугу нельзя зафиксировать целиком — зафиксируйте её точки
+ui.corner.notPoint	Fillet and chamfer: click the corner point of two lines	Скругление и фаска: щёлкните угловую точку двух отрезков
+ui.corner.noLines	No corner here: regular lines do not meet at the point (construction lines are not filleted)	Здесь нет угла: в точке не сходятся обычные отрезки (конструктивные не скругляются)
+ui.corner.oneLine	No corner here: only one regular line ends at the point	Здесь нет угла: в точке заканчивается только один обычный отрезок
+ui.corner.manyLines	Regular lines meet at the point ({count}) — it is unclear which corner to fillet; make the extra ones construction	В точке сходятся обычные отрезки ({count}) — неясно, какой угол скруглить; сделайте лишние конструктивными
+ui.corner.notLines	Only a corner of two lines is filleted: an arc or another curve meets at the point	Скругляется только угол двух отрезков: в точке сходится дуга или другая кривая
+ui.corner.parallel	The corner lines lie on one straight line — nothing to fillet	Отрезки угла лежат на одной прямой — скруглять нечего
+ui.corner.degenerate	A corner side has zero length	Сторона угла имеет нулевую длину
+ui.corner.group	A corner side is a pattern or primitive element; “Unlink” first	Сторона угла — элемент массива или примитива; сначала «Развязать»
+ui.corner.tooLarge	The value is too large: the fillet or chamfer does not fit on the corner sides	Значение слишком велико: скругление или фаска не помещаются на сторонах угла
+ui.construction.keptDuplicate	The coincident construction element is kept: moving its constraints and dimensions would change the drawing	Совпадающий конструктивный элемент оставлен: перенос его ограничений и размеров изменил бы чертёж
+ui.sketchUnlink.tooltip	Unlink pattern/primitive: the selected pattern or primitive (N-gon, star) becomes regular geometry — elements can be edited separately, relations remain as constraints. Available when a pattern or primitive element is selected	Развязать массив/примитив: выделенный массив или примитив (N-угольник, звезда) становится обычной геометрией — элементы можно править по отдельности, взаимосвязи остаются ограничениями. Доступно, когда выделен элемент массива или примитива
+ui.offset.pick	Offset: click a sketch curve, projection or body edge (Esc — exit)	Смещение: щёлкните кривую эскиза, проекцию или ребро тела (Esc — выход)
+ui.offset.side	Click on the side to offset to	Щёлкните с той стороны, куда сместить
+ui.offset.edit	Offset edit: Ctrl+click — add or remove a contour element; Enter — apply, Esc — exit	Правка смещения: Ctrl+щелчок — добавить или убрать элемент контура; Enter — применить, Esc — выход
+ui.offset.notClosed	The element is not part of a closed contour	Элемент не входит в замкнутый контур
+ui.offset.contourValue	Contour offset: a positive value — outward, negative — inward; Enter — apply	Смещение контура: положительное значение — наружу, отрицательное — внутрь; Enter — применить
+ui.offset.impossible	Offset is impossible: at this value an arc or circle of the contour vanishes (radius ≤ 0)	Смещение невозможно: при этом значении дуга или окружность контура исчезает (радиус ≤ 0)
+ui.settings.auto	Automatic ({font})	Автоматически ({font})
+ui.settings.exported	Settings saved to “{file}”.	Настройки сохранены в «{file}».
+ui.settings.imported	Settings loaded from “{file}”.	Настройки загружены из «{file}».
+ui.settings.notSettings	“{file}” is not a construe settings file; the settings are unchanged.	«{file}» — не файл настроек construe; настройки не изменены.
+ui.settings.unknownKey	Unknown setting “{key}” skipped.	Неизвестная настройка «{key}» пропущена.
+ui.mate.series	Mates for “{name}”: create them one after another (✓), Esc — exit	Сопряжения для «{name}»: создавайте одно за другим (✓), Esc — выход
+ui.mate.seriesDone	“{name}” is fully defined	«{name}» полностью определена
+ui.mate.next	Next mate: {a} — {b}	Следующее сопряжение: {a} — {b}
+ui.mate.freeDof	Degrees of freedom: {n}	Степеней свободы: {n}
+ui.mate.gearRatio	Gear ratio {i} ({first} : {second} teeth).	Передаточное число {i} ({first} : {second} зубьев).
+ui.mate.typeChanged	Type changed to “{to}”: “{from}” is impossible — {reason}	Тип изменён на «{to}»: «{from}» невозможно — {reason}
+ui.weld.needEdge	Select the weld edges in the view	Выберите рёбра шва в виде
+ui.weld.needFaces	Select the faces of the two welded parts (or the weld edges)	Выберите грани двух свариваемых деталей (или рёбра шва)
+ui.weld.pickFaces	— click faces of two parts —	— щёлкните грани двух деталей —
+ui.instancePattern.incomplete	Select the source instance and the direction (axis, part pattern)	Выберите исходный экземпляр и направление (ось, массив детали)
+ui.instancePattern.noPartPattern	The part of this instance has no patterns	У детали этого экземпляра нет массивов
+ui.modelDims.none	No suitable model dimensions for the sheet views	Подходящих размеров модели для видов листа нет
+ui.modelDims.done	Model dimensions placed: {count}	Нанесено размеров из модели: {count}
+ui.modelMarks.none	No new model annotations for the sheet views	Новых обозначений из модели для видов листа нет
+ui.modelMarks.done	Annotations placed: {count}	Расставлено обозначений: {count}
+ui.drawing.autoName	Drawing {name}	Чертёж {name}
+ui.status.placeText	Click the text place on the sheet (Esc — cancel)	Щёлкните место текста на листе (Esc — отмена)
+ui.status.editText	Type the text; Enter — new line, Ctrl+Enter — done, Esc — cancel	Введите текст; Enter — новая строка, Ctrl+Enter — готово, Esc — отмена
+ui.sheetText.badSize	Font size — a positive number, mm	Размер шрифта — положительное число, мм
+ui.sheetText.badAngle	Rotation — a number, degrees	Поворот — число, градусы
+ui.sheetText.empty	Text cannot be empty: to remove it, press Delete	Текст не может быть пустым: чтобы убрать его, нажмите Delete
+ui.print.done	Sheets sent to print: {count}	Отправлено на печать листов: {count}
+ui.print.failed	Could not print: the printer is unavailable	Не удалось напечатать: принтер недоступен
+ui.thread.nominalNote	Hole at the nominal thread size: Ø{drill} is required for tapping	Отверстие по номиналу резьбы: под резьбу нужно Ø{drill}
+ui.thread.mismatchInternal	Ø{actual} does not fit: {thread} requires Ø{tapMin}–{tapMax} (tap drill) or Ø{nomMin}–{nomMax} (nominal); nearest: {nearest}	Ø{actual} не подходит: для {thread} нужно Ø{tapMin}–{tapMax} (под резьбу) или Ø{nomMin}–{nomMax} (номинал); ближайшие: {nearest}
+ui.thread.mismatchExternal	Ø{actual} does not fit: {thread} requires Ø{nomMin}–{nomMax}; nearest: {nearest}	Ø{actual} не подходит: для {thread} нужно Ø{nomMin}–{nomMax}; ближайшие: {nearest}
+ui.thread.notCylinder	Thread — only on a cylindrical face	Резьба — только на цилиндрической грани
+ui.thread.byExpression	The designation is set by expressions: diameter {diameter}, pitch {pitch}	Обозначение задано выражениями: диаметр {diameter}, шаг {pitch}
+ui.thread.coarsePitch	coarse	крупный
+ui.gear.external	External rim on Ø{face}: d = {d}, da = {da}, df = {df}	Наружный венец на Ø{face}: d = {d}, da = {da}, df = {df}
+ui.gear.internal	Internal rim in Ø{face}: d = {d}, da = {da}, df = {df}	Внутренний венец в Ø{face}: d = {d}, da = {da}, df = {df}
+ui.gear.mismatch	The tip diameter {da} does not fit on face Ø{face}	Диаметр вершин {da} не помещается на грани Ø{face}
+ui.gear.rootMismatch	The teeth grow from the face: the root diameter {df} must match face Ø{face}	Зубья наращиваются от грани: диаметр впадин {df} должен совпадать с гранью Ø{face}
+ui.gear.trimmed	Face Ø{face} will be turned down to the tip diameter {da}	Грань Ø{face} будет проточена до диаметра вершин {da}
+ui.gear.meshesExternal	Meshes with rims of m = {m}: centre distance a = ({d} + d₂)/2, with an internal one (d₂ − {d})/2; in an assembly — «Gear» mate of the pitch cylinders	Сопрягается с венцами m = {m}: межосевое a = ({d} + d₂)/2, с внутренним — (d₂ − {d})/2; в сборке — «Зацепление» делительных цилиндров
+ui.gear.meshesInternal	Meshes with external rims of m = {m}: centre distance a = ({d} − d₂)/2; in an assembly — «Gear» mate of the pitch cylinders	Сопрягается с наружными венцами m = {m}: межосевое a = ({d} − d₂)/2; в сборке — «Зацепление» делительных цилиндров
+ui.gear.notCylinder	Gear rim — only on a cylindrical face	Зубчатый венец — только на цилиндрической грани
+ui.settings.badValue	Invalid value of setting “{key}” skipped.	Неверное значение настройки «{key}» пропущено.
+ui.settings.lastStandard	At least one standard must be enabled — GOST or ISO.	Должен быть включён хотя бы один стандарт — ГОСТ или ИСО.
+ui.pmi.pickFace	Select a face in the view.	Выберите грань в виде.
+ui.pmi.faceCylinder	For a size tolerance, select a cylindrical face — a hole or a shaft.	Для допуска размера выберите цилиндрическую грань — отверстие или вал.
+ui.pmi.badNumber	The value “{name}” must be a positive number.	Значение «{name}» должно быть положительным числом.
+action.undo	Undo	Отменить
+action.show	Show	Показать
+action.edit	Edit	Редактировать
+action.deleteSuggested	Delete suggested	Удалить предложенное
+action.undoLast	Undo last action	Отменить последнее действие
+action.makeDriving	Make driving	Сделать управляющим
+undo.setUnits	Document units	Единицы документа
+undo.group.point	Point	Точка
+undo.addVariable	New variable	Новая переменная
+undo.group.line	Line	Отрезок
+undo.updateVariable	Variable change	Изменение переменной
+undo.group.rectangle	Rectangle	Прямоугольник
+undo.deleteVariable	Variable deletion	Удаление переменной
+undo.group.circle	Circle	Окружность
+undo.group.ellipse	Ellipse	Эллипс
+undo.group.spline	Spline	Сплайн
+undo.group.star	Star	Звезда
+undo.group.primitive	Primitive edit	Правка примитива
+undo.addFeature	New feature	Новая фича
+undo.group.arc	Arc	Дуга
+undo.updateFeature	Feature change	Изменение фичи
+undo.group.constraint	Constraint	Ограничение
+undo.deleteFeature	Feature deletion	Удаление фичи
+undo.group.dimension	Dimension	Размер
+undo.rebindReferences	Rebinding “{name}”	Перепривязка «{name}»
+undo.renameFeature	Rename	Переименование
+undo.group.dimensionValue	Dimension change	Изменение размера
+undo.setSuppressed	Suppression	Подавление
+undo.group.trim	Trim	Обрезка
+undo.moveFeature	Feature move	Перемещение фичи
+undo.group.construction	Construction geometry	Конструктивная геометрия
+undo.addElement	New part	Новая деталь
+undo.renameElement	Part rename	Переименование детали
+undo.deleteElement	Part deletion	Удаление детали
+undo.moveElement	Part move	Перемещение детали
+undo.createElementGroup	Element group	Группа элементов
+undo.renameElementGroup	Group rename	Переименование группы
+undo.dissolveElementGroup	Group dissolve	Расформирование группы
+undo.moveElementGroup	Group move	Перемещение группы
+undo.elementProperties	Part properties	Свойства детали
+undo.faceColor	Face color	Цвет грани
+undo.convertToSheet	Conversion to sheet metal	Преобразование в листовую
+undo.convertToPart	Conversion to regular	Преобразование в обычную
+undo.group.fullyDefine	Dimension all	Образмерить всё
+undo.group.text	Text	Надпись
+undo.group.strengthen	Weak dimension to regular	Слабый размер — обычным
+undo.addSection	Section	Разрез
+undo.editSection	Section change	Изменение разреза
+undo.insertInstance	Insert {name}	Вставка {name}
+undo.moveInstance	Instance move	Перемещение экземпляра
+undo.pasteElement	Paste {name}	Вставка {name}
+undo.localize	Copy into project {name}	Копия в проект {name}
+undo.replaceRef	Replace {name}	Замена {name}
+undo.insertPartInContext	New part in context	Новая деталь в контексте
+undo.partContext	Part context	Контекст детали
+undo.importStep	Import {name}	Импорт {name}
+undo.reconstruct	History recovery {name}	Восстановление истории {name}
+undo.importMesh	Mesh import {name}	Импорт сетки {name}
+undo.addSheet	New sheet	Новый лист
+undo.updateSheet	Sheet properties	Свойства листа
+undo.renameSheet	Sheet rename	Переименование листа
+undo.deleteSheet	Sheet deletion	Удаление листа
+undo.addView	New view	Новый вид
+undo.updateView	View change	Изменение вида
+undo.renameView	View rename	Переименование вида
+undo.deleteView	View deletion	Удаление вида
+undo.addDimension	New dimension	Новый размер
+undo.updateDimension	Dimension change	Изменение размера
+undo.deleteDimension	Dimension deletion	Удаление размера
+undo.addThreeViews	Three views	Три проекции
+undo.modelDimensions	Insert all model dimensions	Проставить все размеры из модели
+undo.addSheetText	New text	Новый текст
+undo.updateSheetText	Text change	Изменение текста
+undo.deleteSheetText	Text deletion	Удаление текста
+undo.modelMarks	Place all additional information	Расставить всю дополнительную информацию
+undo.updateMark	Annotation move	Перемещение обозначения
+undo.deleteMark	Annotation deletion	Удаление обозначения
+undo.addMark	Drawing annotation	Обозначение в чертеже
+undo.updateSpecification	Bill of materials change	Изменение спецификации
+undo.updateDrawing	Drawing properties	Свойства чертежа
+undo.freezeContext	Freeze references	Заморозка ссылок
+undo.breakContext	Break references	Разрыв ссылок
+undo.instanceProperties	Instance properties	Свойства экземпляра
+undo.instanceColor	Instance color	Цвет экземпляра
+undo.renameInstance	Instance rename	Переименование экземпляра
+undo.addVariantTable	New variant table	Новая таблица вариантов
+undo.updateVariantTable	Variant table change	Изменение таблицы вариантов
+undo.setActiveVariant	Variant selection	Выбор варианта
+undo.deleteVariantTable	Variant table deletion	Удаление таблицы вариантов
+undo.instanceVariables	Instance variables	Переменные экземпляра
+undo.insertLibraryPart	Insert {name}	Вставка {name}
+undo.updateFromLibrary	Update from library	Обновление из библиотеки
+undo.applySolution	Connection {name}	Соединение {name}
+undo.seatLibraryPart	Fit {name} on shaft	Посадка {name} на вал
+undo.updateSolution	Connection change {name}	Изменение соединения {name}
+undo.deleteInstance	Instance deletion	Удаление экземпляра
+undo.addMate	Mate	Сопряжение
+undo.reorderInstance	Instance order	Порядок экземпляров
+undo.editMate	Mate change	Изменение сопряжения
+undo.deleteMate	Mate deletion	Удаление сопряжения
+undo.renameMate	Mate rename	Переименование сопряжения
+undo.mateSuppressed	Mate suppression	Подавление сопряжения
+undo.addWeld	Weld	Шов
+undo.editWeld	Weld change	Изменение шва
+undo.deleteWeld	Weld deletion	Удаление шва
+undo.renameWeld	Weld rename	Переименование шва
+undo.exploded	Exploded view	Разнесённый вид
+undo.addInstancePattern	Instance pattern	Массив экземпляров
+undo.editInstancePattern	Instance pattern change	Изменение массива экземпляров
+undo.deleteInstancePattern	Instance pattern deletion	Удаление массива экземпляров
+undo.renameInstancePattern	Instance pattern rename	Переименование массива экземпляров
+undo.instancePatternSuppressed	Instance pattern suppression	Подавление массива экземпляров
+undo.deleteSection	Section deletion	Удаление разреза
+undo.renameSection	Section rename	Переименование разреза
+undo.sectionVisibility	Show/hide section	Показать/скрыть разрез
+undo.group.restRoughness	Roughness of other surfaces	Шероховатость остальных поверхностей
+undo.group.moveViews	Move views	Перемещение видов
+undo.addAnnotation	Annotation	Обозначение
+undo.editAnnotation	Annotation change	Изменение обозначения
+undo.deleteAnnotation	Annotation deletion	Удаление обозначения
+undo.group.plane	Plane	Плоскость
+undo.group.axis	Axis	Ось
+undo.setRollback	Rollback	Откат
+undo.group.deleteSuggested	Deletion of suggested constraints	Удаление предложенных ограничений
+undo.createSketch	New sketch	Новый эскиз
+undo.group.extrude	Extrude	Выдавливание
+undo.sketchAdd	Sketch addition	Добавление в эскиз
+undo.group.revolve	Revolve	Вращение
+undo.sketchUpdate	Sketch change	Изменение эскиза
+undo.group.fillet	Fillet	Скругление
+undo.sketchDelete	Sketch deletion	Удаление в эскизе
+undo.group.chamfer	Chamfer	Фаска
+undo.sketchDragEnd	Drag	Перетаскивание
+undo.sketchTrim	Trim	Обрезка
+undo.sketchFillet	Sketch fillet	Скругление эскиза
+undo.sketchMerge	Sketch simplification	Упрощение эскиза
+undo.sketchChamfer	Sketch chamfer	Фаска эскиза
+undo.group.mirror	Mirror	Зеркало
+undo.group.offset	Offset	Смещение
+undo.sketchGroupCreate	Sketch pattern	Массив в эскизе
+undo.sketchGroupUpdate	Sketch pattern change	Изменение массива в эскизе
+undo.sketchGroupUnlink	Unlink	Развязать
+undo.group.sketchUnlink	Unlink	Развязать
+undo.sketchSetWeakAnchor	Anchor point	Опорная точка
+undo.sketchCancel	Discard sketch changes	Отмена изменений эскиза
+undo.group.sketchCancel	Discard sketch changes	Отмена изменений эскиза
+undo.group.sketchPatternLinear	Sketch linear pattern	Линейный массив в эскизе
+undo.group.sketchPatternCircular	Sketch circular pattern	Круговой массив в эскизе
+hotkey.53b354c3	Ctrl+N	Ctrl+N
+hotkey.c922a346	New	Новый
+hotkey.a6a3a7c6	global	глобально
+hotkey.24b46455	Ctrl+O	Ctrl+O
+hotkey.49922e4c	Open…	Открыть…
+hotkey.30b5381a	Ctrl+S	Ctrl+S
+hotkey.e3dd266e	Save	Сохранить
+hotkey.353b255e	Ctrl+Shift+S	Ctrl+Shift+S
+hotkey.8a10ab92	Save as…	Сохранить как…
+hotkey.496980be	Ctrl+Z	Ctrl+Z
+hotkey.4745b2e3	Undo	Отменить
+hotkey.5302d5fe	global (except FeatureEdit, ExportStl, Import)	глобально (кроме FeatureEdit, ExportStl, Import)
+hotkey.f8b14019	Ctrl+Y, Ctrl+Shift+Z	Ctrl+Y, Ctrl+Shift+Z
+hotkey.e9bed921	Redo	Повторить
+hotkey.23d9a04c	Ctrl+K	Ctrl+K
+hotkey.9b1be7dd	Command search (centered)	Командный поиск (по центру)
+hotkey.debb5936	Ctrl+Q	Ctrl+Q
+hotkey.ac79f049	Rebuild — full regeneration (S1-REGEN-008)	Перестроить — полная регенерация (S1-REGEN-008)
+hotkey.2060efc3	S	S
+hotkey.76eb495d	Command search at cursor	Командный поиск у курсора
+hotkey.a6a6fc34	view/tree	вид/дерево
+hotkey.34fb6f7d	Ctrl+1 … Ctrl+8	Ctrl+1 … Ctrl+8
+hotkey.8afda1ac	standard views / Normal to	стандартные виды / Нормально к
+hotkey.ca84473a	Space	Пробел
+hotkey.4ae017de	views menu	меню видов
+hotkey.4dbd0b28	F	F
+hotkey.dbcb90e3	Fit	Вписать
+hotkey.c8365e49	Z / Shift+Z	Z / Shift+Z
+hotkey.93ed8803	Zoom out / Zoom in	Отдалить / Приблизить
+hotkey.a01818e1	arrows, Shift+arrows, Ctrl+arrows, Alt+←/→	стрелки, Shift+стрелки, Ctrl+стрелки, Alt+←/→
+hotkey.e076ff8c	rotate / rotate 90° / pan / rotate in the screen plane	поворот / поворот 90° / панорама / поворот в плоскости экрана
+hotkey.69d64243	view	вид
+hotkey.d45c4e9f	Del	Del
+hotkey.aea834ad	Delete selected	Удалить выделенное
+hotkey.2f2dabfc	F2	F2
+hotkey.500e3b51	tree	дерево
+hotkey.59b98cee	Esc	Esc
+hotkey.8c12fefa	Esc ladder	лестница Esc
+hotkey.78b1ef6a	Enter	Enter
+hotkey.0004cd6f	OK (in a panel); like a double click (in the tree)	OK (в панели); как двойной клик (в дереве)
+hotkey.9b61d420	in place	по месту
+hotkey.4ad31bf2	Ctrl+Enter	Ctrl+Enter
+hotkey.9006ef31	Panel OK / Exit sketch	OK панели / Выйти из эскиза
+hotkey.6cc7357f	modes with ✓ / Sketch	режимы с ✓ / Sketch
+hotkey.c30c4952	Ctrl+A	Ctrl+A
+hotkey.4a8b5d79	Select all	Выделить всё
+hotkey.87838b15	Sketch	Sketch
+hotkey.3673212b	Shift+S	Shift+S
+hotkey.3ccbecdb	Sketch	Эскиз
+hotkey.e93ddff8	Part	Part
+hotkey.c2a7947a	Shift+E	Shift+E
+hotkey.972bd871	Extrude	Выдавливание
+hotkey.311ee532	Shift+W	Shift+W
+hotkey.63601b0e	Revolve	Вращение
+hotkey.5baec5c0	Shift+F	Shift+F
+hotkey.91884f73	Fillet (1b)	Скругление (1б)
+hotkey.2bc4314f	Shift+C	Shift+C
+hotkey.6e608a7c	Chamfer (1b)	Фаска (1б)
+hotkey.b969be79	P	P
+hotkey.7efe1870	Point	Точка
+hotkey.ad68e236	L	L
+hotkey.22cbe81e	Line	Отрезок
+hotkey.7c2e373e	R / Shift+R	R / Shift+R
+hotkey.a9360483	Rectangle by corners / from center	Прямоугольник по углам / от центра
+hotkey.3dd7ffa7	C	C
+hotkey.59c08f5a	Circle	Окружность
+hotkey.cf84d42a	A / Shift+A	A / Shift+A
+hotkey.e40f43dd	Arc by 3 points / center-start-end	Дуга по 3 точкам / центр-начало-конец
+hotkey.be047a60	T	T
+hotkey.491b54f0	Tangent arc (in a chain of lines — the next segment as an arc)	Касательная дуга (в цепочке отрезков — следующий сегмент дугой)
+hotkey.da6fd2a0	M	M
+hotkey.ef3ac8ae	Trim	Обрезка
+hotkey.c9034af6	U	U
+hotkey.84de8222	Project body edges and vertices (1b)	Проекция рёбер и вершин тела (1б)
+hotkey.ce6e8eef	Q	Q
+hotkey.d36bc5c2	Construction	Конструктивная
+hotkey.a3b36a04	D	D
+hotkey.75fd0a0b	Dimension	Размер
+hotkey.b5a0a4ec	Shift+D	Shift+D
+hotkey.2a94ceee	I, H, V, Shift+L, Shift+T, N, E, O, Shift+M, Y, X	I, H, V, Shift+L, Shift+T, N, E, O, Shift+M, Y, X
+hotkey.bb2cb1d1	constraints	ограничения
+hotkey.b8828a65	Show/hide constraints	Показать/скрыть ограничения
+ui.common.shadedWithEdges	Shaded with edges	Тонированный с рёбрами
+ui.common.shaded	Shaded	Тонированный
+ui.common.hiddenLinesRemoved	Hidden lines removed	Невидимые линии удалены
+ui.common.hiddenLinesDashed	Hidden lines dashed	Невидимые линии пунктиром
+ui.common.wireframe	Wireframe	Каркас
+ui.settings.programSettings	Program settings	Настройки программы
+ui.settings.rotateWithMiddleButton	Rotate with middle button	Вращение средней кнопкой
+ui.settings.rotateWithRightButtonFor	Rotate with right button (for laptops)	Вращение правой кнопкой (для ноутбуков)
+ui.settings.mouseProfile	Mouse profile	Профиль мыши
+ui.settings.invertWheelZoom	Invert wheel zoom	Инвертировать зум колесом
+ui.settings.mouseAndWheel	Mouse and wheel	Мышь и колесо
+ui.settings.displayStyle	Display style	Стиль отображения
+ui.common.display	Display	Отображение
+ui.settings.defaultTextFont	Default text font	Шрифт надписи по умолчанию
+ui.settings.customFontFolders	Custom font folders	Свои папки шрифтов
+ui.settings.addFolder	Add folder…	Добавить папку…
+ui.settings.removeFolder	Remove folder	Удалить папку
+ui.settings.fonts	Fonts	Шрифты
+ui.settings.gostDrawingFont	GOST drawing font	Шрифт чертежа по ГОСТ
+ui.settings.isoDrawingFont	ISO drawing font	Шрифт чертежа по ISO
+ui.common.gost	GOST	ГОСТ
+ui.settings.standardForNewDrawings	Standard for new drawings	Стандарт новых чертежей
+ui.common.firstAngle	First angle	Первый угол
+ui.common.thirdAngle	Third angle	Третий угол
+ui.settings.projectionMethodIso	Projection method (ISO)	Метод проекции (ISO)
+ui.settings.drawingStyle	Drawing style	Оформление чертежей
+ui.common.off	Off	Выключено
+ui.common.mm	" mm"	" мм"
+ui.settings.stepShapeHealingTolerance	STEP shape healing tolerance	Допуск лечения формы STEP
+ui.settings.roundingOfReconstructedPartDimensions	Rounding of reconstructed part dimensions	Округление размеров восстановленной детали
+ui.common.import	Import	Импорт
+ui.settings.change	Change…	Изменить…
+ui.settings.userFolder	User folder	Пользовательская папка
+ui.settings.sharedFolders	Shared folders	Общие папки
+ui.settings.libraryStandards	Standards	Стандарты
+ui.settings.stdGost	GOST	ГОСТ
+ui.settings.stdIso	ISO	ИСО
+ui.settings.whereToCutConnections	Where to cut connections	Где резать соединения
+ui.settings.library	Library	Библиотека
+ui.settings.printerClearance	Printer clearance	Зазор принтера
+ui.common.print	Print	Печать
+ui.settings.exportSettings	Export settings…	Экспорт настроек…
+ui.settings.importSettings	Import settings…	Импорт настроек…
+ui.common.close	Close	Закрыть
+ui.settings.defaultProgramDataFolder	Default — program data folder	По умолчанию — папка данных программы
+ui.settings.fontFolder	Font folder	Папка шрифтов
+ui.settings.libraryFolder	Library folder	Папка библиотеки
+ui.settings.userLibraryFolder	User library folder	Пользовательская папка библиотеки
+ui.settings.exportSettings2	Export settings	Экспорт настроек
+ui.settings.construeSettingsJson	construe settings (*.json)	Настройки construe (*.json)
+ui.settings.importSettings2	Import settings	Импорт настроек
+ui.constraint.coincidentOnObject	Coincident / On object	Совпадение / На объекте
+ui.constraint.horizontal	Horizontal	Горизонтально
+ui.constraint.vertical	Vertical	Вертикально
+ui.constraint.parallel	Parallel	Параллельно
+ui.constraint.perpendicular	Perpendicular	Перпендикулярно
+ui.constraint.tangent	Tangent	Касательно
+ui.common.equal	Equal	Равенство
+ui.constraint.concentric	Concentric	Концентрично
+ui.common.midpoint	Midpoint	Середина
+ui.common.symmetric	Symmetric	Симметрично
+ui.constraint.fix	Fix	Зафиксировать
+ui.constraint.collinear	Collinear	Коллинеарно
+ui.constraint.coradial	Coradial	Корадиально
+ui.constraint.pointAtIntersection	Point at intersection	Точка в пересечении
+ui.constraint.pathLengthSumOfLengths	Path length (sum of lengths)	Длина пути (сумма длин)
+ui.common.equalCurvature	Equal curvature	Равенство кривизны
+ui.contextBar.sketchShiftS	Sketch (Shift+S)	Эскиз (Shift+S)
+ui.common.normalToCtrl8	Normal to (Ctrl+8)	Нормально к (Ctrl+8)
+ui.contextBar.extrudeShiftE	Extrude (Shift+E)	Выдавить (Shift+E)
+ui.contextBar.revolveShiftW	Revolve (Shift+W)	Повернуть (Shift+W)
+ui.common.editSketch	Edit sketch	Редактировать эскиз
+ui.common.edit	Edit	Редактировать
+ui.contextBar.suppressUnsuppress	Suppress / Unsuppress	Подавить / Включить
+ui.contextBar.renameF2	Rename (F2)	Переименовать (F2)
+ui.contextBar.deleteDel	Delete (Del)	Удалить (Del)
+ui.contextBar.dimensionD	Dimension (D)	Размер (D)
+ui.contextBar.constructionQ	Construction (Q)	Конструктивная (Q)
+ui.common.editValue	Edit value	Изменить значение
+ui.contextBar.referenceDriving	Reference / Driving	Справочный / Управляющий
+ui.contextBar.diameterRadiusFromAxisShift	Diameter / radius from axis (Shift+D)	Диаметр / радиус от оси (Shift+D)
+ui.drawingDim.horizontal	Horizontal	Горизонтальный
+ui.drawingDim.vertical	Vertical	Вертикальный
+ui.drawingDim.aligned	Aligned	Параллельный
+ui.common.diameter	Diameter	Диаметр
+ui.common.radius	Radius	Радиус
+ui.drawingDim.asInModel	As in model	Как в модели
+ui.common.hide	Hide	Скрыть
+ui.drawingDim.fieldOnly	Field only	Только поле
+ui.drawingDim.fieldWithDeviations	Field with deviations	Поле с отклонениями
+ui.common.deviations	Deviations	Отклонения
+ui.common.dimension	Dimension	Размер
+ui.common.type	Type	Тип
+ui.drawingDim.prefix	Prefix	Префикс
+ui.common.text	Text	Текст
+ui.drawingDim.suffix	Suffix	Суффикс
+ui.common.tolerance	Tolerance	Допуск
+ui.drawingDim.broken	Broken	С обрывом
+ui.drawingDim.setInDrawing	Set in drawing	Задать в чертеже
+ui.common.toleranceField	Tolerance field	Поле допуска
+ui.common.delete	Delete	Удалить
+ui.drawingDim.angular	Angular	Угловой
+ui.common.arcLength	Arc length	Длина дуги
+ui.drawingDim.pathLength	Path length	Длина пути
+ui.drawingText.asInDrawing	As in drawing	По чертежу
+ui.drawingText.gostTypeB	GOST (type B)	ГОСТ (тип Б)
+ui.drawingText.textLinesCtrlEnterOr	Text lines; Ctrl+Enter or leaving the field — apply	Строки текста; Ctrl+Enter или уход из поля — применить
+ui.common.font	Font	Шрифт
+ui.drawingText.sizeMm	Size, mm	Размер, мм
+ui.drawingText.rotation	Rotation, °	Поворот, °
+ui.drawingText.ctrlEnterDoneEscCancel	Ctrl+Enter — done, Esc — cancel	Ctrl+Enter — готово, Esc — отмена
+ui.common.mm2	mm	мм
+ui.common.cm	cm	см
+ui.common.m	m	м
+ui.common.export	Export	Экспорт
+ui.export.flatPatternDxf	Flat pattern DXF	DXF развёртки
+ui.common.file	File	Файл
+ui.common.object	Object	Объект
+ui.export.contents	Contents	Состав
+ui.export.filePerPart	File per part	Файл на деталь
+ui.export.bendLines	Bend lines	Линии гиба
+ui.export.binary	Binary	Двоичный
+ui.export.format	Format	Формат
+ui.export.coarse	Coarse	Грубо
+ui.export.normal	Normal	Нормально
+ui.export.fine	Fine	Тонко
+ui.export.custom	Custom	Своя
+ui.export.accuracy	Accuracy	Точность
+ui.export.angle	Angle, °	Угол, °
+ui.export.bodyN	Body %1	Тело %1
+ui.export.allBodies	All bodies	Все тела
+ui.export.chord	"Chord, "	"Хорда, "
+ui.common.exportFlatPatternDxf	Export flat pattern DXF	Экспорт DXF развёртки
+ui.common.exportStl	Export STL	Экспорт STL
+ui.common.export3mf	Export 3MF	Экспорт 3MF
+ui.feature.edgeN	Edge %1	Ребро %1
+ui.feature.faceN	Face %1	Грань %1
+ui.feature.cancelEsc	Cancel (Esc)	Отмена (Esc)
+ui.feature.profiles	Profiles	Профили
+ui.feature.add	Add	Добавить
+ui.feature.cut	Cut	Вырезать
+ui.feature.cutOutsideTheContour	Cut outside the contour	Вырезать за границей контура
+ui.feature.checkedInstancesNothingCheckedAll	Checked instances; nothing checked — all affected	Отмеченные экземпляры; ничего не отмечено — все задетые
+ui.feature.instances	Instances	Экземпляры
+ui.feature.selectASketch	— select a sketch —	— выберите эскиз —
+ui.feature.wholeSketch	" (whole sketch)"	" (весь эскиз)"
+ui.feature.selectAProfile	— select a profile —	— выберите профиль —
+ui.feature.regionNN	Region %1 (%2)	Область %1 (%2)
+ui.common.fillet	Fillet	Скругление
+ui.common.chamfer	Chamfer	Фаска
+ui.common.edges	Edges	Рёбра
+ui.common.distance	Distance	Расстояние
+ui.feature.distanceAndAngle	Distance and angle	Расстояние и угол
+ui.feature.twoDistances	Two distances	Два расстояния
+ui.feature.flipTheDistanceIsMeasured	Flip — the distance is measured on the other face	Обратить — расстояние откладывается на другой грани
+ui.common.angle	Angle	Угол
+ui.feature.secondDistance	Second distance	Второе расстояние
+ui.feature.selectEdges	— select edges —	— выберите рёбра —
+ui.common.edgesN	Edges: %1	Рёбер: %1
+ui.common.shell	Shell	Оболочка
+ui.feature.removeFaces	Remove faces	Удалить грани
+ui.feature.outward	Outward	Наружу
+ui.feature.thickness	Thickness	Толщина
+ui.feature.selectFaces	— select faces —	— выберите грани —
+ui.common.facesN	Faces: %1	Граней: %1
+ui.common.draft	Draft	Уклон
+ui.feature.neutralPlane	Neutral plane	Нейтральная плоскость
+ui.common.faces	Faces	Грани
+ui.feature.flipPullDirection	Flip pull direction	Обратить направление вытягивания
+ui.feature.selectAPlane	— select a plane —	— выберите плоскость —
+ui.common.extrude	Extrude	Выдавливание
+ui.feature.blind	Blind	На глубину
+ui.feature.throughAll	Through all	Через всё
+ui.feature.throughAllBothSides	Through all both sides	Через всё в обе стороны
+ui.feature.upToNext	Up to next	До следующей
+ui.feature.upTo	Up to	До
+ui.feature.flipDirection	Flip direction	Обратить направление
+ui.feature.endType	End type	Тип окончания
+ui.feature.depth	Depth	Глубина
+ui.feature.endObject	End object	Объект окончания
+ui.common.offset	Offset	Смещение
+ui.feature.operation	Operation	Операция
+ui.feature.tabLeft	Tab left	Вылет влево
+ui.feature.tabRight	Tab right	Вылет вправо
+ui.feature.assemblyCut	Assembly cut	Вырез сборки
+ui.common.cut	Cut	Вырез
+ui.common.face	Face	Грань
+ui.feature.edge	Edge	Ребро
+ui.feature.vertex	Vertex	Вершина
+ui.common.origin	Origin	Начало координат
+ui.common.front	Front	Спереди
+ui.common.top	Top	Сверху
+ui.common.right	Right	Справа
+ui.feature.selectAFacePlaneEdge	— select a face, plane, edge or vertex —	— выберите грань, плоскость, ребро или вершину —
+ui.feature.requiredFacePlaneEdgeOr	Required: face, plane, edge or vertex	Нужно: грань, плоскость, ребро или вершина
+ui.common.revolve	Revolve	Вращение
+ui.common.axis	Axis	Ось
+ui.feature.fullTurn	Full turn	Полный оборот
+ui.feature.byAngle	By angle	На угол
+ui.feature.angleType	Angle type	Тип угла
+ui.common.xAxis	X axis	Ось X
+ui.common.yAxis	Y axis	Ось Y
+ui.common.zAxis	Z axis	Ось Z
+ui.feature.line	"Line "	"Отрезок "
+ui.feature.selectAnAxis	— select an axis —	— выберите ось —
+ui.feature.coil	Coil	Пружина
+ui.common.pitch	Pitch	Шаг
+ui.feature.numberOfTurns	Number of turns	Число витков
+ui.common.height	Height	Высота
+ui.feature.defineBy	Define by	Задать
+ui.common.value	Value	Значение
+ui.feature.rightHand	Right-hand	Правая
+ui.feature.leftHand	Left-hand	Левая
+ui.feature.winding	Winding	Навивка
+ui.feature.startAngle	Start angle	Начальный угол
+ui.common.gearRim	Gear rim	Зубчатый венец
+ui.feature.add2	Add	Нарастить
+ui.feature.teethGrowFromTheFace	Teeth grow from the face: outward on a shaft, inward in a hole	Зубья растут от грани: наружу у вала, внутрь у отверстия
+ui.feature.toothSpacesAreCutInto	Tooth spaces are cut into the face	Впадины вырезаются в грани
+ui.feature.module	Module	Модуль
+ui.feature.numberOfTeeth	Number of teeth	Число зубьев
+ui.feature.profileShift	Profile shift	Смещение
+ui.feature.fullLength	Full length	На всю длину
+ui.feature.fromTheOtherEndOf	From the other end of the face	От другого торца грани
+ui.feature.width	Width	Ширина
+ui.feature.sector	Sector	Сектор
+ui.feature.from	from	от
+ui.feature.angle	angle	угол
+ui.feature.accuracyGrade	Accuracy grade	Степень точности
+ui.feature.selectACylindricalFace	— select a cylindrical face —	— выберите цилиндрическую грань —
+ui.common.thread	Thread	Резьба
+ui.common.designation	Designation	Обозначение
+ui.feature.customThread	Custom thread	Своя резьба
+ui.feature.customThreadPitchAndProfile	Custom thread — pitch and profile height set manually when no standard thread fits the diameter	Своя резьба — шаг и высота профиля вручную, когда стандартная не подходит к диаметру
+ui.feature.perIso681	per ISO 68-1	по ISO 68-1
+ui.feature.profileHeight	Profile height	Высота профиля
+ui.feature.fromTheOtherEndOf2	From the other end of the face	От другого конца грани
+ui.feature.length	Length	Длина
+ui.common.hole	Hole	Отверстие
+ui.feature.position	Position	Положение
+ui.feature.simple	Simple	Простое
+ui.feature.counterbore	Counterbore	С цековкой
+ui.feature.countersink	Countersink	С зенковкой
+ui.feature.tapped	Tapped	Под резьбу
+ui.feature.close	Close	Точный
+ui.feature.normal	Normal	Средний
+ui.feature.loose	Loose	Грубый
+ui.feature.fit	Fit	Ряд
+ui.feature.throughAll2	Through all	Насквозь
+ui.feature.end	End	Окончание
+ui.feature.coarse	" (coarse)"	" (крупный)"
+ui.feature.assemblyHole	Assembly hole	Отверстие сборки
+ui.feature.selectASketchWithPoints	— select a sketch with points —	— выберите эскиз с точками —
+ui.feature.counterboreNN	, counterbore Ø%1 × %2	, цековка Ø%1 × %2
+ui.feature.countersinkN90	, countersink Ø%1 × 90°	, зенковка Ø%1 × 90°
+ui.common.mirror	Mirror	Зеркало
+ui.common.pattern	Pattern	Массив
+ui.common.linear	Linear	Линейный
+ui.common.circular	Circular	Круговой
+ui.feature.features	Features	Фичи
+ui.common.plane	Plane	Плоскость
+ui.common.flip	Flip	Обратить
+ui.common.direction1	Direction 1	Направление 1
+ui.common.count	Count	Количество
+ui.common.spacing	Spacing	Шаг
+ui.common.direction2	Direction 2	Направление 2
+ui.feature.selectFeaturesInTheTree	— select features in the tree —	— выберите фичи в дереве —
+ui.feature.select	— select —	— выберите —
+ui.feature.waitsForYes	" — waits for “Yes”"	" — ждёт «Да»"
+ui.common.offset2	Offset	Смещённая
+ui.feature.offsetUpToObject	Offset up to object	Смещённая до объекта
+ui.feature.offsetByDistanceFromObject	Offset by distance from object	Смещённая на расстояние от объекта
+ui.common.atAngle	At angle	Под углом
+ui.common.throughThreePoints	Through three points	По трём точкам
+ui.common.midplane	Midplane	Средняя
+ui.common.throughTwoPoints	Through two points	По двум точкам
+ui.common.alongEdge	Along edge	По ребру
+ui.common.faceAxis	Face axis	По оси грани
+ui.common.intersectionOfPlanes	Intersection of planes	Пересечение плоскостей
+ui.feature.references	References	Ссылки
+ui.feature.farTangent	Far tangent	Дальняя касательная
+ui.feature.ofTheTwoTangentsTo	Of the two tangents to a cylinder or sphere — the one farther from the base plane	Из двух касательных к цилиндру или сфере — дальняя от исходной плоскости
+ui.feature.requiredPlaneOrPlanarFace	Required: plane or planar face	Нужно: плоскость или плоская грань
+ui.feature.requiredPlaneAndObjectVertex	Required: plane and object — vertex, edge or face	Нужно: плоскость и объект — вершина, ребро или грань
+ui.feature.requiredPlaneAndAxisStraight	Required: plane and axis (straight edge or axis)	Нужно: плоскость и ось (прямое ребро или ось)
+ui.feature.requiredVertexOrOrigin	Required: vertex or origin	Нужно: вершина или начало координат
+ui.feature.requiredStraightEdge	Required: straight edge	Нужно: прямое ребро
+ui.feature.requiredCylindricalOrConicalFace	Required: cylindrical or conical face	Нужно: цилиндрическая или коническая грань
+ui.feature.selectReferences	— select references —	— выберите ссылки —
+ui.common.sheetMetalPart	Sheet metal part	Листовая деталь
+ui.feature.bendRadius	Bend radius	Радиус гиба
+ui.feature.kFactor	K-factor	Коэффициент K
+ui.feature.rectangular	Rectangular	Прямоугольная
+ui.feature.rounded	Rounded	Скруглённая
+ui.feature.noRelief	No relief	Без разгрузки
+ui.feature.relief	Relief	Разгрузка
+ui.feature.reliefWidth	Relief width	Ширина разгрузки
+ui.feature.reliefDepth	Relief depth	Глубина разгрузки
+ui.feature.thickness2	= thickness	= толщина
+ui.feature.fromShape	from shape	из формы
+ui.common.baseWall	Base wall	Базовая стенка
+ui.feature.flipPlateThicknessProfileWidth	Flip: plate thickness (profile width) against the sketch normal	Обратить: толщина пластины (ширина профиля) против нормали эскиза
+ui.feature.widthOpenProfile	Width (open profile)	Ширина (открытый профиль)
+ui.feature.materialInside	Material inside	Материал внутрь
+ui.feature.materialOutside	Material outside	Материал наружу
+ui.feature.centered	Centered	По середине
+ui.feature.materialSide	Material side	Сторона материала
+ui.common.flange	Flange	Отгиб
+ui.feature.flipFlangeToTheOther	Flip: flange to the other side of the sheet	Обратить: отгиб на другую сторону листа
+ui.feature.sheetRadius	= sheet radius	= радиус листа
+ui.feature.bendLineOnEdge	Bend line on edge	Линия гиба по ребру
+ui.feature.startOffset	Start offset	Смещение начала
+ui.feature.endOffset	End offset	Смещение конца
+ui.feature.asSheet	As sheet	Как у листа
+ui.common.bendOnLine	Bend on line	Гиб по линии
+ui.feature.bendLine	Bend line	Линия гиба
+ui.feature.flipBendAgainstTheSketch	Flip: bend against the sketch normal	Обратить: гиб против нормали эскиза
+ui.feature.rightSideFixed	Right side fixed	Неподвижна правая сторона
+ui.feature.fixedSideToTheRight	Fixed side — to the right of the line direction	Неподвижная сторона — справа от направления отрезка
+ui.common.sheetCut	Sheet cut	Вырез в листе
+ui.feature.requiredSketchInTheTree	Required: sketch in the tree or region	Нужно: эскиз в дереве или область
+ui.feature.setThicknessAndRadius	Set thickness and radius	Задайте толщину и радиус
+ui.feature.requiredStraightWallEdge	Required: straight wall edge	Нужно: прямое ребро стенки
+ui.feature.requiredSketchWithABend	Required: sketch with a bend line in the tree	Нужно: эскиз с линией гиба в дереве
+ui.common.sweep	Sweep	Протягивание
+ui.common.profile	Profile	Профиль
+ui.feature.path	Path	Траектория
+ui.feature.selectASketchOrEdges	— select a sketch or edges —	— выберите эскиз или рёбра —
+ui.common.loft	Loft	Лофт
+ui.feature.sections	Sections	Сечения
+ui.feature.region	" (region)"	" (область)"
+ui.feature.selectAllAdjacentFaces	Select all adjacent faces	Выбрать все прилегающие грани
+ui.feature.startPoints	Start points	Начальные точки
+ui.feature.clickSectionPoints	— click a section point in the view —	— щёлкните точку сечения в виде —
+ui.feature.selectSketchesInTheTree	— select sketches in the tree —	— выберите эскизы в дереве —
+ui.tree.referencesTo	"References to: "	"Ссылки на: "
+ui.tree.importedBody	Imported body	Импортированное тело
+ui.tree.sheetN	Sheet %1	Лист %1
+ui.tree.basis	Basis	Базис
+ui.tree.planePinnedVisible	Plane pinned visible	Плоскость закреплена видимой
+ui.tree.planeShownOnHover3	Plane shown on hover	Плоскость видна при наведении
+ui.tree.name	"Name: "	"Наименование: "
+ui.tree.designation	"Designation: "	"Обозначение: "
+ui.tree.material	"Material: "	"Материал: "
+ui.tree.mass	"Mass: "	"Масса: "
+ui.tree.kg	" kg"	" кг"
+ui.tree.library	"Library: "	"Библиотека: "
+ui.tree.file	"File: "	"Файл: "
+ui.common.sections	Sections	Разрезы
+ui.tree.welds	Welds	Швы
+ui.tree.construction	Construction	Построения
+ui.common.plane2	: plane	: плоскость
+ui.tree.pitchCylinder	: pitch cylinder	: делительный цилиндр
+ui.tree.sketchShownHide	Sketch shown — hide	Эскиз виден — скрыть
+ui.tree.sketchHiddenShow	Sketch hidden — show	Эскиз скрыт — показать
+ui.tree.baseBodyShownHide	Base body shown — hide	Тело-основа показано — скрыть
+ui.tree.baseBodyHiddenShowFor	Base body hidden — show for comparison	Тело-основа скрыто — показать для сравнения
+ui.tree.sharedSketchAlsoShownIn	Shared sketch: also shown in another feature	Общий эскиз: показан также в другой фиче
+ui.tree.sectionOffShow	Section off — show	Разрез выключен — показать
+ui.tree.sectionOnHide	Section on — hide	Разрез включён — скрыть
+ui.tree.annotations	Annotations	Обозначения
+ui.tree.annotationHiddenShow	Annotation hidden — show	Обозначение скрыто — показать
+ui.tree.annotationShownHide	Annotation shown — hide	Обозначение показано — скрыть
+ui.common.newPart	New part	Новая деталь
+ui.tree.newSheetMetalPart	New sheet metal part	Новая листовая деталь
+ui.common.newAssembly	New assembly	Новая сборка
+ui.tree.rollToEnd	Roll to end	Откатить в конец
+ui.common.rebuild	Rebuild	Перестроить
+ui.tree.rename	Rename	Переименовать
+ui.common.properties	Properties	Свойства
+ui.common.recognizeDesign	Recognize design	Распознать конструкцию
+ui.tree.createBillOfMaterials	Create bill of materials	Создать спецификацию
+ui.tree.convertToRegular	Convert to regular	Преобразовать в обычную
+ui.tree.convertToSheetMetal	Convert to sheet metal	Преобразовать в листовую
+ui.tree.unfreezeReferences	Unfreeze references	Разморозить ссылки
+ui.tree.freezeReferences	Freeze references	Заморозить ссылки
+ui.tree.breakReferences	Break references	Разорвать ссылки
+ui.tree.moveUp	Move up	Переместить выше
+ui.tree.moveDown	Move down	Переместить ниже
+ui.tree.groupElements	Group	Сгруппировать
+ui.tree.dissolveGroup	Dissolve group	Расформировать группу
+ui.tree.removeFromGroup	Remove from group	Убрать из группы
+ui.tree.groupTip	Element group: %1	Группа элементов: %1
+ui.ribbon.measure	Measure	Замер
+ui.ribbon.measureTip	Measure: click a face, edge or vertex — its sizes; Ctrl+click a second one — the distance and angle between them	Замер: щелчок по грани, ребру или вершине — её размеры; Ctrl+щелчок по второй — расстояние и угол между ними
+ui.measure.close	Close the measurement	Закрыть замер
+ui.measure.hint	Select an entity (click) or two (Ctrl+click): a face, edge, vertex, plane	Выберите сущность (щелчок) или две (Ctrl+щелчок): грань, ребро, вершину, плоскость
+ui.measure.nothing	Nothing to measure for this pair	Для этой пары замера нет
+ui.measure.length	Length: {value} mm	Длина: {value} мм
+ui.measure.radius	Radius: {value} mm	Радиус: {value} мм
+ui.measure.diameter	Diameter: {value} mm	Диаметр: {value} мм
+ui.measure.area	Area: {value} mm²	Площадь: {value} мм²
+ui.measure.point	Point: {value} mm	Точка: {value} мм
+ui.measure.volume	Body volume: {value} mm³	Объём тела: {value} мм³
+ui.measure.mass	Body mass: {value} kg	Масса тела: {value} кг
+ui.measure.centroid	Center of mass: {value} mm	Центр масс: {value} мм
+ui.measure.distance	Distance: {value} mm	Расстояние: {value} мм
+ui.measure.angle	Angle: {value}°	Угол: {value}°
+ui.measure.bodyDistance	Between the bodies: {value} mm	Между телами: {value} мм
+ui.common.sketch	Sketch	Эскиз
+ui.tree.unsuppress	Unsuppress	Включить
+ui.tree.suppress	Suppress	Подавить
+ui.common.unfold	Unfold	Развернуть
+ui.tree.openAssembly	Open assembly	Открыть сборку
+ui.tree.openPart	Open part	Открыть деталь
+ui.tree.editInContext	Edit in context	Редактировать в контексте
+ui.tree.thePartIsDesignedIn	The part is designed in the context of another assembly	Деталь спроектирована в контексте другой сборки
+ui.tree.unfix	Unfix	Освободить
+ui.tree.fix	Fix	Закрепить
+ui.tree.show	Show	Показать
+ui.common.transparent	Transparent	Прозрачный
+ui.tree.rollBackHere	Roll back here	Откатить сюда
+ui.import.importAsBody	Import as body	Импортировать как тело
+ui.import.shapeHealingTolerance	Shape healing tolerance	Допуск лечения формы
+ui.import.dimensionRounding	Dimension rounding	Округление размеров
+ui.instancePattern.byPartPattern	By part pattern	По массиву детали
+ui.instancePattern.instancePattern	Instance pattern	Массив экземпляров
+ui.instancePattern.instance	Instance	Экземпляр
+ui.common.direction	Direction	Направление
+ui.instancePattern.partPattern	Part pattern	Массив детали
+ui.instancePattern.clickAPartInThe	— click a part in the view —	— щёлкните деталь в виде —
+ui.instancePattern.clickAPartWithA	— click a part with a pattern —	— щёлкните деталь с массивом —
+ui.instancePattern.clickAnEdgeAxisOr	— click an edge, axis or face —	— щёлкните ребро, ось или грань —
+ui.instancePattern.partWithPattern	Part with pattern	Деталь с массивом
+ui.library.bStandardPartsLibraryB	<b>Standard parts library</b>	<b>Библиотека стандартных деталей</b>
+ui.library.searchNameStandardDesignation	Search: name, standard, designation	Поиск: название, стандарт, обозначение
+ui.library.size	Size	Типоразмер
+ui.library.isoDesignation	ISO designation	Обозначение ISO
+ui.common.insert	Insert	Вставить
+ui.library.refreshCatalog	Refresh catalog	Обновить каталог
+ui.library.bSaveAsLibraryItem	<b>Save as library item</b>	<b>Сохранить как элемент библиотеки</b>
+ui.common.name	Name	Название
+ui.library.eGIso40172014	e.g. ISO 4017:2014	например, ГОСТ Р ИСО 4017-2013
+ui.common.standard	Standard	Стандарт
+ui.library.sectionsSeparatedByFastenersBolts	Sections separated by “/”: Fasteners/Bolts	Разделы через «/»: Крепёж/Болты
+ui.library.catalogSection	Catalog section	Раздел каталога
+ui.library.designationForTheBillOf	Designation for the bill of materials: a variable name in braces is replaced with its value	Обозначение для спецификации: {имя} — значение переменной
+ui.library.sizeTablePasteFromExcel	Size table (paste from Excel: name, then variables):	Таблица типоразмеров (вставка из Excel: имя, затем переменные):
+ui.library.keyParametersChosenByThe	Key parameters (chosen by the user):	Ключевые параметры (выбирает пользователь):
+ui.common.save	Save	Сохранить
+ui.common.cancel	Cancel	Отмена
+ui.library.myParts	My parts	Мои детали
+ui.main.untitled	Untitled	Без имени
+ui.main.donTSave	Don't save	Не сохранять
+ui.common.open	Open	Открыть
+ui.main.documentsConstrueFcstdConstrueDocument	Documents (*.construe *.FCStd);;construe document (*.construe);;FreeCAD (*.FCStd)	Документы (*.construe *.FCStd);;Документ construe (*.construe);;FreeCAD (*.FCStd)
+ui.main.restore	Restore	Восстановить
+ui.main.saveAs	Save as	Сохранить как
+ui.common.construeDocumentConstrue	construe document (*.construe)	Документ construe (*.construe)
+ui.main.undo	"Undo: "	"Отменить: "
+ui.common.undo	Undo	Отменить
+ui.main.redo	"Redo: "	"Повторить: "
+ui.common.redo	Redo	Повторить
+ui.main.requiredSketchInTheTree	Required: sketch in the tree, region or edge	Нужно: эскиз в дереве, область или ребро
+ui.main.requiredPlaneOrFace	Required: plane or face	Нужно: плоскость или грань
+ui.main.requiredCylindricalFace	Required: cylindrical face	Нужно: цилиндрическая грань
+ui.main.requiredFace	Required: face	Нужно: грань
+ui.main.requiredEdge	Required: edge	Нужно: ребро
+ui.assembly.newPartInContext	New part in context	Новая деталь в контексте
+ui.common.fromFile	From file…	Из файла…
+ui.assembly.fromLibrary	From library…	Из библиотеки…
+ui.assembly.insertFromFile	Insert from file	Вставить из файла
+ui.assembly.nNNMm	%1 — %2: %3 mm³	%1 — %2: %3 мм³
+ui.assembly.frontPlane	“Front” plane	Плоскость «Спереди»
+ui.assembly.topPlane	“Top” plane	Плоскость «Сверху»
+ui.assembly.rightPlane	“Right” plane	Плоскость «Справа»
+ui.assembly.axis	"Axis "	"Ось "
+ui.common.element	element	элемент
+ui.common.point	point	точка
+ui.common.line	line	отрезок
+ui.common.circle	circle	окружность
+ui.common.object2	object	объект
+ui.common.origin2	origin	начало координат
+ui.assembly.frontPlane2	“Front” plane	плоскость «Спереди»
+ui.assembly.topPlane2	“Top” plane	плоскость «Сверху»
+ui.assembly.rightPlane2	“Right” plane	плоскость «Справа»
+ui.common.axis2	"axis "	"ось "
+ui.assembly.sketchElement	sketch element	элемент эскиза
+ui.assembly.constructionElement	construction element	элемент построения
+ui.common.planarFace	planar face	плоская грань
+ui.common.cylindricalFace	cylindrical face	цилиндрическая грань
+ui.common.conicalFace	conical face	коническая грань
+ui.common.face2	face	грань
+ui.common.edge	edge	ребро
+ui.common.vertex	vertex	вершина
+ui.drawing.landscape	Landscape	Альбомная
+ui.drawing.portrait	Portrait	Книжная
+ui.common.back	Back	Сзади
+ui.common.bottom	Bottom	Снизу
+ui.common.left	Left	Слева
+ui.common.isometric	Isometric	Изометрия
+ui.drawing.projectionMethod	Projection method	Метод проекции
+ui.drawing.sheetSize	Sheet size	Формат
+ui.drawing.orientation	Orientation	Ориентация
+ui.drawing.sheetScale	Sheet scale	Масштаб листа
+ui.common.view	View	Вид
+ui.drawing.byPlane	By plane	По плоскости
+ui.drawing.viewOrientation	View orientation	Ориентация вида
+ui.drawing.fromSheet	From sheet	По листу
+ui.drawing.viewScale	View scale	Масштаб вида
+ui.drawing.model	Model	Модель
+ui.drawing.projectionPlane	Projection plane	Плоскость проекции
+ui.drawing.standardDrawing	Standard drawing	Чертёж по стандарту
+ui.drawing.render	Render	Рендер
+ui.drawing.folded	Folded	Согнутая
+ui.drawing.flatPattern	Flat pattern	Развёртка
+ui.drawing.assembled	Assembled	Собранная
+ui.drawing.exploded	Exploded	Разнесённая
+ui.common.assembly	Assembly	Сборка
+ui.drawing.gostR21042023	GOST R 2.104-2023: A4 sheet — portrait only	ГОСТ Р 2.104-2023: лист A4 — только книжный
+ui.drawing.viewProperties	View properties	Свойства вида
+ui.drawing.drawingAndSheet	Drawing and sheet	Чертёж и лист
+ui.drawing.dimensionProperties	Dimension properties	Свойства размера
+ui.drawing.textProperties	Text properties	Свойства текста
+ui.drawing.markProperties	Annotation	Обозначение
+ui.drawing.markEdit	Edit	Изменить
+ui.drawing.markSetInDrawing	Set in the drawing	Задано в чертеже
+ui.drawing.markFromModel	From the model	Из модели
+ui.drawing.fromParent	From parent	По родителю
+ui.common.name2	Name	Наименование
+ui.common.material	Material	Материал
+ui.drawing.mass	Mass	Масса
+ui.common.letter	Letter	Литера
+ui.common.organization	Organization	Организация
+ui.common.surname	Surname	Фамилия
+ui.common.date	Date	Дата
+ui.common.drawnBy	Drawn by	Разработал
+ui.common.checkedBy	Checked by	Проверил
+ui.drawing.techControl	Tech. control	Т. контроль
+ui.common.extraField	Extra field	Доп. графа
+ui.common.stdControl	Std. control	Н. контроль
+ui.common.approvedBy	Approved by	Утвердил
+ui.common.extraFieldRole	Extra field: role	Доп. графа: роль
+ui.common.origInvNo	Orig. inv. No.	Инв. № подл.
+ui.common.replInvNo	Repl. inv. No.	Взам. инв. №
+ui.common.duplInvNo	Dupl. inv. No.	Инв. № дубл.
+ui.common.firstUsedIn	First used in	Перв. примен.
+ui.common.refNo	Ref. No.	Справ. №
+ui.drawing.department	Department	Отдел
+ui.drawing.techReference	Tech. reference	Техн. справка
+ui.drawing.documentType	Document type	Тип документа
+ui.drawing.status	Status	Статус
+ui.drawing.revision	Revision	Изменение
+ui.drawing.issueDate	Issue date	Дата выпуска
+ui.drawing.language	Language	Язык
+ui.drawing.titleBlockN	Title block — %1	Основная надпись — %1
+ui.drawing.owner	Owner	Владелец
+ui.drawing.export	"Export "	"Экспорт "
+ui.drawing.modelViewFromFile	Model view from file	Вид модели из файла
+ui.drawing.hiddenLines	Hidden lines	Невидимые линии
+ui.drawing.tangentEdges	Tangent edges	Линии перехода
+ui.drawing.centerLines	Center lines	Осевые линии
+ui.drawing.technicalRequirements	Technical requirements	Технические требования
+ui.drawing.sectionOnly	Section only	Сечение
+ui.drawing.reverseDirection	Reverse direction	Обратное направление
+ui.common.makeLocalCopy	Make local copy	Скопировать к себе
+ui.common.replaceWith	Replace with…	Заменить на…
+ui.drawing.drawingsAndBillsOfMaterials	Drawings and bills of materials:	Чертежи и спецификации:
+ui.drawing.selectAll	Select all	Выделить все
+ui.drawing.clearAll	Clear all	Снять все
+ui.drawing.exportPdf	Export PDF	Экспорт PDF
+ui.drawing.cutPlan	Cut plan	План реза
+ui.drawing.cutLabel	{material}, {thickness} mm	{material}, {thickness} мм
+ui.drawing.cutLabelNoMaterial	{thickness} mm	{thickness} мм
+ui.drawing.exportDxf	Export DXF	Экспорт DXF
+ui.drawing.drawings	Drawings	Чертежи
+ui.main.foldShowTheFoldedPart	Fold — show the folded part	Свернуть — показать согнутую деталь
+ui.main.unfoldShowTheSheetMetal	Unfold — show the sheet metal flat pattern	Развернуть — показать развёртку листовой детали
+ui.main.exportStep	Export STEP	Экспорт STEP
+ui.main.importStep	Import STEP	Импорт STEP
+ui.main.importMesh	Import mesh	Импорт сетки
+ui.main.meshesStl3mfStlStl	Meshes (*.stl *.3mf);;STL (*.stl);;3MF (*.3mf)	Сетки (*.stl *.3mf);;STL (*.stl);;3MF (*.3mf)
+ui.main.exportStlFolder	Export STL: folder	Экспорт STL: каталог
+ui.main.exportFlatPatternDxfFolder	Export flat pattern DXF: folder	Экспорт DXF развёртки: каталог
+ui.main.importFreecad	Import FreeCAD	Импорт FreeCAD
+ui.main.exportFreecad	Export FreeCAD	Экспорт FreeCAD
+ui.pmi.dimensionDNN	Dimension D%1 (%2)	Размер D%1 (%2)
+ui.ribbon.coilCustomThread	Coil / custom thread	Пружина / нестандартная резьба
+ui.ribbon.gearRimSpurInvoluteRim	Gear rim — spur involute rim on a cylindrical face of a shaft or hole	Зубчатый венец — прямозубый эвольвентный венец на цилиндрической грани вала или отверстия
+ui.ribbon.sheetMetalPartSheetParameters	Sheet metal part — sheet parameters: thickness, bend radius, K-factor, reliefs	Листовая деталь — параметры листа: толщина, радиус гиба, коэффициент K, разгрузки
+ui.ribbon.convertToSheet	Convert to sheet metal part…	Преобразовать в листовую деталь…
+ui.ribbon.convertToSheetTip	the shape is checked, the history is kept	форма проверяется, история сохраняется
+ui.ribbon.sheetParamsTip	thickness, bend radius, K-factor, reliefs	толщина, радиус гиба, коэффициент K, разгрузки
+ui.ribbon.sheetParams	Sheet parameters…	Параметры листа…
+ui.common.section	Section	Разрез
+ui.common.roughness	Roughness	Шероховатость
+ui.ribbon.roughnessOfOtherSurfaces	Roughness of other surfaces	Шероховатость остальных
+ui.common.sizeTolerance	Size tolerance	Допуск размера
+ui.ribbon.sizeToleranceToleranceFieldOr	Size tolerance — tolerance field or deviations of a hole or shaft on a cylindrical face (GOST 25347 / ISO 286)	Допуск размера — поле допуска или отклонения отверстия или вала на цилиндрической грани (ГОСТ 25347 / ISO 286)
+ui.ribbon.geometricTolerance	Geometric tolerance	Допуск формы и расположения
+ui.ribbon.geometricToleranceToleranceFrameOn	Geometric tolerance — tolerance frame on a face (GOST 2.308)	Допуск формы/расположения — рамка допуска на грани (ГОСТ 2.308)
+ui.common.datum	Datum	База
+ui.ribbon.datumDatumFeatureSymbolOn	Datum — datum feature symbol on a face (GOST 2.308)	База — обозначение базы на грани (ГОСТ 2.308)
+ui.ribbon.select	Select	Выделить
+ui.ribbon.selectAllCtrlA	Select all (Ctrl+A)	Выделить всё (Ctrl+A)
+ui.ribbon.constructionGeometry	Construction geometry	Конструктивная геометрия
+ui.ribbon.trim	Trim	Обрезка
+ui.common.point2	Point	Точка
+ui.common.line2	Line	Отрезок
+ui.ribbon.centerline	Centerline	Осевая линия
+ui.ribbon.rectangle	Rectangle	Прямоугольник
+ui.ribbon.byCorners	By corners	По углам
+ui.ribbon.fromCenter	From center	От центра
+ui.ribbon.primitives	Primitives	Примитивы
+ui.ribbon.inscribedNGonByVertex	Inscribed N-gon (by vertex)	N-угольник вписанный (по вершине)
+ui.ribbon.circumscribedNGonBySide	Circumscribed N-gon (by side midpoint)	N-угольник описанный (по середине стороны)
+ui.common.star	Star	Звезда
+ui.common.circle2	Circle	Окружность
+ui.ribbon.byCenter	By center	По центру
+ui.ribbon.by3Points	By 3 points	По 3 точкам
+ui.common.ellipse	Ellipse	Эллипс
+ui.common.arc	Arc	Дуга
+ui.ribbon.tangent	Tangent	Касательная
+ui.common.spline	Spline	Сплайн
+ui.ribbon.byControlPoints	By control points	По управляющим точкам
+ui.ribbon.throughPoints	Through points	Через точки
+ui.ribbon.text	Text	Надпись
+ui.common.linearPattern	Linear pattern	Линейный массив
+ui.common.circularPattern	Circular pattern	Круговой массив
+ui.ribbon.unlinkPatternPrimitive	Unlink pattern/primitive	Развязать массив/примитив
+ui.common.project	Project	Проекция
+ui.ribbon.dimensionMainGeometry	Dimension main geometry	Образмерить основное
+ui.ribbon.dimensionAllIncludingSplines	Dimension all, including splines	Образмерить всё, включая сплайны
+ui.ribbon.constraints	Constraints	Ограничения
+ui.ribbon.showConstraintsShiftC	Show constraints (Shift+C)	Показать ограничения (Shift+C)
+ui.ribbon.exitSketch	Exit sketch	Выйти из эскиза
+ui.common.part	Part	Деталь
+ui.common.mate	Mate	Сопряжение
+ui.ribbon.connection	Connection	Соединение
+ui.common.weld	Weld	Шов
+ui.common.interference	Interference	Пересечения
+ui.ribbon.explodedView	Exploded view	Разнесённый вид
+ui.ribbon.explodeAgain	Explode again	Разнести заново
+ui.ribbon.newBillOfMaterials	New bill of materials	Новая спецификация
+ui.ribbon.newBillOfMaterialsBom	New bill of materials — BOM of the active assembly per GOST R 2.106-2019	Новая спецификация — спецификация активной сборки по ГОСТ Р 2.106-2019
+ui.ribbon.editTitleBlockData	Edit title block data	Редактировать данные для основной надписи
+ui.ribbon.newSheet	New sheet	Новый лист
+ui.ribbon.t3Views	3 views	3 проекции
+ui.ribbon.projectedView	Projected view	Проекционный вид
+ui.ribbon.detailView	Detail view	Выносной элемент
+ui.ribbon.insertAllModelDimensions	Insert all model dimensions	Проставить все размеры из модели
+ui.ribbon.placeAllAdditionalInformation	Place all additional information	Расставить всю дополнительную информацию
+ui.ribbon.showUndimensioned	Show undimensioned	Показать необразмеренное
+ui.ribbon.drawing	Drawing	Чертёж
+ui.common.new	New	Новый
+ui.ribbon.saveAsCtrlShiftS	Save as… (Ctrl+Shift+S)	Сохранить как… (Ctrl+Shift+S)
+ui.ribbon.regularPart	Regular part	Обычная деталь
+ui.ribbon.newDrawing	New drawing	Новый чертёж
+ui.ribbon.isometricFitTheModelArrow	Isometric — fit the model; arrow — other standard views	Изометрия — вписать модель; стрелка — другие стандартные виды
+ui.ribbon.fit	Fit	Вписать
+ui.ribbon.style	Style	Стиль
+ui.common.variables	Variables	Переменные
+ui.main.theObjectIsNotVisible	The object is not visible in the current state	Объект не виден в текущем состоянии
+ui.common.section2	Section	Раздел
+ui.spec.item	Item	Поз.
+ui.spec.qty	Qty	Кол.
+ui.spec.note	Note	Примечание
+ui.spec.addRow	Add row	Добавить строку
+ui.spec.addAManualRowTo	Add a manual row to the selected section	Добавить ручную строку в выбранный раздел
+ui.spec.deleteRow	Delete row	Удалить строку
+ui.spec.deleteTheSelectedManualRow	Delete the selected manual row	Удалить выделенную ручную строку
+ui.spec.titleBlock	Title block	Основная надпись
+ui.spec.billOfMaterialsN	Bill of materials — %1	Спецификация — %1
+ui.main.aboveTheRibbonLeft	Above the ribbon, left	Над лентой слева
+ui.main.aboveTheRibbonRight	Above the ribbon, right	Над лентой справа
+ui.main.mm	mm, °	мм, °
+ui.main.sides	"Sides: "	"Сторон: "
+ui.main.rays	"Rays: "	"Лучей: "
+ui.main.required	"Required: "	"Нужно: "
+ui.main.requiredExtrudeOrRevolveIn	"Required: extrude or revolve in the tree, "	"Нужно: выдавливание или вращение в дереве, "
+ui.main.open	Open…	Открыть…
+ui.main.recentFiles	Recent files	Недавние файлы
+ui.main.saveAs2	Save as…	Сохранить как…
+ui.main.saveAsLibraryItem	Save as library item…	Сохранить как элемент библиотеки…
+ui.main.recordSolution	Record solution…	Записать решение…
+ui.main.updateReferences	Update references	Обновить ссылки
+ui.main.updateFromLibrary	Update from library	Обновить из библиотеки
+ui.main.flatPatternDxf	Flat pattern DXF…	DXF развёртки…
+ui.main.freecadActiveObjectFcstd	FreeCAD — active object (.FCStd)…	FreeCAD — активный объект (.FCStd)…
+ui.main.print	Print…	Печать…
+ui.main.documentSettings	Document settings…	Настройки документа…
+ui.main.programSettings	Program settings…	Настройки программы…
+ui.main.exit	Exit	Выход
+ui.main.edit	Edit	Правка
+ui.main.normalTo	Normal to	Нормально к
+ui.common.help	Help	Справка
+ui.main.about	About	О программе
+ui.main.hotkeys	Hotkeys	Горячие клавиши
+ui.main.reportAProblem	Report a problem…	Сообщить о проблеме…
+ui.main.checkForUpdates	Check for updates	Проверить обновления
+ui.xref.exitInContextEditing	Exit in-context editing	Выйти из редактирования в контексте
+ui.common.copy	Copy	Копировать
+ui.common.paste	Paste	Вставить
+ui.xref.addMate	Add mate	Добавить сопряжение
+ui.xref.copyAllDependenciesIntoThe	Copy all dependencies into the project	Скопировать все зависимости в проект
+ui.xref.insertAsLinks	Insert as links	Вставить ссылками
+ui.xref.replaceWithObjectFromFile	Replace with object from file	Заменить на объект из файла
+ui.common.coincident	Coincident	Совпадение
+ui.common.concentric	Concentric	Концентричность
+ui.common.parallel	Parallel	Параллельность
+ui.common.perpendicular	Perpendicular	Перпендикулярность
+ui.mate.tangent	Tangent	Касание
+ui.mate.gear	Gear	Зацепление
+ui.mate.lock	Lock	Заделка
+ui.mate.objects	Objects	Объекты
+ui.mate.partConstructionGeometry	Part sketches	Эскизы деталей
+ui.mate.showPartPlanesAxesAnd	Show the points, lines and circles of part sketches in the view to pick mate objects	Показать в виде точки, отрезки и окружности эскизов деталей для выбора объектов сопряжения
+ui.mate.flip	⇅ Flip	⇅ Развернуть
+ui.mate.flipThePartToThe	Flip the part to the other side; other mates are kept	Перевернуть деталь на другую сторону; остальные сопряжения сохраняются
+ui.mate.okNext	OK / Next	ОК / Следующее
+ui.mate.saveTheMateAndStart	Save the mate and start the next one for the same pair of parts	Сохранить сопряжение и сразу задать следующее для той же пары деталей
+ui.mate.clickTwoObjectsInThe	— click two objects in the view —	— щёлкните два объекта в виде —
+ui.msg.ellipticalArc	Elliptical arc	Дуга эллипса
+ui.msg.bezierCurve	Bezier curve	Кривая Безье
+ui.msg.element	Element	Элемент
+ui.msg.horizontal	Horizontal	Горизонтальность
+ui.msg.vertical	Vertical	Вертикальность
+ui.msg.tangent	Tangent	Касательность
+ui.msg.onObject	On object	На объекте
+ui.msg.symmetric	Symmetric	Симметрия
+ui.msg.fix	Fix	Фиксация
+ui.msg.collinear	Collinear	Коллинеарность
+ui.msg.integer	integer	целое
+ui.msg.number	number	число
+ui.msg.decimalNumber	decimal number	дробное число
+ui.msg.string	string	строка
+ui.sketchPattern.count1	Count 1	Количество 1
+ui.sketchPattern.spacing1	Spacing 1	Шаг 1
+ui.sketchPattern.byLine	By line	По отрезку
+ui.sketchPattern.axisDirectionsFollowASketch	Axis directions follow a sketch line; the pattern follows its rotation	Направления осей — от отрезка эскиза; массив следует за его поворотом
+ui.sketchPattern.secondAxisFollowsASketch	Direction 2 follows its own sketch line; the second axis follows its rotation	Направление 2 — от своего отрезка эскиза; вторая ось следует за его поворотом
+ui.sketchPattern.count2	Count 2	Количество 2
+ui.sketchPattern.spacing2	Spacing 2	Шаг 2
+ui.common.unlink	Unlink	Развязать
+ui.sketchPattern.turnThePatternIntoRegular	Turn the pattern into regular geometry with relations	Превратить массив в обычную геометрию с взаимосвязями
+ui.sketchPattern.line	Line ✓	Отрезок ✓
+ui.pmi.roughness	"Roughness "	"Шероховатость "
+ui.pmi.sizeToleranceD	Size tolerance D	Допуск размера D
+ui.pmi.tolerance	"Tolerance "	"Допуск "
+ui.pmi.datum	"Datum "	"База "
+ui.pmi.geometricTolerance	Geometric tolerance	Допуск формы и расположения
+ui.pmi.roughnessOfOtherSurfaces	Roughness of other surfaces	Шероховатость остальных поверхностей
+ui.pmi.clickAFaceInThe	Click a face in the view	Щёлкните грань в виде
+ui.pmi.machiningMethodNotSpecified	Machining method not specified	Без указания способа обработки
+ui.pmi.materialRemovalRequired	Material removal required	Удалением материала
+ui.pmi.materialRemovalProhibited	Material removal prohibited	Без удаления материала
+ui.pmi.symbol	Symbol	Знак
+ui.pmi.parameter	Parameter	Параметр
+ui.pmi.valueM	Value, µm	Значение, мкм
+ui.pmi.machiningMethod	Machining method	Способ обработки
+ui.pmi.parallel	Parallel	Параллельное
+ui.pmi.perpendicular	Perpendicular	Перпендикулярное
+ui.pmi.crossed	Crossed	Перекрещивающееся
+ui.pmi.multiDirectional	Multi-directional	Произвольное
+ui.pmi.circular	Circular	Кругообразное
+ui.pmi.radial	Radial	Радиальное
+ui.pmi.particulate	Particulate	Точечное
+ui.pmi.layDirection	Lay direction	Направление неровностей
+ui.pmi.toleranceType	Tolerance type	Вид допуска
+ui.pmi.valueMm	Value, mm	Значение, мм
+ui.pmi.diameterTolerance	⌀ (diameter tolerance)	⌀ (допуск на диаметр)
+ui.pmi.maximumMaterial	Ⓜ maximum material	Ⓜ максимум материала
+ui.pmi.leastMaterial	Ⓛ least material	Ⓛ минимум материала
+ui.pmi.materialCondition	Material condition	Зависимый допуск
+ui.pmi.datums	Datums	Базы
+ui.pmi.letter	Letter	Буква
+ui.pmi.notSet	— not set —	— не задана —
+ui.primitive.inscribed	Inscribed	Вписанный
+ui.primitive.circumscribed	Circumscribed	Описанный
+ui.primitive.type	Type	Вид
+ui.primitive.diameter1	Diameter 1	Диаметр 1
+ui.primitive.diameter2	Diameter 2	Диаметр 2
+ui.primitive.turnThePrimitiveIntoRegular	Turn the primitive into regular geometry with constraints	Превратить примитив в обычную геометрию с ограничениями
+ui.primitive.rays	Rays	Лучей
+ui.primitive.sides	Sides	Сторон
+ui.primitive.nGon	N-gon	N-угольник
+ui.report.noResponse	no response	нет ответа
+ui.common.name3	Name	Имя
+ui.props.massKg	Mass, kg	Масса, кг
+ui.props.fixed	Fixed	Закреплён
+ui.props.hidden	Hidden	Скрыт
+ui.props.suppressed	Suppressed	Подавлен
+ui.props.openObject	Open object	Открыть объект
+ui.props.abcd123456001	ABCD.123456.001	АБВГ.123456.001
+ui.props.designationPerGost2201	Designation per GOST 2.201 (format is not checked)	Обозначение по ГОСТ 2.201 (формат не проверяется)
+ui.props.densityKgM	Density, kg/m³	Плотность, кг/м³
+ui.props.youngSModulusMpa	Young's modulus, MPa	Модуль упругости, МПа
+ui.props.poissonSRatio	Poisson's ratio	Коэффициент Пуассона
+ui.props.yieldStrengthMpa	Yield strength, MPa	Предел текучести, МПа
+ui.props.ultimateStrengthMpa	Ultimate strength, MPa	Предел прочности, МПа
+ui.props.assign	Assign	Назначить
+ui.props.byMaterial	By material	По материалу
+ui.props.partColor	Part color	Цвет детали
+ui.props.instanceColor	Instance color	Цвет экземпляра
+ui.props.byPart	By part	По детали
+ui.props.chooseColor	Choose color	Выбрать цвет
+ui.props.transparentInAssemblies	Transparent in assemblies	Прозрачная в сборках
+ui.props.reset	Reset	Сбросить
+ui.props.faceColor	Face color	Цвет грани
+ui.props.massProperties	Mass properties	Масс-характеристики
+ui.props.volumeMm	Volume, mm³	Объём, мм³
+ui.props.areaMm	Area, mm²	Площадь, мм²
+ui.props.centerOfMassMm	Center of mass, mm	Центр масс, мм
+ui.props.principalMomentsKgMm	Principal moments, kg·mm²	Главные моменты, кг·мм²
+ui.props.notSet	— not set —	— не задан —
+ui.props.custom	Custom…	Свой…
+ui.props.noMaterialN	No material: %1	Без материала: %1
+ui.props.materialPropertiesMustBeNumbers	Material properties must be numbers	Свойства материала — числа
+ui.repair.done2	Done	Готово
+ui.report.problemDescription	Problem description	Описание проблемы
+ui.report.eMailForReply	E-mail for reply	E-mail для ответа
+ui.report.screenshots	Screenshots	Снимки экрана
+ui.report.windowSnapshot	Window snapshot	Снимок окна
+ui.report.addFile	Add file…	Добавить файл…
+ui.report.remove	Remove	Удалить
+ui.report.attachThePartFileTo	Attach the part file to reproduce the problem	Приложить файл детали для воспроизведения проблемы
+ui.report.send	Send	Отправить
+ui.report.addScreenshot	Add screenshot	Добавить снимок
+ui.report.imagesPngJpgJpeg	Images (*.png *.jpg *.jpeg)	Изображения (*.png *.jpg *.jpeg)
+ui.report.donTSend	Don't send	Не отправлять
+ui.report.saveReport	Save report	Сохранить отчёт
+ui.report.zipArchiveZip	Zip archive (*.zip)	Архив zip (*.zip)
+ui.report.captchaLabel	Characters from the picture	Знаки с картинки
+ui.report.captchaRefresh	Another picture	Другая картинка
+ui.richText.b	B	Ж
+ui.richText.boldCtrlB	Bold (Ctrl+B)	Полужирный (Ctrl+B)
+ui.richText.i	I	К
+ui.richText.italicCtrlI	Italic (Ctrl+I)	Курсив (Ctrl+I)
+ui.richText.u	U	Ч
+ui.richText.underlineCtrlU	Underline (Ctrl+U)	Подчёркнутый (Ctrl+U)
+ui.richText.alignLineLeft	Align line left	Выровнять строку влево
+ui.richText.centerLine	Center line	Выровнять строку по центру
+ui.richText.alignLineRight	Align line right	Выровнять строку вправо
+ui.section.byPlane	By plane	Плоскостью
+ui.section.bySketch	By sketch	По эскизу
+ui.section.clickAPlaneOrPlanar	Click a plane or planar face in the view, or a plane in the tree	Щёлкните плоскость или плоскую грань в виде либо плоскость в дереве
+ui.section.doNotCut	Do not cut	Не резать
+ui.sel.front	“Front”	«Спереди»
+ui.sel.top	“Top”	«Сверху»
+ui.sel.right	“Right”	«Справа»
+ui.sel.centerline	centerline	осевая
+ui.sel.arc	arc	дуга
+ui.sel.circularEdge	circular edge	круговое ребро
+ui.sel.sphericalFace	spherical face	сферическая грань
+ui.sel.clickShowInTheView	Click — show in the view	Щелчок — показать в виде
+ui.sel.removeFromSelection	Remove from selection	Убрать из выбора
+ui.docSettings.documentSettings	Document settings	Настройки документа
+ui.docSettings.in	in	дюйм
+ui.docSettings.ft	ft	фут
+ui.docSettings.lengthUnits	Length units	Единицы длины
+ui.docSettings.degrees	degrees	градусы
+ui.docSettings.radians	radians	радианы
+ui.docSettings.angleUnits	Angle units	Единицы угла
+ui.docSettings.rad	rad	рад
+ui.sketch.clickALinePatternDirection	Click a line — pattern direction	Щёлкните отрезок — направление массива
+ui.sketch.requiredSketchPoint	Required: sketch point	Нужно: точка эскиза
+ui.sketch.selectAPathBodyEdge	Select a path: body edge or sketch in the tree	Выберите траекторию: ребро тела или эскиз в дереве
+ui.sketch.fullyDefined	Fully defined	Полностью определён
+ui.sketch.underDefinedDofN	Under-defined · DOF: %1	Недоопределён · DOF: %1
+ui.sketch.weak	weak	слабый
+ui.sketch.weak2	weak	слабых
+ui.sketch.defined	Defined	Определён
+ui.sketch.underDefined	Under-defined	Недоопределён
+ui.sketch.redundantConstraintsN	Redundant constraints: %1	Избыточные ограничения: %1
+ui.sketch.constraintConflict	Constraint conflict	Конфликт ограничений
+ui.sketch.notSolved	Not solved	Не решён
+ui.sketch.sketchError	Sketch error	Ошибка эскиза
+ui.sketch.reference	Reference	Справочный
+ui.sketch.driving	Driving	Управляющий
+ui.sketch.diameterFromAxis	Diameter from axis	Диаметр от оси
+ui.sketch.radiusFromAxis	Radius from axis	Радиус от оси
+ui.sketch.centralAngle	Central angle	Центральный угол
+ui.sketch.majorSemiAxis	Major semi-axis	Большая полуось
+ui.sketch.minorSemiAxis	Minor semi-axis	Малая полуось
+ui.sketch.rotation	Rotation	Поворот
+ui.sketch.far	Far	Дальнее
+ui.sketch.nearest	Nearest	Ближайшее
+ui.sketch.tolerance	Tolerance…	Допуск…
+ui.sketch.makeAnchor	Make anchor	Сделать опорной
+ui.sketch.toleranceNNN	Tolerance: %1 %2 / %3	Допуск: %1 %2 / %3
+ui.sketch.tolerance2	"Tolerance: "	"Допуск: "
+ui.sketch.toleranceNN	Tolerance: %1 / %2	Допуск: %1 / %2
+ui.sketch.firstSelectElementsToMirror	First select elements to mirror	Сначала выделите элементы для отражения
+ui.sketch.selectAnAxisSketchLine	Select an axis: sketch line or axis	Выберите ось: отрезок или ось эскиза
+ui.sketch.requiredSketchLineOrAxis	Required: sketch line or axis	Нужно: отрезок или ось эскиза
+ui.sketch.contour	Contour	Контур
+ui.sketch.firstSelectPatternElements	First select pattern elements	Сначала выделите элементы массива
+ui.sketch.clickTheCenterASketch	Click the center: a sketch point or the origin	Щёлкните центр: точку эскиза или начало координат
+ui.sketch.requiredSketchPointOrOrigin	Required: sketch point or origin	Нужно: точка эскиза или начало координат
+ui.sketch.requiredSketchLine	Required: sketch line	Нужно: отрезок эскиза
+ui.sketch.selectAPatternElement	Select a pattern element	Выделите элемент массива
+ui.slot.clickPickObjectsHere	Click — pick objects here	Щелчок — выбирать объекты сюда
+ui.record.description	Description	Описание
+ui.record.planarFace	Planar face	Плоская грань
+ui.record.cylindricalFace	Cylindrical face	Цилиндрическая грань
+ui.record.pointOnFace	Point on face	Точка на грани
+ui.record.inputType	Input type	Вид входа
+ui.record.inputName	Input name	Название входа
+ui.record.addInput	Add input	Добавить вход
+ui.record.removeInput	Remove input	Удалить вход
+ui.record.measureThePartStackProbe	Measure the part stack, probe radius	Измерять пакет деталей, радиус зонда
+ui.record.addTable	Add table	Добавить таблицу
+ui.record.removeTable	Remove table	Удалить таблицу
+ui.record.formula	Formula	Формула
+ui.record.tableRowLookup	Table row lookup	Выбор строки таблицы
+ui.record.asInTable	as in table	как в таблице
+ui.record.ascending	ascending	по возрастанию
+ui.record.descending	descending	по убыванию
+ui.record.ruleType	Rule type	Вид правила
+ui.record.table	Table	Таблица
+ui.record.column	Column	Столбец
+ui.record.condition	Condition	Условие
+ui.common.expression	Expression	Выражение
+ui.record.order	Order	Порядок
+ui.record.addRule	Add rule	Добавить правило
+ui.record.removeRule	Remove rule	Удалить правило
+ui.record.cutByRevolvedBody	Cut by revolved body	Вырез телом вращения
+ui.record.cutByBlock	Cut by block	Вырез бруском
+ui.record.libraryPart	Library part	Деталь библиотеки
+ui.record.rZOneLinePer	r; z — one line per vertex	r; z — по строке на вершину
+ui.record.intoMaterial	into material	в материал
+ui.record.outOfMaterial	out of material	из материала
+ui.record.outputType	Output type	Вид выхода
+ui.record.outputName	Output name	Название выхода
+ui.record.parts	Parts	Детали
+ui.record.partTable	Part table	Таблица детали
+ui.record.row	Row	Строка
+ui.record.axialOffset	Axial offset	Смещение по оси
+ui.record.addOutput	Add output	Добавить выход
+ui.record.removeOutput	Remove output	Удалить выход
+ui.record.saveAsSolution	Save as solution	Сохранить как решение
+ui.record.mySolution	My solution	Моё решение
+ui.record.mySolutions	My solutions	Мои решения
+ui.record.holeTableBuiltIn	Hole table (built-in)	Таблица отверстий (встроенная)
+ui.record.cylinder	Cylinder	Цилиндр
+ui.record.fromToLinesXY	from; to — lines x, y, z	от; до — строки x, y, z
+ui.record.inputPart	"Input part "	"Деталь входа "
+ui.record.allPartsOfTheStack	All parts of the stack	Все детали пакета
+ui.record.firstPartOfTheStack	First part of the stack	Первая деталь пакета
+ui.record.lastPartOfTheStack	Last part of the stack	Последняя деталь пакета
+ui.record.allButTheLast	All but the last	Все, кроме последней
+ui.record.row2	" = row "	" = строка "
+ui.record.where	", where "	", где "
+ui.record.ascending2	, ascending	, по возрастанию
+ui.record.descending2	, descending	, по убыванию
+ui.record.cutIn	": cut in "	": вырез в "
+ui.record.part	": part "	": деталь "
+ui.record.row3	", row "	", строка "
+ui.tolerance.iso286ToleranceFieldFundamental	ISO 286 tolerance field: fundamental deviation and grade (H7 — hole, h6 — shaft)	Поле допуска ISO 286: основное отклонение и квалитет (H7 — отверстие, h6 — вал)
+ui.tolerance.showDeviations	Show deviations	Показать отклонения
+ui.tolerance.field	Field	Поле
+ui.tolerance.upperMm	Upper, mm	Верхнее, мм
+ui.tolerance.lowerMm	Lower, mm	Нижнее, мм
+ui.tolerance.theUpperDeviationMustBe	The upper deviation must be greater than the lower one.	Верхнее отклонение должно быть больше нижнего.
+ui.tolerance.remove	Remove	Убрать
+ui.update.downloadAndInstall	Download and install	Скачать и установить
+ui.update.openPage	Open page	Открыть страницу
+ui.update.restart	Restart	Перезапустить
+ui.update.later	Later	Позже
+ui.update.retry	Retry	Повторить
+ui.update.downloadArchive	Download archive	Скачать архив
+ui.variables.number	Number	Число
+ui.variables.integer	Integer	Целое
+ui.variables.string	String	Строка
+ui.variables.list	List	Список
+ui.variables.addVariable	Add variable	Добавить переменную
+ui.variables.deleteVariable	Delete variable	Удалить переменную
+ui.variables.valuesSeparatedByForThe	values separated by “;” — for the “List” type	значения через «;» — для типа «Список»
+ui.variables.explanationShownInTheVariable	explanation — shown in the variable tooltip	пояснение — видно в подсказке переменной
+ui.variables.values	Values	Перечень
+ui.variables.variantTables	Variant tables	Таблицы вариантов
+ui.variables.newVariantTable	New variant table	Новая таблица вариантов
+ui.variables.deleteVariantTable	Delete variant table	Удалить таблицу вариантов
+ui.variables.activeVariant	Active variant	Активный вариант
+ui.variables.row	+ row	+ строка
+ui.variables.row2	− row	− строка
+ui.variables.pasteATableFromThe	Paste a table from the clipboard (as from Excel)	Вставить таблицу из буфера обмена (как из Excel)
+ui.variables.importCsv	Import CSV	Импорт CSV
+ui.variables.exportCsv	Export CSV	Экспорт CSV
+ui.variables.yes	Yes	Да
+ui.variables.no	No	Нет
+ui.variables.variant	Variant	Вариант
+ui.variables.importVariantTable	Import variant table	Импорт таблицы вариантов
+ui.variables.exportVariantTable	Export variant table	Экспорт таблицы вариантов
+ui.weld.butt	butt	стыковое
+ui.weld.corner	corner	угловое
+ui.weld.tee	tee	тавровое
+ui.weld.lap	lap	нахлёсточное
+ui.weld.process	Process	Способ
+ui.weld.leg	Leg	Катет
+ui.weld.arrowSide	Arrow side	Лицевая
+ui.weld.otherSide	Other side	Оборотная
+ui.weld.side	Side	Сторона
+ui.weld.allAround	All around	По замкнутой линии
+ui.weld.fieldWeld	Field weld	Монтажный
+ui.weld.removeReinforcement	Remove reinforcement	Снять усиление
+ui.weld.smoothTransition	Smooth transition	Плавный переход
+ui.weld.intermittent	Intermittent	Прерывистый
+ui.weld.segmentLength	Segment length	Длина участка
+ui.weld.chain	Chain	Цепное
+ui.weld.staggered	Staggered	Шахматное
+ui.weld.arrangement	Arrangement	Расположение
+ui.help.commandReference	Command reference	Справочник команд
+ui.help.commandsIntro	Every ribbon button and its variants: icon, name, tooltip and what the guide says about it (the “Guide” tab).	Каждая кнопка ленты и её варианты: значок, название, подсказка и что о ней сказано в руководстве (вкладка «Руководство»).
+ui.help.seeGuide	See the guide for details.	Подробнее — в руководстве.
+ui.help.commands	Commands	Команды
+ui.help.colKey	Key	Клавиша
+ui.help.colCommand	Command	Команда
+ui.help.colContext	Context	Контекст
+ui.settings.languageTab	Language	Язык
+ui.settings.language	Interface language	Язык интерфейса
+ui.settings.languageSystem	System default	Как в системе
+ui.settings.languageChanged	Interface language changed. Labels that did not update immediately will update at their next change or after restarting the program.	Язык интерфейса изменён. Надписи, которые не обновились сразу, обновятся при следующем изменении или после перезапуска программы.
+action.backToAssembly	Back to assembly	Вернуться в сборку
+action.makeDriven	Make reference	Сделать справочным
+action.refreshLinks	Update	Обновить
+ui.assembly.back	“{name}” opened from the assembly	Открыта «{name}» из сборки
+ui.context.broken	References broken	Ссылки разорваны
+ui.context.editing	Part “{name}” in the context of “{assembly}”	Деталь «{name}» в контексте «{assembly}»
+ui.delete.referenced	The part is inserted into assemblies — their instances will get an error	Деталь вставлена в сборки — их экземпляры получат ошибку
+ui.dimension.yieldedAuto	Dimension {dim} is driving: auto constraints removed — {count}.	Размер {dim} управляющий: снято авто-ограничений — {count}.
+ui.fullyDefine.done	Weak dimensions became regular: {count}.	Слабые размеры стали обычными: {count}.
+ui.fullyDefine.none	No weak dimensions.	Слабых размеров нет.
+ui.instance.fixed	The instance is fixed — unfix it in the tree	Экземпляр закреплён — освободите его в дереве
+ui.interference.none	No interference	Пересечений нет
+ui.links.changed	Update links from: {files}	Обновить по ссылкам с: {files}
+ui.mate.needTwo	Select two objects in the view	Выберите два объекта в виде
+ui.section.facePlanar	For a section, select a plane or planar face	Для разреза выберите плоскость или плоскую грань
+ui.weak.tooltip	Weak dimension: double click — enter an exact value, drag — move the label	Слабый размер: двойной щелчок — ввести точное значение, перетаскивание — переместить надпись
+undo.group.polygon	Polygon	Многоугольник
+hotkey.93c8d1f9	Rename	Переименовать
+hotkey.3cac7413	Diameter / radius from axis for the selected dimension it applies to	Диаметр / радиус от оси у выделенного размера, к которому он применим
+ui.modelDims.unplaced	Could not show in any view ({count}): {list}	Не удалось показать ни на одном виде ({count}): {list}
+ui.common.xAxisInline	X axis	ось X
+ui.common.yAxisInline	Y axis	ось Y
+ui.common.zAxisInline	Z axis	ось Z
+ui.caption.plane	“{name}” plane	Плоскость «{name}»
+ui.caption.planeInline	“{name}” plane	плоскость «{name}»
+ui.dim.lostDeleted	Dimensions whose model elements disappeared were deleted: {count}	Удалены размеры, элементы модели которых пропали: {count}
+undo.deleteLostDimensions	Deletion of dimensions without model elements	Удаление размеров без элементов модели
+ui.section.cutTheOtherSide	Cut off the other side	Отрезать другую сторону
+ui.instancePattern.flipThePatternDirection	Reverse the pattern direction	Обратить направление массива
+ui.selField.many	Objects: %1	Объектов: %1
+ui.feature.profilesN	Profiles: %1	Профилей: %1
+ui.feature.sectionsN	Sections: %1	Сечений: %1
+ui.feature.featuresN	Features: %1	Фич: %1
+ui.weld.pickEdges	— weld edges (optional) —	— рёбра шва (необязательно) —
+error.LIB_ATTACHMENT	“{file}” in folder “{dir}”: attachment “{name}” is described incorrectly ({detail}).	«{file}» в папке «{dir}»: привязка «{name}» описана неверно ({detail}).
+error.API_ATTACH_TARGET	This face does not fit the place of the item: a cylindrical face for an axis, a planar one for a plane, a vertex for a point.	Эта грань не подходит для места элемента: нужна цилиндрическая грань для оси, плоская — для плоскости, вершина — для точки.
+error.API_ATTACH_MISSING	Pick all required places of the item in the view.	Укажите в виде все обязательные места элемента.
+error.API_ATTACH_PART	Item “{title}”: the attachment geometry is not found — check its package.	У элемента «{title}» не найдена геометрия привязки — проверьте его пакет.
+error.API_ATTACH_GEOMETRY	The picked faces are not arranged as the places of the item — check the angle between them.	Указанные грани расположены не так, как места элемента — проверьте угол между ними.
+error.API_LIBRARY_STANDARD_VARIABLE	“{name}” is set by the standard and the size — choose another size.	«{name}» задаётся стандартом и типоразмером — выберите другой типоразмер.
+ui.library.byStandard	by the standard — choose the size	по стандарту — выберите типоразмер
+undo.attachLibraryPart	Insertion of {name} by attachments	Вставка {name} по привязкам
+ui.library.bAttachmentsB	<b>Attachments</b>	<b>Привязки</b>
+ui.library.attachInsert	Insert by attachments	Вставить по привязкам
+error.API_NOT_LIBRARY_INSTANCE	The instance is not a library item — it cannot be replaced from the library.	Экземпляр не элемент библиотеки — заменить его из библиотеки нельзя.
+error.API_NOT_COMPONENT	Only parts and assemblies are inserted into an assembly — a drawing or a specification cannot be inserted.	В сборку вставляются только детали и сборки — чертёж и спецификацию вставить нельзя.
+undo.replaceLibraryPart	Replacement of {name}	Замена {name}
+ui.library.replace	Replace	Заменить
+ui.library.replaceDots	Replace…	Заменить…
+error.API_ATTACH_CUT	Cut “{name}” of the item cannot be built for the chosen size ({detail}) — check the item package.	Вырез «{name}» элемента не строится для выбранного типоразмера ({detail}) — проверьте пакет элемента.
+error.LIB_CUT	“{file}” in folder “{dir}”: cut “{name}” is described incorrectly ({detail}).	«{file}» в папке «{dir}»: вырез «{name}» описан неверно ({detail}).
+error.API_OWNED_LIBRARY_CUT	The cut was made by library item “{name}” — replace or delete the item.	Вырез сделан элементом библиотеки «{name}» — замените или удалите элемент.
+ui.sketch.tolerancePlaceholder	tolerance	допуск
+ui.feature.toleranceTip	Dimension tolerance (optional): h6, H7(+0,015), ±0,1, +0,1/−0,05	Допуск размера (необязательно): h6, H7(+0,015), ±0,1, +0,1/−0,05
+undo.group.annotationMove	Move annotation	Перемещение обозначения
+ui.tolerance.listTip	Standard tolerance fields (F4)	Стандартные поля допуска (F4)
+ui.tolerance.listHole	Hole	Отверстие
+ui.tolerance.listShaft	Shaft	Вал
+ui.ribbon.construction	Construction	Построение
+ui.ribbon.pitchCircle	Pitch circle	Центровая окружность
+ui.drawing.constructionProperties	Construction	Построение
+ui.drawing.lineType	Line type	Тип линии
+ui.drawing.lineSolidThin	Thin solid	Сплошная тонкая
+ui.drawing.lineDashDotThin	Thin dash-dot	Штрихпунктирная тонкая
+ui.drawing.lineDashed	Dashed	Штриховая
+ui.drawing.consPointPrompt	Construction: pick a point — a vertex, an edge, a circle (its center) or a place on the view (Esc — cancel)	Построение: укажите точку — вершину, ребро, окружность (её центр) или место на виде (Esc — отмена)
+ui.drawing.consPitchPrompt	Pitch circle: pick the holes — circles on the view, three or more; Enter — done (Esc — cancel)	Центровая окружность: укажите отверстия — окружности на виде, не меньше трёх; Enter — готово (Esc — отмена)
+ui.drawing.consNoView	Construction: pick a point on a view	Построение: укажите точку на виде
+ui.drawing.consBound	Points bound: {bound} of {count}	Привязано точек: {bound} из {count}
+error.DRAWING_CONS_VIEW_NOT_FOUND	Construction view not found.	Вид построения не найден.
+error.DRAWING_CONS_REF_LOST	Construction: model element not found (the model changed?) — the construction by its previous points.	Построение: элемент модели не найден (изменилась модель?) — построение по прежним точкам.
+error.DRAWING_CONS_REF_AMBIGUOUS	Construction: the model element is ambiguous — bind the point again.	Построение: элемент модели определяется неоднозначно — привяжите точку заново.
+error.DRAWING_CONS_BAD_REF	Construction: a point cannot be bound to this model element — bind it again.	Построение: к этому элементу модели точку не привязать — привяжите её заново.
+error.DRAWING_CONS_DEGENERATE	The construction is degenerate: its points coincide or lie on one line.	Построение вырождено: его точки совпадают или лежат на одной прямой.
+undo.addConstruction	New construction	Новое построение
+undo.updateConstruction	Construction change	Изменение построения
+undo.deleteConstruction	Construction deletion	Удаление построения
+ui.ribbon.itemNumber	Item number	Номер позиции
+ui.ribbon.partsList	Parts list	Перечень составных частей
+ui.status.pickBalloonFace	Click the line of a part on a view — its item number (Esc — exit)	Щёлкните линию детали на виде — её номер позиции (Esc — выход)
+name.element.part	Part	Деталь
+name.element.assembly	Assembly	Сборка
+name.element.body	Body	Тело
+name.element.drawing	Drawing	Чертёж
+name.element.specification	BOM	Спецификация
+name.feature.sketch	Sketch	Эскиз
+name.feature.extrude	Extrude	Выдавливание
+name.feature.cut	Cut	Вырез
+name.feature.revolve	Revolve	Вращение
+name.feature.fillet	Fillet	Скругление
+name.feature.chamfer	Chamfer	Фаска
+name.feature.plane	Plane	Плоскость
+name.feature.axis	Axis	Ось
+name.feature.pattern	Pattern	Массив
+name.feature.mirror	Mirror	Зеркало
+name.feature.shell	Shell	Оболочка
+name.feature.draft	Draft	Уклон
+name.feature.sweep	Sweep	Протягивание
+name.feature.loft	Loft	Лофт
+name.feature.hole	Hole	Отверстие
+name.feature.thread	Thread	Резьба
+name.feature.import	Import	Импорт
+name.feature.sheetMetal	SheetMetal	Лист
+name.feature.sheetWall	Wall	Стенка
+name.feature.sheetFlange	Flange	Отгиб
+name.feature.sheetBend	Bend	Гиб
+name.feature.sheetCut	SheetCut	Вырез
+name.feature.gear	Gear	Венец
+name.feature.coil	Coil	Пружина
+name.feature.connection	Connection	Соединение
+name.feature.connectionCut	ConnectionCut	Вырез соединения
+name.mate.coincident	Coincident	Совпадение
+name.mate.concentric	Concentric	Концентричность
+name.mate.distance	Distance	Расстояние
+name.mate.angle	Angle	Угол
+name.mate.parallel	Parallel	Параллельность
+name.mate.perpendicular	Perpendicular	Перпендикулярность
+name.mate.tangent	Tangent	Касание
+name.mate.gear	Gear	Зацепление
+name.mate.lock	Lock	Заделка
+name.section	Section	Разрез
+name.sheet	"Sheet "	"Лист "
+name.view	"View "	"Вид "
+name.table	Table	Таблица
+name.instancePattern	Instance pattern	Массив экземпляров
+name.weld	"Weld "	"Шов "
+name.elementGroup	"Group "	"Группа "
+ui.symbol.insertSymbol	Insert a symbol	Вставить знак
+ui.symbol.diameter	Diameter	Диаметр
+ui.symbol.radius	Radius	Радиус
+ui.symbol.square	Square	Квадрат
+ui.symbol.arc	Arc length	Длина дуги
+ui.symbol.sphereDiameter	Sphere diameter	Диаметр сферы
+ui.symbol.sphereRadius	Sphere radius	Радиус сферы
+ui.symbol.thread	Metric thread	Метрическая резьба
+ui.symbol.degree	Degree	Градус
+ui.symbol.minute	Minute	Минута
+ui.symbol.second	Second	Секунда
+ui.symbol.plusMinus	Plus-minus	Плюс-минус
+ui.symbol.times	Multiplication (count, chamfer)	Умножение (количество, фаска)
+ui.symbol.slope	Slope	Уклон
+ui.symbol.taper	Taper	Конусность
+ui.settings.titleBlockTab	Default title block values of drawings	Значения полей надписи в чертежах по умолчанию
+ui.settings.titleBlockHint	A new drawing fills its title block with these values. A field takes a text or the date template {now:d.m.Y} — the sheet shows the current date (d — day, m — month, Y — year, y — two-digit year).	Новый чертёж заполняет основную надпись этими значениями. В поле можно ввести текст или шаблон даты {now:d.m.Y} — на листе будет текущая дата (d — день, m — месяц, Y — год, y — год двумя цифрами).
+ui.settings.drawnByDate	Drawn by: date	Разработал: дата
+ui.settings.checkedByDate	Checked by: date	Проверил: дата
+ui.settings.techControlDate	Tech. control: date	Т. контроль: дата
+ui.settings.extraFieldDate	Extra field: date	Доп. графа: дата
+ui.settings.stdControlDate	Std. control: date	Н. контроль: дата
+ui.settings.approvedByDate	Approved by: date	Утвердил: дата
+ui.library.sizesTable	Sizes	Типоразмеры
+ui.solution.none	none	нет

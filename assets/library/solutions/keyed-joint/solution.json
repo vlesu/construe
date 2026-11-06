@@ -1,0 +1,258 @@
+{
+  "format": "construe-solution",
+  "formatVersion": 1,
+  "id": "keyed-joint",
+  "title": "Шпоночное соединение",
+  "description": "Пазы на валу и в ступице и призматическая шпонка ГОСТ 23360 или высокая ГОСТ 10748 по диаметру вала; длина шпонки — наибольшая стандартная, не длиннее ступицы (solutions.md §12.2).",
+  "section": [
+    "Детали соединений"
+  ],
+  "inputs": [
+    {
+      "id": "shaft",
+      "type": "cylinder",
+      "title": "Вал"
+    },
+    {
+      "id": "face",
+      "type": "face",
+      "title": "Торец ступицы"
+    }
+  ],
+  "frame": {
+    "face": "face",
+    "axis": "shaft"
+  },
+  "choices": [
+    {
+      "id": "standard",
+      "title": "Шпонка",
+      "type": "list",
+      "options": [
+        "23360",
+        "10748"
+      ],
+      "labels": [
+        "Призматическая ГОСТ 23360",
+        "Призматическая высокая ГОСТ 10748"
+      ],
+      "default": "23360"
+    }
+  ],
+  "tables": [
+    {
+      "id": "keyways23360",
+      "title": "Пазы ГОСТ 23360",
+      "file": "keyways-23360.csv"
+    },
+    {
+      "id": "keyways10748",
+      "title": "Пазы ГОСТ 10748",
+      "file": "keyways-10748.csv"
+    },
+    {
+      "id": "key23360",
+      "title": "Шпонка ГОСТ 23360",
+      "library": "gost-23360.key"
+    },
+    {
+      "id": "key10748",
+      "title": "Шпонка ГОСТ 10748",
+      "library": "gost-10748.key"
+    }
+  ],
+  "rules": [
+    {
+      "select": "k",
+      "table": "keyways23360",
+      "where": [
+        [
+          "dmin",
+          "<=",
+          "shaft.diameter"
+        ],
+        [
+          "dmax",
+          ">=",
+          "shaft.diameter"
+        ]
+      ],
+      "when": [
+        [
+          "standard",
+          "=",
+          "23360"
+        ]
+      ]
+    },
+    {
+      "select": "key",
+      "table": "key23360",
+      "where": [
+        [
+          "b",
+          "=",
+          "k.b"
+        ],
+        [
+          "h",
+          "=",
+          "k.h"
+        ],
+        [
+          "l",
+          "<=",
+          "face.depth"
+        ]
+      ],
+      "order": [
+        "l",
+        "desc"
+      ],
+      "when": [
+        [
+          "standard",
+          "=",
+          "23360"
+        ]
+      ]
+    },
+    {
+      "select": "k",
+      "table": "keyways10748",
+      "where": [
+        [
+          "dmin",
+          "<=",
+          "shaft.diameter"
+        ],
+        [
+          "dmax",
+          ">=",
+          "shaft.diameter"
+        ]
+      ],
+      "when": [
+        [
+          "standard",
+          "=",
+          "10748"
+        ]
+      ]
+    },
+    {
+      "select": "key",
+      "table": "key10748",
+      "where": [
+        [
+          "b",
+          "=",
+          "k.b"
+        ],
+        [
+          "h",
+          "=",
+          "k.h"
+        ],
+        [
+          "l",
+          "<=",
+          "face.depth"
+        ]
+      ],
+      "order": [
+        "l",
+        "desc"
+      ],
+      "when": [
+        [
+          "standard",
+          "=",
+          "10748"
+        ]
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "id": "shaftSlot",
+      "type": "cut",
+      "title": "Паз вала",
+      "parts": "shaft",
+      "tool": {
+        "box": {
+          "x": [
+            "shaft.diameter / 2 - k.t1",
+            "shaft.diameter / 2 + 1 mm"
+          ],
+          "y": [
+            "-k.b / 2",
+            "k.b / 2"
+          ],
+          "z": [
+            "0 mm",
+            "key.l"
+          ]
+        }
+      }
+    },
+    {
+      "id": "hubSlot",
+      "type": "cut",
+      "title": "Паз ступицы",
+      "parts": "face",
+      "tool": {
+        "box": {
+          "x": [
+            "shaft.diameter / 2 - 1 mm",
+            "shaft.diameter / 2 + k.t2"
+          ],
+          "y": [
+            "-k.b / 2",
+            "k.b / 2"
+          ],
+          "z": [
+            "-1 mm",
+            "face.depth + 1 mm"
+          ]
+        }
+      }
+    },
+    {
+      "id": "key23360",
+      "type": "part",
+      "title": "Шпонка",
+      "table": "key23360",
+      "row": "key",
+      "x": "shaft.diameter / 2 - k.t1",
+      "y": "-k.b / 2",
+      "z": "0 mm",
+      "direction": "in",
+      "when": [
+        [
+          "standard",
+          "=",
+          "23360"
+        ]
+      ]
+    },
+    {
+      "id": "key10748",
+      "type": "part",
+      "title": "Шпонка",
+      "table": "key10748",
+      "row": "key",
+      "x": "shaft.diameter / 2 - k.t1",
+      "y": "-k.b / 2",
+      "z": "0 mm",
+      "direction": "in",
+      "when": [
+        [
+          "standard",
+          "=",
+          "10748"
+        ]
+      ]
+    }
+  ]
+}

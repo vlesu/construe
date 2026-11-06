@@ -1,0 +1,110 @@
+{
+  "format": "construe-solution",
+  "formatVersion": 1,
+  "id": "retaining-ring-shaft",
+  "title": "Кольцо упорное на валу",
+  "description": "Канавка на валу и пружинное упорное кольцо ГОСТ 13942 или ГОСТ 13940 по диаметру вала; канавка — на заданном расстоянии от торца (solutions.md §12.2).",
+  "section": [
+    "Детали соединений"
+  ],
+  "inputs": [
+    {
+      "id": "shaft",
+      "type": "cylinder",
+      "title": "Вал"
+    },
+    {
+      "id": "face",
+      "type": "face",
+      "title": "Торец вала"
+    }
+  ],
+  "frame": {
+    "face": "face",
+    "axis": "shaft"
+  },
+  "choices": [
+    {
+      "id": "ring",
+      "title": "Кольцо",
+      "type": "table",
+      "options": [
+        "ring13942",
+        "ring13940"
+      ],
+      "labels": [
+        "Эксцентрическое ГОСТ 13942",
+        "Концентрическое ГОСТ 13940"
+      ],
+      "default": "ring13942"
+    },
+    {
+      "id": "offset",
+      "title": "Расстояние от торца до канавки",
+      "type": "length",
+      "default": "10 mm"
+    }
+  ],
+  "tables": [
+    {
+      "id": "ring13942",
+      "title": "Кольцо ГОСТ 13942",
+      "library": "gost-13942.ring"
+    },
+    {
+      "id": "ring13940",
+      "title": "Кольцо ГОСТ 13940",
+      "library": "gost-13940.ring"
+    }
+  ],
+  "rules": [
+    {
+      "select": "r",
+      "table": "$ring",
+      "where": [
+        [
+          "d",
+          "=",
+          "shaft.diameter"
+        ]
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "id": "groove",
+      "type": "cut",
+      "title": "Канавка",
+      "parts": "shaft",
+      "tool": {
+        "revolve": [
+          [
+            "r.d1 / 2",
+            "offset"
+          ],
+          [
+            "shaft.diameter / 2 + 1 mm",
+            "offset"
+          ],
+          [
+            "shaft.diameter / 2 + 1 mm",
+            "offset + r.w"
+          ],
+          [
+            "r.d1 / 2",
+            "offset + r.w"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ring",
+      "type": "part",
+      "title": "Кольцо",
+      "table": "$ring",
+      "row": "r",
+      "z": "offset + (r.w - r.s) / 2",
+      "direction": "in"
+    }
+  ]
+}

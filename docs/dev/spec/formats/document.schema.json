@@ -1,0 +1,2164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://construe.local/schema/document/1",
+  "title": "construe document, schemaVersion 1",
+  "description": "Структура файла *.construe. Семантика полей — docs/dev/spec/document.md и sketch.md. Порядок свойств в каждом объекте схемы (для oneOf — в выбранном варианте) задаёт порядок ключей канонической формы (document.md §4.1). Проверки, требующие ссылок между объектами, — document.md §5.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "schemaVersion", "units", "counters", "variables", "elements"],
+  "properties": {
+    "format": { "const": "construe-document" },
+    "schemaVersion": { "const": 5 },
+    "savedBy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["app", "version"],
+      "properties": {
+        "app": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "pattern": "^[0-9]+[.][0-9]+[.][0-9]+$" }
+      }
+    },
+    "units": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["length", "angle"],
+      "properties": {
+        "length": { "enum": ["mm", "cm", "m", "in", "ft"] },
+        "angle": { "enum": ["deg", "rad"] }
+      }
+    },
+    "counters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["element", "feature", "entity", "constraint", "variable"],
+      "properties": {
+        "element": { "$ref": "#/$defs/counter" },
+        "feature": { "$ref": "#/$defs/counter" },
+        "entity": { "$ref": "#/$defs/counter" },
+        "constraint": { "$ref": "#/$defs/counter" },
+        "variable": { "$ref": "#/$defs/counter" },
+        "instance": { "$ref": "#/$defs/counter" },
+        "mate": { "$ref": "#/$defs/counter" },
+        "sheet": { "$ref": "#/$defs/counter" },
+        "view": { "$ref": "#/$defs/counter" },
+        "annotation": { "$ref": "#/$defs/counter" },
+        "dimension": { "$ref": "#/$defs/counter" },
+        "group": { "$ref": "#/$defs/counter" },
+        "table": { "$ref": "#/$defs/counter" },
+        "weld": { "$ref": "#/$defs/counter" },
+        "text": { "$ref": "#/$defs/counter" },
+        "pattern": { "$ref": "#/$defs/counter" },
+        "mark": { "$ref": "#/$defs/counter" },
+        "elementGroup": { "$ref": "#/$defs/counter" },
+        "construction": { "$ref": "#/$defs/counter" }
+      }
+    },
+    "variables": { "type": "array", "items": { "$ref": "#/$defs/variable" } },
+    "variantTables": { "type": "array", "items": { "$ref": "#/$defs/variantTable" }, "description": "таблицы вариантов (document.md §2.3а, S6-PARAM-003); пустой массив не пишется" },
+    "elementGroups": { "type": "array", "items": { "$ref": "#/$defs/elementGroup" }, "description": "группы элементов панели объектов (document.md §2.1а, FX10-TREE-001); пустой массив не пишется" },
+    "elements": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Элементы документа: деталь и тело, сборка, чертёж (document.md §2.4–§2.4г); активный после чтения — elements[0] (core-api.md).",
+      "items": { "oneOf": [ { "$ref": "#/$defs/partElement" }, { "$ref": "#/$defs/assemblyElement" }, { "$ref": "#/$defs/drawingElement" }, { "$ref": "#/$defs/specificationElement" } ] }
+    },
+    "libraryParts": { "type": "array", "items": { "$ref": "#/$defs/libraryPart" }, "description": "копии пакетов библиотеки стандартных деталей (document.md §2.13, library.md §6, S6-LIB-004); пустой массив не пишется" },
+    "solutions": { "type": "array", "items": { "$ref": "#/$defs/solutionCopy" }, "description": "копии пакетов решений (document.md §2.14, solutions.md §5, S6-SOL-002); пустой массив не пишется" }
+  },
+  "$defs": {
+    "color": { "type": "string", "pattern": "^#[0-9A-F]{6}$", "description": "цвет #RRGGBB, шестнадцатеричные цифры — заглавные" },
+    "material": {
+      "description": "назначенный материал — копия свойств (materials.md §3, S2-PART-002)",
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "density", "youngModulus", "poisson", "yieldStrength", "tensileStrength", "color"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+$" },
+        "name": { "type": "string", "minLength": 1 },
+        "density": { "type": "number", "exclusiveMinimum": 0 },
+        "youngModulus": { "type": "number", "exclusiveMinimum": 0 },
+        "poisson": { "type": "number", "minimum": 0, "exclusiveMaximum": 0.5 },
+        "yieldStrength": { "oneOf": [ { "type": "null" }, { "type": "number", "exclusiveMinimum": 0 } ] },
+        "tensileStrength": { "type": "number", "exclusiveMinimum": 0 },
+        "color": { "$ref": "#/$defs/color" }
+      }
+    },
+    "counter": { "type": "integer", "minimum": 1, "maximum": 9007199254740991, "description": "≤ 2^53 − 1 (document.md §2.2)" },
+    "expr": { "type": "string", "minLength": 1, "description": "выражение, см. expr.md" },
+    "elementGroupId": { "type": "string", "pattern": "^eg[1-9][0-9]{0,17}$" },
+    "elementGroup": {
+      "description": "группа элементов (document.md §2.1а, FX10-TREE-001)",
+      "type": "object", "additionalProperties": false, "required": ["id", "name"],
+      "properties": { "id": { "$ref": "#/$defs/elementGroupId" }, "name": { "type": "string", "minLength": 1 } }
+    },
+    "elementId": { "type": "string", "pattern": "^el[1-9][0-9]{0,17}$", "description": "числовая часть ≤ 18 цифр (< 2^63, document.md §2.2)" },
+    "featureId": { "type": "string", "pattern": "^f[1-9][0-9]{0,17}$" },
+    "entityId": { "type": "string", "pattern": "^e[1-9][0-9]{0,17}$" },
+    "constraintId": { "type": "string", "pattern": "^c[1-9][0-9]{0,17}$" },
+    "variableId": { "type": "string", "pattern": "^v[1-9][0-9]{0,17}$" },
+    "groupId": { "type": "string", "pattern": "^g[1-9][0-9]{0,17}$" },
+    "regionId": { "type": "string", "pattern": "^r:e[1-9][0-9]{0,17}(@[1-9][0-9]{0,8})?(,e[1-9][0-9]{0,17}(@[1-9][0-9]{0,8})?)*$" },
+    "topoName": { "type": "string", "minLength": 1, "description": "стабильное имя топологии, грамматика — naming.md" },
+    "datumPlane": { "enum": ["plane:front", "plane:top", "plane:right"] },
+    "datumAxis": { "enum": ["axis:x", "axis:y", "axis:z"] },
+
+    "variable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "expr"],
+      "properties": {
+        "id": { "$ref": "#/$defs/variableId" },
+        "name": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+        "type": { "enum": ["float", "int", "string", "list"], "description": "тип переменной (document.md §2.3, expr.md §5а); нет — float, float не пишется" },
+        "expr": { "type": "string", "description": "выражение (expr.md); у string — текст значения, может быть пустым" },
+        "values": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/expr" }, "description": "только у list: перечень значений" },
+        "comment": { "type": "string", "minLength": 1 }
+      }
+    },
+    "tableId": { "type": "string", "pattern": "^t[1-9][0-9]{0,17}$" },
+    "variantTable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "columns", "variants", "active"],
+      "properties": {
+        "id": { "$ref": "#/$defs/tableId" },
+        "name": { "type": "string", "minLength": 1 },
+        "columns": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/variableId" } },
+        "variants": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["name", "values"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "values": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "active": { "type": "string", "minLength": 1 }
+      }
+    },
+
+    "partElement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "name", "rollback", "features"],
+      "properties": {
+        "id": { "$ref": "#/$defs/elementId" },
+        "kind": { "enum": ["part", "body"] },
+        "name": { "type": "string" },
+        "group": { "$ref": "#/$defs/elementGroupId", "description": "группа элемента (document.md §2.1а, FX10-TREE-001)" },
+        "designation": { "type": "string", "minLength": 1 },
+        "material": { "$ref": "#/$defs/material" },
+        "color": { "$ref": "#/$defs/color" },
+        "transparent": { "const": true },
+        "sheetMetal": { "type": "boolean" },
+        "context": {
+          "type": "object", "additionalProperties": false, "required": ["assembly", "instance"],
+          "properties": {
+            "assembly": { "$ref": "#/$defs/elementId" },
+            "instance": { "$ref": "#/$defs/instanceId" },
+            "frozen": {
+              "type": "array",
+              "items": {
+                "type": "object", "additionalProperties": false, "required": ["instance", "position", "rotation", "element"],
+                "properties": {
+                  "instance": { "$ref": "#/$defs/instanceId" },
+                  "position": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" } },
+                  "rotation": { "type": "array", "minItems": 4, "maxItems": 4, "items": { "type": "number" } },
+                  "element": { "$ref": "#/$defs/partElement" }
+                }
+              }
+            }
+          }
+        },
+        "faceColors": {
+          "type": "array",
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["face", "color"],
+            "properties": { "face": { "$ref": "#/$defs/topoName" }, "color": { "$ref": "#/$defs/color" } }
+          }
+        },
+        "rollback": {
+          "description": "null — маркер в конце; \"start\" — перед первой фичей; ID фичи — маркер после неё (document.md §2.4)",
+          "oneOf": [ { "type": "null" }, { "const": "start" }, { "$ref": "#/$defs/featureId" } ]
+        },
+        "features": { "type": "array", "items": { "$ref": "#/$defs/feature" } },
+        "sections": { "type": "array", "items": { "$ref": "#/$defs/section" } },
+        "annotations": { "type": "array", "items": { "$ref": "#/$defs/annotation" } },
+        "restRoughness": {
+          "description": "шероховатость остальных поверхностей (document.md §2.4, pmi.md §2.1а, FX5-PMI-001); parameter и value — оба или ни одного (проверка document.md §5)",
+          "type": "object", "additionalProperties": false, "required": ["sign"],
+          "properties": {
+            "sign": { "enum": ["any", "removal", "noRemoval"] },
+            "parameter": { "enum": ["Ra", "Rz", "Rmax"] },
+            "value": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        }
+      }
+    },
+
+    "annotationId": { "type": "string", "pattern": "^a[1-9][0-9]{0,17}$" },
+    "datumLetter": { "type": "string", "minLength": 1, "description": "буква базы: одна-две заглавные латинские A–Z или русские А–Я, Ё (pmi.md §2.4); состав проверяется семантически (document.md §5) — шаблоны схемы работают с байтами UTF-8" },
+    "annotation": {
+      "description": "Обозначение технических требований детали (document.md §2.4д, pmi.md §2); вариант — по type",
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "face", "sign"],
+          "properties": {
+            "id": { "$ref": "#/$defs/annotationId" },
+            "type": { "const": "roughness" },
+            "face": { "$ref": "#/$defs/topoName" },
+            "at": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" }, "description": "точка щелчка на грани, мм, координаты детали (document.md §2.4д, FX1-FEAT-005)" },
+            "labelOffset": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" }, "description": "положение знака относительно точки крепления, мм, координаты детали (document.md §2.4д, FX12-PMI-002)" },
+            "sign": { "enum": ["any", "removal", "noRemoval"] },
+            "parameter": { "enum": ["Ra", "Rz", "Rmax"] },
+            "value": { "type": "number", "exclusiveMinimum": 0 },
+            "method": { "type": "string", "minLength": 1 },
+            "lay": { "enum": ["parallel", "perpendicular", "crossed", "multi", "circular", "radial", "particulate"] }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type"],
+          "properties": {
+            "id": { "$ref": "#/$defs/annotationId" },
+            "type": { "const": "fit" },
+            "dimension": {
+              "type": "object", "additionalProperties": false, "required": ["sketch", "constraint"],
+              "properties": { "sketch": { "$ref": "#/$defs/featureId" }, "constraint": { "$ref": "#/$defs/constraintId" } }
+            },
+            "face": { "$ref": "#/$defs/topoName" },
+            "at": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" }, "description": "точка щелчка на грани, мм, координаты детали (document.md §2.4д, FX1-FEAT-005)" },
+            "labelOffset": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" }, "description": "положение знака относительно точки крепления, мм, координаты детали (document.md §2.4д, FX12-PMI-002)" },
+            "field": { "type": "string", "pattern": "^(A|B|C|CD|D|E|EF|F|FG|G|H|JS|J|K|M|N|P|R|S|T|U|V|X|Y|Z|ZA|ZB|ZC|a|b|c|cd|d|e|ef|f|fg|g|h|js|j|k|m|n|p|r|s|t|u|v|x|y|z|za|zb|zc)[1-9][0-9]?$" },
+            "showDeviations": { "const": true },
+            "upper": { "type": "number" },
+            "lower": { "type": "number" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "face", "characteristic", "value"],
+          "properties": {
+            "id": { "$ref": "#/$defs/annotationId" },
+            "type": { "const": "geometric" },
+            "face": { "$ref": "#/$defs/topoName" },
+            "at": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" }, "description": "точка щелчка на грани, мм, координаты детали (document.md §2.4д, FX1-FEAT-005)" },
+            "labelOffset": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" }, "description": "положение знака относительно точки крепления, мм, координаты детали (document.md §2.4д, FX12-PMI-002)" },
+            "characteristic": { "enum": ["straightness", "flatness", "roundness", "cylindricity", "parallelism", "perpendicularity", "angularity", "position", "coaxiality", "symmetry", "radialRunout", "axialRunout", "totalRadialRunout"] },
+            "value": { "type": "number", "exclusiveMinimum": 0 },
+            "diameter": { "const": true },
+            "material": { "enum": ["M", "L"] },
+            "datums": { "type": "array", "minItems": 1, "maxItems": 3, "items": { "$ref": "#/$defs/datumLetter" } }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "face", "letter"],
+          "properties": {
+            "id": { "$ref": "#/$defs/annotationId" },
+            "type": { "const": "datum" },
+            "face": { "$ref": "#/$defs/topoName" },
+            "at": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" }, "description": "точка щелчка на грани, мм, координаты детали (document.md §2.4д, FX1-FEAT-005)" },
+            "labelOffset": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" }, "description": "положение знака относительно точки крепления, мм, координаты детали (document.md §2.4д, FX12-PMI-002)" },
+            "letter": { "$ref": "#/$defs/datumLetter" }
+          }
+        }
+      ]
+    },
+
+    "instanceId": { "type": "string", "pattern": "^i[1-9][0-9]{0,17}$" },
+    "drawingElement": {
+      "description": "Чертёж (document.md §2.4г, drawing.md)",
+      "type": "object", "additionalProperties": false, "required": ["id", "kind", "name", "sheets"],
+      "properties": {
+        "id": { "$ref": "#/$defs/elementId" },
+        "kind": { "const": "drawing" },
+        "name": { "type": "string" },
+        "group": { "$ref": "#/$defs/elementGroupId", "description": "группа элемента (document.md §2.1а, FX10-TREE-001)" },
+        "nameManual": { "const": true, "description": "имя задано пользователем (drawing.md §2.6, FX9-DRW-003)" },
+        "designation": { "type": "string", "minLength": 1 },
+        "standard": { "enum": ["gost", "iso", "cut"], "description": "стандарт чертежа; нет — ГОСТ; cut — план реза (drawing.md §2.5, §2.7; S3-DRW-008, FX11-CUT-001)" },
+        "projection": { "enum": ["first", "third"], "description": "метод проекции; нет — первый угол; действует только у ISO (drawing.md §2.5)" },
+        "dismissedMarks": { "type": "array", "items": { "$ref": "#/$defs/dismissedMark" }, "description": "обозначения модели, удалённые пользователем (drawing.md §6.25, FX9-DRW-008)" },
+        "sheets": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sheet" } }
+      }
+    },
+    "specificationElement": {
+      "description": "Спецификация сборки (document.md §2.4е, specification.md)",
+      "type": "object", "additionalProperties": false, "required": ["id", "kind", "name", "assembly"],
+      "properties": {
+        "id": { "$ref": "#/$defs/elementId" },
+        "kind": { "const": "specification" },
+        "name": { "type": "string" },
+        "group": { "$ref": "#/$defs/elementGroupId", "description": "группа элемента (document.md §2.1а, FX10-TREE-001)" },
+        "designation": { "type": "string", "minLength": 1 },
+        "assembly": {
+          "type": "object", "additionalProperties": false, "required": ["element"],
+          "properties": { "element": { "$ref": "#/$defs/elementId" } }
+        },
+        "titleBlock": { "type": "object", "additionalProperties": { "type": "string" } },
+        "rows": { "type": "array", "items": { "$ref": "#/$defs/specRowOverride" } },
+        "extraRows": { "type": "array", "items": { "$ref": "#/$defs/specExtraRow" } }
+      }
+    },
+    "specSection": { "enum": ["documentation", "complexes", "assemblies", "parts", "software", "standard", "other", "materials", "kits"] },
+    "specPosition": { "type": "integer", "minimum": 1, "maximum": 999999 },
+    "specRowOverride": {
+      "description": "Переопределение автоматической строки спецификации (specification.md §3.2)",
+      "type": "object", "additionalProperties": false, "required": ["key"],
+      "properties": {
+        "key": { "type": "string", "minLength": 1 },
+        "section": { "$ref": "#/$defs/specSection" },
+        "position": { "$ref": "#/$defs/specPosition" },
+        "note": { "type": "string" },
+        "format": { "type": "string" },
+        "zone": { "type": "string" }
+      }
+    },
+    "specExtraRow": {
+      "description": "Ручная строка спецификации (specification.md §3.3)",
+      "type": "object", "additionalProperties": false, "required": ["section"],
+      "properties": {
+        "section": { "$ref": "#/$defs/specSection" },
+        "format": { "type": "string" },
+        "zone": { "type": "string" },
+        "position": { "$ref": "#/$defs/specPosition" },
+        "designation": { "type": "string" },
+        "name": { "type": "string" },
+        "quantity": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    },
+    "drawingScale": { "type": "string", "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?:(0|[1-9][0-9]*)(\\.[0-9]+)?$", "description": "масштаб a:b (drawing.md §2.2); a, b > 0 — проверка семантики" },
+    "sheet": {
+      "description": "Лист чертежа (document.md §2.4г)",
+      "type": "object", "additionalProperties": false, "required": ["id", "name", "format", "orientation", "scale"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^sh[1-9][0-9]{0,17}$" },
+        "name": { "type": "string" },
+        "format": { "enum": ["A0", "A1", "A2", "A3", "A4", "A0x2", "A0x3", "A1x3", "A1x4", "A2x3", "A2x4", "A2x5", "A3x3", "A3x4", "A3x5", "A3x6", "A3x7", "A4x3", "A4x4", "A4x5", "A4x6", "A4x7", "A4x8", "A4x9"] },
+        "orientation": { "enum": ["portrait", "landscape"] },
+        "scale": { "$ref": "#/$defs/drawingScale" },
+        "scaleManual": { "const": true, "description": "масштаб задан пользователем — «3 проекции» его не меняют (drawing.md §6.2б, FX10-DRW-001)" },
+        "titleBlock": { "type": "object", "additionalProperties": { "type": "string" } },
+        "views": { "type": "array", "items": { "oneOf": [ { "$ref": "#/$defs/baseView" }, { "$ref": "#/$defs/projectedView" }, { "$ref": "#/$defs/sectionView" }, { "$ref": "#/$defs/detailView" } ] } },
+        "dimensions": { "type": "array", "items": { "oneOf": [ { "$ref": "#/$defs/linearDimension" }, { "$ref": "#/$defs/diameterDimension" }, { "$ref": "#/$defs/radiusDimension" }, { "$ref": "#/$defs/angleDimension" }, { "$ref": "#/$defs/arcLengthDimension" }, { "$ref": "#/$defs/pathLengthDimension" } ] } },
+        "texts": { "type": "array", "items": { "$ref": "#/$defs/sheetText" } },
+        "marks": { "type": "array", "items": { "$ref": "#/$defs/sheetMark" } },
+        "constructions": { "type": "array", "items": { "$ref": "#/$defs/sheetConstruction" } }
+      }
+    },
+    "sheetConstruction": {
+      "description": "Дополнительное построение на виде листа (document.md §2.4г, drawing.md §6.29, FX14-DRW-006); число точек по виду, radius — проверка семантики",
+      "type": "object", "additionalProperties": false, "required": ["id", "kind", "view", "points"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^cs[1-9][0-9]{0,17}$" },
+        "kind": { "enum": ["line", "circle", "arc", "pitchCircle", "axis"] },
+        "view": { "$ref": "#/$defs/viewId" },
+        "points": { "type": "array", "minItems": 1, "maxItems": 64, "items": { "$ref": "#/$defs/constructionPoint" } },
+        "radius": { "type": "number", "exclusiveMinimum": 0 },
+        "line": { "enum": ["solid", "dashDot", "dashed"] }
+      }
+    },
+    "constructionPoint": {
+      "description": "Точка построения (drawing.md §6.29): xy — координаты вида, мм модели; bind — привязка к модели вида (нет — свободная точка)",
+      "type": "object", "additionalProperties": false, "required": ["xy"],
+      "properties": { "xy": { "$ref": "#/$defs/constructionXY" }, "bind": { "$ref": "#/$defs/constructionBind" } }
+    },
+    "constructionBind": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": false, "required": ["vertex"], "properties": { "vertex": { "type": "string", "minLength": 1 } } },
+        { "type": "object", "additionalProperties": false, "required": ["center"], "properties": { "center": { "type": "string", "minLength": 1 } } },
+        { "type": "object", "additionalProperties": false, "required": ["edge"], "properties": { "edge": { "type": "string", "minLength": 1 }, "at": { "type": "number", "minimum": 0, "maximum": 1 } } }
+      ]
+    },
+    "constructionXY": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number" } },
+    "markKind": { "enum": ["annotation", "weld", "restRoughness", "balloon", "partsList"] },
+    "sheetMark": {
+      "description": "Обозначение на листе (document.md §2.4г, drawing.md §6.25, FX9-DRW-008); source/local/def — проверка семантики",
+      "type": "object", "additionalProperties": false, "required": ["id", "kind"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^mk[1-9][0-9]{0,17}$" },
+        "kind": { "$ref": "#/$defs/markKind" },
+        "view": { "type": "string", "minLength": 1 },
+        "source": { "type": "string", "minLength": 1 },
+        "position": { "$ref": "#/$defs/sheetPoint" },
+        "local": { "const": true },
+        "def": { "type": "object" }
+      }
+    },
+    "dismissedMark": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "model"],
+      "properties": {
+        "kind": { "$ref": "#/$defs/markKind" },
+        "model": { "$ref": "#/$defs/elementId" },
+        "source": { "type": "string", "minLength": 1 }
+      }
+    },
+    "sheetText": {
+      "description": "Текст на листе (document.md §2.4г, drawing.md §6.23, FX7-DRW-006)",
+      "type": "object", "additionalProperties": false, "required": ["id", "position", "text", "height"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^tx[1-9][0-9]{0,17}$" },
+        "position": { "$ref": "#/$defs/sheetPoint" },
+        "text": { "type": "string", "minLength": 1 },
+        "height": { "type": "number", "exclusiveMinimum": 0 },
+        "angle": { "type": "number" },
+        "font": { "oneOf": [ { "enum": ["gost", "iso"] }, { "type": "string", "pattern": "^[^/\\\\]+\\.[tT][tT][fF]$" } ], "description": "\"gost\", \"iso\" — шрифт чертежа по стандарту; иначе имя файла шрифта библиотеки *.ttf без пути (drawing.md §6.23, FX10-DRW-004)" },
+        "styles": {
+          "description": "начертания фрагментов (drawing.md §6.23, FX9-DRW-006): кодовые точки [from, to) строки text, как у надписи эскиза",
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["from", "to"],
+            "properties": {
+              "from": { "type": "integer", "minimum": 0 }, "to": { "type": "integer", "minimum": 1 },
+              "bold": { "const": true }, "italic": { "const": true }, "underline": { "const": true }
+            }
+          }
+        },
+        "boxWidth": { "description": "ширина рамки, мм листа: перенос строк по словам (drawing.md §6.23, FX9-DRW-007)", "type": "number", "exclusiveMinimum": 0 },
+        "boxHeight": { "description": "высота рамки, мм листа (не меньше содержимого; FX9-DRW-007)", "type": "number", "exclusiveMinimum": 0 },
+        "aligns": {
+          "description": "выравнивание абзацев (строк между \\n) по номеру; нет элемента — влево (drawing.md §6.23, S7F-DRW-002)",
+          "type": "array", "minItems": 1, "items": { "enum": ["left", "center", "right"] }
+        }
+      }
+    },
+    "dimensionId": { "type": "string", "pattern": "^dim[1-9][0-9]{0,17}$" },
+    "dimEdgeRef": {
+      "type": "object", "additionalProperties": false, "required": ["edge"],
+      "properties": { "edge": { "type": "string", "minLength": 1 } }
+    },
+    "dimVertexRef": {
+      "type": "object", "additionalProperties": false, "required": ["vertex"],
+      "properties": { "vertex": { "type": "string", "minLength": 1 } }
+    },
+    "dimSilhouetteRef": {
+      "description": "Силуэт (контурная линия) грани на виде (drawing.md §6а.2, FX3-DRW-002)",
+      "type": "object", "additionalProperties": false, "required": ["silhouette"],
+      "properties": { "silhouette": { "type": "string", "minLength": 1 }, "side": { "enum": [1, -1] }, "arc": { "enum": ["near", "far"] } }
+    },
+    "dimCutRef": {
+      "description": "Линия среза грани секущей плоскостью разреза (drawing.md §6а.2, FX3-DRW-002)",
+      "type": "object", "additionalProperties": false, "required": ["cut"],
+      "properties": { "cut": { "type": "string", "minLength": 1 }, "side": { "enum": [1, -1] }, "arc": { "enum": ["near", "far"] } }
+    },
+    "dimEdgeArcRef": {
+      "description": "Ребро линейного размера; arc — до ближней или дальней точки окружности (drawing.md §6а.4, FX3-DRW-004)",
+      "type": "object", "additionalProperties": false, "required": ["edge"],
+      "properties": { "edge": { "type": "string", "minLength": 1 }, "arc": { "enum": ["near", "far"] } }
+    },
+    "dimAxisRef": {
+      "description": "Ось цилиндрической или конической поверхности грани, видимая сбоку (drawing.md §6а.2, FX9-DRW-001)",
+      "type": "object", "additionalProperties": false, "required": ["axis"],
+      "properties": { "axis": { "type": "string", "minLength": 1 } }
+    },
+    "dimCenterRef": {
+      "description": "Центр окружности — ось поверхности грани вдоль направления взгляда (drawing.md §6а.2, FX9-DRW-001)",
+      "type": "object", "additionalProperties": false, "required": ["center"],
+      "properties": { "center": { "type": "string", "minLength": 1 } }
+    },
+    "featureTolerances": {
+      "description": "Допуски размеров фичи (document.md §2.6, FX12-PMI-007): путь параметра → допуск, как у обозначения fit",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object", "additionalProperties": false,
+        "properties": { "field": { "type": "string", "minLength": 1 }, "showDeviations": { "type": "boolean" }, "upper": { "type": "number" }, "lower": { "type": "number" } }
+      }
+    },
+    "dimSource": {
+      "description": "Размер фичи, поставленный из модели (document.md §2.4г, drawing.md §6а.3, FX12-PMI-007)",
+      "type": "object", "additionalProperties": false, "required": ["feature", "param"],
+      "properties": { "feature": { "$ref": "#/$defs/featureId" }, "param": { "type": "string", "minLength": 1 } }
+    },
+    "dimLocalFit": {
+      "description": "Допуск, заданный в самом чертеже (FX9-DRW-009, drawing.md §6а.3): поле допуска и/или отклонения; от модели отвязан",
+      "type": "object", "additionalProperties": false,
+      "properties": { "field": { "type": "string", "minLength": 1 }, "upper": { "type": "number" }, "lower": { "type": "number" } }
+    },
+    "dimConstructionRef": {
+      "description": "Дополнительное построение того же вида (drawing.md §6.29, FX14-DRW-006)",
+      "type": "object", "additionalProperties": false, "required": ["construction"],
+      "properties": { "construction": { "type": "string", "pattern": "^cs[1-9][0-9]{0,17}$" } }
+    },
+    "dimRef": { "oneOf": [ { "$ref": "#/$defs/dimEdgeArcRef" }, { "$ref": "#/$defs/dimVertexRef" }, { "$ref": "#/$defs/dimSilhouetteRef" }, { "$ref": "#/$defs/dimCutRef" }, { "$ref": "#/$defs/dimAxisRef" }, { "$ref": "#/$defs/dimCenterRef" }, { "$ref": "#/$defs/dimConstructionRef" } ] },
+    "dimCurveRef": { "oneOf": [ { "$ref": "#/$defs/dimEdgeRef" }, { "$ref": "#/$defs/dimSilhouetteRef" }, { "$ref": "#/$defs/dimCutRef" }, { "$ref": "#/$defs/dimConstructionRef" } ] },
+    "linearDimension": {
+      "description": "Линейный размер (document.md §2.4г, drawing.md §6а)",
+      "type": "object", "additionalProperties": false, "required": ["id", "kind", "orientation", "view", "refs", "offset"],
+      "properties": {
+        "id": { "$ref": "#/$defs/dimensionId" },
+        "kind": { "const": "linear" },
+        "orientation": { "enum": ["horizontal", "vertical", "aligned"] },
+        "view": { "$ref": "#/$defs/viewId" },
+        "refs": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "$ref": "#/$defs/dimRef" } },
+        "offset": { "type": "number" },
+        "prefix": { "type": "string" },
+        "text": { "type": "string" },
+        "suffix": { "type": "string" },
+        "tolerance": { "enum": ["hide", "field", "fieldDeviations", "deviations"] },
+        "fit": { "$ref": "#/$defs/dimLocalFit" },
+        "source": { "$ref": "#/$defs/dimSource" },
+        "break": { "const": true }
+      }
+    },
+    "diameterDimension": {
+      "description": "Размер диаметра (document.md §2.4г, drawing.md §6а)",
+      "type": "object", "additionalProperties": false, "required": ["id", "kind", "view", "refs", "offset", "angle"],
+      "properties": {
+        "id": { "$ref": "#/$defs/dimensionId" },
+        "kind": { "const": "diameter" },
+        "view": { "$ref": "#/$defs/viewId" },
+        "refs": { "type": "array", "minItems": 1, "maxItems": 1, "items": { "$ref": "#/$defs/dimCurveRef" } },
+        "offset": { "type": "number" },
+        "angle": { "type": "number" },
+        "prefix": { "type": "string" },
+        "text": { "type": "string" },
+        "suffix": { "type": "string" },
+        "tolerance": { "enum": ["hide", "field", "fieldDeviations", "deviations"] },
+        "fit": { "$ref": "#/$defs/dimLocalFit" },
+        "source": { "$ref": "#/$defs/dimSource" },
+        "break": { "const": true }
+      }
+    },
+    "radiusDimension": {
+      "description": "Размер радиуса (document.md §2.4г, drawing.md §6а)",
+      "type": "object", "additionalProperties": false, "required": ["id", "kind", "view", "refs", "offset", "angle"],
+      "properties": {
+        "id": { "$ref": "#/$defs/dimensionId" },
+        "kind": { "const": "radius" },
+        "view": { "$ref": "#/$defs/viewId" },
+        "refs": { "type": "array", "minItems": 1, "maxItems": 1, "items": { "$ref": "#/$defs/dimCurveRef" } },
+        "offset": { "type": "number" },
+        "angle": { "type": "number" },
+        "prefix": { "type": "string" },
+        "text": { "type": "string" },
+        "suffix": { "type": "string" },
+        "tolerance": { "enum": ["hide", "field", "fieldDeviations", "deviations"] },
+        "fit": { "$ref": "#/$defs/dimLocalFit" },
+        "source": { "$ref": "#/$defs/dimSource" }
+      }
+    },
+    "angleDimension": {
+      "description": "Угловой размер (document.md §2.4г, drawing.md §6а)",
+      "type": "object", "additionalProperties": false, "required": ["id", "kind", "view", "refs", "offset", "angle"],
+      "properties": {
+        "id": { "$ref": "#/$defs/dimensionId" },
+        "kind": { "const": "angle" },
+        "view": { "$ref": "#/$defs/viewId" },
+        "refs": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "$ref": "#/$defs/dimCurveRef" } },
+        "offset": { "type": "number", "exclusiveMinimum": 0 },
+        "angle": { "type": "number" },
+        "prefix": { "type": "string" },
+        "text": { "type": "string" },
+        "suffix": { "type": "string" },
+        "tolerance": { "enum": ["hide", "field", "fieldDeviations", "deviations"] },
+        "fit": { "$ref": "#/$defs/dimLocalFit" },
+        "source": { "$ref": "#/$defs/dimSource" }
+      }
+    },
+    "arcLengthDimension": {
+      "description": "Длина дуги (document.md §2.4г, drawing.md §6а, FX2-DRW-001)",
+      "type": "object", "additionalProperties": false, "required": ["id", "kind", "view", "refs", "offset"],
+      "properties": {
+        "id": { "$ref": "#/$defs/dimensionId" },
+        "kind": { "const": "arcLength" },
+        "view": { "$ref": "#/$defs/viewId" },
+        "refs": { "type": "array", "minItems": 1, "maxItems": 1, "items": { "$ref": "#/$defs/dimEdgeRef" } },
+        "offset": { "type": "number" },
+        "prefix": { "type": "string" },
+        "text": { "type": "string" },
+        "suffix": { "type": "string" },
+        "tolerance": { "enum": ["hide", "field", "fieldDeviations", "deviations"] },
+        "fit": { "$ref": "#/$defs/dimLocalFit" },
+        "source": { "$ref": "#/$defs/dimSource" }
+      }
+    },
+    "pathLengthDimension": {
+      "description": "Длина пути — сумма длин рёбер (document.md §2.4г, drawing.md §6а, FX3-DRW-004)",
+      "type": "object", "additionalProperties": false, "required": ["id", "kind", "view", "refs", "offset", "angle"],
+      "properties": {
+        "id": { "$ref": "#/$defs/dimensionId" },
+        "kind": { "const": "pathLength" },
+        "view": { "$ref": "#/$defs/viewId" },
+        "refs": { "type": "array", "minItems": 1, "maxItems": 64, "items": { "$ref": "#/$defs/dimEdgeRef" } },
+        "offset": { "type": "number" },
+        "angle": { "type": "number" },
+        "prefix": { "type": "string" },
+        "text": { "type": "string" },
+        "suffix": { "type": "string" },
+        "tolerance": { "enum": ["hide", "field", "fieldDeviations", "deviations"] },
+        "fit": { "$ref": "#/$defs/dimLocalFit" },
+        "source": { "$ref": "#/$defs/dimSource" }
+      }
+    },
+    "viewId": { "type": "string", "pattern": "^dv[1-9][0-9]{0,17}$" },
+    "sheetPoint": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number" } },
+    "baseView": {
+      "description": "Главный вид модели (drawing.md §2.3)",
+      "type": "object", "additionalProperties": false, "required": ["id", "name", "kind", "ref", "orientation", "position"],
+      "properties": {
+        "id": { "$ref": "#/$defs/viewId" },
+        "name": { "type": "string" },
+        "kind": { "const": "base" },
+        "ref": {
+          "type": "object", "additionalProperties": false, "required": ["element"],
+          "properties": { "file": { "type": "string", "minLength": 1 }, "element": { "$ref": "#/$defs/elementId" } }
+        },
+        "orientation": { "enum": ["front", "back", "top", "bottom", "left", "right", "iso", "plane"] },
+        "plane": { "$ref": "#/$defs/planeRef", "description": "orientation plane: проекция на плоскость модели (drawing.md §6.1, FX7-DRW-007)" },
+        "normal": { "$ref": "#/$defs/unitVector3" },
+        "up": { "$ref": "#/$defs/unitVector3" },
+        "position": { "$ref": "#/$defs/sheetPoint" },
+        "scale": { "$ref": "#/$defs/drawingScale" },
+        "hiddenLines": { "const": true },
+        "tangentEdges": { "const": true },
+        "centerLines": { "const": false },
+        "pmi": { "const": false },
+        "display": { "const": "render", "description": "закрашенное изображение (drawing.md §6.22, FX7-DRW-007)" },
+        "flat": { "const": true, "description": "развёртка листовой детали (drawing.md §6.21, FX7-DRW-008)" },
+        "exploded": { "const": true, "description": "сборка в разнесённом виде (drawing.md §6.24, FX7-ASM-005)" },
+        "sections": {
+          "description": "разрезы модели, с которыми показан вид (drawing.md §6.26, S7F-DRW-005): ID разрезов детали или сборки; нет поля — включённые в модели",
+          "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "unitVector3": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" } },
+    "projectedView": {
+      "description": "Проекционный вид (drawing.md §2.3)",
+      "type": "object", "additionalProperties": false, "required": ["id", "name", "kind", "parent", "direction", "position"],
+      "properties": {
+        "id": { "$ref": "#/$defs/viewId" },
+        "name": { "type": "string" },
+        "kind": { "const": "projected" },
+        "parent": { "$ref": "#/$defs/viewId" },
+        "direction": { "enum": ["top", "bottom", "left", "right"] },
+        "position": { "$ref": "#/$defs/sheetPoint" },
+        "scale": { "$ref": "#/$defs/drawingScale" },
+        "hiddenLines": { "const": true },
+        "tangentEdges": { "const": true },
+        "centerLines": { "const": false },
+        "pmi": { "const": false },
+        "display": { "const": "render" },
+        "sections": {
+          "description": "свой список разрезов модели проекционного вида (drawing.md §6.26, FX10-DRW-003); нет поля — как у вида-родителя",
+          "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "sectionBindPoint": {
+      "description": "Точка привязки линии разреза к виду-родителю (drawing.md §6.11, FX9-DRW-002): вершина, центр окружности (грань), середина ребра или точка на ребре (at — доля от начала ребра); t — параметр точки вдоль линии (0 — первая точка, 1 — вторая)",
+      "type": "object", "additionalProperties": false, "required": ["t"],
+      "properties": {
+        "vertex": { "type": "string", "minLength": 1 },
+        "center": { "type": "string", "minLength": 1 },
+        "mid": { "type": "string", "minLength": 1 },
+        "edge": { "type": "string", "minLength": 1 },
+        "at": { "type": "number", "minimum": 0, "maximum": 1 },
+        "t": { "type": "number" }
+      }
+    },
+    "sectionLineBind": {
+      "description": "Привязка линии разреза к элементам вида-родителя по стабильным именам (drawing.md §6.11, FX9-DRW-002): по оси грани или 1–2 точкам",
+      "oneOf": [
+        { "type": "object", "additionalProperties": false, "required": ["axis"], "properties": { "axis": { "type": "string", "minLength": 1 } } },
+        { "type": "object", "additionalProperties": false, "required": ["points"],
+          "properties": { "points": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "$ref": "#/$defs/sectionBindPoint" } } } }
+      ]
+    },
+    "sectionView": {
+      "description": "Разрез или сечение по линии на виде-родителе (drawing.md §6.11, S3-DRW-005)",
+      "type": "object", "additionalProperties": false, "required": ["id", "name", "kind", "parent", "line", "position"],
+      "properties": {
+        "id": { "$ref": "#/$defs/viewId" },
+        "name": { "type": "string" },
+        "kind": { "const": "section" },
+        "parent": { "$ref": "#/$defs/viewId" },
+        "line": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/sheetPoint" } },
+        "lineBind": { "$ref": "#/$defs/sectionLineBind" },
+        "flip": { "const": true },
+        "sectionOnly": { "const": true },
+        "position": { "$ref": "#/$defs/sheetPoint" },
+        "scale": { "$ref": "#/$defs/drawingScale" },
+        "hiddenLines": { "const": true },
+        "tangentEdges": { "const": true },
+        "centerLines": { "const": false },
+        "pmi": { "const": false }
+      }
+    },
+    "detailView": {
+      "description": "Выносной элемент: окружность на виде-родителе в своём масштабе (drawing.md §6.12, S3-DRW-005)",
+      "type": "object", "additionalProperties": false, "required": ["id", "name", "kind", "parent", "center", "radius", "position", "scale"],
+      "properties": {
+        "id": { "$ref": "#/$defs/viewId" },
+        "name": { "type": "string" },
+        "kind": { "const": "detail" },
+        "parent": { "$ref": "#/$defs/viewId" },
+        "center": { "$ref": "#/$defs/sheetPoint" },
+        "radius": { "type": "number", "exclusiveMinimum": 0 },
+        "position": { "$ref": "#/$defs/sheetPoint" },
+        "scale": { "$ref": "#/$defs/drawingScale" },
+        "hiddenLines": { "const": true },
+        "tangentEdges": { "const": true },
+        "centerLines": { "const": false }
+      }
+    },
+    "assemblyElement": {
+      "description": "Сборка (document.md §2.4б, assembly.md)",
+      "type": "object", "additionalProperties": false, "required": ["id", "kind", "name", "instances"],
+      "properties": {
+        "id": { "$ref": "#/$defs/elementId" },
+        "kind": { "const": "assembly" },
+        "name": { "type": "string" },
+        "group": { "$ref": "#/$defs/elementGroupId", "description": "группа элемента (document.md §2.1а, FX10-TREE-001)" },
+        "designation": { "type": "string", "minLength": 1 },
+        "instances": { "type": "array", "items": { "$ref": "#/$defs/instance" } },
+        "features": { "type": "array", "items": { "$ref": "#/$defs/feature" } },
+        "mates": { "type": "array", "items": { "$ref": "#/$defs/mate" } },
+        "sections": { "type": "array", "items": { "$ref": "#/$defs/section" } },
+        "welds": { "type": "array", "items": { "$ref": "#/$defs/weld" } },
+        "annotations": { "description": "обозначения технических требований на гранях экземпляров (document.md §2.4б, FX12-PMI-003): face — «<путь экземпляра>/<имя грани>»; без допусков размеров эскиза", "type": "array", "items": { "$ref": "#/$defs/annotation" } },
+        "patterns": { "type": "array", "items": { "$ref": "#/$defs/instancePattern" } },
+        "exploded": { "$ref": "#/$defs/exploded" },
+        "rollback": {
+          "description": "откат фич сборки (document.md §2.4б, FX9-TREE-002): \"start\" — перед первой фичей; ID фичи — маркер после неё; нет — в конце",
+          "oneOf": [ { "const": "start" }, { "$ref": "#/$defs/featureId" } ]
+        }
+      }
+    },
+    "exploded": {
+      "description": "разнесённый вид сборки (document.md §2.4б, assembly.md §7д, FX7-ASM-005)",
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "active": { "const": true },
+        "placements": {
+          "type": "array",
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["instance", "position", "rotation"],
+            "properties": {
+              "instance": {
+                "description": "ID экземпляра верхнего уровня или путь производного экземпляра соединения <ID фичи>/<id выхода> (ручное положение крепежа, assembly.md §7д.5, FX10-ASM-004)",
+                "oneOf": [ { "$ref": "#/$defs/instanceId" }, { "type": "string", "pattern": "^f[1-9][0-9]{0,17}/[A-Za-z][A-Za-z0-9_]{0,63}$" } ]
+              },
+              "position": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" } },
+              "rotation": { "type": "array", "minItems": 4, "maxItems": 4, "items": { "type": "number" } }
+            }
+          }
+        },
+        "suppressedMates": { "type": "array", "items": { "type": "string", "pattern": "^m[1-9][0-9]{0,17}$" } },
+        "knownMates": { "type": "array", "items": { "type": "string", "pattern": "^m[1-9][0-9]{0,17}$" } }
+      }
+    },
+    "instancePatternId": { "type": "string", "pattern": "^ip[1-9][0-9]{0,17}$" },
+    "instancePatternDirection": {
+      "type": "object", "additionalProperties": false, "required": ["ref", "count", "spacing"],
+      "properties": {
+        "ref": { "type": "string", "minLength": 1 }, "count": { "$ref": "#/$defs/expr" }, "spacing": { "$ref": "#/$defs/expr" }, "reverse": { "const": true }
+      }
+    },
+    "instancePattern": {
+      "description": "массив экземпляров сборки (document.md §2.4б, assembly.md §7е, FX7-ASM-007)",
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "name", "source", "mode", "directions"],
+          "properties": {
+            "id": { "$ref": "#/$defs/instancePatternId" }, "name": { "type": "string" }, "source": { "$ref": "#/$defs/instanceId" },
+            "mode": { "const": "linear" },
+            "directions": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "$ref": "#/$defs/instancePatternDirection" } },
+            "suppressed": { "const": true }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "name", "source", "mode", "axis", "count", "angle"],
+          "properties": {
+            "id": { "$ref": "#/$defs/instancePatternId" }, "name": { "type": "string" }, "source": { "$ref": "#/$defs/instanceId" },
+            "mode": { "const": "circular" },
+            "axis": { "type": "string", "minLength": 1 }, "count": { "$ref": "#/$defs/expr" }, "angle": { "$ref": "#/$defs/expr" },
+            "reverse": { "const": true }, "suppressed": { "const": true }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "name", "source", "mode", "feature"],
+          "properties": {
+            "id": { "$ref": "#/$defs/instancePatternId" }, "name": { "type": "string" }, "source": { "$ref": "#/$defs/instanceId" },
+            "mode": { "const": "feature" },
+            "feature": {
+              "type": "object", "additionalProperties": false, "required": ["instance", "feature"],
+              "properties": { "instance": { "type": "string", "minLength": 1 }, "feature": { "$ref": "#/$defs/featureId" } }
+            },
+            "suppressed": { "const": true }
+          }
+        }
+      ]
+    },
+    "weld": {
+      "description": "Сварной шов сборки (weld.md §2.1); согласованность с таблицей типов — weldCheck (weld.md §3)",
+      "type": "object", "additionalProperties": false, "required": ["id", "name", "standard", "type"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^w[1-9][0-9]{0,17}$" },
+        "name": { "type": "string" },
+        "standard": { "type": "string", "minLength": 1 },
+        "type": { "type": "string", "minLength": 1 },
+        "process": { "type": "string", "minLength": 1 },
+        "leg": { "$ref": "#/$defs/expr" },
+        "edges": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "faces": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "side": { "const": "back" },
+        "allAround": { "const": true },
+        "field": { "const": true },
+        "intermittent": {
+          "type": "object", "additionalProperties": false, "required": ["length", "pitch", "pattern"],
+          "properties": {
+            "length": { "$ref": "#/$defs/expr" },
+            "pitch": { "$ref": "#/$defs/expr" },
+            "pattern": { "enum": ["chain", "staggered"] }
+          }
+        },
+        "removeReinforcement": { "const": true },
+        "smooth": { "const": true }
+      }
+    },
+    "mate": {
+      "description": "Сопряжение (assembly.md §7.1)",
+      "type": "object", "additionalProperties": false, "required": ["id", "name", "type", "refs"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^m[1-9][0-9]{0,17}$" },
+        "name": { "type": "string" },
+        "type": { "enum": ["coincident", "concentric", "distance", "angle", "parallel", "perpendicular", "tangent", "gear", "lock"] },
+        "refs": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "string", "minLength": 1 } },
+        "value": { "$ref": "#/$defs/expr" },
+        "flip": { "const": true },
+        "relative": { "type": "array", "minItems": 7, "maxItems": 7, "items": { "type": "number" } },
+        "angles": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number" } },
+        "suppressed": { "const": true }
+      }
+    },
+    "libraryPartId": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*@[0-9a-f]{16}$", "description": "ключ копии пакета: <id пакета>@<отпечаток> (library.md §6.1)" },
+    "solutionCopyId": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*@[0-9a-f]{16}$", "description": "ключ копии решения: <id решения>@<отпечаток> (solutions.md §5)" },
+    "solutionCopy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "package", "fingerprint", "title", "definition"],
+      "description": "копия пакета решения в документе (document.md §2.14, solutions.md §5.2)",
+      "properties": {
+        "id": { "$ref": "#/$defs/solutionCopyId" },
+        "package": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+        "fingerprint": { "type": "string", "pattern": "^[0-9a-f]{16}$" },
+        "title": { "type": "string", "minLength": 1 },
+        "definition": { "type": "object", "description": "solution.json (схема — formats/solution.schema.json; проверяется при вычислении соединения)" },
+        "tables": {
+          "type": "array",
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["id", "columns", "rows"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+              "columns": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+              "rows": {
+                "type": "array",
+                "items": {
+                  "type": "object", "additionalProperties": false, "required": ["name", "values"],
+                  "properties": { "name": { "type": "string", "minLength": 1 }, "values": { "type": "array", "items": { "type": "string" } } }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "libraryPart": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "package", "fingerprint", "title", "standard", "designation", "sizesTable", "document"],
+      "description": "копия пакета библиотеки в документе (document.md §2.13, library.md §6.1)",
+      "properties": {
+        "id": { "$ref": "#/$defs/libraryPartId" },
+        "package": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+        "fingerprint": { "type": "string", "pattern": "^[0-9a-f]{16}$" },
+        "title": { "type": "string", "minLength": 1 },
+        "standard": { "type": "string" },
+        "designation": { "type": "string", "minLength": 1 },
+        "sizesTable": { "$ref": "#/$defs/tableId" },
+        "document": { "$ref": "#" }
+      }
+    },
+    "instance": {
+      "type": "object", "additionalProperties": false, "required": ["id", "name", "ref", "position", "rotation"],
+      "properties": {
+        "id": { "$ref": "#/$defs/instanceId" },
+        "name": { "type": "string" },
+        "ref": {
+          "type": "object", "additionalProperties": false, "required": ["element"],
+          "properties": { "file": { "type": "string", "minLength": 1 }, "library": { "$ref": "#/$defs/libraryPartId" }, "element": { "$ref": "#/$defs/elementId" } }
+        },
+        "position": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" } },
+        "rotation": { "type": "array", "minItems": 4, "maxItems": 4, "items": { "type": "number" } },
+        "fixed": { "const": true },
+        "suppressed": { "const": true },
+        "hidden": { "const": true },
+        "transparent": { "const": true },
+        "color": { "$ref": "#/$defs/color", "description": "цвет экземпляра на рендере сборки поверх цвета детали (document.md §2.4б, FX12-ASM-003)" },
+        "variantRows": {
+          "type": "array", "description": "выбор строк таблиц вариантов вставленного объекта (document.md §2.4б, S6-PARAM-004)",
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["table", "row"],
+            "properties": { "table": { "$ref": "#/$defs/tableId" }, "row": { "type": "string", "minLength": 1 } }
+          }
+        },
+        "overrides": {
+          "type": "array", "description": "формулы переменных экземпляра (document.md §2.4б, S6-PARAM-004)",
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["variable", "expr"],
+            "properties": { "variable": { "$ref": "#/$defs/variableId" }, "expr": { "$ref": "#/$defs/expr" } }
+          }
+        },
+        "form": {
+          "type": "array", "description": "форма экземпляра недоопределённой подсборки: положения вложенных экземпляров по путям (document.md §2.4б, assembly.md §2б, FX9-ASM-010)",
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["path", "position", "rotation"],
+            "properties": {
+              "path": { "type": "string", "pattern": "^i[1-9][0-9]{0,17}(/i[1-9][0-9]{0,17})*$" },
+              "position": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" } },
+              "rotation": { "type": "array", "minItems": 4, "maxItems": 4, "items": { "type": "number" } }
+            }
+          }
+        }
+      }
+    },
+    "section": {
+      "description": "Разрез (document.md §2.4а, S2-VIEW-002): плоскостью (plane + offset) или по эскизу (sketch)",
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "name", "plane", "offset"],
+          "properties": {
+            "id": { "$ref": "#/$defs/featureId" },
+            "name": { "type": "string" },
+            "plane": { "$ref": "#/$defs/planeRef" },
+            "offset": { "$ref": "#/$defs/expr" },
+            "flip": { "const": true },
+            "hidden": { "const": true },
+            "exclude": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/instanceId" } }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "name", "sketch"],
+          "properties": {
+            "id": { "$ref": "#/$defs/featureId" },
+            "name": { "type": "string" },
+            "sketch": { "$ref": "#/$defs/featureId" },
+            "flip": { "const": true },
+            "hidden": { "const": true },
+            "exclude": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/instanceId" } }
+          }
+        }
+      ]
+    },
+
+    "feature": {
+      "oneOf": [
+        { "$ref": "#/$defs/sketchFeature" },
+        { "$ref": "#/$defs/extrudeFeature" },
+        { "$ref": "#/$defs/revolveFeature" },
+        { "$ref": "#/$defs/filletFeature" },
+        { "$ref": "#/$defs/chamferFeature" },
+        { "$ref": "#/$defs/planeFeature" },
+        { "$ref": "#/$defs/axisFeature" },
+        { "$ref": "#/$defs/patternFeature" },
+        { "$ref": "#/$defs/mirrorFeature" },
+        { "$ref": "#/$defs/shellFeature" },
+        { "$ref": "#/$defs/draftFeature" },
+        { "$ref": "#/$defs/sweepFeature" },
+        { "$ref": "#/$defs/loftFeature" },
+        { "$ref": "#/$defs/holeFeature" },
+        { "$ref": "#/$defs/threadFeature" },
+        { "$ref": "#/$defs/importFeature" },
+        { "$ref": "#/$defs/sheetMetalFeature" },
+        { "$ref": "#/$defs/sheetWallFeature" },
+        { "$ref": "#/$defs/sheetFlangeFeature" },
+        { "$ref": "#/$defs/sheetBendFeature" },
+        { "$ref": "#/$defs/sheetCutFeature" },
+        { "$ref": "#/$defs/gearFeature" },
+        { "$ref": "#/$defs/coilFeature" },
+        { "$ref": "#/$defs/connectionFeature" },
+        { "$ref": "#/$defs/connectionCutFeature" }
+      ]
+    },
+
+    "profiles": {
+      "oneOf": [
+        { "const": "all" },
+        { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/regionId" } }
+      ]
+    },
+    "operation": { "enum": ["new", "add", "cut", "intersect"] },
+    "targets": { "const": "all" },
+    "instanceTargets": {
+      "description": "цели фичи сборки — пути экземпляров (document.md §2.8, assembly.md §7г.1, S5-AFEAT-001)",
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^i[1-9][0-9]{0,17}(/i[1-9][0-9]{0,17})*$" }
+    },
+
+    "sketchFeature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "plane", "entities", "constraints"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" },
+        "type": { "const": "sketch" },
+        "name": { "type": "string" },
+        "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "plane": {
+          "oneOf": [
+            {
+              "type": "object", "additionalProperties": false, "required": ["datum"],
+              "properties": { "datum": { "$ref": "#/$defs/datumPlane" } }
+            },
+            {
+              "type": "object", "additionalProperties": false, "required": ["face"],
+              "properties": { "face": { "$ref": "#/$defs/topoName" } }
+            },
+            {
+              "type": "object", "additionalProperties": false, "required": ["feature"],
+              "properties": { "feature": { "$ref": "#/$defs/featureId" } }
+            },
+            {
+              "type": "object", "additionalProperties": false, "required": ["frame"],
+              "properties": {
+                "frame": {
+                  "type": "object", "additionalProperties": false, "required": ["origin", "x", "y"],
+                  "properties": {
+                    "origin": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" } },
+                    "x": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" } },
+                    "y": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" } }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "entities": { "type": "array", "items": { "$ref": "#/$defs/entity" } },
+        "constraints": { "type": "array", "items": { "$ref": "#/$defs/constraint" } },
+        "groups": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sketchGroup" }, "description": "связанные группы эскиза (sketch.md §2.6); пишется, только если не пуст" },
+        "weakAnchors": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/entityId" }, "description": "опорные точки слабых размеров, выбранные пользователем (sketch.md §4.4, S4-WEAK-006); пишется, только если не пуст" }
+      }
+    },
+
+    "groupMembers": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["role", "id"],
+        "properties": {
+          "role": { "type": "string", "minLength": 1 },
+          "id": { "oneOf": [ { "$ref": "#/$defs/entityId" }, { "$ref": "#/$defs/constraintId" } ] }
+        }
+      }
+    },
+    "patternCount": {
+      "description": "число экземпляров массива: целое или выражение без размерности (sketch.md §2.6.3, S4-SKT-006)",
+      "oneOf": [ { "type": "integer", "minimum": 1, "maximum": 1000 }, { "$ref": "#/$defs/expr" } ]
+    },
+    "sketchGroup": {
+      "description": "Связанная группа эскиза: один вариант на тип (sketch.md §2.6.3).",
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "sources", "params", "members"],
+          "properties": {
+            "id": { "$ref": "#/$defs/groupId" }, "type": { "const": "linearPattern" },
+            "sources": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/entityId" } },
+            "params": {
+              "type": "object", "additionalProperties": false, "required": ["count1", "step1", "angle1", "count2", "step2", "angle2"],
+              "properties": {
+                "count1": { "$ref": "#/$defs/patternCount" }, "step1": { "$ref": "#/$defs/expr" }, "angle1": { "$ref": "#/$defs/expr" },
+                "count2": { "$ref": "#/$defs/patternCount" }, "step2": { "$ref": "#/$defs/expr" }, "angle2": { "$ref": "#/$defs/expr" },
+                "line": { "$ref": "#/$defs/entityId", "description": "отрезок-ось: направления осей — от него (S4-SKT-006)" },
+                "line2": { "$ref": "#/$defs/entityId", "description": "отрезок второй оси: angle2 — от него, ось 2 следует за ним (FX12-FEAT-001)" }
+              }
+            },
+            "members": { "$ref": "#/$defs/groupMembers" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "sources", "params", "members"],
+          "properties": {
+            "id": { "$ref": "#/$defs/groupId" }, "type": { "const": "circularPattern" },
+            "sources": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/entityId" } },
+            "params": {
+              "type": "object", "additionalProperties": false, "required": ["center", "count", "angle"],
+              "properties": {
+                "center": { "$ref": "#/$defs/ref" }, "count": { "$ref": "#/$defs/patternCount" }, "angle": { "$ref": "#/$defs/expr" }
+              }
+            },
+            "members": { "$ref": "#/$defs/groupMembers" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "sources", "params", "members"],
+          "properties": {
+            "id": { "$ref": "#/$defs/groupId" }, "type": { "const": "polygon" },
+            "sources": { "type": "array", "maxItems": 0 },
+            "params": {
+              "type": "object", "additionalProperties": false, "required": ["angle", "inscribed", "sides", "size", "x", "y"],
+              "properties": {
+                "angle": { "type": "number" }, "inscribed": { "type": "boolean" },
+                "sides": { "type": "integer", "minimum": 3, "maximum": 40 },
+                "size": { "type": "number", "exclusiveMinimum": 0 }, "x": { "type": "number" }, "y": { "type": "number" }
+              }
+            },
+            "members": { "$ref": "#/$defs/groupMembers" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "sources", "params", "members"],
+          "properties": {
+            "id": { "$ref": "#/$defs/groupId" }, "type": { "const": "star" },
+            "sources": { "type": "array", "maxItems": 0 },
+            "params": {
+              "type": "object", "additionalProperties": false, "required": ["angle", "d1", "d2", "rays", "x", "y"],
+              "properties": {
+                "angle": { "type": "number" }, "d1": { "$ref": "#/$defs/expr" }, "d2": { "$ref": "#/$defs/expr" },
+                "rays": { "type": "integer", "minimum": 3, "maximum": 40 }, "x": { "type": "number" }, "y": { "type": "number" }
+              }
+            },
+            "members": { "$ref": "#/$defs/groupMembers" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "sources", "params", "members"],
+          "properties": {
+            "id": { "$ref": "#/$defs/groupId" }, "type": { "const": "offset" },
+            "sources": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/entityId" } },
+            "params": {
+              "type": "object", "additionalProperties": false, "required": ["distance"],
+              "properties": {
+                "distance": { "$ref": "#/$defs/expr", "description": "смещение со знаком: положительное — наружу замкнутого контура (sketch.md §2.6.5, S7F-SK-005)" }
+              }
+            },
+            "members": { "$ref": "#/$defs/groupMembers" }
+          }
+        }
+      ]
+    },
+
+    "entity": {
+      "description": "construction: false — значение по умолчанию; в канонической форме не пишется (document.md §4.1).",
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "x", "y"],
+          "properties": {
+            "id": { "$ref": "#/$defs/entityId" }, "type": { "const": "point" },
+            "x": { "type": "number" }, "y": { "type": "number" },
+            "construction": { "type": "boolean" }
+          }
+        },
+        {
+          "description": "надпись (sketch.md §2.1, S2-SK-013): контуры букв — font.md",
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "anchor", "text", "font", "height"],
+          "properties": {
+            "id": { "$ref": "#/$defs/entityId" }, "type": { "const": "text" },
+            "anchor": { "$ref": "#/$defs/entityId" },
+            "text": { "type": "string", "minLength": 1 },
+            "font": { "type": "string", "minLength": 1 },
+            "height": { "type": "number", "exclusiveMinimum": 0 },
+            "angle": { "type": "number" },
+            "styles": {
+              "description": "начертания фрагментов (sketch.md §2.1, FX8-SK-007): кодовые точки [from, to) строки text",
+              "type": "array", "minItems": 1,
+              "items": {
+                "type": "object", "additionalProperties": false, "required": ["from", "to"],
+                "properties": {
+                  "from": { "type": "integer", "minimum": 0 }, "to": { "type": "integer", "minimum": 1 },
+                  "bold": { "const": true }, "italic": { "const": true }, "underline": { "const": true }
+                }
+              }
+            },
+            "construction": { "type": "boolean" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "p1", "p2"],
+          "properties": {
+            "id": { "$ref": "#/$defs/entityId" }, "type": { "const": "line" },
+            "p1": { "$ref": "#/$defs/entityId" }, "p2": { "$ref": "#/$defs/entityId" },
+            "construction": { "type": "boolean" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "center", "r"],
+          "properties": {
+            "id": { "$ref": "#/$defs/entityId" }, "type": { "const": "circle" },
+            "center": { "$ref": "#/$defs/entityId" }, "r": { "type": "number", "exclusiveMinimum": 0 },
+            "construction": { "type": "boolean" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "center", "rx", "ry", "angle"],
+          "properties": {
+            "id": { "$ref": "#/$defs/entityId" }, "type": { "const": "ellipse" },
+            "center": { "$ref": "#/$defs/entityId" },
+            "rx": { "type": "number", "exclusiveMinimum": 0 }, "ry": { "type": "number", "exclusiveMinimum": 0 },
+            "angle": { "type": "number" },
+            "construction": { "type": "boolean" }
+          }
+        },
+        {
+          "description": "дуга эллипса против часовой по параметру от start к end (sketch.md §2.1, S4-SKT-007)",
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "center", "start", "end", "rx", "ry", "angle"],
+          "properties": {
+            "id": { "$ref": "#/$defs/entityId" }, "type": { "const": "ellipseArc" },
+            "center": { "$ref": "#/$defs/entityId" }, "start": { "$ref": "#/$defs/entityId" }, "end": { "$ref": "#/$defs/entityId" },
+            "rx": { "type": "number", "exclusiveMinimum": 0 }, "ry": { "type": "number", "exclusiveMinimum": 0 },
+            "angle": { "type": "number" },
+            "construction": { "type": "boolean" }
+          }
+        },
+        {
+          "description": "кривая Безье степени n − 1 по n управляющим точкам; weights — веса точек (> 0, по умолчанию 1) — рациональная кривая (sketch.md §2.1, §2.7, S4A-SPL-001)",
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "poles"],
+          "properties": {
+            "id": { "$ref": "#/$defs/entityId" }, "type": { "const": "bezier" },
+            "poles": { "type": "array", "items": { "$ref": "#/$defs/entityId" }, "minItems": 2, "maxItems": 26 },
+            "weights": { "type": "array", "items": { "type": "number", "exclusiveMinimum": 0 }, "minItems": 2 },
+            "construction": { "type": "boolean" }
+          }
+        },
+        {
+          "description": "B-сплайн/NURBS: степень, управляющие точки, веса, различные узлы и их кратности, замкнутый периодический; согласованность — document.md §5 (DOC_SCHEMA, sketch.md §2.7.1, S4A-SPL-001)",
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "poles", "degree", "knots", "mults"],
+          "properties": {
+            "id": { "$ref": "#/$defs/entityId" }, "type": { "const": "bspline" },
+            "poles": { "type": "array", "items": { "$ref": "#/$defs/entityId" }, "minItems": 2 },
+            "degree": { "type": "integer", "minimum": 1, "maximum": 25 },
+            "knots": { "type": "array", "items": { "type": "number" }, "minItems": 2 },
+            "mults": { "type": "array", "items": { "type": "integer", "minimum": 1 }, "minItems": 2 },
+            "weights": { "type": "array", "items": { "type": "number", "exclusiveMinimum": 0 }, "minItems": 2 },
+            "periodic": { "type": "boolean" },
+            "construction": { "type": "boolean" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "center", "start", "end"],
+          "properties": {
+            "id": { "$ref": "#/$defs/entityId" }, "type": { "const": "arc" },
+            "center": { "$ref": "#/$defs/entityId" }, "start": { "$ref": "#/$defs/entityId" }, "end": { "$ref": "#/$defs/entityId" },
+            "construction": { "type": "boolean" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "source"],
+          "properties": {
+            "id": { "$ref": "#/$defs/entityId" }, "type": { "const": "projected" },
+            "source": { "anyOf": [ { "$ref": "#/$defs/topoName" }, { "enum": ["sketch:x", "sketch:y"] } ] },
+            "construction": { "type": "boolean" }
+          }
+        }
+      ]
+    },
+
+    "constraint": {
+      "description": "Один вариант на тип ограничения (sketch.md §2.2). Порядок свойств варианта — канонический порядок ключей: id, type, refs, target, vector, angle, value, driving, arc, diametral, branch, label, auto, yielded. auto (только геометрические ограничения, только true) — создано подсказкой при рисовании, уступает явным (sketch.md §2.2). Согласованность формы ветви с видами ссылок (distance: точка–отрезок — branch обязательна, точка–точка — запрещена; tangent: отрезок первым — side, иначе contact) проверяет document.md §5 (DOC_SCHEMA).",
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "coincident" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "auto": { "const": true }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "horizontal" },
+            "refs": { "$ref": "#/$defs/refs1_2" },
+            "auto": { "const": true }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "vertical" },
+            "refs": { "$ref": "#/$defs/refs1_2" },
+            "auto": { "const": true }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "parallel" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "auto": { "const": true }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "perpendicular" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "auto": { "const": true }
+          }
+        },
+        {
+          "description": "branch обязательна, кроме касания в конце сплайна (вторая ссылка — сплайн, S4A-SPL-002) — там запрещена; проверка — document.md §5",
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "tangent" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "branch": { "oneOf": [ { "$ref": "#/$defs/branchSide" }, { "$ref": "#/$defs/branchContact" } ] },
+            "auto": { "const": true }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "equal" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "auto": { "const": true }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "concentric" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "auto": { "const": true }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "collinear" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "auto": { "const": true }
+          }
+        },
+        {
+          "description": "равенство кривизны в стыке с концом сплайна (G2, sketch.md §2.2, S4A-SPL-002)",
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "curvature" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "auto": { "const": true }
+          }
+        },
+        {
+          "description": "вес управляющей точки сплайна — безразмерное число > 0 (sketch.md §2.7.8, S4A-SPL-002)",
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "value", "driving"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "weight" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "value": { "$ref": "#/$defs/expr" }, "driving": { "type": "boolean" },
+            "labelOffset": { "$ref": "#/$defs/label" },
+            "yielded": { "$ref": "#/$defs/yielded" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "pointOnObject" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "auto": { "const": true }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "midpoint" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "auto": { "const": true }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "symmetric" },
+            "refs": { "$ref": "#/$defs/refs3" },
+            "auto": { "const": true }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "target"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "fix" },
+            "refs": { "$ref": "#/$defs/refs1" },
+            "target": { "type": "array", "minItems": 2, "maxItems": 5, "items": { "type": "number" }, "description": "[x, y] для точки, [x, y, r] для окружности, [x, y, ux, uy, ry] для эллипса (мм; FX7-SK-009), sketch.md §2.2" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "value", "driving"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "distance" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "value": { "$ref": "#/$defs/expr" }, "driving": { "type": "boolean" },
+            "arc": { "enum": ["near", "far"] },
+            "diametral": { "const": true },
+            "branch": { "$ref": "#/$defs/branchSide" },
+            "labelOffset": { "$ref": "#/$defs/label" },
+            "yielded": { "$ref": "#/$defs/yielded" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "value", "driving"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "distanceX" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "value": { "$ref": "#/$defs/expr" }, "driving": { "type": "boolean" },
+            "diametral": { "const": true },
+            "labelOffset": { "$ref": "#/$defs/label" },
+            "yielded": { "$ref": "#/$defs/yielded" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "value", "driving"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "distanceY" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "value": { "$ref": "#/$defs/expr" }, "driving": { "type": "boolean" },
+            "diametral": { "const": true },
+            "labelOffset": { "$ref": "#/$defs/label" },
+            "yielded": { "$ref": "#/$defs/yielded" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "value", "driving"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "length" },
+            "refs": { "$ref": "#/$defs/refs1" },
+            "value": { "$ref": "#/$defs/expr" }, "driving": { "type": "boolean" },
+            "labelOffset": { "$ref": "#/$defs/label" },
+            "yielded": { "$ref": "#/$defs/yielded" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "value", "driving"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "semiMajor" },
+            "refs": { "$ref": "#/$defs/refs1" },
+            "value": { "$ref": "#/$defs/expr" }, "driving": { "type": "boolean" },
+            "labelOffset": { "$ref": "#/$defs/label" },
+            "yielded": { "$ref": "#/$defs/yielded" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "value", "driving"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "semiMinor" },
+            "refs": { "$ref": "#/$defs/refs1" },
+            "value": { "$ref": "#/$defs/expr" }, "driving": { "type": "boolean" },
+            "labelOffset": { "$ref": "#/$defs/label" },
+            "yielded": { "$ref": "#/$defs/yielded" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "value", "driving"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "ellipseAngle" },
+            "refs": { "$ref": "#/$defs/refs1" },
+            "value": { "$ref": "#/$defs/expr" }, "driving": { "type": "boolean" },
+            "labelOffset": { "$ref": "#/$defs/label" },
+            "yielded": { "$ref": "#/$defs/yielded" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "value", "driving"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "radius" },
+            "refs": { "$ref": "#/$defs/refs1" },
+            "value": { "$ref": "#/$defs/expr" }, "driving": { "type": "boolean" },
+            "labelOffset": { "$ref": "#/$defs/label" },
+            "yielded": { "$ref": "#/$defs/yielded" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "value", "driving"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "arcLength" },
+            "refs": { "$ref": "#/$defs/refs1" },
+            "value": { "$ref": "#/$defs/expr" }, "driving": { "type": "boolean" },
+            "labelOffset": { "$ref": "#/$defs/label" },
+            "yielded": { "$ref": "#/$defs/yielded" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "value", "driving"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "arcAngle" },
+            "refs": { "$ref": "#/$defs/refs1" },
+            "value": { "$ref": "#/$defs/expr" }, "driving": { "type": "boolean" },
+            "labelOffset": { "$ref": "#/$defs/label" },
+            "yielded": { "$ref": "#/$defs/yielded" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "value", "driving"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "pathLength" },
+            "refs": { "$ref": "#/$defs/refs2plus" },
+            "value": { "$ref": "#/$defs/expr" }, "driving": { "type": "boolean" },
+            "labelOffset": { "$ref": "#/$defs/label" },
+            "yielded": { "$ref": "#/$defs/yielded" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "value", "driving"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "diameter" },
+            "refs": { "$ref": "#/$defs/refs1" },
+            "value": { "$ref": "#/$defs/expr" }, "driving": { "type": "boolean" },
+            "labelOffset": { "$ref": "#/$defs/label" },
+            "yielded": { "$ref": "#/$defs/yielded" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "value", "driving", "branch"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "angle" },
+            "refs": { "$ref": "#/$defs/refs2" },
+            "value": { "$ref": "#/$defs/expr" }, "driving": { "type": "boolean" },
+            "branch": { "$ref": "#/$defs/branchAngle" },
+            "labelOffset": { "$ref": "#/$defs/label" },
+            "yielded": { "$ref": "#/$defs/yielded" }
+          }
+        },
+        {
+          "description": "взаимосвязь копии: копия = исходная, сдвинутая на vector (мм), sketch.md §2.2, S4-SKT-001",
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "vector"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "translate" },
+            "refs": { "type": "array", "minItems": 2, "maxItems": 3, "items": { "$ref": "#/$defs/ref" }, "description": "исходная, копия; третья — отрезок-ось (S4-SKT-006)" },
+            "vector": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number" } }
+          }
+        },
+        {
+          "description": "взаимосвязь копии: копия = исходная, повёрнутая вокруг центра (refs[2]) на angle (рад), sketch.md §2.2, S4-SKT-002",
+          "type": "object", "additionalProperties": false, "required": ["id", "type", "refs", "angle"],
+          "properties": {
+            "id": { "$ref": "#/$defs/constraintId" }, "type": { "const": "rotate" },
+            "refs": { "$ref": "#/$defs/refs3" },
+            "angle": { "type": "number" }
+          }
+        }
+      ]
+    },
+
+    "ref": { "oneOf": [ { "$ref": "#/$defs/entityId" }, { "const": "origin" } ] },
+    "refs1": { "type": "array", "minItems": 1, "maxItems": 1, "items": { "$ref": "#/$defs/ref" } },
+    "refs1_2": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "$ref": "#/$defs/ref" } },
+    "refs2": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/ref" } },
+    "refs3": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "$ref": "#/$defs/ref" } },
+    "refs2plus": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/ref" } },
+    "label": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number" }, "description": "labelOffset: смещение центра надписи размера от его опорной точки, мм (sketch.md §2.2, FX8-SK-004)" },
+    "yielded": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/constraint" }, "description": "Авто-ограничения, снятые при постановке размера; при удалении размера возвращаются (sketch.md §2.2, core-api.md §4.6.2, FX4-SK-003)" },
+    "branchSide": {
+      "type": "object", "additionalProperties": false, "required": ["side"],
+      "properties": { "side": { "enum": [1, -1] } }
+    },
+    "branchContact": {
+      "type": "object", "additionalProperties": false, "required": ["contact"],
+      "properties": { "contact": { "enum": ["External", "Internal1", "Internal2"] } }
+    },
+    "branchAngle": {
+      "type": "object", "additionalProperties": false, "required": ["sign", "supplementary"],
+      "properties": { "sign": { "enum": [1, -1] }, "supplementary": { "type": "boolean" } }
+    },
+
+    "upToRef": {
+      "description": "объект окончания «До» (document.md §2.8 UpToRef, S7F-FEAT-001)",
+      "oneOf": [
+        { "type": "object", "additionalProperties": false, "required": ["face"], "properties": { "face": { "type": "string", "minLength": 1 } } },
+        { "type": "object", "additionalProperties": false, "required": ["edge"], "properties": { "edge": { "type": "string", "minLength": 1 } } },
+        { "type": "object", "additionalProperties": false, "required": ["vertex"], "properties": { "vertex": { "type": "string", "minLength": 1 } } },
+        { "type": "object", "additionalProperties": false, "required": ["datum"], "properties": { "datum": { "enum": ["plane:front", "plane:top", "plane:right", "origin"] } } },
+        { "type": "object", "additionalProperties": false, "required": ["feature"], "properties": { "feature": { "$ref": "#/$defs/featureId" } } }
+      ]
+    },
+
+    "extrudeFeature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "sketch", "profiles", "direction", "end", "operation", "targets"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" },
+        "type": { "const": "extrude" },
+        "name": { "type": "string" },
+        "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "sketch": { "$ref": "#/$defs/featureId" },
+        "profiles": { "$ref": "#/$defs/profiles" },
+        "direction": { "enum": ["normal", "reverse"] },
+        "end": {
+          "oneOf": [
+            {
+              "type": "object", "additionalProperties": false, "required": ["type", "depth"],
+              "properties": { "type": { "enum": ["blind", "symmetric"] }, "depth": { "$ref": "#/$defs/expr" } }
+            },
+            {
+              "type": "object", "additionalProperties": false, "required": ["type"],
+              "properties": { "type": { "enum": ["throughAll", "throughAllBoth", "upToNext"] } }
+            },
+            {
+              "description": "окончание «До» объекта (document.md §2.8, S7F-FEAT-001)",
+              "type": "object", "additionalProperties": false, "required": ["type", "to"],
+              "properties": {
+                "type": { "const": "upTo" },
+                "to": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "$ref": "#/$defs/upToRef" } },
+                "offset": { "$ref": "#/$defs/expr" }
+              }
+            }
+          ]
+        },
+        "operation": { "$ref": "#/$defs/operation" },
+        "targets": { "oneOf": [{ "$ref": "#/$defs/targets" }, { "$ref": "#/$defs/instanceTargets" }] },
+        "tab": {
+          "description": "вылеты язычка листовой детали (document.md §2.8, FX7-SH-003)",
+          "type": "object", "additionalProperties": false,
+          "properties": { "left": { "$ref": "#/$defs/expr" }, "right": { "$ref": "#/$defs/expr" } }
+        }
+      }
+    },
+
+    "revolveFeature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "sketch", "profiles", "axis", "angle", "operation", "targets"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" },
+        "type": { "const": "revolve" },
+        "name": { "type": "string" },
+        "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "sketch": { "$ref": "#/$defs/featureId" },
+        "profiles": { "$ref": "#/$defs/profiles" },
+        "axis": {
+          "oneOf": [
+            {
+              "type": "object", "additionalProperties": false, "required": ["sketchLine"],
+              "properties": { "sketchLine": { "$ref": "#/$defs/entityId" } }
+            },
+            {
+              "type": "object", "additionalProperties": false, "required": ["datum"],
+              "properties": { "datum": { "$ref": "#/$defs/datumAxis" } }
+            },
+            {
+              "type": "object", "additionalProperties": false, "required": ["feature"],
+              "properties": { "feature": { "$ref": "#/$defs/featureId" } }
+            }
+          ]
+        },
+        "angle": {
+          "oneOf": [
+            {
+              "type": "object", "additionalProperties": false, "required": ["type"],
+              "properties": { "type": { "const": "full" } }
+            },
+            {
+              "type": "object", "additionalProperties": false, "required": ["type", "value"],
+              "properties": { "type": { "enum": ["angle", "symmetric"] }, "value": { "$ref": "#/$defs/expr" } }
+            }
+          ]
+        },
+        "operation": { "$ref": "#/$defs/operation" },
+        "targets": { "$ref": "#/$defs/targets" }
+      }
+    },
+
+    "planeRef": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": false, "required": ["datum"], "properties": { "datum": { "$ref": "#/$defs/datumPlane" } } },
+        { "type": "object", "additionalProperties": false, "required": ["face"], "properties": { "face": { "$ref": "#/$defs/topoName" } } },
+        { "type": "object", "additionalProperties": false, "required": ["feature"], "properties": { "feature": { "$ref": "#/$defs/featureId" } } }
+      ]
+    },
+    "lineRef": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": false, "required": ["datum"], "properties": { "datum": { "$ref": "#/$defs/datumAxis" } } },
+        { "type": "object", "additionalProperties": false, "required": ["edge"], "properties": { "edge": { "$ref": "#/$defs/topoName" } } },
+        { "type": "object", "additionalProperties": false, "required": ["feature"], "properties": { "feature": { "$ref": "#/$defs/featureId" } } }
+      ]
+    },
+    "axisRef": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": false, "required": ["datum"], "properties": { "datum": { "$ref": "#/$defs/datumAxis" } } },
+        { "type": "object", "additionalProperties": false, "required": ["edge"], "properties": { "edge": { "$ref": "#/$defs/topoName" } } },
+        { "type": "object", "additionalProperties": false, "required": ["feature"], "properties": { "feature": { "$ref": "#/$defs/featureId" } } },
+        { "type": "object", "additionalProperties": false, "required": ["face"], "properties": { "face": { "$ref": "#/$defs/topoName" } } },
+        { "$ref": "#/$defs/sketchLineRef" },
+        { "type": "object", "additionalProperties": false, "required": ["revolveAxis"], "properties": { "revolveAxis": { "$ref": "#/$defs/featureId" } } }
+      ]
+    },
+    "sketchLineRef": {
+      "description": "отрезок эскиза как направление или ось (document.md §2.10а, FX7-PT-007)",
+      "type": "object", "additionalProperties": false, "required": ["sketchLine"],
+      "properties": {
+        "sketchLine": {
+          "type": "object", "additionalProperties": false, "required": ["sketch", "entity"],
+          "properties": { "sketch": { "$ref": "#/$defs/featureId" }, "entity": { "$ref": "#/$defs/entityId" } }
+        }
+      }
+    },
+    "dirRef": {
+      "description": "направление массива (document.md §2.10а DirRef, FX7-PT-007)",
+      "oneOf": [
+        { "type": "object", "additionalProperties": false, "required": ["datum"], "properties": { "datum": { "$ref": "#/$defs/datumAxis" } } },
+        { "type": "object", "additionalProperties": false, "required": ["edge"], "properties": { "edge": { "$ref": "#/$defs/topoName" } } },
+        { "type": "object", "additionalProperties": false, "required": ["feature"], "properties": { "feature": { "$ref": "#/$defs/featureId" } } },
+        { "type": "object", "additionalProperties": false, "required": ["face"], "properties": { "face": { "$ref": "#/$defs/topoName" } } },
+        { "type": "object", "additionalProperties": false, "required": ["normal"], "properties": { "normal": { "$ref": "#/$defs/planeRef" } } },
+        { "$ref": "#/$defs/sketchLineRef" },
+        { "type": "object", "additionalProperties": false, "required": ["revolveAxis"], "properties": { "revolveAxis": { "$ref": "#/$defs/featureId" } } }
+      ]
+    },
+    "patternDirection": {
+      "type": "object", "additionalProperties": false,
+      "required": ["ref", "count", "spacing"],
+      "properties": {
+        "ref": { "$ref": "#/$defs/dirRef" }, "count": { "$ref": "#/$defs/expr" }, "spacing": { "$ref": "#/$defs/expr" }, "reverse": { "type": "boolean" }
+      }
+    },
+    "patternFeature": {
+      "description": "массив (document.md §2.10б, S2-FEAT-002)",
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "type", "name", "suppressed", "mode", "features", "directions"],
+          "properties": {
+            "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "pattern" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+            "mode": { "const": "linear" },
+            "features": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/featureId" } },
+            "directions": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "$ref": "#/$defs/patternDirection" } }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "type", "name", "suppressed", "mode", "features", "axis", "count", "angle"],
+          "properties": {
+            "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "pattern" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+            "mode": { "const": "circular" },
+            "features": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/featureId" } },
+            "axis": { "$ref": "#/$defs/axisRef" }, "count": { "$ref": "#/$defs/expr" }, "angle": { "$ref": "#/$defs/expr" }, "reverse": { "type": "boolean" }
+          }
+        }
+      ]
+    },
+    "mirrorFeature": {
+      "description": "зеркало фич (document.md §2.10в, S2-FEAT-003)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "features", "plane"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "mirror" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "features": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/featureId" } },
+        "plane": { "$ref": "#/$defs/planeRef" }
+      }
+    },
+    "shellFeature": {
+      "description": "оболочка (document.md §2.10г, S2-FEAT-004)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "faces", "thickness"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "shell" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "faces": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/topoName" } },
+        "thickness": { "$ref": "#/$defs/expr" },
+        "outward": { "type": "boolean" }
+      }
+    },
+    "draftFeature": {
+      "description": "уклон граней (document.md §2.10д, S2-FEAT-005)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "faces", "neutral", "angle"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "draft" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "faces": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/topoName" } },
+        "neutral": { "$ref": "#/$defs/planeRef" },
+        "angle": { "$ref": "#/$defs/expr" },
+        "reverse": { "type": "boolean" }
+      }
+    },
+    "sweepFeature": {
+      "description": "протягивание по траектории (document.md §2.10е, S2-FEAT-006)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "sketch", "profiles", "path", "operation"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "sweep" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "sketch": { "$ref": "#/$defs/featureId" },
+        "profiles": { "$ref": "#/$defs/profiles" },
+        "path": {
+          "oneOf": [
+            { "type": "object", "additionalProperties": false, "required": ["sketch"], "properties": { "sketch": { "$ref": "#/$defs/featureId" } } },
+            { "type": "object", "additionalProperties": false, "required": ["edges"],
+              "properties": { "edges": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/topoName" } } } }
+          ]
+        },
+        "operation": { "$ref": "#/$defs/operation" }
+      }
+    },
+    "loftFeature": {
+      "description": "лофт по сечениям (document.md §2.10ж, S2-FEAT-007)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "sections", "operation"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "loft" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "sections": {
+          "type": "array", "minItems": 2,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["sketch"],
+            "properties": { "sketch": { "$ref": "#/$defs/featureId" }, "region": { "$ref": "#/$defs/regionId" }, "start": { "$ref": "#/$defs/entityId" } }
+          }
+        },
+        "operation": { "$ref": "#/$defs/operation" }
+      }
+    },
+    "holeFeature": {
+      "description": "отверстие по стандарту (document.md §2.10з, S2-FEAT-008)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "sketch", "kind", "size", "end"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "hole" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "sketch": { "$ref": "#/$defs/featureId" },
+        "kind": { "enum": ["simple", "counterbore", "countersink", "tapped"] },
+        "size": { "type": "string", "minLength": 1 },
+        "fit": { "enum": ["fine", "normal", "loose"] },
+        "pitch": { "type": "number" },
+        "end": {
+          "oneOf": [
+            { "type": "object", "additionalProperties": false, "required": ["type", "depth"],
+              "properties": { "type": { "const": "blind" }, "depth": { "$ref": "#/$defs/expr" } } },
+            { "type": "object", "additionalProperties": false, "required": ["type"],
+              "properties": { "type": { "const": "throughAll" } } }
+          ]
+        },
+        "reverse": { "type": "boolean" },
+        "targets": { "$ref": "#/$defs/instanceTargets" },
+        "cut": { "const": "parts", "description": "отверстие сборки «в деталях» (assembly.md §7г.6, FX8-ASM-007)" }
+      }
+    },
+    "sheetMetalFeature": {
+      "description": "параметры листовой детали (document.md §2.10л, S5-SHEET-001)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "sheetMetal" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "thickness": { "$ref": "#/$defs/expr" },
+        "radius": { "$ref": "#/$defs/expr" },
+        "recognize": { "const": true },
+        "kFactor": { "$ref": "#/$defs/expr" },
+        "relief": {
+          "type": "object", "additionalProperties": false, "required": ["type"],
+          "properties": { "type": { "enum": ["rect", "round", "none"] }, "width": { "$ref": "#/$defs/expr" }, "depth": { "$ref": "#/$defs/expr" } }
+        }
+      }
+    },
+    "sheetWallFeature": {
+      "description": "базовая стенка листа по эскизу (document.md §2.10л, S5-SHEET-002)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "sketch", "profiles"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "sheetWall" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "sketch": { "$ref": "#/$defs/featureId" },
+        "profiles": { "$ref": "#/$defs/profiles" },
+        "width": { "$ref": "#/$defs/expr" },
+        "side": { "enum": ["inside", "outside", "mid"] },
+        "reverse": { "type": "boolean" }
+      }
+    },
+    "sheetFlangeFeature": {
+      "description": "отгиб по ребру (document.md §2.10л, S5-SHEET-003)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "edges", "length", "angle"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "sheetFlange" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "edges": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/topoName" } },
+        "length": { "$ref": "#/$defs/expr" },
+        "angle": { "$ref": "#/$defs/expr" },
+        "radius": { "$ref": "#/$defs/expr" },
+        "position": { "enum": ["inside", "outside", "edge"] },
+        "reverse": { "type": "boolean" },
+        "offsets": {
+          "type": "object", "additionalProperties": false, "required": ["start", "end"],
+          "properties": { "start": { "$ref": "#/$defs/expr" }, "end": { "$ref": "#/$defs/expr" } }
+        },
+        "relief": { "enum": ["rect", "round", "none"] },
+        "gap": { "$ref": "#/$defs/expr" }
+      }
+    },
+    "sheetBendFeature": {
+      "description": "гиб по линии эскиза (document.md §2.10л, S5-SHEET-004)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "sketch", "angle"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "sheetBend" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "sketch": { "$ref": "#/$defs/featureId" },
+        "line": { "$ref": "#/$defs/entityId" },
+        "angle": { "$ref": "#/$defs/expr" },
+        "radius": { "$ref": "#/$defs/expr" },
+        "fixed": { "enum": ["left", "right"] },
+        "reverse": { "type": "boolean" }
+      }
+    },
+    "sheetCutFeature": {
+      "description": "вырез в листе по нормали (document.md §2.10л, S5-SHEET-005)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "sketch", "profiles"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "sheetCut" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "sketch": { "$ref": "#/$defs/featureId" },
+        "profiles": { "$ref": "#/$defs/profiles" }
+      }
+    },
+    "importFeature": {
+      "description": "импортированная геометрия тела (document.md §2.10к, S2-DOC-001, S2-IO-004)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "brep"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "import" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "brep": { "type": "string", "minLength": 1 },
+        "source": { "type": "string", "minLength": 1 }
+      }
+    },
+    "threadFeature": {
+      "description": "резьба (document.md §2.10и, S2-FEAT-009; diameter, pitch — S6-LIB-008): ровно одно из designation / diameter, pitch — только с diameter (проверка §5)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "face"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "thread" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "face": { "$ref": "#/$defs/topoName" },
+        "designation": { "type": "string", "minLength": 1 },
+        "diameter": { "$ref": "#/$defs/expr" },
+        "pitch": { "$ref": "#/$defs/expr" },
+        "height": { "$ref": "#/$defs/expr" },
+        "length": { "$ref": "#/$defs/expr" },
+        "reverse": { "type": "boolean" }
+      }
+    },
+    "connectionFeature": {
+      "description": "соединение — применённое решение, фича сборки (document.md §2.10н, solutions.md §7, S6-SOL-002)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "solution", "inputs", "choices"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "connection" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "solution": { "$ref": "#/$defs/solutionCopyId" },
+        "inputs": { "type": "object", "description": "id входа → стабильное имя грани сборки (строка), список осей [имя грани, …] (solutions.md §7.11), точка [x, y, z] или точки эскиза {sketch} (solutions.md §7.1, §7.12)" },
+        "choices": { "type": "object", "description": "id выбора → строка или булево (solutions.md §6.4)" },
+        "tables": { "type": "object", "description": "id таблицы library → id копии пакета библиотеки (libraryPartId)" },
+        "cut": { "const": "parts", "description": "где резать: в деталях (solutions.md §7.10, S6-SOL-010); нет поля — в сборке" }
+      }
+    },
+    "vec3": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "number" } },
+    "range2": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number" } },
+    "connectionCutFeature": {
+      "description": "вырез, принадлежащий соединению, — фича детали (document.md §2.10о, solutions.md §7.10, S6-SOL-010)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "owner", "source", "output", "title", "frame"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "connectionCut" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "owner": {
+          "type": "object", "additionalProperties": false, "required": ["assembly", "connection", "name"],
+          "properties": {
+            "assembly": { "type": "string", "minLength": 1 },
+            "connection": { "type": "string", "minLength": 1 },
+            "file": { "type": "string", "minLength": 1 },
+            "name": { "type": "string" },
+            "library": { "const": true, "description": "вырез элемента библиотеки: connection — ID экземпляра (library.md §6.6 п. 8, FX10-LIB-009)" }
+          }
+        },
+        "source": { "type": "string", "minLength": 1 },
+        "output": { "type": "string", "minLength": 1 },
+        "title": { "type": "string" },
+        "frame": {
+          "type": "object", "additionalProperties": false, "required": ["origin", "x", "y", "z"],
+          "properties": {
+            "origin": { "$ref": "#/$defs/vec3" }, "x": { "$ref": "#/$defs/vec3" }, "y": { "$ref": "#/$defs/vec3" }, "z": { "$ref": "#/$defs/vec3" }
+          }
+        },
+        "revolve": {
+          "type": "array", "minItems": 3,
+          "items": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number" } }
+        },
+        "box": {
+          "type": "object", "additionalProperties": false, "required": ["x", "y", "z"],
+          "properties": { "x": { "$ref": "#/$defs/range2" }, "y": { "$ref": "#/$defs/range2" }, "z": { "$ref": "#/$defs/range2" } }
+        },
+        "thread": {
+          "type": "object", "additionalProperties": false, "required": ["d", "pitch", "length"],
+          "properties": { "d": { "type": "number" }, "pitch": { "type": "number" }, "length": { "type": "number" } }
+        },
+        "fit": { "type": "string" },
+        "diameter": { "type": "number" }
+      }
+    },
+    "coilFeature": {
+      "description": "пружина / нестандартная резьба — профиль по винтовой линии (document.md §2.10п, FX7-PT-004): ровно одно из turns / height (проверка §5)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "sketch", "profiles", "axis", "pitch", "operation"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "coil" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "sketch": { "$ref": "#/$defs/featureId" },
+        "profiles": { "$ref": "#/$defs/profiles" },
+        "axis": {
+          "oneOf": [
+            { "type": "object", "additionalProperties": false, "required": ["sketchLine"], "properties": { "sketchLine": { "$ref": "#/$defs/entityId" } } },
+            { "type": "object", "additionalProperties": false, "required": ["datum"], "properties": { "datum": { "$ref": "#/$defs/datumAxis" } } },
+            { "type": "object", "additionalProperties": false, "required": ["feature"], "properties": { "feature": { "$ref": "#/$defs/featureId" } } }
+          ]
+        },
+        "pitch": { "$ref": "#/$defs/expr" },
+        "turns": { "$ref": "#/$defs/expr" },
+        "height": { "$ref": "#/$defs/expr" },
+        "hand": { "enum": ["right", "left"] },
+        "startAngle": { "$ref": "#/$defs/expr" },
+        "operation": { "$ref": "#/$defs/operation" }
+      }
+    },
+    "gearFeature": {
+      "description": "зубчатый венец (document.md §2.10м, S6-GEAR-002…004)",
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "face", "module", "teeth"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "gear" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "face": { "$ref": "#/$defs/topoName" },
+        "module": { "$ref": "#/$defs/expr" },
+        "teeth": { "$ref": "#/$defs/expr" },
+        "shift": { "$ref": "#/$defs/expr" },
+        "width": { "$ref": "#/$defs/expr" },
+        "reverse": { "type": "boolean" },
+        "operation": { "enum": ["cut", "add"] },
+        "phase": { "$ref": "#/$defs/expr" },
+        "accuracy": { "type": "string", "minLength": 1 },
+        "sector": {
+          "oneOf": [
+            {
+              "type": "object", "additionalProperties": false, "required": ["start", "angle"],
+              "properties": { "start": { "$ref": "#/$defs/expr" }, "angle": { "$ref": "#/$defs/expr" } }
+            },
+            {
+              "type": "object", "additionalProperties": false, "required": ["faces"],
+              "properties": { "faces": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/topoName" } } }
+            }
+          ]
+        }
+      }
+    },
+    "pointRef": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": false, "required": ["datum"], "properties": { "datum": { "const": "origin" } } },
+        { "type": "object", "additionalProperties": false, "required": ["vertex"], "properties": { "vertex": { "$ref": "#/$defs/topoName" } } },
+        {
+          "type": "object", "additionalProperties": false, "required": ["sketchPoint"],
+          "properties": {
+            "sketchPoint": {
+              "type": "object", "additionalProperties": false, "required": ["sketch", "entity"],
+              "properties": { "sketch": { "$ref": "#/$defs/featureId" }, "entity": { "$ref": "#/$defs/entityId" } }
+            }
+          }
+        }
+      ]
+    },
+
+    "targetRef": {
+      "description": "Объект смещённой плоскости «до объекта» (document.md §2.10а, FX4-FEAT-001): точка, ребро или грань",
+      "oneOf": [
+        { "$ref": "#/$defs/pointRef" },
+        { "type": "object", "additionalProperties": false, "required": ["edge"], "properties": { "edge": { "$ref": "#/$defs/topoName" } } },
+        { "type": "object", "additionalProperties": false, "required": ["face"], "properties": { "face": { "$ref": "#/$defs/topoName" } } }
+      ]
+    },
+
+    "planeFeature": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "type", "name", "suppressed", "mode", "ref", "distance"],
+          "properties": {
+            "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "plane" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" }, "owner": { "$ref": "#/$defs/featureId" },
+            "mode": { "const": "offset" }, "ref": { "$ref": "#/$defs/planeRef" }, "distance": { "$ref": "#/$defs/expr" }, "flip": { "type": "boolean" },
+            "to": { "$ref": "#/$defs/targetRef" }, "far": { "type": "boolean" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "type", "name", "suppressed", "mode", "ref", "axis", "angle"],
+          "properties": {
+            "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "plane" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" }, "owner": { "$ref": "#/$defs/featureId" },
+            "mode": { "const": "angle" }, "ref": { "$ref": "#/$defs/planeRef" }, "axis": { "$ref": "#/$defs/lineRef" }, "angle": { "$ref": "#/$defs/expr" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "type", "name", "suppressed", "mode", "points"],
+          "properties": {
+            "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "plane" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" }, "owner": { "$ref": "#/$defs/featureId" },
+            "mode": { "const": "threePoints" }, "points": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "$ref": "#/$defs/pointRef" } }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "type", "name", "suppressed", "mode", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "plane" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" }, "owner": { "$ref": "#/$defs/featureId" },
+            "mode": { "const": "mid" }, "refs": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/planeRef" } }
+          }
+        }
+      ]
+    },
+
+    "axisFeature": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "type", "name", "suppressed", "mode", "points"],
+          "properties": {
+            "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "axis" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" }, "owner": { "$ref": "#/$defs/featureId" },
+            "mode": { "const": "twoPoints" }, "points": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/pointRef" } }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "type", "name", "suppressed", "mode", "edge"],
+          "properties": {
+            "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "axis" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" }, "owner": { "$ref": "#/$defs/featureId" },
+            "mode": { "const": "edge" }, "edge": { "$ref": "#/$defs/topoName" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "type", "name", "suppressed", "mode", "face"],
+          "properties": {
+            "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "axis" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" }, "owner": { "$ref": "#/$defs/featureId" },
+            "mode": { "const": "face" }, "face": { "$ref": "#/$defs/topoName" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "type", "name", "suppressed", "mode", "refs"],
+          "properties": {
+            "id": { "$ref": "#/$defs/featureId" }, "type": { "const": "axis" }, "name": { "type": "string" }, "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" }, "owner": { "$ref": "#/$defs/featureId" },
+            "mode": { "const": "planes" }, "refs": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/planeRef" } }
+          }
+        }
+      ]
+    },
+
+    "filletFeature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "edges", "radius"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" },
+        "type": { "const": "fillet" },
+        "name": { "type": "string" },
+        "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "edges": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/topoName" } },
+        "radius": { "$ref": "#/$defs/expr" }
+      }
+    },
+
+    "chamferFeature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "name", "suppressed", "edges", "distance"],
+      "properties": {
+        "id": { "$ref": "#/$defs/featureId" },
+        "type": { "const": "chamfer" },
+        "name": { "type": "string" },
+        "suppressed": { "type": "boolean" }, "tolerances": { "$ref": "#/$defs/featureTolerances" },
+        "edges": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/topoName" } },
+        "distance": { "$ref": "#/$defs/expr" },
+        "mode": { "enum": ["distance", "distanceAngle", "twoDistances"] },
+        "angle": { "$ref": "#/$defs/expr" },
+        "distance2": { "$ref": "#/$defs/expr" },
+        "flip": { "type": "boolean" }
+      }
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "format": "construe-document",
+  "schemaVersion": 3,
+  "units": {
+    "length": "mm",
+    "angle": "deg"
+  },
+  "counters": {
+    "element": 2,
+    "feature": 9,
+    "entity": 34,
+    "constraint": 34,
+    "variable": 8,
+    "group": 2
+  },
+  "variables": [
+    {"id": "v1", "name": "d", "expr": "10 mm", "comment": "Номинальный диаметр резьбы"},
+    {"id": "v2", "name": "l", "expr": "50 mm", "comment": "Номинальная длина"},
+    {"id": "v3", "name": "k", "expr": "6.4 mm", "comment": "Высота головки номинальная"},
+    {"id": "v4", "name": "s", "expr": "16 mm", "comment": "Размер под ключ номинальный"},
+    {"id": "v5", "name": "P", "expr": "1.5 mm", "comment": "Шаг резьбы (крупный)"},
+    {"id": "v6", "name": "b", "expr": "min(l, 2 * d + 6 mm + 6 mm * min(1, max(0, ceil((l - 125 mm) / (1 mm)))) + 13 mm * min(1, max(0, ceil((l - 200 mm) / (1 mm)))))", "comment": "Длина резьбы b (ISO 888)"},
+    {"id": "v7", "name": "pc", "type": "string", "expr": "58", "comment": "Класс прочности (для обозначения)"}
+  ],
+  "elements": [
+    {
+      "id": "el1",
+      "kind": "part",
+      "name": "Болт",
+      "rollback": null,
+      "features": [
+        {
+          "id": "f1",
+          "type": "sketch",
+          "name": "Эскиз1",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:top"
+          },
+          "entities": [
+            {"id": "e1", "type": "point", "x": 0, "y": 0},
+            {"id": "e2", "type": "point", "x": 4.618802153517005, "y": 7.999999999999999},
+            {"id": "e3", "type": "point", "x": -4.618802153517008, "y": 7.999999999999999},
+            {"id": "e4", "type": "point", "x": -4.618802153517008, "y": 7.999999999999999},
+            {"id": "e5", "type": "point", "x": -9.237604307034012, "y": 1.1312802546399006e-15},
+            {"id": "e6", "type": "point", "x": -9.237604307034012, "y": 1.1312802546399006e-15},
+            {"id": "e7", "type": "point", "x": -4.618802153517002, "y": -8.000000000000002},
+            {"id": "e8", "type": "point", "x": -4.618802153517002, "y": -8.000000000000002},
+            {"id": "e9", "type": "point", "x": 4.618802153517, "y": -8.000000000000004},
+            {"id": "e10", "type": "point", "x": 4.618802153517, "y": -8.000000000000004},
+            {"id": "e11", "type": "point", "x": 9.237604307034012, "y": -2.2625605092798013e-15},
+            {"id": "e12", "type": "point", "x": 9.237604307034012, "y": -2.2625605092798013e-15},
+            {"id": "e13", "type": "point", "x": 4.618802153517005, "y": 7.999999999999999},
+            {"id": "e14", "type": "line", "p1": "e2", "p2": "e3"},
+            {"id": "e15", "type": "line", "p1": "e4", "p2": "e5"},
+            {"id": "e16", "type": "line", "p1": "e6", "p2": "e7"},
+            {"id": "e17", "type": "line", "p1": "e8", "p2": "e9"},
+            {"id": "e18", "type": "line", "p1": "e10", "p2": "e11"},
+            {"id": "e19", "type": "line", "p1": "e12", "p2": "e13"},
+            {"id": "e20", "type": "circle", "center": "e1", "r": 9.237604307034012, "construction": true},
+            {"id": "e21", "type": "point", "x": 0, "y": 0},
+            {"id": "e22", "type": "circle", "center": "e21", "r": 8, "construction": true}
+          ],
+          "constraints": [
+            {"id": "c1", "type": "coincident", "refs": ["e21", "e1"]},
+            {"id": "c2", "type": "coincident", "refs": ["e3", "e4"]},
+            {"id": "c3", "type": "coincident", "refs": ["e5", "e6"]},
+            {"id": "c4", "type": "coincident", "refs": ["e7", "e8"]},
+            {"id": "c5", "type": "coincident", "refs": ["e9", "e10"]},
+            {"id": "c6", "type": "coincident", "refs": ["e11", "e12"]},
+            {"id": "c7", "type": "coincident", "refs": ["e13", "e2"]},
+            {"id": "c8", "type": "pointOnObject", "refs": ["e2", "e20"]},
+            {"id": "c9", "type": "pointOnObject", "refs": ["e4", "e20"]},
+            {"id": "c10", "type": "pointOnObject", "refs": ["e6", "e20"]},
+            {"id": "c11", "type": "pointOnObject", "refs": ["e8", "e20"]},
+            {"id": "c12", "type": "pointOnObject", "refs": ["e10", "e20"]},
+            {"id": "c13", "type": "pointOnObject", "refs": ["e12", "e20"]},
+            {"id": "c14", "type": "equal", "refs": ["e14", "e15"]},
+            {"id": "c15", "type": "equal", "refs": ["e14", "e16"]},
+            {"id": "c16", "type": "equal", "refs": ["e14", "e17"]},
+            {"id": "c17", "type": "equal", "refs": ["e14", "e18"]},
+            {"id": "c18", "type": "equal", "refs": ["e14", "e19"]},
+            {"id": "c19", "type": "tangent", "refs": ["e14", "e22"], "branch": {"side": 1}},
+            {"id": "c20", "type": "diameter", "refs": ["e22"], "value": "s", "driving": true},
+            {"id": "c21", "type": "coincident", "refs": ["e1", "origin"]},
+            {"id": "c22", "type": "horizontal", "refs": ["e14"]}
+          ],
+          "groups": [
+            {"id": "g1", "type": "polygon", "sources": [], "params": {"angle": 1.5707963267948966, "inscribed": false, "sides": 6, "size": 8, "x": 0, "y": 0}, "members": [{"role": "center", "id": "e1"}, {"role": "side0/p1", "id": "e2"}, {"role": "side0/p2", "id": "e3"}, {"role": "side1/p1", "id": "e4"}, {"role": "side1/p2", "id": "e5"}, {"role": "side2/p1", "id": "e6"}, {"role": "side2/p2", "id": "e7"}, {"role": "side3/p1", "id": "e8"}, {"role": "side3/p2", "id": "e9"}, {"role": "side4/p1", "id": "e10"}, {"role": "side4/p2", "id": "e11"}, {"role": "side5/p1", "id": "e12"}, {"role": "side5/p2", "id": "e13"}, {"role": "side0", "id": "e14"}, {"role": "side1", "id": "e15"}, {"role": "side2", "id": "e16"}, {"role": "side3", "id": "e17"}, {"role": "side4", "id": "e18"}, {"role": "side5", "id": "e19"}, {"role": "outer", "id": "e20"}, {"role": "circleCenter", "id": "e21"}, {"role": "circle", "id": "e22"}, {"role": "circleCenterJoin", "id": "c1"}, {"role": "join0", "id": "c2"}, {"role": "join1", "id": "c3"}, {"role": "join2", "id": "c4"}, {"role": "join3", "id": "c5"}, {"role": "join4", "id": "c6"}, {"role": "join5", "id": "c7"}, {"role": "onCircle0", "id": "c8"}, {"role": "onCircle1", "id": "c9"}, {"role": "onCircle2", "id": "c10"}, {"role": "onCircle3", "id": "c11"}, {"role": "onCircle4", "id": "c12"}, {"role": "onCircle5", "id": "c13"}, {"role": "equal1", "id": "c14"}, {"role": "equal2", "id": "c15"}, {"role": "equal3", "id": "c16"}, {"role": "equal4", "id": "c17"}, {"role": "equal5", "id": "c18"}, {"role": "tangent", "id": "c19"}]}
+          ]
+        },
+        {
+          "id": "f2",
+          "type": "extrude",
+          "name": "Выдавливание1",
+          "suppressed": false,
+          "sketch": "f1",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "blind",
+            "depth": "k"
+          },
+          "operation": "add",
+          "targets": "all"
+        },
+        {
+          "id": "f3",
+          "type": "sketch",
+          "name": "Эскиз2",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:front"
+          },
+          "entities": [
+            {"id": "e23", "type": "point", "x": 8, "y": 6.4},
+            {"id": "e24", "type": "point", "x": 9.6, "y": 6.4},
+            {"id": "e25", "type": "line", "p1": "e23", "p2": "e24"},
+            {"id": "e26", "type": "point", "x": 9.6, "y": 6.4},
+            {"id": "e27", "type": "point", "x": 9.6, "y": 5.476239569296599},
+            {"id": "e28", "type": "line", "p1": "e26", "p2": "e27"},
+            {"id": "e29", "type": "point", "x": 9.6, "y": 5.476239569296599},
+            {"id": "e30", "type": "point", "x": 8, "y": 6.4},
+            {"id": "e31", "type": "line", "p1": "e29", "p2": "e30"}
+          ],
+          "constraints": [
+            {"id": "c23", "type": "coincident", "refs": ["e24", "e26"]},
+            {"id": "c24", "type": "coincident", "refs": ["e27", "e29"]},
+            {"id": "c25", "type": "coincident", "refs": ["e30", "e23"]},
+            {"id": "c26", "type": "distanceX", "refs": ["origin", "e23"], "value": "s / 2", "driving": true},
+            {"id": "c27", "type": "distanceX", "refs": ["origin", "e26"], "value": "0.6 * s", "driving": true},
+            {"id": "c28", "type": "distanceX", "refs": ["origin", "e29"], "value": "0.6 * s", "driving": true},
+            {"id": "c29", "type": "distanceY", "refs": ["origin", "e23"], "value": "k", "driving": true},
+            {"id": "c30", "type": "distanceY", "refs": ["origin", "e26"], "value": "k", "driving": true},
+            {"id": "c31", "type": "distanceY", "refs": ["origin", "e29"], "value": "k - s / (10 * sqrt(3))", "driving": true}
+          ]
+        },
+        {
+          "id": "f4",
+          "type": "revolve",
+          "name": "Вращение1",
+          "suppressed": false,
+          "sketch": "f3",
+          "profiles": "all",
+          "axis": {
+            "datum": "axis:y"
+          },
+          "angle": {
+            "type": "full"
+          },
+          "operation": "cut",
+          "targets": "all"
+        },
+        {
+          "id": "f5",
+          "type": "sketch",
+          "name": "Эскиз3",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:top"
+          },
+          "entities": [
+            {"id": "e32", "type": "point", "x": 0, "y": 0},
+            {"id": "e33", "type": "circle", "center": "e32", "r": 5}
+          ],
+          "constraints": [
+            {"id": "c32", "type": "fix", "refs": ["e32"], "target": [0, 0]},
+            {"id": "c33", "type": "diameter", "refs": ["e33"], "value": "d", "driving": true}
+          ]
+        },
+        {
+          "id": "f6",
+          "type": "extrude",
+          "name": "Выдавливание2",
+          "suppressed": false,
+          "sketch": "f5",
+          "profiles": "all",
+          "direction": "reverse",
+          "end": {
+            "type": "blind",
+            "depth": "l"
+          },
+          "operation": "add",
+          "targets": "all"
+        },
+        {
+          "id": "f7",
+          "type": "chamfer",
+          "name": "Фаска1",
+          "suppressed": false,
+          "edges": [
+            "E{f6.cap(end)|f6.side(e33)}"
+          ],
+          "distance": "P"
+        },
+        {
+          "id": "f8",
+          "type": "thread",
+          "name": "Резьба1",
+          "suppressed": false,
+          "face": "f6.side(e33)",
+          "diameter": "d",
+          "length": "b - P",
+          "reverse": true
+        }
+      ]
+    }
+  ]
+}

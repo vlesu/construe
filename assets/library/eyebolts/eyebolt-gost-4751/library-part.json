@@ -1,0 +1,45 @@
+{
+  "format": "construe-library-part",
+  "formatVersion": 1,
+  "id": "gost-4751.eyebolt",
+  "title": "Рым-болт",
+  "description": "Упрощённая модель: стержень диаметром d длиной l под плоскостью «Сверху» (резьба не моделируется), опорный бурт d4 × h1, шейка диаметром 0,8·d3 до середины стенки кольца и кольцо — плоское кольцо d1 / d2 толщиной d3 (тор кольца не моделируется).",
+  "section": [
+    "Крепёж",
+    "Рым-болты"
+  ],
+  "standards": [
+    {
+      "code": "ГОСТ 4751",
+      "year": 1973
+    }
+  ],
+  "keyVariables": [
+    "d"
+  ],
+  "defaultSize": "M12",
+  "designation": "Рым-болт {thread} ГОСТ 4751-73",
+  "source": [
+    {
+      "standard": "ГОСТ 4751-73",
+      "table": "Таблица 1",
+      "note": "все размеры резьбы таблицы 1; издание с Изменениями № 1–4"
+    }
+  ],
+  "attachments": [
+    {
+      "name": "axis",
+      "kind": "axis",
+      "ref": "axis:y",
+      "label": "Резьбовое отверстие",
+      "diameterKey": "d"
+    },
+    {
+      "name": "face",
+      "kind": "plane",
+      "ref": "plane:top",
+      "flip": true,
+      "label": "Опорная поверхность"
+    }
+  ]
+}

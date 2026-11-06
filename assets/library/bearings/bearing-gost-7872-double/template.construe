@@ -1,0 +1,274 @@
+{
+  "format": "construe-document",
+  "schemaVersion": 4,
+  "units": {
+    "length": "mm",
+    "angle": "deg"
+  },
+  "counters": {
+    "element": 2,
+    "feature": 16,
+    "entity": 21,
+    "constraint": 21,
+    "variable": 11
+  },
+  "variables": [
+    {"id": "v1", "name": "code", "type": "string", "expr": "38205Н", "comment": "Условное обозначение подшипника"},
+    {"id": "v2", "name": "type", "type": "string", "expr": "38000Н", "comment": "Тип подшипника по стандарту"},
+    {"id": "v3", "name": "iso", "type": "string", "expr": "", "comment": "Обозначение по ISO (по таблицам взаимозаменяемости; пусто — нет)"},
+    {"id": "v4", "name": "d", "expr": "25 mm", "comment": "Диаметр отверстия тугого кольца одинарного подшипника той же серии"},
+    {"id": "v5", "name": "d2", "expr": "20 mm", "comment": "Диаметр отверстия тугого кольца двойного подшипника"},
+    {"id": "v6", "name": "D", "expr": "47 mm", "comment": "Наружный диаметр свободных колец"},
+    {"id": "v7", "name": "D1", "expr": "27 mm", "comment": "Диаметр отверстия свободных колец"},
+    {"id": "v8", "name": "H", "expr": "28 mm", "comment": "Высота подшипника"},
+    {"id": "v9", "name": "B", "expr": "7 mm", "comment": "Высота тугого кольца двойного подшипника"},
+    {"id": "v10", "name": "r", "expr": "1 mm", "comment": "Координата монтажной фаски свободных колец"}
+  ],
+  "elements": [
+    {
+      "id": "el1",
+      "kind": "part",
+      "name": "Подшипник",
+      "rollback": null,
+      "features": [
+        {
+          "id": "f1",
+          "type": "sketch",
+          "name": "Эскиз1",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:top"
+          },
+          "entities": [
+            {"id": "e1", "type": "point", "x": 0, "y": 0},
+            {"id": "e2", "type": "circle", "center": "e1", "r": 23.5},
+            {"id": "e3", "type": "point", "x": 0, "y": 0},
+            {"id": "e4", "type": "circle", "center": "e3", "r": 13.5}
+          ],
+          "constraints": [
+            {"id": "c1", "type": "fix", "refs": ["e1"], "target": [0, 0]},
+            {"id": "c2", "type": "fix", "refs": ["e3"], "target": [0, 0]},
+            {"id": "c3", "type": "diameter", "refs": ["e2"], "value": "D", "driving": true},
+            {"id": "c4", "type": "diameter", "refs": ["e4"], "value": "D1", "driving": true}
+          ]
+        },
+        {
+          "id": "f2",
+          "type": "extrude",
+          "name": "Выдавливание1",
+          "suppressed": false,
+          "sketch": "f1",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "blind",
+            "depth": "(H - B)/4"
+          },
+          "operation": "add",
+          "targets": "all"
+        },
+        {
+          "id": "f3",
+          "type": "plane",
+          "name": "Плоскость1",
+          "suppressed": false,
+          "mode": "offset",
+          "ref": {
+            "datum": "plane:top"
+          },
+          "distance": "(H - B)/4"
+        },
+        {
+          "id": "f4",
+          "type": "sketch",
+          "name": "Эскиз2",
+          "suppressed": false,
+          "plane": {
+            "feature": "f3"
+          },
+          "entities": [
+            {"id": "e5", "type": "point", "x": 0, "y": 0},
+            {"id": "e6", "type": "circle", "center": "e5", "r": 19.1},
+            {"id": "e7", "type": "point", "x": 0, "y": 0},
+            {"id": "e8", "type": "circle", "center": "e7", "r": 16.9}
+          ],
+          "constraints": [
+            {"id": "c5", "type": "fix", "refs": ["e5"], "target": [0, 0]},
+            {"id": "c6", "type": "fix", "refs": ["e7"], "target": [0, 0]},
+            {"id": "c7", "type": "diameter", "refs": ["e6"], "value": "(d + D)/2 + (D - d)/10", "driving": true},
+            {"id": "c8", "type": "diameter", "refs": ["e8"], "value": "(d + D)/2 - (D - d)/10", "driving": true}
+          ]
+        },
+        {
+          "id": "f5",
+          "type": "extrude",
+          "name": "Выдавливание2",
+          "suppressed": false,
+          "sketch": "f4",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "blind",
+            "depth": "(H - B)/4"
+          },
+          "operation": "add",
+          "targets": "all"
+        },
+        {
+          "id": "f6",
+          "type": "plane",
+          "name": "Плоскость2",
+          "suppressed": false,
+          "mode": "offset",
+          "ref": {
+            "datum": "plane:top"
+          },
+          "distance": "(H - B)/2"
+        },
+        {
+          "id": "f7",
+          "type": "sketch",
+          "name": "Эскиз3",
+          "suppressed": false,
+          "plane": {
+            "feature": "f6"
+          },
+          "entities": [
+            {"id": "e9", "type": "point", "x": 0, "y": 0},
+            {"id": "e10", "type": "circle", "center": "e9", "r": 23.5},
+            {"id": "e11", "type": "point", "x": 0, "y": 0},
+            {"id": "e12", "type": "circle", "center": "e11", "r": 10}
+          ],
+          "constraints": [
+            {"id": "c9", "type": "fix", "refs": ["e9"], "target": [0, 0]},
+            {"id": "c10", "type": "fix", "refs": ["e11"], "target": [0, 0]},
+            {"id": "c11", "type": "diameter", "refs": ["e10"], "value": "D", "driving": true},
+            {"id": "c12", "type": "diameter", "refs": ["e12"], "value": "d2", "driving": true}
+          ]
+        },
+        {
+          "id": "f8",
+          "type": "extrude",
+          "name": "Выдавливание3",
+          "suppressed": false,
+          "sketch": "f7",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "blind",
+            "depth": "B"
+          },
+          "operation": "add",
+          "targets": "all"
+        },
+        {
+          "id": "f9",
+          "type": "plane",
+          "name": "Плоскость3",
+          "suppressed": false,
+          "mode": "offset",
+          "ref": {
+            "datum": "plane:top"
+          },
+          "distance": "(H + B)/2"
+        },
+        {
+          "id": "f10",
+          "type": "sketch",
+          "name": "Эскиз4",
+          "suppressed": false,
+          "plane": {
+            "feature": "f9"
+          },
+          "entities": [
+            {"id": "e13", "type": "point", "x": 0, "y": 0},
+            {"id": "e14", "type": "circle", "center": "e13", "r": 19.1},
+            {"id": "e15", "type": "point", "x": 0, "y": 0},
+            {"id": "e16", "type": "circle", "center": "e15", "r": 16.9}
+          ],
+          "constraints": [
+            {"id": "c13", "type": "fix", "refs": ["e13"], "target": [0, 0]},
+            {"id": "c14", "type": "fix", "refs": ["e15"], "target": [0, 0]},
+            {"id": "c15", "type": "diameter", "refs": ["e14"], "value": "(d + D)/2 + (D - d)/10", "driving": true},
+            {"id": "c16", "type": "diameter", "refs": ["e16"], "value": "(d + D)/2 - (D - d)/10", "driving": true}
+          ]
+        },
+        {
+          "id": "f11",
+          "type": "extrude",
+          "name": "Выдавливание4",
+          "suppressed": false,
+          "sketch": "f10",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "blind",
+            "depth": "(H - B)/4"
+          },
+          "operation": "add",
+          "targets": "all"
+        },
+        {
+          "id": "f12",
+          "type": "plane",
+          "name": "Плоскость4",
+          "suppressed": false,
+          "mode": "offset",
+          "ref": {
+            "datum": "plane:top"
+          },
+          "distance": "H - (H - B)/4"
+        },
+        {
+          "id": "f13",
+          "type": "sketch",
+          "name": "Эскиз5",
+          "suppressed": false,
+          "plane": {
+            "feature": "f12"
+          },
+          "entities": [
+            {"id": "e17", "type": "point", "x": 0, "y": 0},
+            {"id": "e18", "type": "circle", "center": "e17", "r": 23.5},
+            {"id": "e19", "type": "point", "x": 0, "y": 0},
+            {"id": "e20", "type": "circle", "center": "e19", "r": 13.5}
+          ],
+          "constraints": [
+            {"id": "c17", "type": "fix", "refs": ["e17"], "target": [0, 0]},
+            {"id": "c18", "type": "fix", "refs": ["e19"], "target": [0, 0]},
+            {"id": "c19", "type": "diameter", "refs": ["e18"], "value": "D", "driving": true},
+            {"id": "c20", "type": "diameter", "refs": ["e20"], "value": "D1", "driving": true}
+          ]
+        },
+        {
+          "id": "f14",
+          "type": "extrude",
+          "name": "Выдавливание5",
+          "suppressed": false,
+          "sketch": "f13",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "blind",
+            "depth": "(H - B)/4"
+          },
+          "operation": "add",
+          "targets": "all"
+        },
+        {
+          "id": "f15",
+          "type": "chamfer",
+          "name": "Фаска1",
+          "suppressed": false,
+          "edges": [
+            "E{f2.cap(start)|f2.side(e2)}",
+            "E{f2.cap(start)|f2.side(e4)}",
+            "E{f14.cap(end)|f14.side(e18)}",
+            "E{f14.cap(end)|f14.side(e20)}"
+          ],
+          "distance": "r"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "format": "construe-document",
+  "schemaVersion": 3,
+  "units": {
+    "length": "mm",
+    "angle": "deg"
+  },
+  "counters": {
+    "element": 2,
+    "feature": 5,
+    "entity": 5,
+    "constraint": 5,
+    "variable": 5
+  },
+  "variables": [
+    {"id": "v1", "name": "d", "expr": "10 mm", "comment": "Диаметр резьбы крепёжной детали"},
+    {"id": "v2", "name": "d1", "expr": "10.5 mm", "comment": "Внутренний диаметр"},
+    {"id": "v3", "name": "d2", "expr": "30 mm", "comment": "Наружный диаметр"},
+    {"id": "v4", "name": "h", "expr": "2.5 mm", "comment": "Толщина"}
+  ],
+  "elements": [
+    {
+      "id": "el1",
+      "kind": "part",
+      "name": "Шайба",
+      "rollback": null,
+      "features": [
+        {
+          "id": "f1",
+          "type": "sketch",
+          "name": "Эскиз1",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:top"
+          },
+          "entities": [
+            {"id": "e1", "type": "point", "x": 0, "y": 0},
+            {"id": "e2", "type": "circle", "center": "e1", "r": 15}
+          ],
+          "constraints": [
+            {"id": "c1", "type": "fix", "refs": ["e1"], "target": [0, 0]},
+            {"id": "c2", "type": "diameter", "refs": ["e2"], "value": "d2", "driving": true}
+          ]
+        },
+        {
+          "id": "f2",
+          "type": "extrude",
+          "name": "Выдавливание1",
+          "suppressed": false,
+          "sketch": "f1",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "blind",
+            "depth": "h"
+          },
+          "operation": "add",
+          "targets": "all"
+        },
+        {
+          "id": "f3",
+          "type": "sketch",
+          "name": "Эскиз2",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:top"
+          },
+          "entities": [
+            {"id": "e3", "type": "point", "x": 0, "y": 0},
+            {"id": "e4", "type": "circle", "center": "e3", "r": 5.25}
+          ],
+          "constraints": [
+            {"id": "c3", "type": "fix", "refs": ["e3"], "target": [0, 0]},
+            {"id": "c4", "type": "diameter", "refs": ["e4"], "value": "d1", "driving": true}
+          ]
+        },
+        {
+          "id": "f4",
+          "type": "extrude",
+          "name": "Вырез1",
+          "suppressed": false,
+          "sketch": "f3",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "throughAll"
+          },
+          "operation": "cut",
+          "targets": "all"
+        }
+      ]
+    }
+  ]
+}

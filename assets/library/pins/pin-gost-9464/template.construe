@@ -1,0 +1,115 @@
+{
+  "format": "construe-document",
+  "schemaVersion": 3,
+  "units": {
+    "length": "mm",
+    "angle": "deg"
+  },
+  "counters": {
+    "element": 2,
+    "feature": 5,
+    "entity": 15,
+    "constraint": 14,
+    "variable": 5
+  },
+  "variables": [
+    {"id": "v1", "name": "d", "expr": "10 mm", "comment": "Диаметр меньшего конца"},
+    {"id": "v2", "name": "l", "expr": "40 mm", "comment": "Длина штифта"},
+    {"id": "v3", "name": "dt", "expr": "6 mm", "comment": "Номинальный диаметр внутренней резьбы"},
+    {"id": "v4", "name": "l1", "expr": "16 mm", "comment": "Глубина отверстия под резьбу"}
+  ],
+  "elements": [
+    {
+      "id": "el1",
+      "kind": "part",
+      "name": "Штифт",
+      "rollback": null,
+      "features": [
+        {
+          "id": "f1",
+          "type": "sketch",
+          "name": "Эскиз1",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:front"
+          },
+          "entities": [
+            {"id": "e1", "type": "point", "x": 0, "y": 0},
+            {"id": "e2", "type": "point", "x": 5.4, "y": 0},
+            {"id": "e3", "type": "point", "x": 5.4, "y": 0},
+            {"id": "e4", "type": "point", "x": 5, "y": 40},
+            {"id": "e5", "type": "point", "x": 5, "y": 40},
+            {"id": "e6", "type": "point", "x": 0, "y": 40},
+            {"id": "e7", "type": "point", "x": 0, "y": 40},
+            {"id": "e8", "type": "point", "x": 0, "y": 0},
+            {"id": "e9", "type": "line", "p1": "e1", "p2": "e2"},
+            {"id": "e10", "type": "line", "p1": "e3", "p2": "e4"},
+            {"id": "e11", "type": "line", "p1": "e5", "p2": "e6"},
+            {"id": "e12", "type": "line", "p1": "e7", "p2": "e8"}
+          ],
+          "constraints": [
+            {"id": "c1", "type": "coincident", "refs": ["e2", "e3"]},
+            {"id": "c2", "type": "coincident", "refs": ["e4", "e5"]},
+            {"id": "c3", "type": "coincident", "refs": ["e6", "e7"]},
+            {"id": "c4", "type": "coincident", "refs": ["e8", "e1"]},
+            {"id": "c5", "type": "coincident", "refs": ["e1", "origin"]},
+            {"id": "c6", "type": "horizontal", "refs": ["e9"]},
+            {"id": "c7", "type": "horizontal", "refs": ["e11"]},
+            {"id": "c8", "type": "vertical", "refs": ["e12"]},
+            {"id": "c9", "type": "length", "refs": ["e9"], "value": "(d + l / 50) / 2", "driving": true},
+            {"id": "c10", "type": "length", "refs": ["e11"], "value": "d / 2", "driving": true},
+            {"id": "c11", "type": "length", "refs": ["e12"], "value": "l", "driving": true}
+          ]
+        },
+        {
+          "id": "f2",
+          "type": "revolve",
+          "name": "Вращение1",
+          "suppressed": false,
+          "sketch": "f1",
+          "profiles": "all",
+          "axis": {
+            "datum": "axis:y"
+          },
+          "angle": {
+            "type": "full"
+          },
+          "operation": "add",
+          "targets": "all"
+        },
+        {
+          "id": "f3",
+          "type": "sketch",
+          "name": "Эскиз2",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:top"
+          },
+          "entities": [
+            {"id": "e13", "type": "point", "x": 0, "y": 0},
+            {"id": "e14", "type": "circle", "center": "e13", "r": 3}
+          ],
+          "constraints": [
+            {"id": "c12", "type": "coincident", "refs": ["e13", "origin"]},
+            {"id": "c13", "type": "diameter", "refs": ["e14"], "value": "dt", "driving": true}
+          ]
+        },
+        {
+          "id": "f4",
+          "type": "extrude",
+          "name": "Вырез1",
+          "suppressed": false,
+          "sketch": "f3",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "blind",
+            "depth": "l1"
+          },
+          "operation": "cut",
+          "targets": "all"
+        }
+      ]
+    }
+  ]
+}

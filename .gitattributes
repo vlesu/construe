@@ -1,0 +1,11 @@
+# Скрипты оболочки Linux — всегда с окончаниями строк LF (их запускают и из рабочей копии Windows под WSL).
+*.sh text eol=lf
+
+# Ресурсы (перечень сторонних элементов): отпечатки SHA-256 — от файлов как в git, без смены окончаний строк.
+assets/** -text
+
+# Корпус совместимости файлов (S8-COMPAT-001): байты файлов неизменны — без смены окончаний строк.
+tests/conformance/compat/** -text
+
+# AppImage entry point and desktop files of the Linux package: Linux files, LF.
+tools/appimage/** text eol=lf

@@ -1,0 +1,55 @@
+{
+  "format": "construe-library-part",
+  "formatVersion": 1,
+  "id": "gost-11371.washer",
+  "title": "Шайба плоская, исполнение 1, класс точности A",
+  "description": "Модель: кольцо (наружный диаметр d2, внутренний d1, толщина h) без фасок. Опорная поверхность — плоскость «Сверху».",
+  "section": [
+    "Крепёж",
+    "Шайбы"
+  ],
+  "standards": [
+    {
+      "code": "ГОСТ 11371",
+      "year": 1978
+    }
+  ],
+  "equivalents": [
+    {
+      "code": "ISO 7089",
+      "year": 1983
+    },
+    {
+      "code": "ISO 7091",
+      "year": 1983
+    }
+  ],
+  "keyVariables": [
+    "d"
+  ],
+  "defaultSize": "M10",
+  "designation": "Шайба A.{d} ГОСТ 11371-78",
+  "source": [
+    {
+      "standard": "ГОСТ 11371-78",
+      "table": "Таблица п. 1.1",
+      "note": "исполнение 1, класс точности A (d1 — для класса A); ряд нормальный"
+    }
+  ],
+  "attachments": [
+    {
+      "name": "axis",
+      "kind": "axis",
+      "ref": "axis:y",
+      "label": "Болт или отверстие",
+      "diameterKey": "d"
+    },
+    {
+      "name": "face",
+      "kind": "plane",
+      "ref": "plane:top",
+      "flip": true,
+      "label": "Опорная поверхность"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "format": "construe-document",
+  "schemaVersion": 3,
+  "units": {
+    "length": "mm",
+    "angle": "deg"
+  },
+  "counters": {
+    "element": 2,
+    "feature": 5,
+    "entity": 15,
+    "constraint": 15,
+    "variable": 5
+  },
+  "variables": [
+    {"id": "v1", "name": "code", "type": "string", "expr": "5×6,5", "comment": "Размер шпонки b × h1 (для обозначения)"},
+    {"id": "v2", "name": "b", "expr": "5 mm", "comment": "Ширина шпонки"},
+    {"id": "v3", "name": "h1", "expr": "6.5 mm", "comment": "Высота шпонки"},
+    {"id": "v4", "name": "D", "expr": "16 mm", "comment": "Диаметр шпонки"}
+  ],
+  "elements": [
+    {
+      "id": "el1",
+      "kind": "part",
+      "name": "Шпонка",
+      "rollback": null,
+      "features": [
+        {
+          "id": "f1",
+          "type": "sketch",
+          "name": "Эскиз1",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:top"
+          },
+          "entities": [
+            {"id": "e1", "type": "point", "x": 0, "y": -1.5},
+            {"id": "e2", "type": "circle", "center": "e1", "r": 8}
+          ],
+          "constraints": [
+            {"id": "c1", "type": "vertical", "refs": ["e1", "origin"]},
+            {"id": "c2", "type": "distance", "refs": ["e1", "origin"], "value": "D / 2 - h1", "driving": true},
+            {"id": "c3", "type": "diameter", "refs": ["e2"], "value": "D", "driving": true}
+          ]
+        },
+        {
+          "id": "f2",
+          "type": "extrude",
+          "name": "Выдавливание1",
+          "suppressed": false,
+          "sketch": "f1",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "blind",
+            "depth": "b"
+          },
+          "operation": "add",
+          "targets": "all"
+        },
+        {
+          "id": "f3",
+          "type": "sketch",
+          "name": "Эскиз2",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:top"
+          },
+          "entities": [
+            {"id": "e3", "type": "point", "x": -16, "y": 0},
+            {"id": "e4", "type": "point", "x": 16, "y": 0},
+            {"id": "e5", "type": "point", "x": 16, "y": 0},
+            {"id": "e6", "type": "point", "x": 16, "y": -16},
+            {"id": "e7", "type": "point", "x": 16, "y": -16},
+            {"id": "e8", "type": "point", "x": -16, "y": -16},
+            {"id": "e9", "type": "point", "x": -16, "y": -16},
+            {"id": "e10", "type": "point", "x": -16, "y": 0},
+            {"id": "e11", "type": "line", "p1": "e3", "p2": "e4"},
+            {"id": "e12", "type": "line", "p1": "e5", "p2": "e6"},
+            {"id": "e13", "type": "line", "p1": "e7", "p2": "e8"},
+            {"id": "e14", "type": "line", "p1": "e9", "p2": "e10"}
+          ],
+          "constraints": [
+            {"id": "c4", "type": "coincident", "refs": ["e4", "e5"]},
+            {"id": "c5", "type": "coincident", "refs": ["e6", "e7"]},
+            {"id": "c6", "type": "coincident", "refs": ["e8", "e9"]},
+            {"id": "c7", "type": "coincident", "refs": ["e10", "e3"]},
+            {"id": "c8", "type": "horizontal", "refs": ["e11"]},
+            {"id": "c9", "type": "horizontal", "refs": ["e13"]},
+            {"id": "c10", "type": "vertical", "refs": ["e12"]},
+            {"id": "c11", "type": "vertical", "refs": ["e14"]},
+            {"id": "c12", "type": "midpoint", "refs": ["origin", "e11"]},
+            {"id": "c13", "type": "length", "refs": ["e11"], "value": "2 * D", "driving": true},
+            {"id": "c14", "type": "length", "refs": ["e12"], "value": "D", "driving": true}
+          ]
+        },
+        {
+          "id": "f4",
+          "type": "extrude",
+          "name": "Вырез1",
+          "suppressed": false,
+          "sketch": "f3",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "throughAll"
+          },
+          "operation": "cut",
+          "targets": "all"
+        }
+      ]
+    }
+  ]
+}

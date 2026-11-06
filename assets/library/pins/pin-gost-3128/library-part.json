@@ -1,0 +1,47 @@
+{
+  "format": "construe-library-part",
+  "formatVersion": 1,
+  "id": "gost-3128.pin",
+  "title": "Штифт цилиндрический незакалённый",
+  "description": "Модель: цилиндр диаметром d длиной l; фаски и скругления не моделируются.",
+  "section": [
+    "Крепёж",
+    "Штифты"
+  ],
+  "standards": [
+    {
+      "code": "ГОСТ 3128",
+      "year": 1970
+    }
+  ],
+  "keyVariables": [
+    "d",
+    "l"
+  ],
+  "defaultSize": "6×20",
+  "designation": "Штифт {d} × {l} ГОСТ 3128-70",
+  "source": [
+    {
+      "standard": "ГОСТ 3128-70",
+      "table": "Таблица (размеры и масса)",
+      "note": "сочетания d × l, для которых в таблице дана масса; диаметры и длины в скобках не включены; издание с Изменением № 3"
+    }
+  ],
+  "attachments": [
+    {
+      "name": "axis",
+      "kind": "axis",
+      "ref": "axis:y",
+      "label": "Отверстие",
+      "diameterKey": "d"
+    },
+    {
+      "name": "face",
+      "kind": "plane",
+      "ref": "plane:top",
+      "flip": true,
+      "label": "Торец",
+      "optional": true
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "format": "construe-library-part",
+  "formatVersion": 1,
+  "id": "gost-24071.key",
+  "title": "Шпонка сегментная нормальной формы",
+  "description": "Модель: сегмент круга диаметром D высотой h1, толщина b; фаски не моделируются.",
+  "section": [
+    "Детали соединений",
+    "Шпонки"
+  ],
+  "standards": [
+    {
+      "code": "ГОСТ 24071",
+      "year": 1997
+    }
+  ],
+  "equivalents": [
+    {
+      "code": "ISO 3912",
+      "year": 1977
+    }
+  ],
+  "keyVariables": [
+    "b",
+    "h1"
+  ],
+  "defaultSize": "5×6,5",
+  "designation": "Шпонка {code} ГОСТ 24071-97",
+  "source": [
+    {
+      "standard": "ГОСТ 24071-97",
+      "table": "Таблица 1",
+      "note": "b, h1, D — номинальные; нормальная форма (низкая форма — по согласованию, не включена)"
+    }
+  ],
+  "attachments": [
+    {
+      "name": "face",
+      "kind": "plane",
+      "ref": "plane:top",
+      "flip": true,
+      "label": "Боковая грань паза"
+    },
+    {
+      "name": "top",
+      "kind": "plane",
+      "ref": "plane:front",
+      "label": "Плоскость шпонки"
+    }
+  ]
+}

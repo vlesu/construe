@@ -1,0 +1,23 @@
+{
+  "format": "construe-materials",
+  "version": 1,
+  "description": "Библиотека материалов (document.md §2.4а, S2-PART-002). Плотность — кг/м³; модуль упругости, пределы текучести и прочности — МПа; цвет — #RRGGBB. Значения справочные (нижние нормативные для металлов по указанным стандартам, типовые для пластиков); для расчётов уточняйте по стандарту и сертификату.",
+  "materials": [
+    { "id": "st3", "name": "Сталь Ст3", "standard": "ГОСТ 380-2005", "density": 7850, "youngModulus": 200000, "poisson": 0.3, "yieldStrength": 245, "tensileStrength": 370, "color": "#8C8F93" },
+    { "id": "steel20", "name": "Сталь 20", "standard": "ГОСТ 1050-2013", "density": 7850, "youngModulus": 206000, "poisson": 0.3, "yieldStrength": 245, "tensileStrength": 410, "color": "#8C8F93" },
+    { "id": "steel45", "name": "Сталь 45", "standard": "ГОСТ 1050-2013", "density": 7850, "youngModulus": 200000, "poisson": 0.3, "yieldStrength": 355, "tensileStrength": 600, "color": "#868A8E" },
+    { "id": "steel40x", "name": "Сталь 40Х", "standard": "ГОСТ 4543-2016", "density": 7820, "youngModulus": 214000, "poisson": 0.3, "yieldStrength": 785, "tensileStrength": 980, "color": "#7F8387" },
+    { "id": "12x18h10t", "name": "Сталь 12Х18Н10Т", "standard": "ГОСТ 5632-2014", "density": 7920, "youngModulus": 198000, "poisson": 0.3, "yieldStrength": 196, "tensileStrength": 510, "color": "#B8BCC2" },
+    { "id": "sch20", "name": "Чугун СЧ20", "standard": "ГОСТ 1412-85", "density": 7100, "youngModulus": 100000, "poisson": 0.25, "yieldStrength": null, "tensileStrength": 200, "color": "#5B5F63" },
+    { "id": "amg6", "name": "Алюминиевый сплав АМг6", "standard": "ГОСТ 4784-2019", "density": 2640, "youngModulus": 71000, "poisson": 0.33, "yieldStrength": 155, "tensileStrength": 315, "color": "#C9CED3" },
+    { "id": "d16t", "name": "Алюминиевый сплав Д16Т", "standard": "ГОСТ 4784-2019", "density": 2780, "youngModulus": 72000, "poisson": 0.33, "yieldStrength": 290, "tensileStrength": 440, "color": "#C3C8CD" },
+    { "id": "ad31", "name": "Алюминиевый сплав АД31Т1", "standard": "ГОСТ 4784-2019", "density": 2710, "youngModulus": 69000, "poisson": 0.33, "yieldStrength": 147, "tensileStrength": 196, "color": "#CED3D8" },
+    { "id": "l63", "name": "Латунь Л63", "standard": "ГОСТ 15527-2004", "density": 8440, "youngModulus": 110000, "poisson": 0.35, "yieldStrength": 120, "tensileStrength": 300, "color": "#C9A44C" },
+    { "id": "braj94", "name": "Бронза БрАЖ9-4", "standard": "ГОСТ 18175-78", "density": 7600, "youngModulus": 114000, "poisson": 0.33, "yieldStrength": 200, "tensileStrength": 500, "color": "#B07D3A" },
+    { "id": "m1", "name": "Медь М1", "standard": "ГОСТ 859-2014", "density": 8940, "youngModulus": 118000, "poisson": 0.34, "yieldStrength": 70, "tensileStrength": 220, "color": "#B87333" },
+    { "id": "pla", "name": "PLA", "standard": "", "density": 1240, "youngModulus": 3500, "poisson": 0.36, "yieldStrength": 60, "tensileStrength": 60, "color": "#4F8FCC" },
+    { "id": "petg", "name": "PETG", "standard": "", "density": 1270, "youngModulus": 2100, "poisson": 0.38, "yieldStrength": 50, "tensileStrength": 50, "color": "#6DB3A0" },
+    { "id": "abs", "name": "ABS", "standard": "", "density": 1040, "youngModulus": 2300, "poisson": 0.35, "yieldStrength": 40, "tensileStrength": 40, "color": "#E0E0D8" },
+    { "id": "pa12", "name": "Полиамид PA12", "standard": "", "density": 1010, "youngModulus": 1700, "poisson": 0.39, "yieldStrength": 48, "tensileStrength": 48, "color": "#F0EFEA" }
+  ]
+}

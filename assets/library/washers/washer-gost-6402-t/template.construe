@@ -1,0 +1,117 @@
+{
+  "format": "construe-document",
+  "schemaVersion": 3,
+  "units": {
+    "length": "mm",
+    "angle": "deg"
+  },
+  "counters": {
+    "element": 2,
+    "feature": 5,
+    "entity": 17,
+    "constraint": 16,
+    "variable": 5
+  },
+  "variables": [
+    {"id": "v1", "name": "d", "expr": "10 mm", "comment": "Номинальный диаметр резьбы болта, винта, шпильки"},
+    {"id": "v2", "name": "d1", "expr": "10.2 mm", "comment": "Внутренний диаметр (d стандарта)"},
+    {"id": "v3", "name": "b", "expr": "3 mm", "comment": "Ширина сечения"},
+    {"id": "v4", "name": "s", "expr": "3 mm", "comment": "Толщина сечения"}
+  ],
+  "elements": [
+    {
+      "id": "el1",
+      "kind": "part",
+      "name": "Шайба",
+      "rollback": null,
+      "features": [
+        {
+          "id": "f1",
+          "type": "sketch",
+          "name": "Эскиз1",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:top"
+          },
+          "entities": [
+            {"id": "e1", "type": "point", "x": 0, "y": 0},
+            {"id": "e2", "type": "circle", "center": "e1", "r": 8.1},
+            {"id": "e3", "type": "point", "x": 0, "y": 0},
+            {"id": "e4", "type": "circle", "center": "e3", "r": 5.1}
+          ],
+          "constraints": [
+            {"id": "c1", "type": "fix", "refs": ["e1"], "target": [0, 0]},
+            {"id": "c2", "type": "fix", "refs": ["e3"], "target": [0, 0]},
+            {"id": "c3", "type": "diameter", "refs": ["e2"], "value": "d1 + 2*b", "driving": true},
+            {"id": "c4", "type": "diameter", "refs": ["e4"], "value": "d1", "driving": true}
+          ]
+        },
+        {
+          "id": "f2",
+          "type": "extrude",
+          "name": "Выдавливание1",
+          "suppressed": false,
+          "sketch": "f1",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "blind",
+            "depth": "s"
+          },
+          "operation": "add",
+          "targets": "all"
+        },
+        {
+          "id": "f3",
+          "type": "sketch",
+          "name": "Эскиз2",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:top"
+          },
+          "entities": [
+            {"id": "e5", "type": "point", "x": 0, "y": -1.0499999999999998},
+            {"id": "e6", "type": "point", "x": 9.1, "y": -1.0499999999999998},
+            {"id": "e7", "type": "line", "p1": "e5", "p2": "e6"},
+            {"id": "e8", "type": "point", "x": 9.1, "y": -1.0499999999999998},
+            {"id": "e9", "type": "point", "x": 9.1, "y": 1.0499999999999998},
+            {"id": "e10", "type": "line", "p1": "e8", "p2": "e9"},
+            {"id": "e11", "type": "point", "x": 9.1, "y": 1.0499999999999998},
+            {"id": "e12", "type": "point", "x": 0, "y": 1.0499999999999998},
+            {"id": "e13", "type": "line", "p1": "e11", "p2": "e12"},
+            {"id": "e14", "type": "point", "x": 0, "y": 1.0499999999999998},
+            {"id": "e15", "type": "point", "x": 0, "y": -1.0499999999999998},
+            {"id": "e16", "type": "line", "p1": "e14", "p2": "e15"}
+          ],
+          "constraints": [
+            {"id": "c5", "type": "coincident", "refs": ["e6", "e8"]},
+            {"id": "c6", "type": "coincident", "refs": ["e9", "e11"]},
+            {"id": "c7", "type": "coincident", "refs": ["e12", "e14"]},
+            {"id": "c8", "type": "coincident", "refs": ["e15", "e5"]},
+            {"id": "c9", "type": "horizontal", "refs": ["e7"]},
+            {"id": "c10", "type": "horizontal", "refs": ["e13"]},
+            {"id": "c11", "type": "vertical", "refs": ["e10"]},
+            {"id": "c12", "type": "vertical", "refs": ["e16"]},
+            {"id": "c13", "type": "midpoint", "refs": ["origin", "e16"]},
+            {"id": "c14", "type": "length", "refs": ["e16"], "value": "0.7*s", "driving": true},
+            {"id": "c15", "type": "length", "refs": ["e7"], "value": "d1/2 + b + 1 mm", "driving": true}
+          ]
+        },
+        {
+          "id": "f4",
+          "type": "extrude",
+          "name": "Вырез1",
+          "suppressed": false,
+          "sketch": "f3",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "throughAll"
+          },
+          "operation": "cut",
+          "targets": "all"
+        }
+      ]
+    }
+  ]
+}

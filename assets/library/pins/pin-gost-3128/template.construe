@@ -1,0 +1,61 @@
+{
+  "format": "construe-document",
+  "schemaVersion": 3,
+  "units": {
+    "length": "mm",
+    "angle": "deg"
+  },
+  "counters": {
+    "element": 2,
+    "feature": 3,
+    "entity": 3,
+    "constraint": 3,
+    "variable": 3
+  },
+  "variables": [
+    {"id": "v1", "name": "d", "expr": "6 mm", "comment": "Диаметр штифта"},
+    {"id": "v2", "name": "l", "expr": "20 mm", "comment": "Длина штифта"}
+  ],
+  "elements": [
+    {
+      "id": "el1",
+      "kind": "part",
+      "name": "Штифт",
+      "rollback": null,
+      "features": [
+        {
+          "id": "f1",
+          "type": "sketch",
+          "name": "Эскиз1",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:top"
+          },
+          "entities": [
+            {"id": "e1", "type": "point", "x": 0, "y": 0},
+            {"id": "e2", "type": "circle", "center": "e1", "r": 3}
+          ],
+          "constraints": [
+            {"id": "c1", "type": "coincident", "refs": ["e1", "origin"]},
+            {"id": "c2", "type": "diameter", "refs": ["e2"], "value": "d", "driving": true}
+          ]
+        },
+        {
+          "id": "f2",
+          "type": "extrude",
+          "name": "Выдавливание1",
+          "suppressed": false,
+          "sketch": "f1",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "blind",
+            "depth": "l"
+          },
+          "operation": "add",
+          "targets": "all"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "format": "construe-solution",
+  "formatVersion": 1,
+  "id": "pin",
+  "title": "Штифт",
+  "description": "Отверстие через пакет деталей и штифт цилиндрический ГОСТ 3128 (отверстие H7) или конический ГОСТ 3129, ГОСТ 9464, ГОСТ 9465 (коническое отверстие 1:50); длина — наименьшая стандартная, не короче пакета (solutions.md §12.2).",
+  "section": [
+    "Крепёж"
+  ],
+  "inputs": [
+    {
+      "id": "face",
+      "type": "face",
+      "title": "Грань"
+    },
+    {
+      "id": "point",
+      "type": "point",
+      "title": "Точка",
+      "face": "face"
+    }
+  ],
+  "frame": {
+    "face": "face",
+    "point": "point"
+  },
+  "pack": {
+    "probe": "d"
+  },
+  "choices": [
+    {
+      "id": "kind",
+      "title": "Штифт",
+      "type": "table",
+      "options": [
+        "pin3128",
+        "pin3129",
+        "pin9464",
+        "pin9465"
+      ],
+      "labels": [
+        "Цилиндрический ГОСТ 3128",
+        "Конический ГОСТ 3129",
+        "Конический с внутренней резьбой ГОСТ 9464",
+        "Конический с резьбовой цапфой ГОСТ 9465"
+      ],
+      "default": "pin3128"
+    },
+    {
+      "id": "d",
+      "title": "Диаметр",
+      "type": "value",
+      "from": {
+        "table": "$kind",
+        "column": "d"
+      },
+      "default": "6 mm"
+    }
+  ],
+  "tables": [
+    {
+      "id": "pin3128",
+      "title": "Штифт ГОСТ 3128",
+      "library": "gost-3128.pin"
+    },
+    {
+      "id": "pin3129",
+      "title": "Штифт ГОСТ 3129",
+      "library": "gost-3129.pin"
+    },
+    {
+      "id": "pin9464",
+      "title": "Штифт ГОСТ 9464",
+      "library": "gost-9464.pin"
+    },
+    {
+      "id": "pin9465",
+      "title": "Штифт ГОСТ 9465",
+      "library": "gost-9465.pin"
+    }
+  ],
+  "rules": [
+    {
+      "let": "Lmin",
+      "expr": "pack.thickness"
+    },
+    {
+      "select": "q",
+      "table": "pin9465",
+      "where": [
+        [
+          "d",
+          "=",
+          "d"
+        ]
+      ],
+      "when": [
+        [
+          "kind",
+          "=",
+          "pin9465"
+        ]
+      ]
+    },
+    {
+      "let": "Lmin",
+      "expr": "pack.thickness + q.b",
+      "when": [
+        [
+          "kind",
+          "=",
+          "pin9465"
+        ]
+      ]
+    },
+    {
+      "select": "p",
+      "table": "$kind",
+      "where": [
+        [
+          "d",
+          "=",
+          "d"
+        ],
+        [
+          "l",
+          ">=",
+          "Lmin"
+        ]
+      ],
+      "order": [
+        "l",
+        "asc"
+      ]
+    },
+    {
+      "let": "lc",
+      "expr": "p.l"
+    },
+    {
+      "let": "lc",
+      "expr": "p.l - p.b",
+      "when": [
+        [
+          "kind",
+          "=",
+          "pin9465"
+        ]
+      ]
+    },
+    {
+      "let": "D0",
+      "expr": "d + lc / 50"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "hole",
+      "type": "cut",
+      "title": "Отверстие под штифт",
+      "parts": "pack",
+      "fit": "H7",
+      "when": [
+        [
+          "kind",
+          "=",
+          "pin3128"
+        ]
+      ],
+      "tool": {
+        "revolve": [
+          [
+            "0 mm",
+            "-1 mm"
+          ],
+          [
+            "d / 2",
+            "-1 mm"
+          ],
+          [
+            "d / 2",
+            "pack.thickness + 1 mm"
+          ],
+          [
+            "0 mm",
+            "pack.thickness + 1 mm"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "coneHole",
+      "type": "cut",
+      "title": "Коническое отверстие",
+      "parts": "pack",
+      "when": [
+        [
+          "kind",
+          "!=",
+          "pin3128"
+        ]
+      ],
+      "tool": {
+        "revolve": [
+          [
+            "0 mm",
+            "-1 mm"
+          ],
+          [
+            "(D0 + 1 mm / 50) / 2",
+            "-1 mm"
+          ],
+          [
+            "(D0 - (pack.thickness + 1 mm) / 50) / 2",
+            "pack.thickness + 1 mm"
+          ],
+          [
+            "0 mm",
+            "pack.thickness + 1 mm"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "pin",
+      "type": "part",
+      "title": "Штифт",
+      "table": "$kind",
+      "row": "p",
+      "z": "0 mm",
+      "direction": "in"
+    }
+  ]
+}

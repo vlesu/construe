@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "construe",
+  "version-string": "0.1.0-alpha",
+  "builtin-baseline": "e456309491fd875487bf02b8a0dca76c1b1b00cc",
+  "dependencies": [
+    "eigen3",
+    "gtest",
+    "nlohmann-json",
+    {
+      "name": "opencascade",
+      "default-features": false
+    }
+  ],
+  "overrides": [
+    { "name": "opencascade", "version": "8.0.1" }
+  ]
+}

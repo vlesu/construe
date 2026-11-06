@@ -1,0 +1,24 @@
+name,d,d1,d2,h
+M1,1 mm,1.1 mm,2.5 mm,0.3 mm
+M1.2,1.2 mm,1.3 mm,3 mm,0.3 mm
+M1.4,1.4 mm,1.5 mm,3 mm,0.3 mm
+M1.6,1.6 mm,1.7 mm,3.5 mm,0.3 mm
+M2,2 mm,2.2 mm,4.5 mm,0.3 mm
+M2.5,2.5 mm,2.7 mm,5 mm,0.5 mm
+M3,3 mm,3.2 mm,6 mm,0.5 mm
+M3.5,3.5 mm,3.7 mm,7 mm,0.5 mm
+M4,4 mm,4.3 mm,8 mm,0.5 mm
+M5,5 mm,5.3 mm,9 mm,1 mm
+M6,6 mm,6.4 mm,11 mm,1.6 mm
+M8,8 mm,8.4 mm,15 mm,1.6 mm
+M10,10 mm,10.5 mm,18 mm,1.6 mm
+M12,12 mm,13 mm,20 mm,2 mm
+M14,14 mm,15 mm,24 mm,2.5 mm
+M16,16 mm,17 mm,28 mm,2.5 mm
+M18,18 mm,19 mm,30 mm,3 mm
+M20,20 mm,21 mm,34 mm,3 mm
+M22,22 mm,23 mm,37 mm,3 mm
+M24,24 mm,25 mm,39 mm,4 mm
+M27,27 mm,28 mm,44 mm,4 mm
+M30,30 mm,31 mm,50 mm,4 mm
+M36,36 mm,37 mm,60 mm,5 mm

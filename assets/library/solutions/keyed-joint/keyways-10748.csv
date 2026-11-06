@@ -1,0 +1,21 @@
+name,dmin,dmax,b,h,t1,t2
+30-38,30 mm,38 mm,10 mm,9 mm,5.5 mm,3.8 mm
+38-44,38 mm,44 mm,12 mm,11 mm,7 mm,4.4 mm
+44-50,44 mm,50 mm,14 mm,12 mm,7.5 mm,4.9 mm
+50-58,50 mm,58 mm,16 mm,14 mm,9 mm,5.4 mm
+58-65,58 mm,65 mm,18 mm,16 mm,10 mm,6.4 mm
+65-75,65 mm,75 mm,20 mm,18 mm,11 mm,7.4 mm
+75-85,75 mm,85 mm,22 mm,20 mm,12 mm,8.4 mm
+85-95,85 mm,95 mm,25 mm,22 mm,13 mm,9.4 mm
+95-110,95 mm,110 mm,28 mm,25 mm,15 mm,10.4 mm
+110-130,110 mm,130 mm,32 mm,28 mm,17 mm,11.4 mm
+130-150,130 mm,150 mm,36 mm,32 mm,20 mm,12.4 mm
+150-170,150 mm,170 mm,40 mm,36 mm,22 mm,14.4 mm
+170-200,170 mm,200 mm,45 mm,40 mm,25 mm,15.4 mm
+200-230,200 mm,230 mm,50 mm,45 mm,28 mm,17.4 mm
+230-260,230 mm,260 mm,56 mm,50 mm,31 mm,19.5 mm
+260-290,260 mm,290 mm,63 mm,60 mm,36 mm,24.5 mm
+290-330,290 mm,330 mm,70 mm,65 mm,39 mm,26.5 mm
+330-380,330 mm,380 mm,80 mm,75 mm,44 mm,31.5 mm
+380-440,380 mm,440 mm,90 mm,85 mm,49 mm,36.5 mm
+440-500,440 mm,500 mm,100 mm,95 mm,54 mm,41.5 mm

@@ -1,0 +1,16 @@
+name,thread,d,d1,d2,d3,d4,h,h1,l
+M8,M8,8 mm,36 mm,20 mm,8 mm,20 mm,12 mm,6 mm,18 mm
+M10,M10,10 mm,45 mm,25 mm,10 mm,25 mm,16 mm,8 mm,21 mm
+M12,M12,12 mm,54 mm,30 mm,12 mm,30 mm,18 mm,10 mm,25 mm
+M16,M16,16 mm,63 mm,35 mm,14 mm,36 mm,20 mm,12 mm,32 mm
+M20,M20,20 mm,72 mm,40 mm,16 mm,40 mm,24 mm,14 mm,38 mm
+M24,M24,24 mm,90 mm,50 mm,20 mm,50 mm,29 mm,16 mm,45 mm
+M30,M30,30 mm,108 mm,60 mm,24 mm,63 mm,37 mm,18 mm,55 mm
+M36,M36,36 mm,126 mm,70 mm,28 mm,75 mm,43 mm,22 mm,63 mm
+M42,M42,42 mm,144 mm,80 mm,32 mm,85 mm,50 mm,25 mm,72 mm
+M48,M48,48 mm,162 mm,90 mm,36 mm,95 mm,52 mm,30 mm,82 mm
+M56,M56,56 mm,180 mm,100 mm,40 mm,105 mm,60 mm,34 mm,95 mm
+M64,M64,64 mm,198 mm,110 mm,44 mm,115 mm,65 mm,40 mm,110 mm
+M72×6,M72×6,72 mm,234 mm,130 mm,52 mm,135 mm,75 mm,45 mm,115 mm
+M80×6,M80×6,80 mm,270 mm,150 mm,60 mm,160 mm,88 mm,50 mm,125 mm
+M100×6,M100×6,100 mm,324 mm,180 mm,72 mm,190 mm,105 mm,60 mm,150 mm

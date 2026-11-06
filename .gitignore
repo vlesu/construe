@@ -1,0 +1,52 @@
+# Исходники сторонних проектов — только для изучения
+/refs/
+
+# Скачанная сторонняя документация (в git — только наш обзор стандартов)
+/docs/alternatives/*
+/docs/standards/*
+!/docs/standards/README.md
+
+# Сборка
+/build/
+# Пакет Windows и прочие выходные папки упаковки
+/dist/
+/out/
+/vcpkg_installed/
+CMakeUserPresets.json
+
+# Модели пользователя для качественных проверок
+/data/
+
+# IDE
+/.vs/
+/.vscode/
+*.user
+
+# Журналы установки инструментов
+aqtinstall.log
+
+# Папки шрифтов (font.md §2): в git — только шрифты с открытыми лицензиями и их LICENSE; свои шрифты
+# пользователя и шрифты без разобранных прав лежат здесь локально.
+assets/trafonts/*
+!assets/trafonts/Sowjetschablone.ttf
+!assets/trafonts/Sowjetschablone.LICENSE.txt
+!assets/trafonts/ConstrueStencilGostA.ttf
+!assets/trafonts/ConstrueStencilGostA.LICENSE.txt
+!assets/trafonts/ConstrueStencilGostB.ttf
+!assets/trafonts/ConstrueStencilGostB.LICENSE.txt
+assets/fonts/*
+!assets/fonts/OpenGostTypeA-Regular.ttf
+!assets/fonts/OpenGostTypeA-Regular.LICENSE.txt
+!assets/fonts/OpenGostTypeB-Regular.ttf
+!assets/fonts/OpenGostTypeB-Regular.LICENSE.txt
+!assets/fonts/osifont-italic.ttf
+!assets/fonts/osifont-italic.LICENSE.txt
+!assets/fonts/osifont-lgpl3fe.ttf
+!assets/fonts/osifont-lgpl3fe.LICENSE.txt
+
+# Приватные документы (указание пользователя 2026-10-18): точные формулировки пользователя, непубликуемые материалы
+/docs/private/
+# Байт-код Python (tests/server, tools)
+__pycache__/
+# Ключи доступа (SSH к Mac и т. п.; указание пользователя 2026-11-03): только на компьютере пользователя, не в git
+/keys/

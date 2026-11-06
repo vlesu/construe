@@ -1,0 +1,22 @@
+{
+  "format": "construe-hole-tables",
+  "version": 1,
+  "description": "Таблицы отверстий под метрический крепёж (holes.md). Диаметры и глубины — мм.",
+  "sources": {
+    "clearance": "ГОСТ 11284-75 (совпадает с ISO 273): ряды fine (точная), normal (средняя), loose (грубая)",
+    "counterbore": "цековка под винт с цилиндрической головкой и шестигранным углублением ГОСТ 11738 / ISO 4762 — DIN 974-1, ряд 1: диаметр d и глубина t",
+    "countersink": "зенковка 90° под винт с потайной головкой и шестигранным углублением ISO 10642: диаметр — теоретический диаметр головки dk",
+    "tapDrill": "диаметр сверла под нарезание метрической резьбы ГОСТ 19257-73 (совпадает с ISO 2306); шаги — ГОСТ 8724 (ISO 261), первый — крупный"
+  },
+  "sizes": [
+    { "size": "M3",  "clearance": { "fine": 3.2,  "normal": 3.4,  "loose": 3.6 },  "counterbore": { "d": 6.5,  "t": 3.4 },  "countersink": { "d": 6.72 },  "pitches": [ { "pitch": 0.5,  "drill": 2.5 },  { "pitch": 0.35, "drill": 2.65 } ] },
+    { "size": "M4",  "clearance": { "fine": 4.3,  "normal": 4.5,  "loose": 4.8 },  "counterbore": { "d": 8.0,  "t": 4.4 },  "countersink": { "d": 8.96 },  "pitches": [ { "pitch": 0.7,  "drill": 3.3 },  { "pitch": 0.5,  "drill": 3.5 } ] },
+    { "size": "M5",  "clearance": { "fine": 5.3,  "normal": 5.5,  "loose": 5.8 },  "counterbore": { "d": 10.0, "t": 5.4 },  "countersink": { "d": 11.2 },  "pitches": [ { "pitch": 0.8,  "drill": 4.2 },  { "pitch": 0.5,  "drill": 4.5 } ] },
+    { "size": "M6",  "clearance": { "fine": 6.4,  "normal": 6.6,  "loose": 7.0 },  "counterbore": { "d": 11.0, "t": 6.4 },  "countersink": { "d": 13.44 }, "pitches": [ { "pitch": 1.0,  "drill": 5.0 },  { "pitch": 0.75, "drill": 5.25 } ] },
+    { "size": "M8",  "clearance": { "fine": 8.4,  "normal": 9.0,  "loose": 10.0 }, "counterbore": { "d": 15.0, "t": 8.6 },  "countersink": { "d": 17.92 }, "pitches": [ { "pitch": 1.25, "drill": 6.8 },  { "pitch": 1.0,  "drill": 7.0 } ] },
+    { "size": "M10", "clearance": { "fine": 10.5, "normal": 11.0, "loose": 12.0 }, "counterbore": { "d": 18.0, "t": 10.6 }, "countersink": { "d": 22.4 },  "pitches": [ { "pitch": 1.5,  "drill": 8.5 },  { "pitch": 1.25, "drill": 8.8 }, { "pitch": 1.0, "drill": 9.0 } ] },
+    { "size": "M12", "clearance": { "fine": 13.0, "normal": 13.5, "loose": 14.5 }, "counterbore": { "d": 20.0, "t": 12.6 }, "countersink": { "d": 26.88 }, "pitches": [ { "pitch": 1.75, "drill": 10.2 }, { "pitch": 1.5,  "drill": 10.5 }, { "pitch": 1.25, "drill": 10.8 } ] },
+    { "size": "M16", "clearance": { "fine": 17.0, "normal": 17.5, "loose": 18.5 }, "counterbore": { "d": 26.0, "t": 16.6 }, "countersink": { "d": 33.6 },  "pitches": [ { "pitch": 2.0,  "drill": 14.0 }, { "pitch": 1.5,  "drill": 14.5 } ] },
+    { "size": "M20", "clearance": { "fine": 21.0, "normal": 22.0, "loose": 24.0 }, "counterbore": { "d": 33.0, "t": 20.6 }, "countersink": { "d": 40.32 }, "pitches": [ { "pitch": 2.5,  "drill": 17.5 }, { "pitch": 1.5,  "drill": 18.5 } ] }
+  ]
+}

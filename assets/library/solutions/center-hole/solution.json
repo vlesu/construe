@@ -1,0 +1,326 @@
+{
+  "format": "construe-solution",
+  "formatVersion": 1,
+  "id": "center-hole",
+  "title": "Центровое отверстие",
+  "description": "Центровое отверстие ГОСТ 14034 формы A, B (конус 60°) или C, E (конус 75°) в торце вала; размер — по наибольшему рекомендуемому диаметру заготовки D, не большему диаметра вала (solutions.md §12.2).",
+  "section": [
+    "Детали соединений"
+  ],
+  "inputs": [
+    {
+      "id": "shaft",
+      "type": "cylinder",
+      "title": "Вал"
+    },
+    {
+      "id": "face",
+      "type": "face",
+      "title": "Торец"
+    }
+  ],
+  "frame": {
+    "face": "face",
+    "axis": "shaft"
+  },
+  "choices": [
+    {
+      "id": "form",
+      "title": "Форма",
+      "type": "list",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "E"
+      ],
+      "labels": [
+        "Форма A",
+        "Форма B",
+        "Форма C",
+        "Форма E"
+      ],
+      "default": "A"
+    }
+  ],
+  "tables": [
+    {
+      "id": "centers60",
+      "title": "ГОСТ 14034, таблица 1",
+      "file": "centers-60.csv"
+    },
+    {
+      "id": "centers75",
+      "title": "ГОСТ 14034, таблица 2",
+      "file": "centers-75.csv"
+    }
+  ],
+  "rules": [
+    {
+      "select": "c",
+      "table": "centers60",
+      "where": [
+        [
+          "D",
+          "<=",
+          "shaft.diameter"
+        ]
+      ],
+      "order": [
+        "D",
+        "desc"
+      ],
+      "when": [
+        [
+          "form",
+          "=",
+          "A"
+        ]
+      ]
+    },
+    {
+      "select": "c",
+      "table": "centers60",
+      "where": [
+        [
+          "D",
+          "<=",
+          "shaft.diameter"
+        ]
+      ],
+      "order": [
+        "D",
+        "desc"
+      ],
+      "when": [
+        [
+          "form",
+          "=",
+          "B"
+        ]
+      ]
+    },
+    {
+      "select": "c",
+      "table": "centers75",
+      "where": [
+        [
+          "D",
+          "<=",
+          "shaft.diameter"
+        ]
+      ],
+      "order": [
+        "D",
+        "desc"
+      ],
+      "when": [
+        [
+          "form",
+          "=",
+          "C"
+        ]
+      ]
+    },
+    {
+      "select": "c",
+      "table": "centers75",
+      "where": [
+        [
+          "D",
+          "<=",
+          "shaft.diameter"
+        ]
+      ],
+      "order": [
+        "D",
+        "desc"
+      ],
+      "when": [
+        [
+          "form",
+          "=",
+          "E"
+        ]
+      ]
+    },
+    {
+      "let": "tip",
+      "expr": "c.d / 2 / tan(59 deg)"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "centerA",
+      "type": "cut",
+      "title": "Центровое отверстие A",
+      "parts": "shaft",
+      "tool": {
+        "revolve": [
+          [
+            "0 mm",
+            "-1 mm"
+          ],
+          [
+            "c.d1 / 2",
+            "-1 mm"
+          ],
+          [
+            "c.d1 / 2",
+            "0 mm"
+          ],
+          [
+            "c.d / 2",
+            "c.l1"
+          ],
+          [
+            "c.d / 2",
+            "c.l1 + c.l - tip"
+          ],
+          [
+            "0 mm",
+            "c.l1 + c.l"
+          ]
+        ]
+      },
+      "when": [
+        [
+          "form",
+          "=",
+          "A"
+        ]
+      ]
+    },
+    {
+      "id": "centerB",
+      "type": "cut",
+      "title": "Центровое отверстие B",
+      "parts": "shaft",
+      "tool": {
+        "revolve": [
+          [
+            "0 mm",
+            "-1 mm"
+          ],
+          [
+            "c.d2 / 2",
+            "-1 mm"
+          ],
+          [
+            "c.d2 / 2",
+            "0 mm"
+          ],
+          [
+            "c.d1 / 2",
+            "c.l2 - c.l1"
+          ],
+          [
+            "c.d / 2",
+            "c.l2"
+          ],
+          [
+            "c.d / 2",
+            "c.l2 + c.l - tip"
+          ],
+          [
+            "0 mm",
+            "c.l2 + c.l"
+          ]
+        ]
+      },
+      "when": [
+        [
+          "form",
+          "=",
+          "B"
+        ]
+      ]
+    },
+    {
+      "id": "centerC",
+      "type": "cut",
+      "title": "Центровое отверстие C",
+      "parts": "shaft",
+      "tool": {
+        "revolve": [
+          [
+            "0 mm",
+            "-1 mm"
+          ],
+          [
+            "c.d1 / 2",
+            "-1 mm"
+          ],
+          [
+            "c.d1 / 2",
+            "0 mm"
+          ],
+          [
+            "c.d / 2",
+            "c.l1"
+          ],
+          [
+            "c.d / 2",
+            "c.l1 + c.l - tip"
+          ],
+          [
+            "0 mm",
+            "c.l1 + c.l"
+          ]
+        ]
+      },
+      "when": [
+        [
+          "form",
+          "=",
+          "C"
+        ]
+      ]
+    },
+    {
+      "id": "centerE",
+      "type": "cut",
+      "title": "Центровое отверстие E",
+      "parts": "shaft",
+      "tool": {
+        "revolve": [
+          [
+            "0 mm",
+            "-1 mm"
+          ],
+          [
+            "c.d2 / 2",
+            "-1 mm"
+          ],
+          [
+            "c.d2 / 2",
+            "0 mm"
+          ],
+          [
+            "c.d1 / 2",
+            "c.l2 - c.l1"
+          ],
+          [
+            "c.d / 2",
+            "c.l2"
+          ],
+          [
+            "c.d / 2",
+            "c.l2 + c.l - tip"
+          ],
+          [
+            "0 mm",
+            "c.l2 + c.l"
+          ]
+        ]
+      },
+      "when": [
+        [
+          "form",
+          "=",
+          "E"
+        ]
+      ]
+    }
+  ]
+}

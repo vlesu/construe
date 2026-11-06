@@ -1,0 +1,43 @@
+name: Feature request
+description: Suggest a new feature or an improvement.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for the suggestion. You can write in English or Russian.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What you want to do
+      description: The task you are solving and what makes it hard today.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How the program could help, as you see it.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives
+      description: Workarounds or other solutions you have considered.
+    validations:
+      required: false
+  - type: input
+    id: version
+    attributes:
+      label: Version and build number
+      description: "Optional. Where to find it: **Help → About** in the program."
+      placeholder: 0.1.0-alpha (build 202611060230)
+    validations:
+      required: false
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Attachments
+      description: Sketches, screenshots or example files (drag and drop them here).
+    validations:
+      required: false

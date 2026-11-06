@@ -1,0 +1,70 @@
+{
+  "format": "construe-document",
+  "schemaVersion": 3,
+  "units": {
+    "length": "mm",
+    "angle": "deg"
+  },
+  "counters": {
+    "element": 2,
+    "feature": 3,
+    "entity": 5,
+    "constraint": 5,
+    "variable": 8
+  },
+  "variables": [
+    {"id": "v1", "name": "d", "expr": "20 mm", "comment": "Условный диаметр кольца (диаметр вала)"},
+    {"id": "v2", "name": "df", "expr": "18.2 mm", "comment": "Диаметр кольца в свободном состоянии"},
+    {"id": "v3", "name": "s", "expr": "1.2 mm", "comment": "Толщина кольца"},
+    {"id": "v4", "name": "b", "expr": "2.6 mm", "comment": "Ширина кольца"},
+    {"id": "v5", "name": "d1", "expr": "18.6 mm", "comment": "Диаметр канавки"},
+    {"id": "v6", "name": "w", "expr": "1.4 mm", "comment": "Ширина канавки m (имя m занято единицей «метр»)"},
+    {"id": "v7", "name": "h", "expr": "2.1 mm", "comment": "Наименьшее расстояние от канавки до торца"}
+  ],
+  "elements": [
+    {
+      "id": "el1",
+      "kind": "part",
+      "name": "Кольцо",
+      "rollback": null,
+      "features": [
+        {
+          "id": "f1",
+          "type": "sketch",
+          "name": "Эскиз1",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:top"
+          },
+          "entities": [
+            {"id": "e1", "type": "point", "x": 0, "y": 0},
+            {"id": "e2", "type": "circle", "center": "e1", "r": 11.9},
+            {"id": "e3", "type": "point", "x": 0, "y": 0},
+            {"id": "e4", "type": "circle", "center": "e3", "r": 9.3}
+          ],
+          "constraints": [
+            {"id": "c1", "type": "coincident", "refs": ["e1", "origin"]},
+            {"id": "c2", "type": "coincident", "refs": ["e3", "origin"]},
+            {"id": "c3", "type": "diameter", "refs": ["e2"], "value": "d1 + 2 * b", "driving": true},
+            {"id": "c4", "type": "diameter", "refs": ["e4"], "value": "d1", "driving": true}
+          ]
+        },
+        {
+          "id": "f2",
+          "type": "extrude",
+          "name": "Выдавливание1",
+          "suppressed": false,
+          "sketch": "f1",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "blind",
+            "depth": "s"
+          },
+          "operation": "add",
+          "targets": "all"
+        }
+      ]
+    }
+  ]
+}

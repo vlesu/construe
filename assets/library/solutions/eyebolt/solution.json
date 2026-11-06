@@ -1,0 +1,145 @@
+{
+  "format": "construe-solution",
+  "formatVersion": 1,
+  "id": "eyebolt",
+  "title": "Рым-болт",
+  "description": "Гнездо под рым-болт по приложению ГОСТ 4751 (цековка d1 × h, резьба на глубину l, сверло под резьбу — ГОСТ 19257 / ISO 2306) и рым-болт ГОСТ 4751 (solutions.md §12.2).",
+  "section": [
+    "Крепёж"
+  ],
+  "inputs": [
+    {
+      "id": "face",
+      "type": "face",
+      "title": "Грань"
+    },
+    {
+      "id": "point",
+      "type": "point",
+      "title": "Точка",
+      "face": "face"
+    }
+  ],
+  "frame": {
+    "face": "face",
+    "point": "point"
+  },
+  "choices": [
+    {
+      "id": "d",
+      "title": "Резьба",
+      "type": "value",
+      "from": {
+        "table": "eyebolt",
+        "column": "d"
+      },
+      "label": "M{value}",
+      "default": "12 mm"
+    }
+  ],
+  "tables": [
+    {
+      "id": "eyebolt",
+      "title": "Рым-болт ГОСТ 4751",
+      "library": "gost-4751.eyebolt"
+    },
+    {
+      "id": "sockets",
+      "title": "Гнёзда под рым-болты ГОСТ 4751",
+      "file": "sockets-4751.csv"
+    },
+    {
+      "id": "holes",
+      "builtin": "holes"
+    }
+  ],
+  "rules": [
+    {
+      "select": "e",
+      "table": "eyebolt",
+      "where": [
+        [
+          "d",
+          "=",
+          "d"
+        ]
+      ]
+    },
+    {
+      "select": "s",
+      "table": "sockets",
+      "where": [
+        [
+          "d",
+          "=",
+          "d"
+        ]
+      ]
+    },
+    {
+      "select": "hole",
+      "table": "holes",
+      "where": [
+        [
+          "d",
+          "=",
+          "d"
+        ]
+      ]
+    },
+    {
+      "let": "depth",
+      "expr": "s.l + 2 * hole.P"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "socket",
+      "type": "cut",
+      "title": "Гнездо",
+      "parts": "face",
+      "tool": {
+        "revolve": [
+          [
+            "0 mm",
+            "-1 mm"
+          ],
+          [
+            "s.d1 / 2",
+            "-1 mm"
+          ],
+          [
+            "s.d1 / 2",
+            "s.h"
+          ],
+          [
+            "hole.drill / 2",
+            "s.h"
+          ],
+          [
+            "hole.drill / 2",
+            "depth"
+          ],
+          [
+            "0 mm",
+            "depth"
+          ]
+        ]
+      },
+      "thread": {
+        "d": "d",
+        "pitch": "hole.P",
+        "length": "s.l - s.h"
+      }
+    },
+    {
+      "id": "eyebolt",
+      "type": "part",
+      "title": "Рым-болт",
+      "table": "eyebolt",
+      "row": "e",
+      "z": "0 mm",
+      "direction": "out"
+    }
+  ]
+}

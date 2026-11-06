@@ -1,0 +1,52 @@
+{
+  "format": "construe-weld-types",
+  "version": 1,
+  "description": "Типы сварных швов по стандартам на типы и конструктивные элементы швов (spec/weld.md §2.2, S5-WELD-001). joint — вид соединения: butt — стыковое (С), corner — угловое (У), tee — тавровое (Т), lap — нахлёсточное (Н); sides — односторонний (1) или двусторонний (2); leg — катет: required — обязателен, optional — может быть указан, none — не указывается. Перечень составлен без доступа к текстам стандартов и требует сверки (spec/weld.md §11).",
+  "standards": [
+    {
+      "id": "gost5264",
+      "designation": "ГОСТ 5264-80",
+      "title": "Ручная дуговая сварка. Соединения сварные. Основные типы, конструктивные элементы и размеры",
+      "processes": [],
+      "types": [
+        { "type": "С2", "joint": "butt", "sides": 1, "leg": "none", "description": "без скоса кромок, односторонний" },
+        { "type": "С7", "joint": "butt", "sides": 2, "leg": "none", "description": "без скоса кромок, двусторонний" },
+        { "type": "С8", "joint": "butt", "sides": 1, "leg": "none", "description": "со скосом одной кромки, односторонний" },
+        { "type": "С17", "joint": "butt", "sides": 1, "leg": "none", "description": "со скосом двух кромок, односторонний" },
+        { "type": "С25", "joint": "butt", "sides": 2, "leg": "none", "description": "с двумя симметричными скосами двух кромок, двусторонний" },
+        { "type": "У4", "joint": "corner", "sides": 1, "leg": "required", "description": "без скоса кромок, односторонний" },
+        { "type": "У5", "joint": "corner", "sides": 2, "leg": "required", "description": "без скоса кромок, двусторонний" },
+        { "type": "У6", "joint": "corner", "sides": 1, "leg": "optional", "description": "со скосом одной кромки, односторонний" },
+        { "type": "У7", "joint": "corner", "sides": 2, "leg": "optional", "description": "со скосом одной кромки, двусторонний" },
+        { "type": "Т1", "joint": "tee", "sides": 1, "leg": "required", "description": "без скоса кромок, односторонний" },
+        { "type": "Т3", "joint": "tee", "sides": 2, "leg": "required", "description": "без скоса кромок, двусторонний" },
+        { "type": "Т6", "joint": "tee", "sides": 1, "leg": "optional", "description": "со скосом одной кромки, односторонний" },
+        { "type": "Т8", "joint": "tee", "sides": 2, "leg": "optional", "description": "с двумя симметричными скосами одной кромки, двусторонний" },
+        { "type": "Н1", "joint": "lap", "sides": 1, "leg": "required", "description": "без скоса кромок, односторонний" },
+        { "type": "Н2", "joint": "lap", "sides": 2, "leg": "required", "description": "без скоса кромок, двусторонний" }
+      ]
+    },
+    {
+      "id": "gost14771",
+      "designation": "ГОСТ 14771-76",
+      "title": "Дуговая сварка в защитном газе. Соединения сварные. Основные типы, конструктивные элементы и размеры",
+      "processes": [
+        { "code": "ИН", "name": "в инертных газах неплавящимся электродом без присадочного металла" },
+        { "code": "ИНп", "name": "в инертных газах неплавящимся электродом с присадочным металлом" },
+        { "code": "ИП", "name": "в инертных газах и их смесях с углекислым газом и кислородом плавящимся электродом" },
+        { "code": "УП", "name": "в углекислом газе и его смеси с кислородом плавящимся электродом" }
+      ],
+      "types": [
+        { "type": "С2", "joint": "butt", "sides": 1, "leg": "none", "description": "без скоса кромок, односторонний" },
+        { "type": "С7", "joint": "butt", "sides": 2, "leg": "none", "description": "без скоса кромок, двусторонний" },
+        { "type": "С8", "joint": "butt", "sides": 1, "leg": "none", "description": "со скосом одной кромки, односторонний" },
+        { "type": "У4", "joint": "corner", "sides": 1, "leg": "required", "description": "без скоса кромок, односторонний" },
+        { "type": "У5", "joint": "corner", "sides": 2, "leg": "required", "description": "без скоса кромок, двусторонний" },
+        { "type": "Т1", "joint": "tee", "sides": 1, "leg": "required", "description": "без скоса кромок, односторонний" },
+        { "type": "Т3", "joint": "tee", "sides": 2, "leg": "required", "description": "без скоса кромок, двусторонний" },
+        { "type": "Н1", "joint": "lap", "sides": 1, "leg": "required", "description": "без скоса кромок, односторонний" },
+        { "type": "Н2", "joint": "lap", "sides": 2, "leg": "required", "description": "без скоса кромок, двусторонний" }
+      ]
+    }
+  ]
+}

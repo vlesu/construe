@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a problem from the program
+    url: https://github.com/vlesu/construe/blob/master/docs/user/guide.en.md#9b-reporting-a-problem
+    about: "In construe, choose Help → Report a problem… — the version, the system and the log are filled in automatically."
+  - name: User guide
+    url: https://github.com/vlesu/construe/blob/master/docs/user/guide.en.md
+    about: How to use construe.

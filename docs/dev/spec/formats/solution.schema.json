@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://construe.local/schema/solution/1",
+  "title": "construe solution package description (solution.json), formatVersion 1",
+  "description": "Описание пакета решения библиотеки стандартных способов. Семантика полей, порядок проверок и коды ошибок — docs/dev/spec/solutions.md §3, правила и выходы — §6.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "formatVersion", "id", "title", "section", "inputs", "frame", "outputs"],
+  "properties": {
+    "format": { "const": "construe-solution" },
+    "formatVersion": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$", "maxLength": 128 },
+    "title": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+    "section": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "inputs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/input" } },
+    "frame": {
+      "type": "object", "additionalProperties": false, "required": ["face"],
+      "properties": { "face": { "$ref": "#/$defs/ident" }, "axis": { "$ref": "#/$defs/ident" }, "point": { "$ref": "#/$defs/ident" },
+                      "packEnd": { "$ref": "#/$defs/ident" } }
+    },
+    "pack": {
+      "type": "object", "additionalProperties": false, "required": ["probe"],
+      "properties": { "probe": { "$ref": "#/$defs/expr" } }
+    },
+    "choices": { "type": "array", "items": { "$ref": "#/$defs/choice" } },
+    "tables": { "type": "array", "items": { "$ref": "#/$defs/table" } },
+    "rules": { "type": "array", "items": { "$ref": "#/$defs/rule" } },
+    "outputs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/output" } }
+  },
+  "$defs": {
+    "ident": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+    "tableRef": { "type": "string", "pattern": "^\\$?[A-Za-z_][A-Za-z0-9_]*$", "description": "id таблицы или \"$<id выбора-таблицы>\"" },
+    "expr": { "type": "string", "minLength": 1 },
+    "input": {
+      "type": "object", "additionalProperties": false, "required": ["id", "type", "title"],
+      "properties": {
+        "id": { "$ref": "#/$defs/ident" },
+        "type": { "enum": ["face", "cylinder", "point"] },
+        "title": { "type": "string", "minLength": 1 },
+        "optional": { "type": "boolean" },
+        "face": { "$ref": "#/$defs/ident" }
+      }
+    },
+    "choice": {
+      "type": "object", "additionalProperties": false, "required": ["id", "title", "type"],
+      "properties": {
+        "id": { "$ref": "#/$defs/ident" },
+        "title": { "type": "string", "minLength": 1 },
+        "type": { "enum": ["table", "list", "value", "bool", "length"] },
+        "options": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "labels": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "from": {
+          "type": "object", "additionalProperties": false, "required": ["table", "column"],
+          "properties": { "table": { "$ref": "#/$defs/tableRef" }, "column": { "type": "string", "minLength": 1 } }
+        },
+        "label": { "type": "string", "minLength": 1 },
+        "default": { "description": "строка или булево (solutions.md §3.4); проверяется SOL_BAD_DEFAULT" },
+        "variants": { "$ref": "#/$defs/ident", "description": "только у bool: id выбора-таблицы — один список «нет» + её варианты (solutions.md §3.4, FX10-WZ-003)" }
+      }
+    },
+    "table": {
+      "type": "object", "additionalProperties": false, "required": ["id"],
+      "properties": {
+        "id": { "$ref": "#/$defs/ident" },
+        "title": { "type": "string", "minLength": 1 },
+        "library": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+        "file": { "type": "string", "minLength": 1 },
+        "builtin": { "enum": ["holes"] }
+      }
+    },
+    "when": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "array", "minItems": 3, "maxItems": 3,
+        "description": "[<id выбора>, \"=\" | \"!=\", <строка или булево>] (solutions.md §6.3); элементы проверяются SOL_DESCRIPTION_SCHEMA"
+      }
+    },
+    "rule": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "let": { "$ref": "#/$defs/ident" },
+        "expr": { "$ref": "#/$defs/expr" },
+        "select": { "$ref": "#/$defs/ident" },
+        "table": { "$ref": "#/$defs/tableRef" },
+        "where": {
+          "type": "array",
+          "items": {
+            "type": "array", "minItems": 3, "maxItems": 3,
+            "items": { "type": "string", "minLength": 1 },
+            "description": "[<столбец>, \"=\" | \"!=\" | \"<\" | \"<=\" | \">\" | \">=\", <выражение>] (solutions.md §6.3)"
+          }
+        },
+        "order": {
+          "type": "array", "minItems": 2, "maxItems": 2,
+          "items": { "type": "string", "minLength": 1 },
+          "description": "[<столбец>, \"asc\" | \"desc\"]"
+        },
+        "when": { "$ref": "#/$defs/when" }
+      }
+    },
+    "point2": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/expr" } },
+    "tool": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "revolve": { "type": "array", "minItems": 3, "items": { "$ref": "#/$defs/point2" } },
+        "box": {
+          "type": "object", "additionalProperties": false, "required": ["x", "y", "z"],
+          "properties": { "x": { "$ref": "#/$defs/point2" }, "y": { "$ref": "#/$defs/point2" }, "z": { "$ref": "#/$defs/point2" } }
+        }
+      }
+    },
+    "output": {
+      "type": "object", "additionalProperties": false, "required": ["id", "type", "title"],
+      "properties": {
+        "id": { "$ref": "#/$defs/ident" },
+        "type": { "enum": ["cut", "part"] },
+        "title": { "type": "string", "minLength": 1 },
+        "when": { "$ref": "#/$defs/when" },
+        "parts": { "type": "string", "minLength": 1 },
+        "tool": { "$ref": "#/$defs/tool" },
+        "thread": {
+          "type": "object", "additionalProperties": false, "required": ["d", "pitch", "length"],
+          "properties": { "d": { "$ref": "#/$defs/expr" }, "pitch": { "$ref": "#/$defs/expr" }, "length": { "$ref": "#/$defs/expr" } }
+        },
+        "fit": { "type": "string", "minLength": 1 },
+        "table": { "$ref": "#/$defs/tableRef" },
+        "row": { "$ref": "#/$defs/ident" },
+        "z": { "$ref": "#/$defs/expr" },
+        "x": { "$ref": "#/$defs/expr" },
+        "y": { "$ref": "#/$defs/expr" },
+        "direction": { "enum": ["in", "out"] }
+      }
+    }
+  }
+}

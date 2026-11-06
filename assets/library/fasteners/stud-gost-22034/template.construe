@@ -1,0 +1,126 @@
+{
+  "format": "construe-document",
+  "schemaVersion": 3,
+  "units": {
+    "length": "mm",
+    "angle": "deg"
+  },
+  "counters": {
+    "element": 2,
+    "feature": 8,
+    "entity": 5,
+    "constraint": 5,
+    "variable": 7
+  },
+  "variables": [
+    {"id": "v1", "name": "d", "expr": "10 mm", "comment": "Номинальный диаметр резьбы"},
+    {"id": "v2", "name": "l", "expr": "40 mm", "comment": "Длина шпильки (без ввинчиваемого конца)"},
+    {"id": "v3", "name": "b1", "expr": "12 mm", "comment": "Длина ввинчиваемого резьбового конца"},
+    {"id": "v4", "name": "P", "expr": "1.5 mm", "comment": "Шаг резьбы (крупный)"},
+    {"id": "v5", "name": "b", "expr": "min(l, 2 * d + 6 mm + 6 mm * min(1, max(0, ceil((l - 125 mm) / (1 mm)))) + 13 mm * min(1, max(0, ceil((l - 200 mm) / (1 mm)))))", "comment": "Длина резьбы гаечного конца b (ISO 888)"},
+    {"id": "v6", "name": "pc", "type": "string", "expr": "58", "comment": "Класс прочности (для обозначения)"}
+  ],
+  "elements": [
+    {
+      "id": "el1",
+      "kind": "part",
+      "name": "Шпилька",
+      "rollback": null,
+      "features": [
+        {
+          "id": "f1",
+          "type": "sketch",
+          "name": "Эскиз1",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:top"
+          },
+          "entities": [
+            {"id": "e1", "type": "point", "x": 0, "y": 0},
+            {"id": "e2", "type": "circle", "center": "e1", "r": 5}
+          ],
+          "constraints": [
+            {"id": "c1", "type": "fix", "refs": ["e1"], "target": [0, 0]},
+            {"id": "c2", "type": "diameter", "refs": ["e2"], "value": "d", "driving": true}
+          ]
+        },
+        {
+          "id": "f2",
+          "type": "extrude",
+          "name": "Выдавливание1",
+          "suppressed": false,
+          "sketch": "f1",
+          "profiles": "all",
+          "direction": "normal",
+          "end": {
+            "type": "blind",
+            "depth": "l"
+          },
+          "operation": "add",
+          "targets": "all"
+        },
+        {
+          "id": "f3",
+          "type": "sketch",
+          "name": "Эскиз2",
+          "suppressed": false,
+          "plane": {
+            "datum": "plane:top"
+          },
+          "entities": [
+            {"id": "e3", "type": "point", "x": 0, "y": 0},
+            {"id": "e4", "type": "circle", "center": "e3", "r": 5}
+          ],
+          "constraints": [
+            {"id": "c3", "type": "fix", "refs": ["e3"], "target": [0, 0]},
+            {"id": "c4", "type": "diameter", "refs": ["e4"], "value": "d", "driving": true}
+          ]
+        },
+        {
+          "id": "f4",
+          "type": "extrude",
+          "name": "Выдавливание2",
+          "suppressed": false,
+          "sketch": "f3",
+          "profiles": "all",
+          "direction": "reverse",
+          "end": {
+            "type": "blind",
+            "depth": "b1"
+          },
+          "operation": "add",
+          "targets": "all"
+        },
+        {
+          "id": "f5",
+          "type": "chamfer",
+          "name": "Фаска1",
+          "suppressed": false,
+          "edges": [
+            "E{f2.cap(end)|f2.side(e2)}",
+            "E{f4.cap(end)|f4.side(e4)}"
+          ],
+          "distance": "P"
+        },
+        {
+          "id": "f6",
+          "type": "thread",
+          "name": "Резьба1",
+          "suppressed": false,
+          "face": "f2.side(e2)",
+          "diameter": "d",
+          "length": "b - P"
+        },
+        {
+          "id": "f7",
+          "type": "thread",
+          "name": "Резьба2",
+          "suppressed": false,
+          "face": "f4.side(e4)",
+          "diameter": "d",
+          "reverse": true
+        }
+      ]
+    }
+  ]
+}

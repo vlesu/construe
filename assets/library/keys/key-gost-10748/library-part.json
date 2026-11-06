@@ -1,0 +1,54 @@
+{
+  "format": "construe-library-part",
+  "formatVersion": 1,
+  "id": "gost-10748.key",
+  "title": "Шпонка призматическая высокая",
+  "description": "Модель — исполнение 2 (плоские торцы): прямоугольный брусок b × h × l без фасок; длина — вдоль нормали плоскости «Сверху».",
+  "section": [
+    "Детали соединений",
+    "Шпонки"
+  ],
+  "standards": [
+    {
+      "code": "ГОСТ 10748",
+      "year": 1979
+    }
+  ],
+  "keyVariables": [
+    "b",
+    "h",
+    "l"
+  ],
+  "defaultSize": "10×9×40",
+  "designation": "Шпонка 2-{b}×{h}×{l} ГОСТ 10748-79",
+  "source": [
+    {
+      "standard": "ГОСТ 10748-79",
+      "table": "Таблица 1; ряд длин — примечание 1",
+      "note": "b, h — номинальные; длины l — из ряда примечания 1 в пределах «от — до» таблицы 1; издание с Изменениями № 1, 2"
+    }
+  ],
+  "attachments": [
+    {
+      "name": "bottom",
+      "kind": "plane",
+      "ref": "plane:right",
+      "flip": true,
+      "label": "Дно паза"
+    },
+    {
+      "name": "side",
+      "kind": "plane",
+      "ref": "plane:front",
+      "label": "Боковая грань паза"
+    },
+    {
+      "name": "face",
+      "kind": "plane",
+      "ref": "plane:top",
+      "flip": true,
+      "label": "Торец паза",
+      "optional": true
+    }
+  ]
+}

@@ -1,0 +1,922 @@
+{
+  "format": "construe-solution",
+  "formatVersion": 1,
+  "id": "bolted-joint",
+  "title": "Болтовое соединение",
+  "description": "Болт, винт или шпилька с шайбами (плоские ГОСТ 11371, 6958, 10450, пружинная ГОСТ 6402) и гайкой через пакет деталей: проходные отверстия ряда ГОСТ 11284 / ISO 273 и резьбовое отверстие (сверло ГОСТ 19257 / ISO 2306) в деталях, крепёж — детали системной библиотеки. Длина крепежа — по толщине пакета с шайбами и гайкой и запасом выступа не меньше двух шагов резьбы (solutions.md §12.1).",
+  "section": [
+    "Крепёж"
+  ],
+  "inputs": [
+    {
+      "id": "face",
+      "type": "face",
+      "title": "Грань под головку"
+    },
+    {
+      "id": "hole",
+      "type": "cylinder",
+      "title": "Ось отверстия",
+      "optional": true
+    },
+    {
+      "id": "point",
+      "type": "point",
+      "title": "Точка на грани",
+      "optional": true,
+      "face": "face"
+    },
+    {
+      "id": "nutFace",
+      "type": "face",
+      "title": "Грань под гайку",
+      "optional": true
+    }
+  ],
+  "frame": {
+    "face": "face",
+    "axis": "hole",
+    "point": "point",
+    "packEnd": "nutFace"
+  },
+  "pack": {
+    "probe": "d"
+  },
+  "choices": [
+    {
+      "id": "fastener",
+      "title": "Крепёж",
+      "type": "table",
+      "options": [
+        "bolt4014",
+        "bolt7798",
+        "screw4017",
+        "screw4762",
+        "screw11738",
+        "stud22032"
+      ],
+      "default": "bolt4014"
+    },
+    {
+      "id": "d",
+      "title": "Резьба",
+      "type": "value",
+      "from": {
+        "table": "$fastener",
+        "column": "d"
+      },
+      "label": "M{value}",
+      "default": "10 mm"
+    },
+    {
+      "id": "series",
+      "title": "Ряд отверстий",
+      "type": "list",
+      "options": [
+        "fine",
+        "normal",
+        "loose"
+      ],
+      "labels": [
+        "Точный",
+        "Средний",
+        "Грубый"
+      ],
+      "default": "normal"
+    },
+    {
+      "id": "washerHead",
+      "title": "Шайба под головку",
+      "type": "bool",
+      "default": true,
+      "variants": "washer"
+    },
+    {
+      "id": "nut",
+      "title": "Гайка",
+      "type": "list",
+      "options": [
+        "4032",
+        "5915",
+        "none"
+      ],
+      "labels": [
+        "Гайка ГОСТ ISO 4032",
+        "Гайка ГОСТ 5915",
+        "Без гайки (резьба в детали)"
+      ],
+      "default": "4032"
+    },
+    {
+      "id": "washerNut",
+      "title": "Шайба под гайку",
+      "type": "bool",
+      "default": true,
+      "variants": "washer"
+    },
+    {
+      "id": "washer",
+      "title": "Шайбы плоские",
+      "type": "table",
+      "options": [
+        "washer11371",
+        "washer6958",
+        "washer10450"
+      ],
+      "default": "washer11371"
+    },
+    {
+      "id": "spring",
+      "title": "Шайба пружинная",
+      "type": "bool",
+      "default": false,
+      "variants": "springType"
+    },
+    {
+      "id": "springType",
+      "title": "Пружинная шайба",
+      "type": "table",
+      "options": [
+        "spring6402l",
+        "spring6402n",
+        "spring6402t",
+        "spring6402ot"
+      ],
+      "default": "spring6402n"
+    }
+  ],
+  "tables": [
+    {
+      "id": "bolt4014",
+      "title": "Болт ГОСТ Р ИСО 4014",
+      "library": "gost-r-iso-4014.bolt"
+    },
+    {
+      "id": "bolt7798",
+      "title": "Болт ГОСТ 7798",
+      "library": "gost-7798.bolt"
+    },
+    {
+      "id": "screw4017",
+      "title": "Винт ГОСТ Р ИСО 4017",
+      "library": "gost-r-iso-4017.screw"
+    },
+    {
+      "id": "screw4762",
+      "title": "Винт ГОСТ Р ИСО 4762",
+      "library": "gost-r-iso-4762.screw"
+    },
+    {
+      "id": "screw11738",
+      "title": "Винт ГОСТ 11738",
+      "library": "gost-11738.screw"
+    },
+    {
+      "id": "stud22032",
+      "title": "Шпилька ГОСТ 22032",
+      "library": "gost-22032.stud"
+    },
+    {
+      "id": "nut4032",
+      "title": "Гайка ГОСТ ISO 4032",
+      "library": "gost-iso-4032.nut"
+    },
+    {
+      "id": "nut5915",
+      "title": "Гайка ГОСТ 5915",
+      "library": "gost-5915.nut"
+    },
+    {
+      "id": "washer11371",
+      "title": "Шайба ГОСТ 11371",
+      "library": "gost-11371.washer"
+    },
+    {
+      "id": "washer6958",
+      "title": "Шайба увеличенная ГОСТ 6958",
+      "library": "gost-6958.washer"
+    },
+    {
+      "id": "washer10450",
+      "title": "Шайба уменьшенная ГОСТ 10450",
+      "library": "gost-10450.washer"
+    },
+    {
+      "id": "spring6402l",
+      "title": "ГОСТ 6402 лёгкая (Л)",
+      "library": "gost-6402-l.washer"
+    },
+    {
+      "id": "spring6402n",
+      "title": "ГОСТ 6402 нормальная (Н)",
+      "library": "gost-6402-n.washer"
+    },
+    {
+      "id": "spring6402t",
+      "title": "ГОСТ 6402 тяжёлая (Т)",
+      "library": "gost-6402-t.washer"
+    },
+    {
+      "id": "spring6402ot",
+      "title": "ГОСТ 6402 особо тяжёлая (ОТ)",
+      "library": "gost-6402-ot.washer"
+    },
+    {
+      "id": "holes",
+      "builtin": "holes"
+    }
+  ],
+  "rules": [
+    {
+      "select": "hole",
+      "table": "holes",
+      "where": [
+        [
+          "d",
+          "=",
+          "d"
+        ]
+      ]
+    },
+    {
+      "let": "P",
+      "expr": "hole.P"
+    },
+    {
+      "let": "dh",
+      "expr": "hole.normal"
+    },
+    {
+      "let": "dh",
+      "expr": "hole.fine",
+      "when": [
+        [
+          "series",
+          "=",
+          "fine"
+        ]
+      ]
+    },
+    {
+      "let": "dh",
+      "expr": "hole.loose",
+      "when": [
+        [
+          "series",
+          "=",
+          "loose"
+        ]
+      ]
+    },
+    {
+      "select": "w",
+      "table": "$washer",
+      "where": [
+        [
+          "d",
+          "=",
+          "d"
+        ]
+      ]
+    },
+    {
+      "let": "hw1",
+      "expr": "0 mm"
+    },
+    {
+      "let": "hw1",
+      "expr": "w.h",
+      "when": [
+        [
+          "washerHead",
+          "=",
+          true
+        ]
+      ]
+    },
+    {
+      "let": "hn",
+      "expr": "0 mm"
+    },
+    {
+      "select": "n",
+      "table": "nut4032",
+      "where": [
+        [
+          "d",
+          "=",
+          "d"
+        ]
+      ],
+      "when": [
+        [
+          "nut",
+          "=",
+          "4032"
+        ]
+      ]
+    },
+    {
+      "select": "n",
+      "table": "nut5915",
+      "where": [
+        [
+          "d",
+          "=",
+          "d"
+        ]
+      ],
+      "when": [
+        [
+          "nut",
+          "=",
+          "5915"
+        ]
+      ]
+    },
+    {
+      "let": "hn",
+      "expr": "n.h",
+      "when": [
+        [
+          "nut",
+          "!=",
+          "none"
+        ]
+      ]
+    },
+    {
+      "let": "hw2",
+      "expr": "0 mm"
+    },
+    {
+      "let": "hw2",
+      "expr": "w.h",
+      "when": [
+        [
+          "washerNut",
+          "=",
+          true
+        ],
+        [
+          "nut",
+          "!=",
+          "none"
+        ],
+        [
+          "fastener",
+          "!=",
+          "stud22032"
+        ]
+      ]
+    },
+    {
+      "let": "hs",
+      "expr": "0 mm"
+    },
+    {
+      "select": "sw",
+      "table": "$springType",
+      "where": [
+        [
+          "d",
+          "=",
+          "d"
+        ]
+      ],
+      "when": [
+        [
+          "spring",
+          "=",
+          true
+        ]
+      ]
+    },
+    {
+      "let": "hs",
+      "expr": "sw.s",
+      "when": [
+        [
+          "spring",
+          "=",
+          true
+        ]
+      ]
+    },
+    {
+      "let": "zHead",
+      "expr": "-hw1"
+    },
+    {
+      "let": "zHead",
+      "expr": "-hw1 - hs",
+      "when": [
+        [
+          "nut",
+          "=",
+          "none"
+        ]
+      ]
+    },
+    {
+      "let": "Lmin",
+      "expr": "hw1 + pack.thickness + hw2 + hs + hn + 2 * P"
+    },
+    {
+      "let": "Lmin",
+      "expr": "hw1 + hs + pack.lastStart + d",
+      "when": [
+        [
+          "nut",
+          "=",
+          "none"
+        ]
+      ]
+    },
+    {
+      "let": "Lmin",
+      "expr": "pack.lastStart + hw1 + hs + hn + 2 * P",
+      "when": [
+        [
+          "fastener",
+          "=",
+          "stud22032"
+        ]
+      ]
+    },
+    {
+      "select": "f",
+      "table": "$fastener",
+      "where": [
+        [
+          "d",
+          "=",
+          "d"
+        ],
+        [
+          "l",
+          ">=",
+          "Lmin"
+        ]
+      ],
+      "order": [
+        "l",
+        "asc"
+      ]
+    },
+    {
+      "let": "tdepth",
+      "expr": "0 mm"
+    },
+    {
+      "let": "tdepth",
+      "expr": "f.l - hw1 - hs - pack.lastStart + 2 * P",
+      "when": [
+        [
+          "nut",
+          "=",
+          "none"
+        ]
+      ]
+    },
+    {
+      "let": "tdepth",
+      "expr": "f.b1 + 2 * P",
+      "when": [
+        [
+          "fastener",
+          "=",
+          "stud22032"
+        ]
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "id": "holes",
+      "type": "cut",
+      "title": "Отверстие",
+      "parts": "pack",
+      "when": [
+        [
+          "nut",
+          "!=",
+          "none"
+        ],
+        [
+          "fastener",
+          "!=",
+          "stud22032"
+        ]
+      ],
+      "tool": {
+        "revolve": [
+          [
+            "0 mm",
+            "-1 mm"
+          ],
+          [
+            "dh / 2",
+            "-1 mm"
+          ],
+          [
+            "dh / 2",
+            "pack.thickness + 1 mm"
+          ],
+          [
+            "0 mm",
+            "pack.thickness + 1 mm"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "holesTop",
+      "type": "cut",
+      "title": "Отверстие",
+      "parts": "packButLast",
+      "when": [
+        [
+          "nut",
+          "=",
+          "none"
+        ],
+        [
+          "fastener",
+          "!=",
+          "stud22032"
+        ]
+      ],
+      "tool": {
+        "revolve": [
+          [
+            "0 mm",
+            "-1 mm"
+          ],
+          [
+            "dh / 2",
+            "-1 mm"
+          ],
+          [
+            "dh / 2",
+            "pack.lastStart + 1 mm"
+          ],
+          [
+            "0 mm",
+            "pack.lastStart + 1 mm"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "holesStud",
+      "type": "cut",
+      "title": "Отверстие",
+      "parts": "packButLast",
+      "when": [
+        [
+          "fastener",
+          "=",
+          "stud22032"
+        ]
+      ],
+      "tool": {
+        "revolve": [
+          [
+            "0 mm",
+            "-1 mm"
+          ],
+          [
+            "dh / 2",
+            "-1 mm"
+          ],
+          [
+            "dh / 2",
+            "pack.lastStart + 1 mm"
+          ],
+          [
+            "0 mm",
+            "pack.lastStart + 1 mm"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "tapped",
+      "type": "cut",
+      "title": "Резьбовое отверстие",
+      "parts": "packLast",
+      "when": [
+        [
+          "nut",
+          "=",
+          "none"
+        ],
+        [
+          "fastener",
+          "!=",
+          "stud22032"
+        ]
+      ],
+      "tool": {
+        "revolve": [
+          [
+            "0 mm",
+            "pack.lastStart - 1 mm"
+          ],
+          [
+            "hole.drill / 2",
+            "pack.lastStart - 1 mm"
+          ],
+          [
+            "hole.drill / 2",
+            "pack.lastStart + tdepth"
+          ],
+          [
+            "0 mm",
+            "pack.lastStart + tdepth"
+          ]
+        ]
+      },
+      "thread": {
+        "d": "d",
+        "pitch": "P",
+        "length": "tdepth - 2 * P"
+      }
+    },
+    {
+      "id": "tappedStud",
+      "type": "cut",
+      "title": "Резьбовое отверстие",
+      "parts": "packLast",
+      "when": [
+        [
+          "fastener",
+          "=",
+          "stud22032"
+        ]
+      ],
+      "tool": {
+        "revolve": [
+          [
+            "0 mm",
+            "pack.lastStart - 1 mm"
+          ],
+          [
+            "hole.drill / 2",
+            "pack.lastStart - 1 mm"
+          ],
+          [
+            "hole.drill / 2",
+            "pack.lastStart + tdepth"
+          ],
+          [
+            "0 mm",
+            "pack.lastStart + tdepth"
+          ]
+        ]
+      },
+      "thread": {
+        "d": "d",
+        "pitch": "P",
+        "length": "f.b1"
+      }
+    },
+    {
+      "id": "fastener",
+      "type": "part",
+      "title": "Крепёж",
+      "table": "$fastener",
+      "row": "f",
+      "z": "zHead",
+      "direction": "out",
+      "when": [
+        [
+          "fastener",
+          "!=",
+          "stud22032"
+        ]
+      ]
+    },
+    {
+      "id": "stud",
+      "type": "part",
+      "title": "Шпилька",
+      "table": "$fastener",
+      "row": "f",
+      "z": "pack.lastStart",
+      "direction": "out",
+      "when": [
+        [
+          "fastener",
+          "=",
+          "stud22032"
+        ]
+      ]
+    },
+    {
+      "id": "washer1",
+      "type": "part",
+      "title": "Шайба",
+      "table": "$washer",
+      "row": "w",
+      "z": "0 mm",
+      "direction": "out",
+      "when": [
+        [
+          "washerHead",
+          "=",
+          true
+        ]
+      ]
+    },
+    {
+      "id": "washer2",
+      "type": "part",
+      "title": "Шайба",
+      "table": "$washer",
+      "row": "w",
+      "z": "pack.thickness",
+      "direction": "in",
+      "when": [
+        [
+          "washerNut",
+          "=",
+          true
+        ],
+        [
+          "nut",
+          "!=",
+          "none"
+        ],
+        [
+          "fastener",
+          "!=",
+          "stud22032"
+        ]
+      ]
+    },
+    {
+      "id": "springHead",
+      "type": "part",
+      "title": "Шайба пружинная",
+      "table": "$springType",
+      "row": "sw",
+      "z": "-hw1",
+      "direction": "out",
+      "when": [
+        [
+          "spring",
+          "=",
+          true
+        ],
+        [
+          "nut",
+          "=",
+          "none"
+        ],
+        [
+          "fastener",
+          "!=",
+          "stud22032"
+        ]
+      ]
+    },
+    {
+      "id": "springNut",
+      "type": "part",
+      "title": "Шайба пружинная",
+      "table": "$springType",
+      "row": "sw",
+      "z": "pack.thickness + hw2",
+      "direction": "in",
+      "when": [
+        [
+          "spring",
+          "=",
+          true
+        ],
+        [
+          "nut",
+          "!=",
+          "none"
+        ],
+        [
+          "fastener",
+          "!=",
+          "stud22032"
+        ]
+      ]
+    },
+    {
+      "id": "springStud",
+      "type": "part",
+      "title": "Шайба пружинная",
+      "table": "$springType",
+      "row": "sw",
+      "z": "-hw1",
+      "direction": "out",
+      "when": [
+        [
+          "spring",
+          "=",
+          true
+        ],
+        [
+          "nut",
+          "!=",
+          "none"
+        ],
+        [
+          "fastener",
+          "=",
+          "stud22032"
+        ]
+      ]
+    },
+    {
+      "id": "nut4032",
+      "type": "part",
+      "title": "Гайка",
+      "table": "nut4032",
+      "row": "n",
+      "z": "pack.thickness + hw2 + hs",
+      "direction": "in",
+      "when": [
+        [
+          "nut",
+          "=",
+          "4032"
+        ],
+        [
+          "fastener",
+          "!=",
+          "stud22032"
+        ]
+      ]
+    },
+    {
+      "id": "nut5915",
+      "type": "part",
+      "title": "Гайка",
+      "table": "nut5915",
+      "row": "n",
+      "z": "pack.thickness + hw2 + hs",
+      "direction": "in",
+      "when": [
+        [
+          "nut",
+          "=",
+          "5915"
+        ],
+        [
+          "fastener",
+          "!=",
+          "stud22032"
+        ]
+      ]
+    },
+    {
+      "id": "studNut4032",
+      "type": "part",
+      "title": "Гайка",
+      "table": "nut4032",
+      "row": "n",
+      "z": "-hw1 - hs",
+      "direction": "out",
+      "when": [
+        [
+          "nut",
+          "=",
+          "4032"
+        ],
+        [
+          "fastener",
+          "=",
+          "stud22032"
+        ]
+      ]
+    },
+    {
+      "id": "studNut5915",
+      "type": "part",
+      "title": "Гайка",
+      "table": "nut5915",
+      "row": "n",
+      "z": "-hw1 - hs",
+      "direction": "out",
+      "when": [
+        [
+          "nut",
+          "=",
+          "5915"
+        ],
+        [
+          "fastener",
+          "=",
+          "stud22032"
+        ]
+      ]
+    }
+  ]
+}

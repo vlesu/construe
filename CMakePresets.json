@@ -1,0 +1,141 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": { "major": 3, "minor": 25, "patch": 0 },
+  "configurePresets": [
+    {
+      "name": "windows-msvc",
+      "displayName": "Windows, MSVC, Ninja Multi-Config, vcpkg x64-windows",
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/build/windows-msvc",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "x64-windows",
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release",
+        "CMAKE_PREFIX_PATH": "$env{CONSTRUE_QT_DIR}",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      },
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" }
+    },
+    {
+      "name": "linux-gcc",
+      "displayName": "Linux, GCC, Ninja Multi-Config, vcpkg x64-linux",
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/build/linux-gcc",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "x64-linux",
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release",
+        "CMAKE_JOB_POOLS": "link=2",
+        "CMAKE_JOB_POOL_LINK": "link",
+        "CMAKE_PREFIX_PATH": "$env{CONSTRUE_QT_DIR}",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      },
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Linux" }
+    },
+    {
+      "name": "linux-cloud",
+      "displayName": "Linux, облачная среда: готовые зависимости в /opt/construe-deps",
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/build/linux-cloud",
+      "toolchainFile": "/opt/construe-deps/vcpkg/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "x64-linux",
+        "VCPKG_INSTALLED_DIR": "/opt/construe-deps/vcpkg_installed",
+        "VCPKG_MANIFEST_INSTALL": "OFF",
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release",
+        "CMAKE_JOB_POOLS": "link=2",
+        "CMAKE_JOB_POOL_LINK": "link",
+        "CMAKE_PREFIX_PATH": "/opt/construe-deps/qt/gcc_64",
+        "CONSTRUE_CCACHE": "ON",
+        "CONSTRUE_LINKER": "mold",
+        "CMAKE_CXX_FLAGS_DEBUG": "-g1",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      },
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Linux" }
+    },
+    {
+      "name": "macos-clang",
+      "displayName": "macOS, Apple Clang, Ninja Multi-Config, vcpkg (arm64-osx / x64-osx по машине)",
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/build/macos-clang",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release",
+        "CMAKE_PREFIX_PATH": "$env{CONSTRUE_QT_DIR}",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/tools/macos/triplets"
+      },
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Darwin" }
+    }
+  ],
+  "buildPresets": [
+    { "name": "debug", "configurePreset": "windows-msvc", "configuration": "Debug" },
+    { "name": "release", "configurePreset": "windows-msvc", "configuration": "Release" },
+    { "name": "linux-debug", "configurePreset": "linux-gcc", "configuration": "Debug" },
+    { "name": "linux-release", "configurePreset": "linux-gcc", "configuration": "Release" },
+    { "name": "linux-cloud", "configurePreset": "linux-cloud", "configuration": "Debug" },
+    { "name": "linux-cloud-release", "configurePreset": "linux-cloud", "configuration": "Release" },
+    { "name": "macos-debug", "configurePreset": "macos-clang", "configuration": "Debug" },
+    { "name": "macos-release", "configurePreset": "macos-clang", "configuration": "Release" }
+  ],
+  "testPresets": [
+    {
+      "name": "debug",
+      "configurePreset": "windows-msvc",
+      "configuration": "Debug",
+      "output": { "outputOnFailure": true },
+      "environment": { "QT_OPENGL": "software", "QT_SCALE_FACTOR": "1" }
+    },
+    {
+      "name": "release",
+      "configurePreset": "windows-msvc",
+      "configuration": "Release",
+      "output": { "outputOnFailure": true },
+      "environment": { "QT_OPENGL": "software", "QT_SCALE_FACTOR": "1" }
+    },
+    {
+      "name": "linux-debug",
+      "configurePreset": "linux-gcc",
+      "configuration": "Debug",
+      "output": { "outputOnFailure": true },
+      "environment": { "QT_SCALE_FACTOR": "1", "LIBGL_ALWAYS_SOFTWARE": "1" }
+    },
+    {
+      "name": "linux-release",
+      "configurePreset": "linux-gcc",
+      "configuration": "Release",
+      "output": { "outputOnFailure": true },
+      "environment": { "QT_SCALE_FACTOR": "1", "LIBGL_ALWAYS_SOFTWARE": "1" }
+    },
+    {
+      "name": "linux-cloud",
+      "configurePreset": "linux-cloud",
+      "configuration": "Debug",
+      "output": { "outputOnFailure": true },
+      "filter": { "exclude": { "label": "e2e|perf" } },
+      "environment": { "QT_SCALE_FACTOR": "1", "LIBGL_ALWAYS_SOFTWARE": "1" }
+    },
+    {
+      "name": "linux-cloud-release",
+      "configurePreset": "linux-cloud",
+      "configuration": "Release",
+      "output": { "outputOnFailure": true },
+      "filter": { "exclude": { "label": "e2e|perf" } },
+      "environment": { "QT_SCALE_FACTOR": "1", "LIBGL_ALWAYS_SOFTWARE": "1" }
+    },
+    {
+      "name": "macos-debug",
+      "configurePreset": "macos-clang",
+      "configuration": "Debug",
+      "output": { "outputOnFailure": true },
+      "environment": { "QT_SCALE_FACTOR": "1" }
+    },
+    {
+      "name": "macos-release",
+      "configurePreset": "macos-clang",
+      "configuration": "Release",
+      "output": { "outputOnFailure": true },
+      "environment": { "QT_SCALE_FACTOR": "1" }
+    }
+  ]
+}

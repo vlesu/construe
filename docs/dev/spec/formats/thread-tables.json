@@ -1,0 +1,37 @@
+{
+  "format": "construe-thread-tables",
+  "version": 1,
+  "description": "Таблица резьб (regen.md §4.14): номинальный (наружный) диаметр d и шаг P, мм.",
+  "sources": {
+    "metric": "метрическая резьба ГОСТ 8724 / ГОСТ 24705 (ISO 261 / ISO 724): обозначение «M<d>» — крупный шаг, «M<d>x<P>» — мелкий",
+    "pipe": "трубная цилиндрическая резьба ГОСТ 6357 (ISO 228-1): обозначение «G<размер>», d — наружный диаметр резьбы"
+  },
+  "threads": [
+    { "designation": "M3", "d": 3, "pitch": 0.5 },
+    { "designation": "M3x0.35", "d": 3, "pitch": 0.35 },
+    { "designation": "M4", "d": 4, "pitch": 0.7 },
+    { "designation": "M4x0.5", "d": 4, "pitch": 0.5 },
+    { "designation": "M5", "d": 5, "pitch": 0.8 },
+    { "designation": "M5x0.5", "d": 5, "pitch": 0.5 },
+    { "designation": "M6", "d": 6, "pitch": 1.0 },
+    { "designation": "M6x0.75", "d": 6, "pitch": 0.75 },
+    { "designation": "M8", "d": 8, "pitch": 1.25 },
+    { "designation": "M8x1", "d": 8, "pitch": 1.0 },
+    { "designation": "M10", "d": 10, "pitch": 1.5 },
+    { "designation": "M10x1.25", "d": 10, "pitch": 1.25 },
+    { "designation": "M10x1", "d": 10, "pitch": 1.0 },
+    { "designation": "M12", "d": 12, "pitch": 1.75 },
+    { "designation": "M12x1.5", "d": 12, "pitch": 1.5 },
+    { "designation": "M12x1.25", "d": 12, "pitch": 1.25 },
+    { "designation": "M16", "d": 16, "pitch": 2.0 },
+    { "designation": "M16x1.5", "d": 16, "pitch": 1.5 },
+    { "designation": "M20", "d": 20, "pitch": 2.5 },
+    { "designation": "M20x1.5", "d": 20, "pitch": 1.5 },
+    { "designation": "G1/8", "d": 9.728, "pitch": 0.907 },
+    { "designation": "G1/4", "d": 13.157, "pitch": 1.337 },
+    { "designation": "G3/8", "d": 16.662, "pitch": 1.337 },
+    { "designation": "G1/2", "d": 20.955, "pitch": 1.814 },
+    { "designation": "G3/4", "d": 26.441, "pitch": 1.814 },
+    { "designation": "G1", "d": 33.249, "pitch": 2.309 }
+  ]
+}

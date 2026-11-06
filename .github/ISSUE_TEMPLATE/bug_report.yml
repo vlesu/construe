@@ -1,0 +1,57 @@
+name: Bug report
+description: Something in construe does not work as expected.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a problem. You can write in English or Russian.
+
+        The quickest way is **Help → Report a problem…** in the program itself: the version, the system and the log are filled in automatically.
+  - type: input
+    id: version
+    attributes:
+      label: Version and build number
+      description: "Where to find it: **Help → About** in the program."
+      placeholder: 0.1.0-alpha (build 202611060230)
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: System
+      description: Operating system and its version.
+      placeholder: Windows 11 23H2 / Ubuntu 24.04 / macOS 14.5
+    validations:
+      required: true
+  - type: textarea
+    id: what-you-did
+    attributes:
+      label: What you did
+      description: Steps that lead to the problem, one per line.
+      placeholder: |
+        1. Opened a part
+        2. Selected a sketch
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: what-you-expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Error messages, wrong result, crash.
+    validations:
+      required: true
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Attachments
+      description: Screenshots, the .construe file or exported files that show the problem (drag and drop them here). Attach only files you may share publicly.
+    validations:
+      required: false

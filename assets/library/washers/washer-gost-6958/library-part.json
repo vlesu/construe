@@ -1,0 +1,45 @@
+{
+  "format": "construe-library-part",
+  "formatVersion": 1,
+  "id": "gost-6958.washer",
+  "title": "Шайба увеличенная, класс точности A",
+  "description": "Модель: кольцо (наружный диаметр d2, внутренний d1, толщина h) без фасок. Опорная поверхность — плоскость «Сверху».",
+  "section": [
+    "Крепёж",
+    "Шайбы"
+  ],
+  "standards": [
+    {
+      "code": "ГОСТ 6958",
+      "year": 1978
+    }
+  ],
+  "keyVariables": [
+    "d"
+  ],
+  "defaultSize": "M10",
+  "designation": "Шайба A.{d} ГОСТ 6958-78",
+  "source": [
+    {
+      "standard": "ГОСТ 6958-78",
+      "table": "Таблица п. 1.1",
+      "note": "класс точности A (d1 — для класса A; размеры 42 и 48 есть только в классе C и не включены); h — толщина s стандарта; издание с Изменениями № 1, 2"
+    }
+  ],
+  "attachments": [
+    {
+      "name": "axis",
+      "kind": "axis",
+      "ref": "axis:y",
+      "label": "Болт или отверстие",
+      "diameterKey": "d"
+    },
+    {
+      "name": "face",
+      "kind": "plane",
+      "ref": "plane:top",
+      "flip": true,
+      "label": "Опорная поверхность"
+    }
+  ]
+}

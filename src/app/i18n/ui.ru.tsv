@@ -1,0 +1,1120 @@
+# Подписи интерфейса на русском (S8-I18N-001, spec/app-ux.md §9.5): ключ<TAB>текст.
+# Сообщения — в таблицах §9.2 spec/app-ux.md; переводы — <язык>.tsv. После правки — tools/gen_messages.py.
+ui.common.shadedWithEdges	Тонированный с рёбрами
+ui.common.shaded	Тонированный
+ui.common.hiddenLinesRemoved	Невидимые линии удалены
+ui.common.hiddenLinesDashed	Невидимые линии пунктиром
+ui.common.wireframe	Каркас
+ui.settings.programSettings	Настройки программы
+ui.settings.rotateWithMiddleButton	Вращение средней кнопкой
+ui.settings.rotateWithRightButtonFor	Вращение правой кнопкой (для ноутбуков)
+ui.settings.mouseProfile	Профиль мыши
+ui.settings.invertWheelZoom	Инвертировать зум колесом
+ui.settings.mouseAndWheel	Мышь и колесо
+ui.settings.displayStyle	Стиль отображения
+ui.common.display	Отображение
+ui.settings.defaultTextFont	Шрифт надписи по умолчанию
+ui.settings.customFontFolders	Свои папки шрифтов
+ui.settings.addFolder	Добавить папку…
+ui.settings.removeFolder	Удалить папку
+ui.settings.fonts	Шрифты
+ui.settings.gostDrawingFont	Шрифт чертежа по ГОСТ
+ui.settings.isoDrawingFont	Шрифт чертежа по ISO
+ui.common.gost	ГОСТ
+ui.settings.standardForNewDrawings	Стандарт новых чертежей
+ui.common.firstAngle	Первый угол
+ui.common.thirdAngle	Третий угол
+ui.settings.projectionMethodIso	Метод проекции (ISO)
+ui.settings.drawingStyle	Оформление чертежей
+ui.common.off	Выключено
+ui.common.mm	" мм"
+ui.settings.stepShapeHealingTolerance	Допуск лечения формы STEP
+ui.settings.roundingOfReconstructedPartDimensions	Округление размеров восстановленной детали
+ui.common.import	Импорт
+ui.settings.change	Изменить…
+ui.settings.userFolder	Пользовательская папка
+ui.settings.sharedFolders	Общие папки
+ui.settings.libraryStandards	Стандарты
+ui.settings.stdGost	ГОСТ
+ui.settings.stdIso	ИСО
+ui.settings.whereToCutConnections	Где резать соединения
+ui.settings.library	Библиотека
+ui.settings.printerClearance	Зазор принтера
+ui.common.print	Печать
+ui.settings.exportSettings	Экспорт настроек…
+ui.settings.importSettings	Импорт настроек…
+ui.common.close	Закрыть
+ui.settings.defaultProgramDataFolder	По умолчанию — папка данных программы
+ui.settings.fontFolder	Папка шрифтов
+ui.settings.libraryFolder	Папка библиотеки
+ui.settings.userLibraryFolder	Пользовательская папка библиотеки
+ui.settings.exportSettings2	Экспорт настроек
+ui.settings.construeSettingsJson	Настройки construe (*.json)
+ui.settings.importSettings2	Импорт настроек
+ui.constraint.coincidentOnObject	Совпадение / На объекте
+ui.constraint.horizontal	Горизонтально
+ui.constraint.vertical	Вертикально
+ui.constraint.parallel	Параллельно
+ui.constraint.perpendicular	Перпендикулярно
+ui.constraint.tangent	Касательно
+ui.common.equal	Равенство
+ui.constraint.concentric	Концентрично
+ui.common.midpoint	Середина
+ui.common.symmetric	Симметрично
+ui.constraint.fix	Зафиксировать
+ui.constraint.collinear	Коллинеарно
+ui.constraint.coradial	Корадиально
+ui.constraint.pointAtIntersection	Точка в пересечении
+ui.constraint.pathLengthSumOfLengths	Длина пути (сумма длин)
+ui.common.equalCurvature	Равенство кривизны
+ui.contextBar.sketchShiftS	Эскиз (Shift+S)
+ui.common.normalToCtrl8	Нормально к (Ctrl+8)
+ui.contextBar.extrudeShiftE	Выдавить (Shift+E)
+ui.contextBar.revolveShiftW	Повернуть (Shift+W)
+ui.common.editSketch	Редактировать эскиз
+ui.common.edit	Редактировать
+ui.contextBar.suppressUnsuppress	Подавить / Включить
+ui.contextBar.renameF2	Переименовать (F2)
+ui.contextBar.deleteDel	Удалить (Del)
+ui.contextBar.dimensionD	Размер (D)
+ui.contextBar.constructionQ	Конструктивная (Q)
+ui.common.editValue	Изменить значение
+ui.contextBar.referenceDriving	Справочный / Управляющий
+ui.contextBar.diameterRadiusFromAxisShift	Диаметр / радиус от оси (Shift+D)
+ui.drawingDim.horizontal	Горизонтальный
+ui.drawingDim.vertical	Вертикальный
+ui.drawingDim.aligned	Параллельный
+ui.common.diameter	Диаметр
+ui.common.radius	Радиус
+ui.drawingDim.asInModel	Как в модели
+ui.common.hide	Скрыть
+ui.drawingDim.fieldOnly	Только поле
+ui.drawingDim.fieldWithDeviations	Поле с отклонениями
+ui.common.deviations	Отклонения
+ui.common.dimension	Размер
+ui.common.type	Тип
+ui.drawingDim.prefix	Префикс
+ui.common.text	Текст
+ui.drawingDim.suffix	Суффикс
+ui.common.tolerance	Допуск
+ui.drawingDim.broken	С обрывом
+ui.drawingDim.setInDrawing	Задать в чертеже
+ui.common.toleranceField	Поле допуска
+ui.common.delete	Удалить
+ui.drawingDim.angular	Угловой
+ui.common.arcLength	Длина дуги
+ui.drawingDim.pathLength	Длина пути
+ui.drawingText.asInDrawing	По чертежу
+ui.drawingText.gostTypeB	ГОСТ (тип Б)
+ui.drawingText.textLinesCtrlEnterOr	Строки текста; Ctrl+Enter или уход из поля — применить
+ui.common.font	Шрифт
+ui.drawingText.sizeMm	Размер, мм
+ui.drawingText.rotation	Поворот, °
+ui.drawingText.ctrlEnterDoneEscCancel	Ctrl+Enter — готово, Esc — отмена
+ui.common.mm2	мм
+ui.common.cm	см
+ui.common.m	м
+ui.common.export	Экспорт
+ui.export.flatPatternDxf	DXF развёртки
+ui.common.file	Файл
+ui.common.object	Объект
+ui.export.contents	Состав
+ui.export.filePerPart	Файл на деталь
+ui.export.bendLines	Линии гиба
+ui.export.binary	Двоичный
+ui.export.format	Формат
+ui.export.coarse	Грубо
+ui.export.normal	Нормально
+ui.export.fine	Тонко
+ui.export.custom	Своя
+ui.export.accuracy	Точность
+ui.export.angle	Угол, °
+ui.export.bodyN	Тело %1
+ui.export.allBodies	Все тела
+ui.export.chord	"Хорда, "
+ui.common.exportFlatPatternDxf	Экспорт DXF развёртки
+ui.common.exportStl	Экспорт STL
+ui.common.export3mf	Экспорт 3MF
+ui.feature.edgeN	Ребро %1
+ui.feature.faceN	Грань %1
+ui.feature.cancelEsc	Отмена (Esc)
+ui.feature.profiles	Профили
+ui.feature.add	Добавить
+ui.feature.cut	Вырезать
+ui.feature.cutOutsideTheContour	Вырезать за границей контура
+ui.feature.checkedInstancesNothingCheckedAll	Отмеченные экземпляры; ничего не отмечено — все задетые
+ui.feature.instances	Экземпляры
+ui.feature.selectASketch	— выберите эскиз —
+ui.feature.wholeSketch	" (весь эскиз)"
+ui.feature.selectAProfile	— выберите профиль —
+ui.feature.regionNN	Область %1 (%2)
+ui.common.fillet	Скругление
+ui.common.chamfer	Фаска
+ui.common.edges	Рёбра
+ui.common.distance	Расстояние
+ui.feature.distanceAndAngle	Расстояние и угол
+ui.feature.twoDistances	Два расстояния
+ui.feature.flipTheDistanceIsMeasured	Обратить — расстояние откладывается на другой грани
+ui.common.angle	Угол
+ui.feature.secondDistance	Второе расстояние
+ui.feature.selectEdges	— выберите рёбра —
+ui.common.edgesN	Рёбер: %1
+ui.common.shell	Оболочка
+ui.feature.removeFaces	Удалить грани
+ui.feature.outward	Наружу
+ui.feature.thickness	Толщина
+ui.feature.selectFaces	— выберите грани —
+ui.common.facesN	Граней: %1
+ui.common.draft	Уклон
+ui.feature.neutralPlane	Нейтральная плоскость
+ui.common.faces	Грани
+ui.feature.flipPullDirection	Обратить направление вытягивания
+ui.feature.selectAPlane	— выберите плоскость —
+ui.common.extrude	Выдавливание
+ui.feature.blind	На глубину
+ui.feature.throughAll	Через всё
+ui.feature.throughAllBothSides	Через всё в обе стороны
+ui.feature.upToNext	До следующей
+ui.feature.upTo	До
+ui.feature.flipDirection	Обратить направление
+ui.feature.endType	Тип окончания
+ui.feature.depth	Глубина
+ui.feature.endObject	Объект окончания
+ui.common.offset	Смещение
+ui.feature.operation	Операция
+ui.feature.tabLeft	Вылет влево
+ui.feature.tabRight	Вылет вправо
+ui.feature.assemblyCut	Вырез сборки
+ui.common.cut	Вырез
+ui.common.face	Грань
+ui.feature.edge	Ребро
+ui.feature.vertex	Вершина
+ui.common.origin	Начало координат
+ui.common.front	Спереди
+ui.common.top	Сверху
+ui.common.right	Справа
+ui.feature.selectAFacePlaneEdge	— выберите грань, плоскость, ребро или вершину —
+ui.feature.requiredFacePlaneEdgeOr	Нужно: грань, плоскость, ребро или вершина
+ui.common.revolve	Вращение
+ui.common.axis	Ось
+ui.feature.fullTurn	Полный оборот
+ui.feature.byAngle	На угол
+ui.feature.angleType	Тип угла
+ui.common.xAxis	Ось X
+ui.common.yAxis	Ось Y
+ui.common.zAxis	Ось Z
+ui.feature.line	"Отрезок "
+ui.feature.selectAnAxis	— выберите ось —
+ui.feature.coil	Пружина
+ui.common.pitch	Шаг
+ui.feature.numberOfTurns	Число витков
+ui.common.height	Высота
+ui.feature.defineBy	Задать
+ui.common.value	Значение
+ui.feature.rightHand	Правая
+ui.feature.leftHand	Левая
+ui.feature.winding	Навивка
+ui.feature.startAngle	Начальный угол
+ui.common.gearRim	Зубчатый венец
+ui.feature.add2	Нарастить
+ui.feature.teethGrowFromTheFace	Зубья растут от грани: наружу у вала, внутрь у отверстия
+ui.feature.toothSpacesAreCutInto	Впадины вырезаются в грани
+ui.feature.module	Модуль
+ui.feature.numberOfTeeth	Число зубьев
+ui.feature.profileShift	Смещение
+ui.feature.fullLength	На всю длину
+ui.feature.fromTheOtherEndOf	От другого торца грани
+ui.feature.width	Ширина
+ui.feature.sector	Сектор
+ui.feature.from	от
+ui.feature.angle	угол
+ui.feature.accuracyGrade	Степень точности
+ui.feature.selectACylindricalFace	— выберите цилиндрическую грань —
+ui.common.thread	Резьба
+ui.common.designation	Обозначение
+ui.feature.customThread	Своя резьба
+ui.feature.customThreadPitchAndProfile	Своя резьба — шаг и высота профиля вручную, когда стандартная не подходит к диаметру
+ui.feature.perIso681	по ISO 68-1
+ui.feature.profileHeight	Высота профиля
+ui.feature.fromTheOtherEndOf2	От другого конца грани
+ui.feature.length	Длина
+ui.common.hole	Отверстие
+ui.feature.position	Положение
+ui.feature.simple	Простое
+ui.feature.counterbore	С цековкой
+ui.feature.countersink	С зенковкой
+ui.feature.tapped	Под резьбу
+ui.feature.close	Точный
+ui.feature.normal	Средний
+ui.feature.loose	Грубый
+ui.feature.fit	Ряд
+ui.feature.throughAll2	Насквозь
+ui.feature.end	Окончание
+ui.feature.coarse	" (крупный)"
+ui.feature.assemblyHole	Отверстие сборки
+ui.feature.selectASketchWithPoints	— выберите эскиз с точками —
+ui.feature.counterboreNN	, цековка Ø%1 × %2
+ui.feature.countersinkN90	, зенковка Ø%1 × 90°
+ui.common.mirror	Зеркало
+ui.common.pattern	Массив
+ui.common.linear	Линейный
+ui.common.circular	Круговой
+ui.feature.features	Фичи
+ui.common.plane	Плоскость
+ui.common.flip	Обратить
+ui.common.direction1	Направление 1
+ui.common.count	Количество
+ui.common.spacing	Шаг
+ui.common.direction2	Направление 2
+ui.feature.selectFeaturesInTheTree	— выберите фичи в дереве —
+ui.feature.select	— выберите —
+ui.feature.waitsForYes	" — ждёт «Да»"
+ui.common.offset2	Смещённая
+ui.feature.offsetUpToObject	Смещённая до объекта
+ui.feature.offsetByDistanceFromObject	Смещённая на расстояние от объекта
+ui.common.atAngle	Под углом
+ui.common.throughThreePoints	По трём точкам
+ui.common.midplane	Средняя
+ui.common.throughTwoPoints	По двум точкам
+ui.common.alongEdge	По ребру
+ui.common.faceAxis	По оси грани
+ui.common.intersectionOfPlanes	Пересечение плоскостей
+ui.feature.references	Ссылки
+ui.feature.farTangent	Дальняя касательная
+ui.feature.ofTheTwoTangentsTo	Из двух касательных к цилиндру или сфере — дальняя от исходной плоскости
+ui.feature.requiredPlaneOrPlanarFace	Нужно: плоскость или плоская грань
+ui.feature.requiredPlaneAndObjectVertex	Нужно: плоскость и объект — вершина, ребро или грань
+ui.feature.requiredPlaneAndAxisStraight	Нужно: плоскость и ось (прямое ребро или ось)
+ui.feature.requiredVertexOrOrigin	Нужно: вершина или начало координат
+ui.feature.requiredStraightEdge	Нужно: прямое ребро
+ui.feature.requiredCylindricalOrConicalFace	Нужно: цилиндрическая или коническая грань
+ui.feature.selectReferences	— выберите ссылки —
+ui.common.sheetMetalPart	Листовая деталь
+ui.feature.bendRadius	Радиус гиба
+ui.feature.kFactor	Коэффициент K
+ui.feature.rectangular	Прямоугольная
+ui.feature.rounded	Скруглённая
+ui.feature.noRelief	Без разгрузки
+ui.feature.relief	Разгрузка
+ui.feature.reliefWidth	Ширина разгрузки
+ui.feature.reliefDepth	Глубина разгрузки
+ui.feature.thickness2	= толщина
+ui.feature.fromShape	из формы
+ui.common.baseWall	Базовая стенка
+ui.feature.flipPlateThicknessProfileWidth	Обратить: толщина пластины (ширина профиля) против нормали эскиза
+ui.feature.widthOpenProfile	Ширина (открытый профиль)
+ui.feature.materialInside	Материал внутрь
+ui.feature.materialOutside	Материал наружу
+ui.feature.centered	По середине
+ui.feature.materialSide	Сторона материала
+ui.common.flange	Отгиб
+ui.feature.flipFlangeToTheOther	Обратить: отгиб на другую сторону листа
+ui.feature.sheetRadius	= радиус листа
+ui.feature.bendLineOnEdge	Линия гиба по ребру
+ui.feature.startOffset	Смещение начала
+ui.feature.endOffset	Смещение конца
+ui.feature.asSheet	Как у листа
+ui.common.bendOnLine	Гиб по линии
+ui.feature.bendLine	Линия гиба
+ui.feature.flipBendAgainstTheSketch	Обратить: гиб против нормали эскиза
+ui.feature.rightSideFixed	Неподвижна правая сторона
+ui.feature.fixedSideToTheRight	Неподвижная сторона — справа от направления отрезка
+ui.common.sheetCut	Вырез в листе
+ui.feature.requiredSketchInTheTree	Нужно: эскиз в дереве или область
+ui.feature.setThicknessAndRadius	Задайте толщину и радиус
+ui.feature.requiredStraightWallEdge	Нужно: прямое ребро стенки
+ui.feature.requiredSketchWithABend	Нужно: эскиз с линией гиба в дереве
+ui.common.sweep	Протягивание
+ui.common.profile	Профиль
+ui.feature.path	Траектория
+ui.feature.selectASketchOrEdges	— выберите эскиз или рёбра —
+ui.common.loft	Лофт
+ui.feature.sections	Сечения
+ui.feature.region	" (область)"
+ui.feature.selectAllAdjacentFaces	Выбрать все прилегающие грани
+ui.feature.startPoints	Начальные точки
+ui.feature.clickSectionPoints	— щёлкните точку сечения в виде —
+ui.feature.selectSketchesInTheTree	— выберите эскизы в дереве —
+ui.tree.referencesTo	"Ссылки на: "
+ui.tree.importedBody	Импортированное тело
+ui.tree.sheetN	Лист %1
+ui.tree.basis	Базис
+ui.tree.planePinnedVisible	Плоскость закреплена видимой
+ui.tree.planeShownOnHover3	Плоскость видна при наведении
+ui.tree.name	"Наименование: "
+ui.tree.designation	"Обозначение: "
+ui.tree.material	"Материал: "
+ui.tree.mass	"Масса: "
+ui.tree.kg	" кг"
+ui.tree.library	"Библиотека: "
+ui.tree.file	"Файл: "
+ui.common.sections	Разрезы
+ui.tree.welds	Швы
+ui.tree.construction	Построения
+ui.common.plane2	: плоскость
+ui.tree.pitchCylinder	: делительный цилиндр
+ui.tree.sketchShownHide	Эскиз виден — скрыть
+ui.tree.sketchHiddenShow	Эскиз скрыт — показать
+ui.tree.baseBodyShownHide	Тело-основа показано — скрыть
+ui.tree.baseBodyHiddenShowFor	Тело-основа скрыто — показать для сравнения
+ui.tree.sharedSketchAlsoShownIn	Общий эскиз: показан также в другой фиче
+ui.tree.sectionOffShow	Разрез выключен — показать
+ui.tree.sectionOnHide	Разрез включён — скрыть
+ui.tree.annotations	Обозначения
+ui.tree.annotationHiddenShow	Обозначение скрыто — показать
+ui.tree.annotationShownHide	Обозначение показано — скрыть
+ui.common.newPart	Новая деталь
+ui.tree.newSheetMetalPart	Новая листовая деталь
+ui.common.newAssembly	Новая сборка
+ui.tree.rollToEnd	Откатить в конец
+ui.common.rebuild	Перестроить
+ui.tree.rename	Переименовать
+ui.common.properties	Свойства
+ui.common.recognizeDesign	Распознать конструкцию
+ui.tree.createBillOfMaterials	Создать спецификацию
+ui.tree.convertToRegular	Преобразовать в обычную
+ui.tree.convertToSheetMetal	Преобразовать в листовую
+ui.tree.unfreezeReferences	Разморозить ссылки
+ui.tree.freezeReferences	Заморозить ссылки
+ui.tree.breakReferences	Разорвать ссылки
+ui.tree.moveUp	Переместить выше
+ui.tree.moveDown	Переместить ниже
+ui.tree.groupElements	Сгруппировать
+ui.tree.dissolveGroup	Расформировать группу
+ui.tree.removeFromGroup	Убрать из группы
+ui.tree.groupTip	Группа элементов: %1
+ui.ribbon.measure	Замер
+ui.ribbon.measureTip	Замер: щелчок по грани, ребру или вершине — её размеры; Ctrl+щелчок по второй — расстояние и угол между ними
+ui.measure.close	Закрыть замер
+ui.measure.hint	Выберите сущность (щелчок) или две (Ctrl+щелчок): грань, ребро, вершину, плоскость
+ui.measure.nothing	Для этой пары замера нет
+ui.measure.length	Длина: {value} мм
+ui.measure.radius	Радиус: {value} мм
+ui.measure.diameter	Диаметр: {value} мм
+ui.measure.area	Площадь: {value} мм²
+ui.measure.point	Точка: {value} мм
+ui.measure.volume	Объём тела: {value} мм³
+ui.measure.mass	Масса тела: {value} кг
+ui.measure.centroid	Центр масс: {value} мм
+ui.measure.distance	Расстояние: {value} мм
+ui.measure.angle	Угол: {value}°
+ui.measure.bodyDistance	Между телами: {value} мм
+ui.common.sketch	Эскиз
+ui.tree.unsuppress	Включить
+ui.tree.suppress	Подавить
+ui.common.unfold	Развернуть
+ui.tree.openAssembly	Открыть сборку
+ui.tree.openPart	Открыть деталь
+ui.tree.editInContext	Редактировать в контексте
+ui.tree.thePartIsDesignedIn	Деталь спроектирована в контексте другой сборки
+ui.tree.unfix	Освободить
+ui.tree.fix	Закрепить
+ui.tree.show	Показать
+ui.common.transparent	Прозрачный
+ui.tree.rollBackHere	Откатить сюда
+ui.import.importAsBody	Импортировать как тело
+ui.import.shapeHealingTolerance	Допуск лечения формы
+ui.import.dimensionRounding	Округление размеров
+ui.instancePattern.byPartPattern	По массиву детали
+ui.instancePattern.instancePattern	Массив экземпляров
+ui.instancePattern.instance	Экземпляр
+ui.common.direction	Направление
+ui.instancePattern.partPattern	Массив детали
+ui.instancePattern.clickAPartInThe	— щёлкните деталь в виде —
+ui.instancePattern.clickAPartWithA	— щёлкните деталь с массивом —
+ui.instancePattern.clickAnEdgeAxisOr	— щёлкните ребро, ось или грань —
+ui.instancePattern.partWithPattern	Деталь с массивом
+ui.library.bStandardPartsLibraryB	<b>Библиотека стандартных деталей</b>
+ui.library.searchNameStandardDesignation	Поиск: название, стандарт, обозначение
+ui.library.size	Типоразмер
+ui.library.isoDesignation	Обозначение ISO
+ui.common.insert	Вставить
+ui.library.refreshCatalog	Обновить каталог
+ui.library.bSaveAsLibraryItem	<b>Сохранить как элемент библиотеки</b>
+ui.common.name	Название
+ui.library.eGIso40172014	например, ГОСТ Р ИСО 4017-2013
+ui.common.standard	Стандарт
+ui.library.sectionsSeparatedByFastenersBolts	Разделы через «/»: Крепёж/Болты
+ui.library.catalogSection	Раздел каталога
+ui.library.designationForTheBillOf	Обозначение для спецификации: {имя} — значение переменной
+ui.library.sizeTablePasteFromExcel	Таблица типоразмеров (вставка из Excel: имя, затем переменные):
+ui.library.keyParametersChosenByThe	Ключевые параметры (выбирает пользователь):
+ui.common.save	Сохранить
+ui.common.cancel	Отмена
+ui.library.myParts	Мои детали
+ui.main.untitled	Без имени
+ui.main.donTSave	Не сохранять
+ui.common.open	Открыть
+ui.main.documentsConstrueFcstdConstrueDocument	Документы (*.construe *.FCStd);;Документ construe (*.construe);;FreeCAD (*.FCStd)
+ui.main.restore	Восстановить
+ui.main.saveAs	Сохранить как
+ui.common.construeDocumentConstrue	Документ construe (*.construe)
+ui.main.undo	"Отменить: "
+ui.common.undo	Отменить
+ui.main.redo	"Повторить: "
+ui.common.redo	Повторить
+ui.main.requiredSketchInTheTree	Нужно: эскиз в дереве, область или ребро
+ui.main.requiredPlaneOrFace	Нужно: плоскость или грань
+ui.main.requiredCylindricalFace	Нужно: цилиндрическая грань
+ui.main.requiredFace	Нужно: грань
+ui.main.requiredEdge	Нужно: ребро
+ui.assembly.newPartInContext	Новая деталь в контексте
+ui.common.fromFile	Из файла…
+ui.assembly.fromLibrary	Из библиотеки…
+ui.assembly.insertFromFile	Вставить из файла
+ui.assembly.nNNMm	%1 — %2: %3 мм³
+ui.assembly.frontPlane	Плоскость «Спереди»
+ui.assembly.topPlane	Плоскость «Сверху»
+ui.assembly.rightPlane	Плоскость «Справа»
+ui.assembly.axis	"Ось "
+ui.common.element	элемент
+ui.common.point	точка
+ui.common.line	отрезок
+ui.common.circle	окружность
+ui.common.object2	объект
+ui.common.origin2	начало координат
+ui.assembly.frontPlane2	плоскость «Спереди»
+ui.assembly.topPlane2	плоскость «Сверху»
+ui.assembly.rightPlane2	плоскость «Справа»
+ui.common.axis2	"ось "
+ui.assembly.sketchElement	элемент эскиза
+ui.assembly.constructionElement	элемент построения
+ui.common.planarFace	плоская грань
+ui.common.cylindricalFace	цилиндрическая грань
+ui.common.conicalFace	коническая грань
+ui.common.face2	грань
+ui.common.edge	ребро
+ui.common.vertex	вершина
+ui.drawing.landscape	Альбомная
+ui.drawing.portrait	Книжная
+ui.common.back	Сзади
+ui.common.bottom	Снизу
+ui.common.left	Слева
+ui.common.isometric	Изометрия
+ui.drawing.projectionMethod	Метод проекции
+ui.drawing.sheetSize	Формат
+ui.drawing.orientation	Ориентация
+ui.drawing.sheetScale	Масштаб листа
+ui.common.view	Вид
+ui.drawing.byPlane	По плоскости
+ui.drawing.viewOrientation	Ориентация вида
+ui.drawing.fromSheet	По листу
+ui.drawing.viewScale	Масштаб вида
+ui.drawing.model	Модель
+ui.drawing.projectionPlane	Плоскость проекции
+ui.drawing.standardDrawing	Чертёж по стандарту
+ui.drawing.render	Рендер
+ui.drawing.folded	Согнутая
+ui.drawing.flatPattern	Развёртка
+ui.drawing.assembled	Собранная
+ui.drawing.exploded	Разнесённая
+ui.common.assembly	Сборка
+ui.drawing.gostR21042023	ГОСТ Р 2.104-2023: лист A4 — только книжный
+ui.drawing.viewProperties	Свойства вида
+ui.drawing.drawingAndSheet	Чертёж и лист
+ui.drawing.dimensionProperties	Свойства размера
+ui.drawing.textProperties	Свойства текста
+ui.drawing.markProperties	Обозначение
+ui.drawing.markEdit	Изменить
+ui.drawing.markSetInDrawing	Задано в чертеже
+ui.drawing.markFromModel	Из модели
+ui.drawing.fromParent	По родителю
+ui.common.name2	Наименование
+ui.common.material	Материал
+ui.drawing.mass	Масса
+ui.common.letter	Литера
+ui.common.organization	Организация
+ui.common.surname	Фамилия
+ui.common.date	Дата
+ui.common.drawnBy	Разработал
+ui.common.checkedBy	Проверил
+ui.drawing.techControl	Т. контроль
+ui.common.extraField	Доп. графа
+ui.common.stdControl	Н. контроль
+ui.common.approvedBy	Утвердил
+ui.common.extraFieldRole	Доп. графа: роль
+ui.common.origInvNo	Инв. № подл.
+ui.common.replInvNo	Взам. инв. №
+ui.common.duplInvNo	Инв. № дубл.
+ui.common.firstUsedIn	Перв. примен.
+ui.common.refNo	Справ. №
+ui.drawing.department	Отдел
+ui.drawing.techReference	Техн. справка
+ui.drawing.documentType	Тип документа
+ui.drawing.status	Статус
+ui.drawing.revision	Изменение
+ui.drawing.issueDate	Дата выпуска
+ui.drawing.language	Язык
+ui.drawing.titleBlockN	Основная надпись — %1
+ui.drawing.owner	Владелец
+ui.drawing.export	"Экспорт "
+ui.drawing.modelViewFromFile	Вид модели из файла
+ui.drawing.hiddenLines	Невидимые линии
+ui.drawing.tangentEdges	Линии перехода
+ui.drawing.centerLines	Осевые линии
+ui.drawing.technicalRequirements	Технические требования
+ui.drawing.sectionOnly	Сечение
+ui.drawing.reverseDirection	Обратное направление
+ui.common.makeLocalCopy	Скопировать к себе
+ui.common.replaceWith	Заменить на…
+ui.drawing.drawingsAndBillsOfMaterials	Чертежи и спецификации:
+ui.drawing.selectAll	Выделить все
+ui.drawing.clearAll	Снять все
+ui.drawing.exportPdf	Экспорт PDF
+ui.drawing.cutPlan	План реза
+ui.drawing.cutLabel	{material}, {thickness} мм
+ui.drawing.cutLabelNoMaterial	{thickness} мм
+ui.drawing.exportDxf	Экспорт DXF
+ui.drawing.drawings	Чертежи
+ui.main.foldShowTheFoldedPart	Свернуть — показать согнутую деталь
+ui.main.unfoldShowTheSheetMetal	Развернуть — показать развёртку листовой детали
+ui.main.exportStep	Экспорт STEP
+ui.main.importStep	Импорт STEP
+ui.main.importMesh	Импорт сетки
+ui.main.meshesStl3mfStlStl	Сетки (*.stl *.3mf);;STL (*.stl);;3MF (*.3mf)
+ui.main.exportStlFolder	Экспорт STL: каталог
+ui.main.exportFlatPatternDxfFolder	Экспорт DXF развёртки: каталог
+ui.main.importFreecad	Импорт FreeCAD
+ui.main.exportFreecad	Экспорт FreeCAD
+ui.pmi.dimensionDNN	Размер D%1 (%2)
+ui.ribbon.coilCustomThread	Пружина / нестандартная резьба
+ui.ribbon.gearRimSpurInvoluteRim	Зубчатый венец — прямозубый эвольвентный венец на цилиндрической грани вала или отверстия
+ui.ribbon.sheetMetalPartSheetParameters	Листовая деталь — параметры листа: толщина, радиус гиба, коэффициент K, разгрузки
+ui.ribbon.convertToSheet	Преобразовать в листовую деталь…
+ui.ribbon.convertToSheetTip	форма проверяется, история сохраняется
+ui.ribbon.sheetParamsTip	толщина, радиус гиба, коэффициент K, разгрузки
+ui.ribbon.sheetParams	Параметры листа…
+ui.common.section	Разрез
+ui.common.roughness	Шероховатость
+ui.ribbon.roughnessOfOtherSurfaces	Шероховатость остальных
+ui.common.sizeTolerance	Допуск размера
+ui.ribbon.sizeToleranceToleranceFieldOr	Допуск размера — поле допуска или отклонения отверстия или вала на цилиндрической грани (ГОСТ 25347 / ISO 286)
+ui.ribbon.geometricTolerance	Допуск формы и расположения
+ui.ribbon.geometricToleranceToleranceFrameOn	Допуск формы/расположения — рамка допуска на грани (ГОСТ 2.308)
+ui.common.datum	База
+ui.ribbon.datumDatumFeatureSymbolOn	База — обозначение базы на грани (ГОСТ 2.308)
+ui.ribbon.select	Выделить
+ui.ribbon.selectAllCtrlA	Выделить всё (Ctrl+A)
+ui.ribbon.constructionGeometry	Конструктивная геометрия
+ui.ribbon.trim	Обрезка
+ui.common.point2	Точка
+ui.common.line2	Отрезок
+ui.ribbon.centerline	Осевая линия
+ui.ribbon.rectangle	Прямоугольник
+ui.ribbon.byCorners	По углам
+ui.ribbon.fromCenter	От центра
+ui.ribbon.primitives	Примитивы
+ui.ribbon.inscribedNGonByVertex	N-угольник вписанный (по вершине)
+ui.ribbon.circumscribedNGonBySide	N-угольник описанный (по середине стороны)
+ui.common.star	Звезда
+ui.common.circle2	Окружность
+ui.ribbon.byCenter	По центру
+ui.ribbon.by3Points	По 3 точкам
+ui.common.ellipse	Эллипс
+ui.common.arc	Дуга
+ui.ribbon.tangent	Касательная
+ui.common.spline	Сплайн
+ui.ribbon.byControlPoints	По управляющим точкам
+ui.ribbon.throughPoints	Через точки
+ui.ribbon.text	Надпись
+ui.common.linearPattern	Линейный массив
+ui.common.circularPattern	Круговой массив
+ui.ribbon.unlinkPatternPrimitive	Развязать массив/примитив
+ui.common.project	Проекция
+ui.ribbon.dimensionMainGeometry	Образмерить основное
+ui.ribbon.dimensionAllIncludingSplines	Образмерить всё, включая сплайны
+ui.ribbon.constraints	Ограничения
+ui.ribbon.showConstraintsShiftC	Показать ограничения (Shift+C)
+ui.ribbon.exitSketch	Выйти из эскиза
+ui.common.part	Деталь
+ui.common.mate	Сопряжение
+ui.ribbon.connection	Соединение
+ui.common.weld	Шов
+ui.common.interference	Пересечения
+ui.ribbon.explodedView	Разнесённый вид
+ui.ribbon.explodeAgain	Разнести заново
+ui.ribbon.newBillOfMaterials	Новая спецификация
+ui.ribbon.newBillOfMaterialsBom	Новая спецификация — спецификация активной сборки по ГОСТ Р 2.106-2019
+ui.ribbon.editTitleBlockData	Редактировать данные для основной надписи
+ui.ribbon.newSheet	Новый лист
+ui.ribbon.t3Views	3 проекции
+ui.ribbon.projectedView	Проекционный вид
+ui.ribbon.detailView	Выносной элемент
+ui.ribbon.insertAllModelDimensions	Проставить все размеры из модели
+ui.ribbon.placeAllAdditionalInformation	Расставить всю дополнительную информацию
+ui.ribbon.showUndimensioned	Показать необразмеренное
+ui.ribbon.drawing	Чертёж
+ui.common.new	Новый
+ui.ribbon.saveAsCtrlShiftS	Сохранить как… (Ctrl+Shift+S)
+ui.ribbon.regularPart	Обычная деталь
+ui.ribbon.newDrawing	Новый чертёж
+ui.ribbon.isometricFitTheModelArrow	Изометрия — вписать модель; стрелка — другие стандартные виды
+ui.ribbon.fit	Вписать
+ui.ribbon.style	Стиль
+ui.common.variables	Переменные
+ui.main.theObjectIsNotVisible	Объект не виден в текущем состоянии
+ui.common.section2	Раздел
+ui.spec.item	Поз.
+ui.spec.qty	Кол.
+ui.spec.note	Примечание
+ui.spec.addRow	Добавить строку
+ui.spec.addAManualRowTo	Добавить ручную строку в выбранный раздел
+ui.spec.deleteRow	Удалить строку
+ui.spec.deleteTheSelectedManualRow	Удалить выделенную ручную строку
+ui.spec.titleBlock	Основная надпись
+ui.spec.billOfMaterialsN	Спецификация — %1
+ui.main.aboveTheRibbonLeft	Над лентой слева
+ui.main.aboveTheRibbonRight	Над лентой справа
+ui.main.mm	мм, °
+ui.main.sides	"Сторон: "
+ui.main.rays	"Лучей: "
+ui.main.required	"Нужно: "
+ui.main.requiredExtrudeOrRevolveIn	"Нужно: выдавливание или вращение в дереве, "
+ui.main.open	Открыть…
+ui.main.recentFiles	Недавние файлы
+ui.main.saveAs2	Сохранить как…
+ui.main.saveAsLibraryItem	Сохранить как элемент библиотеки…
+ui.main.recordSolution	Записать решение…
+ui.main.updateReferences	Обновить ссылки
+ui.main.updateFromLibrary	Обновить из библиотеки
+ui.main.flatPatternDxf	DXF развёртки…
+ui.main.freecadActiveObjectFcstd	FreeCAD — активный объект (.FCStd)…
+ui.main.print	Печать…
+ui.main.documentSettings	Настройки документа…
+ui.main.programSettings	Настройки программы…
+ui.main.exit	Выход
+ui.main.edit	Правка
+ui.main.normalTo	Нормально к
+ui.common.help	Справка
+ui.main.about	О программе
+ui.main.hotkeys	Горячие клавиши
+ui.main.reportAProblem	Сообщить о проблеме…
+ui.main.checkForUpdates	Проверить обновления
+ui.xref.exitInContextEditing	Выйти из редактирования в контексте
+ui.common.copy	Копировать
+ui.common.paste	Вставить
+ui.xref.addMate	Добавить сопряжение
+ui.xref.copyAllDependenciesIntoThe	Скопировать все зависимости в проект
+ui.xref.insertAsLinks	Вставить ссылками
+ui.xref.replaceWithObjectFromFile	Заменить на объект из файла
+ui.common.coincident	Совпадение
+ui.common.concentric	Концентричность
+ui.common.parallel	Параллельность
+ui.common.perpendicular	Перпендикулярность
+ui.mate.tangent	Касание
+ui.mate.gear	Зацепление
+ui.mate.lock	Заделка
+ui.mate.objects	Объекты
+ui.mate.partConstructionGeometry	Эскизы деталей
+ui.mate.showPartPlanesAxesAnd	Показать в виде точки, отрезки и окружности эскизов деталей для выбора объектов сопряжения
+ui.mate.flip	⇅ Развернуть
+ui.mate.flipThePartToThe	Перевернуть деталь на другую сторону; остальные сопряжения сохраняются
+ui.mate.okNext	ОК / Следующее
+ui.mate.saveTheMateAndStart	Сохранить сопряжение и сразу задать следующее для той же пары деталей
+ui.mate.clickTwoObjectsInThe	— щёлкните два объекта в виде —
+ui.msg.ellipticalArc	Дуга эллипса
+ui.msg.bezierCurve	Кривая Безье
+ui.msg.element	Элемент
+ui.msg.horizontal	Горизонтальность
+ui.msg.vertical	Вертикальность
+ui.msg.tangent	Касательность
+ui.msg.onObject	На объекте
+ui.msg.symmetric	Симметрия
+ui.msg.fix	Фиксация
+ui.msg.collinear	Коллинеарность
+ui.msg.integer	целое
+ui.msg.number	число
+ui.msg.decimalNumber	дробное число
+ui.msg.string	строка
+ui.sketchPattern.count1	Количество 1
+ui.sketchPattern.spacing1	Шаг 1
+ui.sketchPattern.byLine	По отрезку
+ui.sketchPattern.axisDirectionsFollowASketch	Направления осей — от отрезка эскиза; массив следует за его поворотом
+ui.sketchPattern.secondAxisFollowsASketch	Направление 2 — от своего отрезка эскиза; вторая ось следует за его поворотом
+ui.sketchPattern.count2	Количество 2
+ui.sketchPattern.spacing2	Шаг 2
+ui.common.unlink	Развязать
+ui.sketchPattern.turnThePatternIntoRegular	Превратить массив в обычную геометрию с взаимосвязями
+ui.sketchPattern.line	Отрезок ✓
+ui.pmi.roughness	"Шероховатость "
+ui.pmi.sizeToleranceD	Допуск размера D
+ui.pmi.tolerance	"Допуск "
+ui.pmi.datum	"База "
+ui.pmi.geometricTolerance	Допуск формы и расположения
+ui.pmi.roughnessOfOtherSurfaces	Шероховатость остальных поверхностей
+ui.pmi.clickAFaceInThe	Щёлкните грань в виде
+ui.pmi.machiningMethodNotSpecified	Без указания способа обработки
+ui.pmi.materialRemovalRequired	Удалением материала
+ui.pmi.materialRemovalProhibited	Без удаления материала
+ui.pmi.symbol	Знак
+ui.pmi.parameter	Параметр
+ui.pmi.valueM	Значение, мкм
+ui.pmi.machiningMethod	Способ обработки
+ui.pmi.parallel	Параллельное
+ui.pmi.perpendicular	Перпендикулярное
+ui.pmi.crossed	Перекрещивающееся
+ui.pmi.multiDirectional	Произвольное
+ui.pmi.circular	Кругообразное
+ui.pmi.radial	Радиальное
+ui.pmi.particulate	Точечное
+ui.pmi.layDirection	Направление неровностей
+ui.pmi.toleranceType	Вид допуска
+ui.pmi.valueMm	Значение, мм
+ui.pmi.diameterTolerance	⌀ (допуск на диаметр)
+ui.pmi.maximumMaterial	Ⓜ максимум материала
+ui.pmi.leastMaterial	Ⓛ минимум материала
+ui.pmi.materialCondition	Зависимый допуск
+ui.pmi.datums	Базы
+ui.pmi.letter	Буква
+ui.pmi.notSet	— не задана —
+ui.primitive.inscribed	Вписанный
+ui.primitive.circumscribed	Описанный
+ui.primitive.type	Вид
+ui.primitive.diameter1	Диаметр 1
+ui.primitive.diameter2	Диаметр 2
+ui.primitive.turnThePrimitiveIntoRegular	Превратить примитив в обычную геометрию с ограничениями
+ui.primitive.rays	Лучей
+ui.primitive.sides	Сторон
+ui.primitive.nGon	N-угольник
+ui.report.noResponse	нет ответа
+ui.common.name3	Имя
+ui.props.massKg	Масса, кг
+ui.props.fixed	Закреплён
+ui.props.hidden	Скрыт
+ui.props.suppressed	Подавлен
+ui.props.openObject	Открыть объект
+ui.props.abcd123456001	АБВГ.123456.001
+ui.props.designationPerGost2201	Обозначение по ГОСТ 2.201 (формат не проверяется)
+ui.props.densityKgM	Плотность, кг/м³
+ui.props.youngSModulusMpa	Модуль упругости, МПа
+ui.props.poissonSRatio	Коэффициент Пуассона
+ui.props.yieldStrengthMpa	Предел текучести, МПа
+ui.props.ultimateStrengthMpa	Предел прочности, МПа
+ui.props.assign	Назначить
+ui.props.byMaterial	По материалу
+ui.props.partColor	Цвет детали
+ui.props.instanceColor	Цвет экземпляра
+ui.props.byPart	По детали
+ui.props.chooseColor	Выбрать цвет
+ui.props.transparentInAssemblies	Прозрачная в сборках
+ui.props.reset	Сбросить
+ui.props.faceColor	Цвет грани
+ui.props.massProperties	Масс-характеристики
+ui.props.volumeMm	Объём, мм³
+ui.props.areaMm	Площадь, мм²
+ui.props.centerOfMassMm	Центр масс, мм
+ui.props.principalMomentsKgMm	Главные моменты, кг·мм²
+ui.props.notSet	— не задан —
+ui.props.custom	Свой…
+ui.props.noMaterialN	Без материала: %1
+ui.props.materialPropertiesMustBeNumbers	Свойства материала — числа
+ui.repair.done2	Готово
+ui.report.problemDescription	Описание проблемы
+ui.report.eMailForReply	E-mail для ответа
+ui.report.screenshots	Снимки экрана
+ui.report.windowSnapshot	Снимок окна
+ui.report.addFile	Добавить файл…
+ui.report.remove	Удалить
+ui.report.attachThePartFileTo	Приложить файл детали для воспроизведения проблемы
+ui.report.send	Отправить
+ui.report.addScreenshot	Добавить снимок
+ui.report.imagesPngJpgJpeg	Изображения (*.png *.jpg *.jpeg)
+ui.report.donTSend	Не отправлять
+ui.report.saveReport	Сохранить отчёт
+ui.report.zipArchiveZip	Архив zip (*.zip)
+ui.report.captchaLabel	Знаки с картинки
+ui.report.captchaRefresh	Другая картинка
+ui.richText.b	Ж
+ui.richText.boldCtrlB	Полужирный (Ctrl+B)
+ui.richText.i	К
+ui.richText.italicCtrlI	Курсив (Ctrl+I)
+ui.richText.u	Ч
+ui.richText.underlineCtrlU	Подчёркнутый (Ctrl+U)
+ui.richText.alignLineLeft	Выровнять строку влево
+ui.richText.centerLine	Выровнять строку по центру
+ui.richText.alignLineRight	Выровнять строку вправо
+ui.section.byPlane	Плоскостью
+ui.section.bySketch	По эскизу
+ui.section.clickAPlaneOrPlanar	Щёлкните плоскость или плоскую грань в виде либо плоскость в дереве
+ui.section.doNotCut	Не резать
+ui.sel.front	«Спереди»
+ui.sel.top	«Сверху»
+ui.sel.right	«Справа»
+ui.sel.centerline	осевая
+ui.sel.arc	дуга
+ui.sel.circularEdge	круговое ребро
+ui.sel.sphericalFace	сферическая грань
+ui.sel.clickShowInTheView	Щелчок — показать в виде
+ui.sel.removeFromSelection	Убрать из выбора
+ui.docSettings.documentSettings	Настройки документа
+ui.docSettings.in	дюйм
+ui.docSettings.ft	фут
+ui.docSettings.lengthUnits	Единицы длины
+ui.docSettings.degrees	градусы
+ui.docSettings.radians	радианы
+ui.docSettings.angleUnits	Единицы угла
+ui.docSettings.rad	рад
+ui.sketch.clickALinePatternDirection	Щёлкните отрезок — направление массива
+ui.sketch.requiredSketchPoint	Нужно: точка эскиза
+ui.sketch.selectAPathBodyEdge	Выберите траекторию: ребро тела или эскиз в дереве
+ui.sketch.fullyDefined	Полностью определён
+ui.sketch.underDefinedDofN	Недоопределён · DOF: %1
+ui.sketch.weak	слабый
+ui.sketch.weak2	слабых
+ui.sketch.defined	Определён
+ui.sketch.underDefined	Недоопределён
+ui.sketch.redundantConstraintsN	Избыточные ограничения: %1
+ui.sketch.constraintConflict	Конфликт ограничений
+ui.sketch.notSolved	Не решён
+ui.sketch.sketchError	Ошибка эскиза
+ui.sketch.reference	Справочный
+ui.sketch.driving	Управляющий
+ui.sketch.diameterFromAxis	Диаметр от оси
+ui.sketch.radiusFromAxis	Радиус от оси
+ui.sketch.centralAngle	Центральный угол
+ui.sketch.majorSemiAxis	Большая полуось
+ui.sketch.minorSemiAxis	Малая полуось
+ui.sketch.rotation	Поворот
+ui.sketch.far	Дальнее
+ui.sketch.nearest	Ближайшее
+ui.sketch.tolerance	Допуск…
+ui.sketch.makeAnchor	Сделать опорной
+ui.sketch.toleranceNNN	Допуск: %1 %2 / %3
+ui.sketch.tolerance2	"Допуск: "
+ui.sketch.toleranceNN	Допуск: %1 / %2
+ui.sketch.firstSelectElementsToMirror	Сначала выделите элементы для отражения
+ui.sketch.selectAnAxisSketchLine	Выберите ось: отрезок или ось эскиза
+ui.sketch.requiredSketchLineOrAxis	Нужно: отрезок или ось эскиза
+ui.sketch.contour	Контур
+ui.sketch.firstSelectPatternElements	Сначала выделите элементы массива
+ui.sketch.clickTheCenterASketch	Щёлкните центр: точку эскиза или начало координат
+ui.sketch.requiredSketchPointOrOrigin	Нужно: точка эскиза или начало координат
+ui.sketch.requiredSketchLine	Нужно: отрезок эскиза
+ui.sketch.selectAPatternElement	Выделите элемент массива
+ui.slot.clickPickObjectsHere	Щелчок — выбирать объекты сюда
+ui.record.description	Описание
+ui.record.planarFace	Плоская грань
+ui.record.cylindricalFace	Цилиндрическая грань
+ui.record.pointOnFace	Точка на грани
+ui.record.inputType	Вид входа
+ui.record.inputName	Название входа
+ui.record.addInput	Добавить вход
+ui.record.removeInput	Удалить вход
+ui.record.measureThePartStackProbe	Измерять пакет деталей, радиус зонда
+ui.record.addTable	Добавить таблицу
+ui.record.removeTable	Удалить таблицу
+ui.record.formula	Формула
+ui.record.tableRowLookup	Выбор строки таблицы
+ui.record.asInTable	как в таблице
+ui.record.ascending	по возрастанию
+ui.record.descending	по убыванию
+ui.record.ruleType	Вид правила
+ui.record.table	Таблица
+ui.record.column	Столбец
+ui.record.condition	Условие
+ui.common.expression	Выражение
+ui.record.order	Порядок
+ui.record.addRule	Добавить правило
+ui.record.removeRule	Удалить правило
+ui.record.cutByRevolvedBody	Вырез телом вращения
+ui.record.cutByBlock	Вырез бруском
+ui.record.libraryPart	Деталь библиотеки
+ui.record.rZOneLinePer	r; z — по строке на вершину
+ui.record.intoMaterial	в материал
+ui.record.outOfMaterial	из материала
+ui.record.outputType	Вид выхода
+ui.record.outputName	Название выхода
+ui.record.parts	Детали
+ui.record.partTable	Таблица детали
+ui.record.row	Строка
+ui.record.axialOffset	Смещение по оси
+ui.record.addOutput	Добавить выход
+ui.record.removeOutput	Удалить выход
+ui.record.saveAsSolution	Сохранить как решение
+ui.record.mySolution	Моё решение
+ui.record.mySolutions	Мои решения
+ui.record.holeTableBuiltIn	Таблица отверстий (встроенная)
+ui.record.cylinder	Цилиндр
+ui.record.fromToLinesXY	от; до — строки x, y, z
+ui.record.inputPart	"Деталь входа "
+ui.record.allPartsOfTheStack	Все детали пакета
+ui.record.firstPartOfTheStack	Первая деталь пакета
+ui.record.lastPartOfTheStack	Последняя деталь пакета
+ui.record.allButTheLast	Все, кроме последней
+ui.record.row2	" = строка "
+ui.record.where	", где "
+ui.record.ascending2	, по возрастанию
+ui.record.descending2	, по убыванию
+ui.record.cutIn	": вырез в "
+ui.record.part	": деталь "
+ui.record.row3	", строка "
+ui.tolerance.iso286ToleranceFieldFundamental	Поле допуска ISO 286: основное отклонение и квалитет (H7 — отверстие, h6 — вал)
+ui.tolerance.showDeviations	Показать отклонения
+ui.tolerance.field	Поле
+ui.tolerance.upperMm	Верхнее, мм
+ui.tolerance.lowerMm	Нижнее, мм
+ui.tolerance.theUpperDeviationMustBe	Верхнее отклонение должно быть больше нижнего.
+ui.tolerance.remove	Убрать
+ui.update.downloadAndInstall	Скачать и установить
+ui.update.openPage	Открыть страницу
+ui.update.restart	Перезапустить
+ui.update.later	Позже
+ui.update.retry	Повторить
+ui.update.downloadArchive	Скачать архив
+ui.variables.number	Число
+ui.variables.integer	Целое
+ui.variables.string	Строка
+ui.variables.list	Список
+ui.variables.addVariable	Добавить переменную
+ui.variables.deleteVariable	Удалить переменную
+ui.variables.valuesSeparatedByForThe	значения через «;» — для типа «Список»
+ui.variables.explanationShownInTheVariable	пояснение — видно в подсказке переменной
+ui.variables.values	Перечень
+ui.variables.variantTables	Таблицы вариантов
+ui.variables.newVariantTable	Новая таблица вариантов
+ui.variables.deleteVariantTable	Удалить таблицу вариантов
+ui.variables.activeVariant	Активный вариант
+ui.variables.row	+ строка
+ui.variables.row2	− строка
+ui.variables.pasteATableFromThe	Вставить таблицу из буфера обмена (как из Excel)
+ui.variables.importCsv	Импорт CSV
+ui.variables.exportCsv	Экспорт CSV
+ui.variables.yes	Да
+ui.variables.no	Нет
+ui.variables.variant	Вариант
+ui.variables.importVariantTable	Импорт таблицы вариантов
+ui.variables.exportVariantTable	Экспорт таблицы вариантов
+ui.weld.butt	стыковое
+ui.weld.corner	угловое
+ui.weld.tee	тавровое
+ui.weld.lap	нахлёсточное
+ui.weld.process	Способ
+ui.weld.leg	Катет
+ui.weld.arrowSide	Лицевая
+ui.weld.otherSide	Оборотная
+ui.weld.side	Сторона
+ui.weld.allAround	По замкнутой линии
+ui.weld.fieldWeld	Монтажный
+ui.weld.removeReinforcement	Снять усиление
+ui.weld.smoothTransition	Плавный переход
+ui.weld.intermittent	Прерывистый
+ui.weld.segmentLength	Длина участка
+ui.weld.chain	Цепное
+ui.weld.staggered	Шахматное
+ui.weld.arrangement	Расположение
+ui.help.commandReference	Справочник команд
+ui.help.commandsIntro	Каждая кнопка ленты и её варианты: значок, название, подсказка и что о ней сказано в руководстве (вкладка «Руководство»).
+ui.help.seeGuide	Подробнее — в руководстве.
+ui.help.commands	Команды
+ui.help.colKey	Клавиша
+ui.help.colCommand	Команда
+ui.help.colContext	Контекст
+ui.settings.languageTab	Язык
+ui.settings.language	Язык интерфейса
+ui.settings.languageSystem	Как в системе
+ui.common.xAxisInline	ось X
+ui.common.yAxisInline	ось Y
+ui.common.zAxisInline	ось Z
+ui.caption.plane	Плоскость «{name}»
+ui.caption.planeInline	плоскость «{name}»
+ui.section.cutTheOtherSide	Отрезать другую сторону
+ui.instancePattern.flipThePatternDirection	Обратить направление массива
+ui.selField.many	Объектов: %1
+ui.feature.profilesN	Профилей: %1
+ui.feature.sectionsN	Сечений: %1
+ui.feature.featuresN	Фич: %1
+ui.weld.pickEdges	— рёбра шва (необязательно) —
+ui.library.bAttachmentsB	<b>Привязки</b>
+ui.library.attachInsert	Вставить по привязкам
+ui.library.replace	Заменить
+ui.library.replaceDots	Заменить…
+ui.sketch.tolerancePlaceholder	допуск
+ui.feature.toleranceTip	Допуск размера (необязательно): h6, H7(+0,015), ±0,1, +0,1/−0,05
+ui.tolerance.listTip	Стандартные поля допуска (F4)
+ui.tolerance.listHole	Отверстие
+ui.tolerance.listShaft	Вал
+ui.ribbon.construction	Построение
+ui.ribbon.pitchCircle	Центровая окружность
+ui.drawing.constructionProperties	Построение
+ui.drawing.lineType	Тип линии
+ui.drawing.lineSolidThin	Сплошная тонкая
+ui.drawing.lineDashDotThin	Штрихпунктирная тонкая
+ui.drawing.lineDashed	Штриховая
+ui.drawing.consPointPrompt	Построение: укажите точку — вершину, ребро, окружность (её центр) или место на виде (Esc — отмена)
+ui.drawing.consPitchPrompt	Центровая окружность: укажите отверстия — окружности на виде, не меньше трёх; Enter — готово (Esc — отмена)
+ui.drawing.consNoView	Построение: укажите точку на виде
+ui.drawing.consBound	Привязано точек: {bound} из {count}
+ui.ribbon.itemNumber	Номер позиции
+ui.ribbon.partsList	Перечень составных частей
+name.element.part	Деталь
+name.element.assembly	Сборка
+name.element.body	Тело
+name.element.drawing	Чертёж
+name.element.specification	Спецификация
+name.feature.sketch	Эскиз
+name.feature.extrude	Выдавливание
+name.feature.cut	Вырез
+name.feature.revolve	Вращение
+name.feature.fillet	Скругление
+name.feature.chamfer	Фаска
+name.feature.plane	Плоскость
+name.feature.axis	Ось
+name.feature.pattern	Массив
+name.feature.mirror	Зеркало
+name.feature.shell	Оболочка
+name.feature.draft	Уклон
+name.feature.sweep	Протягивание
+name.feature.loft	Лофт
+name.feature.hole	Отверстие
+name.feature.thread	Резьба
+name.feature.import	Импорт
+name.feature.sheetMetal	Лист
+name.feature.sheetWall	Стенка
+name.feature.sheetFlange	Отгиб
+name.feature.sheetBend	Гиб
+name.feature.sheetCut	Вырез
+name.feature.gear	Венец
+name.feature.coil	Пружина
+name.feature.connection	Соединение
+name.feature.connectionCut	Вырез соединения
+name.mate.coincident	Совпадение
+name.mate.concentric	Концентричность
+name.mate.distance	Расстояние
+name.mate.angle	Угол
+name.mate.parallel	Параллельность
+name.mate.perpendicular	Перпендикулярность
+name.mate.tangent	Касание
+name.mate.gear	Зацепление
+name.mate.lock	Заделка
+name.section	Разрез
+name.sheet	"Лист "
+name.view	"Вид "
+name.table	Таблица
+name.instancePattern	Массив экземпляров
+name.weld	"Шов "
+name.elementGroup	"Группа "
+ui.symbol.insertSymbol	Вставить знак
+ui.symbol.diameter	Диаметр
+ui.symbol.radius	Радиус
+ui.symbol.square	Квадрат
+ui.symbol.arc	Длина дуги
+ui.symbol.sphereDiameter	Диаметр сферы
+ui.symbol.sphereRadius	Радиус сферы
+ui.symbol.thread	Метрическая резьба
+ui.symbol.degree	Градус
+ui.symbol.minute	Минута
+ui.symbol.second	Секунда
+ui.symbol.plusMinus	Плюс-минус
+ui.symbol.times	Умножение (количество, фаска)
+ui.symbol.slope	Уклон
+ui.symbol.taper	Конусность
+ui.settings.titleBlockTab	Значения полей надписи в чертежах по умолчанию
+ui.settings.titleBlockHint	Новый чертёж заполняет основную надпись этими значениями. В поле можно ввести текст или шаблон даты {now:d.m.Y} — на листе будет текущая дата (d — день, m — месяц, Y — год, y — год двумя цифрами).
+ui.settings.drawnByDate	Разработал: дата
+ui.settings.checkedByDate	Проверил: дата
+ui.settings.techControlDate	Т. контроль: дата
+ui.settings.extraFieldDate	Доп. графа: дата
+ui.settings.stdControlDate	Н. контроль: дата
+ui.settings.approvedByDate	Утвердил: дата
+ui.library.sizesTable	Типоразмеры
+ui.solution.none	нет

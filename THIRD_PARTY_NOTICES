@@ -1,0 +1,135 @@
+THIRD-PARTY NOTICES
+
+construe includes or uses the third-party components listed below. Each component is licensed under
+its own terms; the full license texts are in the files named in "License text". Everything else in
+construe is covered by the LICENSE file.
+
+This file is generated from the project's list of third-party components; do not edit it by hand.
+
+--------------------------------------------------------------------------------
+Component: Qt Core
+Version: 6.11.3
+License: LGPL-3.0-only
+Copyright: The Qt Company Ltd. and other contributors
+Source: https://code.qt.io
+License text: licenses/LGPL-3.0.txt, licenses/GPL-3.0.txt
+--------------------------------------------------------------------------------
+Component: Qt Gui
+Version: 6.11.3
+License: LGPL-3.0-only
+Copyright: The Qt Company Ltd. and other contributors
+Source: https://code.qt.io
+License text: licenses/LGPL-3.0.txt, licenses/GPL-3.0.txt
+--------------------------------------------------------------------------------
+Component: Qt Widgets
+Version: 6.11.3
+License: LGPL-3.0-only
+Copyright: The Qt Company Ltd. and other contributors
+Source: https://code.qt.io
+License text: licenses/LGPL-3.0.txt, licenses/GPL-3.0.txt
+--------------------------------------------------------------------------------
+Component: Qt OpenGL
+Version: 6.11.3
+License: LGPL-3.0-only
+Copyright: The Qt Company Ltd. and other contributors
+Source: https://code.qt.io
+License text: licenses/LGPL-3.0.txt, licenses/GPL-3.0.txt
+--------------------------------------------------------------------------------
+Component: Qt OpenGLWidgets
+Version: 6.11.3
+License: LGPL-3.0-only
+Copyright: The Qt Company Ltd. and other contributors
+Source: https://code.qt.io
+License text: licenses/LGPL-3.0.txt, licenses/GPL-3.0.txt
+--------------------------------------------------------------------------------
+Component: Qt Network
+Version: 6.11.3
+License: LGPL-3.0-only
+Copyright: The Qt Company Ltd. and other contributors
+Source: https://code.qt.io
+License text: licenses/LGPL-3.0.txt, licenses/GPL-3.0.txt
+--------------------------------------------------------------------------------
+Component: Qt PrintSupport
+Version: 6.11.3
+License: LGPL-3.0-only
+Copyright: The Qt Company Ltd. and other contributors
+Source: https://code.qt.io
+License text: licenses/LGPL-3.0.txt, licenses/GPL-3.0.txt
+--------------------------------------------------------------------------------
+Component: Qt GuiPrivate
+Version: 6.11.3
+License: LGPL-3.0-only
+Copyright: The Qt Company Ltd. and other contributors
+Source: https://code.qt.io
+License text: licenses/LGPL-3.0.txt, licenses/GPL-3.0.txt
+--------------------------------------------------------------------------------
+Component: Open CASCADE Technology (OCCT)
+Version: 8.0.1
+License: LGPL-2.1-only WITH OCCT-exception-1.0
+Copyright: OPEN CASCADE SAS
+Source: https://github.com/Open-Cascade-SAS/OCCT
+License text: licenses/LGPL-2.1.txt, licenses/OCCT-exception-1.0.txt
+--------------------------------------------------------------------------------
+Component: Eigen
+Version: 5.0.1
+License: MPL-2.0
+Copyright: Eigen contributors
+Source: https://gitlab.com/libeigen/eigen
+License text: licenses/Eigen.txt
+--------------------------------------------------------------------------------
+Component: JSON for Modern C++
+Version: 3.12.0
+License: MIT
+Copyright: Niels Lohmann
+Source: https://github.com/nlohmann/json
+License text: licenses/nlohmann-json.txt
+--------------------------------------------------------------------------------
+Component: Mesa llvmpipe software OpenGL (opengl32sw.dll of Qt for Windows)
+Version: bundled with Qt 6.11.3
+License: MIT
+Copyright: Brian Paul and the Mesa contributors
+Source: https://www.mesa3d.org
+License text: licenses/Mesa.txt
+--------------------------------------------------------------------------------
+Component: OpenGost Type A font
+Version: 0.3
+License: OFL-1.1
+Copyright: Nikita Volchenkov (2011-2012), Valek Filippov (2012)
+Source: https://bitbucket.org/fat_angel/opengostfont
+License text: assets/fonts/OpenGostTypeA-Regular.LICENSE.txt
+--------------------------------------------------------------------------------
+Component: OpenGost Type B font
+Version: 0.3
+License: OFL-1.1
+Copyright: Nikita Volchenkov (2011-2012), Valek Filippov (2012)
+Source: https://bitbucket.org/fat_angel/opengostfont
+License text: assets/fonts/OpenGostTypeB-Regular.LICENSE.txt
+--------------------------------------------------------------------------------
+Component: osifont font (ISO 3098)
+Version: master, 2026-10-16
+License: LGPL-3.0-only WITH Font-exception-2.0
+Copyright: Zefram Cochrane and the osifont contributors
+Source: https://github.com/hikikomori82/osifont
+License text: assets/fonts/osifont-lgpl3fe.LICENSE.txt, assets/fonts/osifont-italic.LICENSE.txt
+--------------------------------------------------------------------------------
+Component: Sowjetschablone stencil font
+Version: 2014-2015
+License: OFL-1.1
+Copyright: Peter Wiegel / CAT-Fonts
+Source: https://www.peter-wiegel.de
+License text: assets/trafonts/Sowjetschablone.LICENSE.txt
+--------------------------------------------------------------------------------
+Component: Construe Stencil GOST A stencil font (derived from OpenGost Type A)
+Version: 1.0
+License: OFL-1.1
+Copyright: construe project (2026); Nikita Volchenkov (2011-2012), Valek Filippov (2012)
+Source: construe project stencil generator from OpenGost Type A (https://bitbucket.org/fat_angel/opengostfont)
+License text: assets/trafonts/ConstrueStencilGostA.LICENSE.txt
+--------------------------------------------------------------------------------
+Component: Construe Stencil GOST B stencil font (derived from OpenGost Type B)
+Version: 1.0
+License: OFL-1.1
+Copyright: construe project (2026); Nikita Volchenkov (2011-2012), Valek Filippov (2012)
+Source: construe project stencil generator from OpenGost Type B (https://bitbucket.org/fat_angel/opengostfont)
+License text: assets/trafonts/ConstrueStencilGostB.LICENSE.txt
+--------------------------------------------------------------------------------

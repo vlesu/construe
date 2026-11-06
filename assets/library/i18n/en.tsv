@@ -1,0 +1,311 @@
+# Словарь библиотеки, английский (FX14-I18N-001, spec/library.md §17): русский текст пакета<TAB>перевод.
+# Ключ — текст целиком; изменился текст пакета — обновить строку (полнота словаря — проверка библиотеки, spec/library.md §17.5).
+Подшипник роликовый конический однорядный повышенной грузоподъёмности	Tapered roller bearing, single row, increased load capacity
+Упрощённая модель: внутреннее кольцо d…dm шириной B (широкий торец — на плоскости «Сверху») и наружное кольцо dm…D шириной C, широкий торец которого — на монтажной высоте T; dm = (d + D)/2; фаски r1 и r2 — на широких торцах. Посадочные поверхности: отверстие d (вал), наружная поверхность D (корпус).	Simplified model: the inner ring d…dm of width B (the wide face on the “Top” plane) and the outer ring dm…D of width C whose wide face is at the mounting height T; dm = (d + D)/2; chamfers r1 and r2 on the wide faces. Seating surfaces: the bore d (shaft), the outside surface D (housing).
+Подшипники качения	Rolling bearings
+Роликовые конические	Tapered roller
+Шейка вала	Shaft journal
+Заплечик	Shoulder
+Таблицы 1–11	Tables 1–11
+все серии таблиц 1–11; тип 7000 (таблицы 1–9) и 27000 с углом контакта не менее 20° (таблицы 10, 11); r1, r2 — наименьшие координаты монтажных фасок r1smin, r2smin (номинальные стандартом не заданы); в таблице 2 опечатка издания «10071/32А» принята как 20071/32А (по таблице 15 приложения); соответствие ИСО 355 — по п. 4 информационных данных	all series of tables 1–11; type 7000 (tables 1–9) and 27000 with a contact angle of at least 20° (tables 10, 11); r1, r2 — the smallest chamfer dimensions r1smin, r2smin (nominal values are not given by the standard); the misprint of the edition “10071/32A” in table 2 is taken as 20071/32A (by table 15 of the appendix); correspondence to ISO 355 — by item 4 of the information data
+Условное обозначение подшипника	Bearing designation
+Тип подшипника по стандарту	Bearing type by the standard
+Обозначение по ISO (по таблицам взаимозаменяемости; пусто — нет)	ISO designation (by the interchangeability tables; empty — none)
+Диаметр отверстия внутреннего кольца	Inner ring bore diameter
+Наружный диаметр наружного кольца	Outer ring outside diameter
+Монтажная высота подшипника	Bearing mounting height
+Ширина внутреннего кольца	Inner ring width
+Ширина наружного кольца	Outer ring width
+Наименьшая координата монтажной фаски широкого торца внутреннего кольца	Smallest chamfer dimension of the inner ring wide face
+Наименьшая координата монтажной фаски широкого торца наружного кольца	Smallest chamfer dimension of the outer ring wide face
+Подшипник	Bearing
+Подшипник шариковый упорный двойной	Thrust ball bearing, double direction
+Упрощённая модель: два свободных кольца D1…D высотой (H − B)/4 по концам, две зоны тел качения dm ± w той же высоты и тугое кольцо d2…D высотой B посередине; dm = (d + D)/2, w = (D − d)/10 (d — отверстие одинарного подшипника той же серии); фаски r на свободных кольцах. Посадочные поверхности: отверстие d2 (вал), наружная поверхность D.	Simplified model: two housing washers D1…D of height (H − B)/4 at the ends, two rolling element zones dm ± w of the same height and the shaft washer d2…D of height B in the middle; dm = (d + D)/2, w = (D − d)/10 (d — the bore of a single direction bearing of the same series); chamfers r on the housing washers. Seating surfaces: the bore d2 (shaft), the outside surface D.
+Шариковые упорные	Thrust ball
+Таблицы 10–14	Tables 10–14
+типы 38000 (таблицы 10, 11) и 38000Н (таблицы 12–14) всех серий; D1 — D1 (38000) или наименьший D1smin (38000Н); r — номинальная координата монтажной фаски свободных колец; опечатки издания: в таблице 12 «38317Н» у d = 85 мм принято как 38217Н, в таблице 14 у 38410Н D1smin «62» принято как 52 (по ряду и по 8410Н таблицы 9)	types 38000 (tables 10, 11) and 38000N (tables 12–14) of all series; D1 — D1 (38000) or the smallest D1smin (38000N); r — the nominal chamfer dimension of the housing washers; misprints of the edition: in table 12 “38317N” at d = 85 mm is taken as 38217N, in table 14 D1smin “62” of 38410N is taken as 52 (by the series and by 8410N of table 9)
+Диаметр отверстия тугого кольца одинарного подшипника той же серии	Shaft washer bore diameter of a single direction bearing of the same series
+Диаметр отверстия тугого кольца двойного подшипника	Shaft washer bore diameter of the double direction bearing
+Наружный диаметр свободных колец	Housing washer outside diameter
+Диаметр отверстия свободных колец	Housing washer bore diameter
+Высота подшипника	Bearing height
+Высота тугого кольца двойного подшипника	Shaft washer height of the double direction bearing
+Координата монтажной фаски свободных колец	Chamfer dimension of the housing washers
+Подшипник шариковый упорный одинарный	Thrust ball bearing, single direction
+Упрощённая модель: тугое кольцо d…D высотой H/3 на плоскости «Сверху», зона тел качения dm ± w высотой H/3, свободное кольцо D1…D высотой H/3; dm = (d + D)/2, w = (D − d)/10; фаски r на наружных торцах. Посадочные поверхности: отверстие d (вал), торец тугого кольца на плоскости «Сверху».	Simplified model: the shaft washer d…D of height H/3 on the “Top” plane, the rolling element zone dm ± w of height H/3, the housing washer D1…D of height H/3; dm = (d + D)/2, w = (D − d)/10; chamfers r on the outer faces. Seating surfaces: the bore d (shaft), the shaft washer face on the “Top” plane.
+Таблицы 1–9	Tables 1–9
+типы 8000 (таблицы 1–5) и 8000Н (таблицы 6–9) всех серий; D1 — номинальный диаметр отверстия свободного кольца D1 (8000) или наименьший D1smin (8000Н); r — номинальная координата монтажной фаски; типы 28000 и 18000 со сферическими кольцами не включены; соответствие ИСО 104 в части номенклатуры — по информационным данным	types 8000 (tables 1–5) and 8000N (tables 6–9) of all series; D1 — the nominal bore diameter of the housing washer D1 (8000) or the smallest D1smin (8000N); r — the nominal chamfer dimension; types 28000 and 18000 with spherical washers are not included; correspondence to ISO 104 in the range of sizes — by the information data
+Диаметр отверстия тугого кольца	Shaft washer bore diameter
+Наружный диаметр свободного кольца	Housing washer outside diameter
+Диаметр отверстия свободного кольца	Housing washer bore diameter
+Координата монтажной фаски	Chamfer dimension
+Подшипник шариковый радиально-упорный однорядный	Angular contact ball bearing, single row
+Упрощённая модель: кольцо d × D × B с фасками r на наружных кромках; на обоих торцах — кольцевая канавка глубиной B/4 между внутренним и наружным кольцами (dm ± w, dm = (d + D)/2, w = (D − d)/10) — кольца, соединённые зоной тел качения. Посадочные поверхности: отверстие d (вал), наружная поверхность D (корпус); базовый торец — на плоскости «Сверху». Внутренняя конструкция (тела качения, сепаратор) не моделируется.	Simplified model: a ring d × D × B with chamfers r on the outer edges; on both faces an annular groove of depth B/4 between the inner and the outer ring (dm ± w, dm = (d + D)/2, w = (D − d)/10) — the rings joined by the rolling element zone. Seating surfaces: the bore d (shaft), the outside surface D (housing); the reference face is on the “Top” plane. The internal design (rolling elements, cage) is not modelled.
+Шариковые радиально-упорные	Angular contact ball
+Таблицы 1–6 и примечания к ним	Tables 1–6 and their notes
+все типы и серии таблиц 1–6; типоразмеры, которые по примечаниям к таблицам «изготовляются также» с размерами других типов, — отдельными строками с размерами указанного типа; r1 по сноскам к таблицам 1 и 2 (1006900, 6104 — 0,3 мм); в таблице 4 опечатка издания «26324К» у d = 170 мм принята как 26334К (по таблице 7: 26300К–26334К); r, r1 — номинальные; ширина b таблиц 5 и 6 — столбец B; издание с Изменением № 1	all types and series of tables 1–6; sizes that by the notes to the tables are “also made” with the dimensions of other types — as separate rows with the dimensions of the stated type; r1 by the footnotes to tables 1 and 2 (1006900, 6104 — 0.3 mm); the misprint of the edition “26324K” in table 4 at d = 170 mm is taken as 26334K (by table 7: 26300K–26334K); r, r1 — nominal; width b of tables 5 and 6 — column B; edition with Amendment No. 1
+Ширина подшипника	Bearing width
+Координата монтажной фаски со стороны узкого торца	Chamfer dimension on the narrow face side
+Подшипник роликовый радиальный с короткими цилиндрическими роликами	Cylindrical roller bearing, radial, with short rollers
+Роликовые радиальные	Cylindrical roller
+Таблицы 1–7	Tables 1–7
+типы 2000, 12000, 32000, 42000, 92000, 102000 всех серий таблиц 1–7, включая типоразмеры «по согласованию с потребителем»; типы 52000 и 62000 (с фасонным упорным кольцом шириной b) не включены; в таблице 3 у d = 280 мм опечатка издания «2254» (и других типов) принята как 2256 (код отверстия 56); r, r1 — номинальные; переиздание с Изменениями № 1, 2	types 2000, 12000, 32000, 42000, 92000, 102000 of all series of tables 1–7, including the sizes “by agreement with the customer”; types 52000 and 62000 (with an L-shaped thrust ring of width b) are not included; the misprint of the edition “2254” in table 3 at d = 280 mm (and of the other types) is taken as 2256 (bore code 56); r, r1 — nominal; reissue with Amendments No. 1, 2
+Координата монтажной фаски безбортового кольца	Chamfer dimension of the ring without ribs
+Подшипник шариковый радиальный однорядный	Deep groove ball bearing, single row
+Шариковые радиальные	Deep groove ball
+все серии таблиц 1–7 (сверхлёгкие 8 и 9, особолёгкие 1, лёгкая 2, средняя 3, тяжёлая 4), включая типоразмеры «по согласованию с потребителем»; r — номинальная координата монтажной фаски; издание с Изменением № 1	all series of tables 1–7 (extra light 8 and 9, especially light 1, light 2, medium 3, heavy 4), including the sizes “by agreement with the customer”; r — the nominal chamfer dimension; edition with Amendment No. 1
+Рым-болт	Eye bolt
+Упрощённая модель: стержень диаметром d длиной l под плоскостью «Сверху» (резьба не моделируется), опорный бурт d4 × h1, шейка диаметром 0,8·d3 до середины стенки кольца и кольцо — плоское кольцо d1 / d2 толщиной d3 (тор кольца не моделируется).	Simplified model: a shank of diameter d and length l under the “Top” plane (the thread is not modelled), a collar d4 × h1, a neck of diameter 0.8·d3 up to the middle of the ring wall and the ring — a flat ring d1 / d2 of thickness d3 (the torus of the ring is not modelled).
+Крепёж	Fasteners
+Рым-болты	Eye bolts
+Резьбовое отверстие	Threaded hole
+Опорная поверхность	Bearing surface
+Таблица 1	Table 1
+все размеры резьбы таблицы 1; издание с Изменениями № 1–4	all thread sizes of table 1; edition with Amendments No. 1–4
+Обозначение резьбы (для обозначения)	Thread designation (for the designation)
+Номинальный диаметр резьбы	Nominal thread diameter
+Наружный диаметр кольца	Ring outside diameter
+Внутренний диаметр кольца	Ring inside diameter
+Диаметр сечения кольца	Ring section diameter
+Диаметр опорного бурта	Collar diameter
+Расстояние от бурта до отверстия кольца	Distance from the collar to the ring hole
+Высота опорного бурта	Collar height
+Длина стержня	Shank length
+Болт с шестигранной головкой класса точности B	Hexagon head bolt, product grade B
+Модель: шестигранная головка (размер под ключ s, высота k) с конической фаской углов под 30° и стержень диаметром d длиной l с фаской P × 45° на конце; условная метрическая резьба d с крупным шагом P длиной b по ISO 888 (на чертеже — условное изображение, при экспорте для печати — витки); скругления под головкой не моделируются. Опорная поверхность головки — плоскость «Сверху».	Model: a hexagon head (width across flats s, height k) with a 30° conical chamfer of the corners and a shank of diameter d and length l with a P × 45° chamfer at the end; a cosmetic metric thread d with the coarse pitch P and length b by ISO 888 (on the drawing — the conventional representation, on export for printing — the turns); the fillets under the head are not modelled. The bearing face of the head is the “Top” plane.
+Болты	Bolts
+Отверстие	Hole
+Таблицы 1 и 2	Tables 1 and 2
+исполнение 1, крупный шаг; d от M6 (в действующей редакции стандарта — диаметры 6–48 мм); длины в скобках не включены; шаг P — крупный по ГОСТ 24705 (таблица резьб программы)	type 1, coarse pitch; d from M6 (the current edition of the standard has diameters 6–48 mm); lengths in brackets are not included; pitch P — coarse by GOST 24705 (the thread table of the program)
+Номинальная длина	Nominal length
+Высота головки номинальная	Nominal head height
+Размер под ключ номинальный	Nominal width across flats
+Шаг резьбы (крупный)	Thread pitch (coarse)
+Длина резьбы b (ISO 888)	Thread length b (ISO 888)
+Класс прочности (для обозначения)	Property class (for the designation)
+Болт	Bolt
+Болт с шестигранной головкой, классы точности A и B	Hexagon head bolt, product grades A and B
+d, k и s — номинальные; длины l — те, для которых в таблице 1 даны ls и lg (классы точности A и B); шаг P — крупный по ГОСТ 24705 (таблица резьб программы)	d, k and s — nominal; lengths l — those for which table 1 gives ls and lg (product grades A and B); pitch P — coarse by GOST 24705 (the thread table of the program)
+Гайка шестигранная класса точности B	Hexagon nut, product grade B
+Модель: шестигранная призма (размер под ключ s, высота h — высота гайки m стандарта) с конической фаской углов под 30° с обеих сторон и отверстием по внутреннему диаметру резьбы D1 с условной внутренней метрической резьбой d (крупный шаг P) на всю высоту; зенковка отверстия не моделируется. Опорная поверхность — плоскость «Сверху».	Model: a hexagonal prism (width across flats s, height h — the nut height m of the standard) with a 30° conical chamfer of the corners on both sides and a hole of the thread minor diameter D1 with a cosmetic internal metric thread d (coarse pitch P) over the whole height; the countersink of the hole is not modelled. The bearing face is the “Top” plane.
+Гайки	Nuts
+Болт или шпилька	Bolt or stud
+Таблица (размеры)	Table (dimensions)
+исполнение 1, крупный шаг; высота h — высота m; размер под ключ — основной (не приложение 2); шаг P — крупный по ГОСТ 24705 (таблица резьб программы)	type 1, coarse pitch; height h — height m; width across flats — the main one (not appendix 2); pitch P — coarse by GOST 24705 (the thread table of the program)
+Высота гайки m	Nut height m
+Внутренний диаметр резьбы D1 (ISO 68-1) — диаметр отверстия	Thread minor diameter D1 (ISO 68-1) — the hole diameter
+Гайка	Nut
+Гайка шестигранная нормальная (тип 1), классы точности A и B	Hexagon nut, style 1, product grades A and B
+высота h — наибольшая высота m (номинальная в стандарте не задана), s — номинальный; шаг P — крупный по ГОСТ 24705 (таблица резьб программы)	height h — the largest height m (the nominal one is not given in the standard), s — nominal; pitch P — coarse by GOST 24705 (the thread table of the program)
+Винт с цилиндрической головкой и шестигранным углублением под ключ класса точности A	Hexagon socket head cap screw, product grade A
+Модель: цилиндрическая головка (диаметр dk, высота k) с фаской P × 45° верхней кромки и шестигранным углублением (размер s, глубина t), стержень диаметром d длиной l с фаской P × 45° на конце; условная метрическая резьба d с крупным шагом P длиной b = 2d + 12 мм (не больше l); скругления не моделируются. Опорная поверхность головки — плоскость «Сверху».	Model: a cylindrical head (diameter dk, height k) with a P × 45° chamfer of the top edge and a hexagon socket (size s, depth t), a shank of diameter d and length l with a P × 45° chamfer at the end; a cosmetic metric thread d with the coarse pitch P and length b = 2d + 12 mm (not more than l); fillets are not modelled. The bearing face of the head is the “Top” plane.
+Винты	Screws
+Таблица 1; таблица длин — по поправке (ИУС № 1 2024)	Table 1; the length table — by the correction (IUS No. 1 2024)
+dk — диаметр головки D, s — размер под ключ S; длины в скобках не включены; шаг P — крупный по ГОСТ 24705 (таблица резьб программы)	dk — head diameter D, s — width across flats S; lengths in brackets are not included; pitch P — coarse by GOST 24705 (the thread table of the program)
+Диаметр головки	Head diameter
+Высота головки	Head height
+Размер шестигранного углубления под ключ	Hexagon socket size
+Глубина шестигранного углубления	Hexagon socket depth
+Длина резьбы b	Thread length b
+Винт	Screw
+Винт с шестигранной головкой, классы точности A и B	Hexagon head screw, product grades A and B
+Модель: шестигранная головка (размер под ключ s, высота k) с конической фаской углов под 30° и стержень диаметром d длиной l с фаской P × 45° на конце; условная метрическая резьба d с крупным шагом P на всю длину стержня (на чертеже — условное изображение, при экспорте для печати — витки); скругления под головкой не моделируются. Опорная поверхность головки — плоскость «Сверху».	Model: a hexagon head (width across flats s, height k) with a 30° conical chamfer of the corners and a shank of diameter d and length l with a P × 45° chamfer at the end; a cosmetic metric thread d with the coarse pitch P over the whole shank length (on the drawing — the conventional representation, on export for printing — the turns); the fillets under the head are not modelled. The bearing face of the head is the “Top” plane.
+d, k и s — номинальные (s для M20 — по поправке, ИУС № 8 2015); длины l — область предпочтительных длин класса точности A (выше пунктирной ступенчатой линии); шаг P — крупный по ГОСТ 24705 (таблица резьб программы)	d, k and s — nominal (s for M20 — by the correction, IUS No. 8 2015); lengths l — the range of preferred lengths of product grade A (above the dashed stepped line); pitch P — coarse by GOST 24705 (the thread table of the program)
+Винт с цилиндрической головкой и шестигранным углублением под ключ	Hexagon socket head cap screw
+dk — наибольший для гладкой головки, k — наибольшая, s — номинальный, t — наименьшая; длины l — между полужирными ступенчатыми линиями; шаг P — крупный по ГОСТ 24705 (таблица резьб программы)	dk — the largest for a plain head, k — the largest, s — nominal, t — the smallest; lengths l — between the bold stepped lines; pitch P — coarse by GOST 24705 (the thread table of the program)
+Шпилька с ввинчиваемым концом длиной 1d, класс точности B	Stud with a 1d screw-in end, product grade B
+Модель: цилиндр диаметром d — гаечный конец длиной l над плоскостью «Сверху» и ввинчиваемый конец длиной b1 под ней, фаски P × 45° на обоих концах; условные метрические резьбы d с крупным шагом P — гаечного конца длиной b по ISO 888 и ввинчиваемого конца на всю длину b1.	Model: a cylinder of diameter d — the nut end of length l above the “Top” plane and the screw-in end of length b1 below it, P × 45° chamfers at both ends; cosmetic metric threads d with the coarse pitch P — of the nut end of length b by ISO 888 and of the screw-in end over the whole length b1.
+Шпильки	Studs
+Поверхность детали	Part surface
+исполнение 1, крупный шаг; b1 — по таблице 1; длины в скобках не включены; шаг P — крупный по ГОСТ 24705 (таблица резьб программы)	type 1, coarse pitch; b1 — by table 1; lengths in brackets are not included; pitch P — coarse by GOST 24705 (the thread table of the program)
+Длина шпильки (без ввинчиваемого конца)	Stud length (without the screw-in end)
+Длина ввинчиваемого резьбового конца	Length of the screw-in threaded end
+Длина резьбы гаечного конца b (ISO 888)	Thread length of the nut end b (ISO 888)
+Шпилька	Stud
+Шпилька с ввинчиваемым концом длиной 1,25d, класс точности B	Stud with a 1.25d screw-in end, product grade B
+Упрощённая модель: гладкий цилиндр диаметром d — гаечный конец длиной l над плоскостью «Сверху» и ввинчиваемый конец длиной b1 под ней; резьба не моделируется.	Simplified model: a plain cylinder of diameter d — the nut end of length l above the “Top” plane and the screw-in end of length b1 below it; the thread is not modelled.
+исполнение 1, крупный шаг; d от M3 до M20 (ряд S6-LIB-007); b1 — длина ввинчиваемого резьбового конца l1 по таблице 1 (b1 по Изменению № 4, ИУС № 7 1988); длины в скобках и диаметры в скобках не включены	type 1, coarse pitch; d from M3 to M20 (series S6-LIB-007); b1 — the length of the screw-in threaded end l1 by table 1 (b1 by Amendment No. 4, IUS No. 7 1988); lengths and diameters in brackets are not included
+Шпилька с ввинчиваемым концом длиной 2d, класс точности B	Stud with a 2d screw-in end, product grade B
+Шайба плоская, исполнение 1, класс точности A	Plain washer, type 1, product grade A
+Модель: кольцо (наружный диаметр d2, внутренний d1, толщина h) без фасок. Опорная поверхность — плоскость «Сверху».	Model: a ring (outside diameter d2, inside diameter d1, thickness h) without chamfers. The bearing face is the “Top” plane.
+Шайбы	Washers
+Болт или отверстие	Bolt or hole
+Таблица п. 1.1	Table of item 1.1
+исполнение 1, класс точности A (d1 — для класса A); ряд нормальный	type 1, product grade A (d1 — for grade A); normal series
+Диаметр резьбы крепёжной детали	Thread diameter of the fastener
+Внутренний диаметр	Inside diameter
+Наружный диаметр	Outside diameter
+Толщина	Thickness
+Шайба	Washer
+Шпонка призматическая высокая	Parallel key, high
+Модель — исполнение 2 (плоские торцы): прямоугольный брусок b × h × l без фасок; длина — вдоль нормали плоскости «Сверху».	Model — type 2 (flat ends): a rectangular bar b × h × l without chamfers; the length is along the normal of the “Top” plane.
+Детали соединений	Connection parts
+Шпонки	Keys
+Дно паза	Keyway bottom
+Боковая грань паза	Keyway side
+Торец паза	Keyway end
+Таблица 1; ряд длин — примечание 1	Table 1; the length series — note 1
+b, h — номинальные; длины l — из ряда примечания 1 в пределах «от — до» таблицы 1; издание с Изменениями № 1, 2	b, h — nominal; lengths l — from the series of note 1 within the “from — to” range of table 1; edition with Amendments No. 1, 2
+Ширина шпонки	Key width
+Высота шпонки	Key height
+Длина шпонки	Key length
+Шпонка	Key
+Шпонка призматическая	Parallel key
+Таблица 1; ряд длин — п. 3	Table 1; the length series — item 3
+b, h — номинальные; длины l — из ряда п. 3 в пределах «от — до» таблицы 1; издание с Изменениями № 1, 2	b, h — nominal; lengths l — from the series of item 3 within the “from — to” range of table 1; edition with Amendments No. 1, 2
+Шпонка сегментная нормальной формы	Woodruff key, normal form
+Модель: сегмент круга диаметром D высотой h1, толщина b; фаски не моделируются.	Model: a circular segment of diameter D and height h1, thickness b; chamfers are not modelled.
+Плоскость шпонки	Key plane
+b, h1, D — номинальные; нормальная форма (низкая форма — по согласованию, не включена)	b, h1, D — nominal; normal form (the low form — by agreement, not included)
+Размер шпонки b × h1 (для обозначения)	Key size b × h1 (for the designation)
+Диаметр шпонки	Key diameter
+Штифт цилиндрический незакалённый	Parallel pin, unhardened
+Модель: цилиндр диаметром d длиной l; фаски и скругления не моделируются.	Model: a cylinder of diameter d and length l; chamfers and roundings are not modelled.
+Штифты	Pins
+Торец	End face
+Таблица (размеры и масса)	Table (dimensions and mass)
+сочетания d × l, для которых в таблице дана масса; диаметры и длины в скобках не включены; издание с Изменением № 3	combinations d × l for which the table gives the mass; diameters and lengths in brackets are not included; edition with Amendment No. 3
+Диаметр штифта	Pin diameter
+Длина штифта	Pin length
+Штифт	Pin
+Штифт конический незакалённый	Taper pin, unhardened
+Модель: усечённый конус конусностью 1:50 — меньший диаметр d, больший d + l/50 на плоскости «Сверху»; фаски и сферические торцы не моделируются.	Model: a truncated cone with a 1:50 taper — the smaller diameter d, the larger d + l/50 on the “Top” plane; chamfers and spherical ends are not modelled.
+Диаметр меньшего конца	Diameter of the small end
+Штифт конический с внутренней резьбой незакалённый	Taper pin with internal thread, unhardened
+Модель: усечённый конус конусностью 1:50 (больший торец на плоскости «Сверху») с отверстием номинального диаметра резьбы dt глубиной l1 в большем торце; резьба и фаски не моделируются.	Model: a truncated cone with a 1:50 taper (the larger end on the “Top” plane) with a hole of the nominal thread diameter dt and depth l1 in the larger end; the thread and the chamfers are not modelled.
+Таблица (размеры, стандартные длины)	Table (dimensions, standard lengths)
+dt — номинальный диаметр резьбы d1, l1 — наименьшая глубина; длины — область «Стандартные длины», значения в скобках не включены; издание с Изменением № 2	dt — the nominal thread diameter d1, l1 — the smallest depth; lengths — the “Standard lengths” range, values in brackets are not included; edition with Amendment No. 2
+Номинальный диаметр внутренней резьбы	Nominal internal thread diameter
+Глубина отверстия под резьбу	Depth of the threaded hole
+Штифт конический с резьбовой цапфой незакалённый	Taper pin with threaded stem, unhardened
+Модель: усечённый конус конусностью 1:50 длиной l − b (больший торец на плоскости «Сверху») и резьбовая цапфа — цилиндр номинального диаметра резьбы dt длиной b над плоскостью «Сверху»; резьба и фаски не моделируются.	Model: a truncated cone with a 1:50 taper of length l − b (the larger end on the “Top” plane) and the threaded stem — a cylinder of the nominal thread diameter dt and length b above the “Top” plane; the thread and the chamfers are not modelled.
+dt — номинальный диаметр резьбы d1, b — наибольшая длина цапфы; длины — область «Стандартные длины»; издание с Изменением № 2	dt — the nominal thread diameter d1, b — the largest stem length; lengths — the “Standard lengths” range; edition with Amendment No. 2
+Номинальный диаметр резьбы цапфы	Nominal thread diameter of the stem
+Длина резьбовой цапфы	Threaded stem length
+Кольцо пружинное упорное плоское наружное концентрическое	Retaining ring, external, flat, concentric
+Упрощённая модель кольца в установленном состоянии: плоское кольцо с внутренним диаметром d1 (по дну канавки), шириной b и толщиной s; разрез и отверстия под инструмент не моделируются.	Simplified model of the ring in the installed state: a flat ring with the inside diameter d1 (at the groove bottom), width b and thickness s; the gap and the tool holes are not modelled.
+Кольца пружинные упорные	Retaining rings
+Канавка	Groove
+Стенка канавки	Groove side
+Таблица (размеры колец и канавок)	Table (ring and groove dimensions)
+d, s, канавка d1, m (столбец w), h — по таблице; df — номинальный диаметр кольца в свободном состоянии; b — приблизительная ширина кольца; все строки таблицы	d, s, groove d1, m (column w), h — by the table; df — the nominal ring diameter in the free state; b — the approximate ring width; all rows of the table
+Условный диаметр кольца (диаметр вала)	Nominal ring diameter (shaft diameter)
+Диаметр кольца в свободном состоянии	Ring diameter in the free state
+Толщина кольца	Ring thickness
+Ширина кольца	Ring width
+Диаметр канавки	Groove diameter
+Ширина канавки m (имя m занято единицей «метр»)	Groove width m (the name m is taken by the unit “metre”)
+Наименьшее расстояние от канавки до торца	Smallest distance from the groove to the end face
+Кольцо	Ring
+Кольцо пружинное упорное плоское внутреннее концентрическое	Retaining ring, internal, flat, concentric
+Упрощённая модель кольца в установленном состоянии: плоское кольцо с наружным диаметром d1 (по дну канавки), шириной b и толщиной s; разрез и отверстия под инструмент не моделируются.	Simplified model of the ring in the installed state: a flat ring with the outside diameter d1 (at the groove bottom), width b and thickness s; the gap and the tool holes are not modelled.
+Условный диаметр кольца (диаметр отверстия)	Nominal ring diameter (bore diameter)
+Кольцо пружинное упорное плоское наружное эксцентрическое	Retaining ring, external, flat, eccentric
+Кольцо пружинное упорное плоское внутреннее эксцентрическое	Retaining ring, internal, flat, eccentric
+Шайба уменьшенная, класс точности A	Small washer, product grade A
+класс точности A (d1 — для класса A; размеры 42 и 48 есть только в классе C и не включены); h — толщина s стандарта; издание с Изменениями № 1, 2	product grade A (d1 — for grade A; sizes 42 and 48 exist only in grade C and are not included); h — the thickness s of the standard; edition with Amendments No. 1, 2
+Шайба пружинная лёгкая (Л)	Spring lock washer, light (L)
+Упрощённая модель: разрезное кольцо прямоугольного сечения (внутренний диаметр d1, ширина b, толщина s) с разрезом шириной m = 0,7·s по оси X; разведение концов по высоте не моделируется — в соединении шайба сжата до толщины s. Опорная поверхность — плоскость «Сверху».	Simplified model: a split ring of rectangular section (inside diameter d1, width b, thickness s) with a gap of width m = 0.7·s on the X axis; the spread of the ends in height is not modelled — in a joint the washer is compressed to the thickness s. The bearing face is the “Top” plane.
+Таблица п. 1.2	Table of item 1.2
+тип Л: b и s — номинальные; значения в скобках (применялись до 01.01.85) не включены; d1 — номинальный d	type L: b and s — nominal; values in brackets (used before 01.01.85) are not included; d1 — the nominal d
+Номинальный диаметр резьбы болта, винта, шпильки	Nominal thread diameter of the bolt, screw, stud
+Внутренний диаметр (d стандарта)	Inside diameter (d of the standard)
+Ширина сечения	Section width
+Толщина сечения	Section thickness
+Шайба пружинная нормальная (Н)	Spring lock washer, normal (N)
+тип Н: b = s — номинальные; значения в скобках (применялись до 01.01.85) не включены; d1 — номинальный d	type N: b = s — nominal; values in brackets (used before 01.01.85) are not included; d1 — the nominal d
+Шайба пружинная особо тяжёлая (ОТ)	Spring lock washer, extra heavy (OT)
+тип ОТ: b = s — номинальные; размеры с «—» не включены; d1 — номинальный d	type OT: b = s — nominal; sizes with “—” are not included; d1 — the nominal d
+Шайба пружинная тяжёлая (Т)	Spring lock washer, heavy (T)
+тип Т: b = s — номинальные; размеры с «—» не включены; d1 — номинальный d	type T: b = s — nominal; sizes with “—” are not included; d1 — the nominal d
+Шайба увеличенная, класс точности A	Large washer, product grade A
+Болтовое соединение	Bolted joint
+Болт, винт или шпилька с шайбами (плоские ГОСТ 11371, 6958, 10450, пружинная ГОСТ 6402) и гайкой через пакет деталей: проходные отверстия ряда ГОСТ 11284 / ISO 273 и резьбовое отверстие (сверло ГОСТ 19257 / ISO 2306) в деталях, крепёж — детали системной библиотеки. Длина крепежа — по толщине пакета с шайбами и гайкой и запасом выступа не меньше двух шагов резьбы (solutions.md §12.1).	A bolt, screw or stud with washers (plain GOST 11371, 6958, 10450, spring lock GOST 6402) and a nut through a stack of parts: clearance holes of the GOST 11284 / ISO 273 series and a tapped hole (drill GOST 19257 / ISO 2306) in the parts, the fasteners — parts of the system library. The fastener length — by the thickness of the stack with the washers and the nut and a protrusion of at least two thread pitches (solutions.md §12.1).
+Грань под головку	Face under the head
+Ось отверстия	Hole axis
+Точка на грани	Point on face
+Грань под гайку	Face under the nut
+Резьба	Thread
+Ряд отверстий	Hole series
+Точный	Fine
+Средний	Medium
+Грубый	Coarse
+Шайба под головку	Washer under the head
+Гайка ГОСТ ISO 4032	Nut GOST ISO 4032
+Гайка ГОСТ 5915	Nut GOST 5915
+Без гайки (резьба в детали)	No nut (thread in the part)
+Шайба под гайку	Washer under the nut
+Шайбы плоские	Plain washers
+Шайба пружинная	Spring washer
+Пружинная шайба	Spring lock washer
+Болт ГОСТ Р ИСО 4014	Bolt GOST R ISO 4014
+Болт ГОСТ 7798	Bolt GOST 7798
+Винт ГОСТ Р ИСО 4017	Screw GOST R ISO 4017
+Винт ГОСТ Р ИСО 4762	Screw GOST R ISO 4762
+Винт ГОСТ 11738	Screw GOST 11738
+Шпилька ГОСТ 22032	Stud GOST 22032
+Шайба ГОСТ 11371	Washer GOST 11371
+Шайба увеличенная ГОСТ 6958	Large washer GOST 6958
+Шайба уменьшенная ГОСТ 10450	Small washer GOST 10450
+ГОСТ 6402 лёгкая (Л)	GOST 6402 light (L)
+ГОСТ 6402 нормальная (Н)	GOST 6402 normal (N)
+ГОСТ 6402 тяжёлая (Т)	GOST 6402 heavy (T)
+ГОСТ 6402 особо тяжёлая (ОТ)	GOST 6402 extra heavy (OT)
+Центровое отверстие	Center hole
+Центровое отверстие ГОСТ 14034 формы A, B (конус 60°) или C, E (конус 75°) в торце вала; размер — по наибольшему рекомендуемому диаметру заготовки D, не большему диаметра вала (solutions.md §12.2).	A GOST 14034 center hole of form A, B (60° cone) or C, E (75° cone) in the shaft end face; the size — by the largest recommended blank diameter D not greater than the shaft diameter (solutions.md §12.2).
+Вал	Shaft
+Форма	Form
+Форма A	Form A
+Форма B	Form B
+Форма C	Form C
+Форма E	Form E
+ГОСТ 14034, таблица 1	GOST 14034, table 1
+ГОСТ 14034, таблица 2	GOST 14034, table 2
+Центровое отверстие A	Center hole A
+Центровое отверстие B	Center hole B
+Центровое отверстие C	Center hole C
+Центровое отверстие E	Center hole E
+Гнездо под рым-болт по приложению ГОСТ 4751 (цековка d1 × h, резьба на глубину l, сверло под резьбу — ГОСТ 19257 / ISO 2306) и рым-болт ГОСТ 4751 (solutions.md §12.2).	An eye bolt seat by the appendix of GOST 4751 (counterbore d1 × h, thread to the depth l, tap drill — GOST 19257 / ISO 2306) and a GOST 4751 eye bolt (solutions.md §12.2).
+Грань	Face
+Точка	Point
+Рым-болт ГОСТ 4751	Eye bolt GOST 4751
+Гнёзда под рым-болты ГОСТ 4751	Eye bolt seats GOST 4751
+Гнездо	Seat
+Шпоночное соединение	Keyed joint
+Пазы на валу и в ступице и призматическая шпонка ГОСТ 23360 или высокая ГОСТ 10748 по диаметру вала; длина шпонки — наибольшая стандартная, не длиннее ступицы (solutions.md §12.2).	Keyways in the shaft and in the hub and a parallel key GOST 23360 or a high one GOST 10748 by the shaft diameter; the key length — the longest standard one not longer than the hub (solutions.md §12.2).
+Торец ступицы	Hub end face
+Призматическая ГОСТ 23360	Parallel GOST 23360
+Призматическая высокая ГОСТ 10748	Parallel high GOST 10748
+Пазы ГОСТ 23360	Keyways GOST 23360
+Пазы ГОСТ 10748	Keyways GOST 10748
+Шпонка ГОСТ 23360	Key GOST 23360
+Шпонка ГОСТ 10748	Key GOST 10748
+Паз вала	Shaft keyway
+Паз ступицы	Hub keyway
+Отверстие через пакет деталей и штифт цилиндрический ГОСТ 3128 (отверстие H7) или конический ГОСТ 3129, ГОСТ 9464, ГОСТ 9465 (коническое отверстие 1:50); длина — наименьшая стандартная, не короче пакета (solutions.md §12.2).	A hole through the stack of parts and a parallel pin GOST 3128 (H7 hole) or a taper pin GOST 3129, GOST 9464, GOST 9465 (1:50 taper hole); the length — the shortest standard one not shorter than the stack (solutions.md §12.2).
+Цилиндрический ГОСТ 3128	Parallel GOST 3128
+Конический ГОСТ 3129	Taper GOST 3129
+Конический с внутренней резьбой ГОСТ 9464	Taper with internal thread GOST 9464
+Конический с резьбовой цапфой ГОСТ 9465	Taper with threaded stem GOST 9465
+Диаметр	Diameter
+Штифт ГОСТ 3128	Pin GOST 3128
+Штифт ГОСТ 3129	Pin GOST 3129
+Штифт ГОСТ 9464	Pin GOST 9464
+Штифт ГОСТ 9465	Pin GOST 9465
+Отверстие под штифт	Pin hole
+Коническое отверстие	Taper hole
+Кольцо упорное в отверстии	Retaining ring in a bore
+Канавка в отверстии и пружинное упорное кольцо ГОСТ 13943 или ГОСТ 13941 по диаметру отверстия; канавка — на заданном расстоянии от торца (solutions.md §12.2).	A groove in the bore and a retaining ring GOST 13943 or GOST 13941 by the bore diameter; the groove — at the given distance from the end face (solutions.md §12.2).
+Торец отверстия	Bore end face
+Эксцентрическое ГОСТ 13943	Eccentric GOST 13943
+Концентрическое ГОСТ 13941	Concentric GOST 13941
+Расстояние от торца до канавки	Distance from the end face to the groove
+Кольцо ГОСТ 13943	Ring GOST 13943
+Кольцо ГОСТ 13941	Ring GOST 13941
+Кольцо упорное на валу	Retaining ring on a shaft
+Канавка на валу и пружинное упорное кольцо ГОСТ 13942 или ГОСТ 13940 по диаметру вала; канавка — на заданном расстоянии от торца (solutions.md §12.2).	A groove on the shaft and a retaining ring GOST 13942 or GOST 13940 by the shaft diameter; the groove — at the given distance from the end face (solutions.md §12.2).
+Торец вала	Shaft end face
+Эксцентрическое ГОСТ 13942	Eccentric GOST 13942
+Концентрическое ГОСТ 13940	Concentric GOST 13940
+Кольцо ГОСТ 13942	Ring GOST 13942
+Кольцо ГОСТ 13940	Ring GOST 13940

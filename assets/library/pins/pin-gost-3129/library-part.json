@@ -1,0 +1,47 @@
+{
+  "format": "construe-library-part",
+  "formatVersion": 1,
+  "id": "gost-3129.pin",
+  "title": "Штифт конический незакалённый",
+  "description": "Модель: усечённый конус конусностью 1:50 — меньший диаметр d, больший d + l/50 на плоскости «Сверху»; фаски и сферические торцы не моделируются.",
+  "section": [
+    "Крепёж",
+    "Штифты"
+  ],
+  "standards": [
+    {
+      "code": "ГОСТ 3129",
+      "year": 1970
+    }
+  ],
+  "keyVariables": [
+    "d",
+    "l"
+  ],
+  "defaultSize": "6×20",
+  "designation": "Штифт {d} × {l} ГОСТ 3129-70",
+  "source": [
+    {
+      "standard": "ГОСТ 3129-70",
+      "table": "Таблица (размеры и масса)",
+      "note": "сочетания d × l, для которых в таблице дана масса; диаметры и длины в скобках не включены; издание с Изменением № 3"
+    }
+  ],
+  "attachments": [
+    {
+      "name": "axis",
+      "kind": "axis",
+      "ref": "axis:y",
+      "label": "Отверстие",
+      "diameterKey": "d"
+    },
+    {
+      "name": "face",
+      "kind": "plane",
+      "ref": "plane:top",
+      "flip": true,
+      "label": "Торец",
+      "optional": true
+    }
+  ]
+}
